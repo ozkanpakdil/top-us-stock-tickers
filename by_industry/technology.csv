@@ -1,532 +1,527 @@
 symbol,name,price,marketCap,volume,industry
-NVDA,NVIDIA Corporation Common Stock,225.32,5478011792629.0,180980645,Technology
-GOOGL,Alphabet Inc. Class A Common Stock,396.78,4807386480000.0,20309773,Technology
-GOOG,Alphabet Inc. Class C Capital Stock,393.32,4765465120000.0,15801956,Technology
-AAPL,Apple Inc. Common Stock,300.23,4409584891880.0,54863035,Technology
-MSFT,Microsoft Corporation Common Stock,421.92,3134205170312.0,50771386,Technology
-AVGO,Broadcom Inc. Common Stock,425.19,2013133565155.0,18957207,Technology
-META,Meta Platforms Inc. Class A Common Stock,614.23,1559175746016.0,13272728,Technology
-MU,Micron Technology Inc. Common Stock,724.66,817223757398.0,48519682,Technology
-AMD,Advanced Micro Devices Inc. Common Stock,424.1,691537731000.0,29132408,Technology
-ORCL,Oracle Corporation Common Stock,192.95,554933075700.0,15747169,Technology
-INTC,Intel Corporation Common Stock,108.77,546678020000.0,135206415,Technology
-LRCX,Lam Research Corporation Common Stock,284.72,356062575120.0,9643214,Technology
-AMAT,Applied Materials Inc. Common Stock,436.62,346505940130.0,12768720,Technology
-PLTR,Palantir Technologies Inc. Class A Common Stock,133.99,321215831798.0,32630012,Technology
-GE,GE Aerospace Common Stock,281.53,293730731770.0,5022494,Technology
-TXN,Texas Instruments Incorporated Common Stock,302.73,275512390619.0,6661647,Technology
-KLAC,KLA Corporation Common Stock,1804.32,235693848691.0,980386,Technology
-QCOM,QUALCOMM Incorporated Common Stock,201.49,212370460000.0,25876839,Technology
-SNDK,Sandisk Corporation Common Stock,1407.61,208452624258.0,14011317,Technology
-IBM,International Business Machines Corporation Common Stock,219.3,206116841904.0,6154457,Technology
-ADI,Analog Devices Inc. Common Stock,417.49,203820353506.0,3709646,Technology
-PANW,Palo Alto Networks Inc. Common Stock,242.83,198149280000.0,11551027,Technology
-NEE,NextEra Energy Inc. Common Stock,93.36,194687478332.0,11418361,Technology
-APP,Applovin Corporation Class A Common Stock,501.0,168305940000.0,5352675,Technology
-WDC,Western Digital Corporation Common Stock,482.02,166143680785.0,7014417,Technology
-CRM,Salesforce Inc. Common Stock,173.51,160149730000.0,13883402,Technology
-DELL,Dell Technologies Inc. Class C Common Stock ,241.99,157189029771.0,4833115,Technology
-MRVL,Marvell Technology Inc. Common Stock,176.89,154876600772.0,24757348,Technology
-APH,Amphenol Corporation Common Stock,125.0,153779305625.0,10352464,Technology
-CRWD,CrowdStrike Holdings Inc. Class A Common Stock,594.08,151215056396.0,3859392,Technology
-VRT,Vertiv Holdings LLC Class A Common Stock,370.94,142481324207.0,4871163,Technology
-INTU,Intuit Inc. Common Stock,393.0,108684150000.0,3524202,Technology
-ADBE,Adobe Inc. Common Stock,247.6,100079920000.0,6421248,Technology
-NOW,ServiceNow Inc. Common Stock,95.07,98017170000.0,34569765,Technology
-SNPS,Synopsys Inc. Common Stock,502.42,96244593605.0,1488942,Technology
-CDNS,Cadence Design Systems Inc. Common Stock,347.24,95774347840.0,1703498,Technology
-FTNT,Fortinet Inc. Common Stock,122.78,89954569447.0,5533780,Technology
-MPWR,Monolithic Power Systems Inc. Common Stock,1550.02,76152482600.0,685355,Technology
-COHR,Coherent Corp. Common Stock,382.45,74822258316.0,6626959,Technology
-EMR,Emerson Electric Company Common Stock,133.05,74521305000.0,3173434,Technology
-DDOG,Datadog Inc. Class A Common Stock,207.98,74032600108.0,5492990,Technology
-NET,Cloudflare Inc. Class A Common Stock,197.56,69830791757.0,3386402,Technology
-DASH,DoorDash Inc. Class A Common Stock,159.2,69366420542.0,5172667,Technology
-MSI,Motorola Solutions Inc. Common Stock,393.28,65282742489.0,1176620,Technology
-MSTR,Strategy Inc Common Stock Class A,177.42,62176461450.0,19654330,Technology
-CBRS,Cerebras Systems Inc. Class A Common Stock,279.72,60203727489.0,17119716,Technology
-CRWV,CoreWeave Inc. Class A Common Stock,107.3,58539698126.0,22048184,Technology
-SNOW,Snowflake Inc. Common Stock,157.47,54437379000.0,7739699,Technology
-MCHP,Microchip Technology Incorporated Common Stock,93.85,50785562733.0,9445383,Technology
-ADSK,Autodesk Inc. Common Stock,236.62,49961189292.0,1528633,Technology
-ON,ON Semiconductor Corporation Common Stock,113.11,44328169934.0,10939856,Technology
-HPE,Hewlett Packard Enterprise Company Common Stock,33.1,43918870346.0,16381216,Technology
-MCHPP,Microchip Technology Incorporated Depositary Shares Each Representing a 1/20th Interest in a Share of 7.50% Series A Mandatory Convertible Preferred Stock,79.87,43220489030.0,45127,Technology
-XYZ,Block Inc. Class A Common Stock,70.36,41876935160.0,5109263,Technology
-ALAB,Astera Labs Inc. Common Stock,232.68,39883199247.0,5941756,Technology
-GFS,GlobalFoundries Inc. Ordinary Shares,71.03,39522317694.0,3285055,Technology
-UI,Ubiquiti Inc. Common Stock,623.25,37720389476.0,148562,Technology
-JBL,Jabil Inc. Common Stock,339.82,35851901008.0,1226758,Technology
-STRF,Strategy Inc 10.00% Series A Perpetual Strife Preferred Stock,100.2,35114876774.0,89174,Technology
-STRC,Strategy Inc Variable Rate Series A Perpetual Stretch Preferred Stock,99.19,34760924424.0,5021272,Technology
-Q,Qnity Electronics Inc. Common Stock,157.23,32914403517.0,1678373,Technology
-ROP,Roper Technologies Inc. Common Stock,320.9,32384380503.0,1365550,Technology
-CRDO,Credo Technology Group Holding Ltd Ordinary Shares,172.17,31756746170.0,5528854,Technology
-WDAY,Workday Inc. Class A Common Stock,125.01,31213190731.0,5160389,Technology
-RBLX,Roblox Corporation Class A Common Stock,42.85,30679689223.0,11437550,Technology
-RDDT,Reddit Inc. Class A Common Stock,158.17,30437467517.0,3340033,Technology
-TWLO,Twilio Inc. Class A Common Stock,198.29,30095238699.0,3734737,Technology
-ZM,Zoom Communications Inc. Class A Common Stock,100.16,29454212958.0,6579317,Technology
-MTSI,MACOM Technology Solutions Holdings Inc. Common Stock,375.6,28656692714.0,1617022,Technology
-OTIS,Otis Worldwide Corporation Common Stock ,71.01,27247678557.0,3768046,Technology
-VRSN,VeriSign Inc. Common Stock,297.57,27078870000.0,684487,Technology
-P,Everpure Inc. Class A common stock,81.18,26964148393.0,2270207,Technology
-STRD,Strategy Inc 10.00% Series A Perpetual Stride Preferred Stock,75.5,26458814336.0,99825,Technology
-CW,Curtiss-Wright Corporation Common Stock,712.72,26328706406.0,368141,Technology
-STRK,Strategy Inc 8.00% Series A Perpetual Strike Preferred Stock,74.87,26238032177.0,137586,Technology
-VEEV,Veeva Systems Inc. Class A Common Stock,158.86,25910630747.0,2095460,Technology
-ZS,Zscaler Inc. Common Stock,161.05,25895342718.0,4162581,Technology
-HUBB,Hubbell Inc Common Stock,479.97,25362467707.0,622615,Technology
-MDB,MongoDB Inc. Class A Common Stock,312.16,25128859397.0,1454730,Technology
-FSLR,First Solar Inc. Common Stock,233.37,25076391323.0,2350593,Technology
-NTAP,NetApp Inc. Common Stock,119.93,23665834872.0,2883353,Technology
-CTSH,Cognizant Technology Solutions Corporation Class A Common Stock,47.13,22333468074.0,8909898,Technology
-SITM,SiTime Corporation Common Stock,774.06,20432728682.0,552265,Technology
-IONQ,IonQ Inc. Common Stock,51.95,19391373799.0,27273283,Technology
-HPQ,HP Inc. Common Stock,20.81,19099102770.0,15862424,Technology
-SMCI,Super Micro Computer Inc. Common Stock,31.04,18668029681.0,27358955,Technology
-SNX,TD SYNNEX Corporation Common Stock,230.29,18513264807.0,405316,Technology
-AMKR,Amkor Technology Inc. Common Stock,70.35,17437831641.0,3138313,Technology
-TTMI,TTM Technologies Inc. Common Stock,167.35,17379307374.0,2087392,Technology
-IOT,Samsara Inc. Class A Common Stock,29.56,17224910024.0,5149328,Technology
-LSCC,Lattice Semiconductor Corporation Common Stock,120.11,16456013704.0,2370108,Technology
-PTC,PTC Inc. Common Stock,141.91,16391426801.0,1255355,Technology
-DOCN,DigitalOcean Holdings Inc. Common Stock,154.87,16162880711.0,3458430,Technology
-LDOS,Leidos Holdings Inc. Common Stock,123.69,15558404290.0,1243599,Technology
-SSNC,SS&C Technologies Holdings Inc. Common Stock,64.58,15553062239.0,3329910,Technology
-AAOI,Applied Optoelectronics Inc. Common Stock,190.36,15275013126.0,8471362,Technology
-AUR,Aurora Innovation Inc. Class A Common Stock,7.71,15120875816.0,42205894,Technology
-LOGI,Logitech International S.A. Ordinary Shares,102.99,15097195549.0,886832,Technology
-OKTA,Okta Inc. Class A Common Stock,82.77,14551056716.0,2641766,Technology
-PL,Planet Labs PBC Class A Common Stock,41.62,14406722504.0,8777178,Technology
-GEN,Gen Digital Inc. Common Stock,23.45,14202815500.0,9195482,Technology
-RMBS,Rambus Inc. Common Stock,127.05,13738801657.0,2267991,Technology
-TOST,Toast Inc. Class A Common Stock,23.05,13369000000.0,12702344,Technology
-TYL,Tyler Technologies Inc. Common Stock,311.89,13151607540.0,924281,Technology
-RBRK,Rubrik Inc. Class A Common Stock,63.77,13124493242.0,3157344,Technology
-CDW,CDW Corporation Common Stock,102.07,13039794744.0,2196147,Technology
-SMTC,Semtech Corporation Common Stock,137.64,12816279918.0,2256986,Technology
-SANM,Sanmina Corporation Common Stock,235.34,12613690955.0,854897,Technology
-VICR,Vicor Corporation Common Stock,273.67,12474263654.0,1097963,Technology
-AEIS,Advanced Energy Industries Inc. Common Stock,323.46,12301396313.0,1185815,Technology
-NTNX,Nutanix Inc. Class A Common Stock,46.34,12289928575.0,2266593,Technology
-FIG,Figma Inc. Class A Common Stock,22.92,12110391053.0,77424654,Technology
-VIAV,Viavi Solutions Inc. Common Stock,51.43,12029881754.0,4393193,Technology
-U,Unity Software Inc. Common Stock,27.16,11856290519.0,12560497,Technology
-GDDY,GoDaddy Inc. Class A Common Stock,87.18,11543490461.0,1459034,Technology
-DT,Dynatrace Inc. Common Stock,38.36,11440912733.0,8551231,Technology
-WULF,TeraWulf Inc. Common Stock,22.32,11060288636.0,23973012,Technology
-GWRE,Guidewire Software Inc. Common Stock,130.14,11017323146.0,2225929,Technology
-PINS,Pinterest Inc. Class A Common Stock,19.47,10906263157.0,13608376,Technology
-CACI,CACI International Inc. Class A Common Stock,486.96,10757581883.0,354132,Technology
-ARW,Arrow Electronics Inc. Common Stock,208.37,10654780328.0,778100,Technology
-SWKS,Skyworks Solutions Inc. Common Stock,68.53,10307320644.0,5534879,Technology
-HUBS,HubSpot Inc. Common Stock,198.38,10160575261.0,2880309,Technology
-TTD,The Trade Desk Inc. Class A Common Stock,21.15,9942791835.0,17607743,Technology
-FORM,FormFactor Inc. FormFactor Inc. Common Stock,126.27,9843349060.0,2739704,Technology
-BSY,Bentley Systems Incorporated Class B Common Stock,32.07,9742759335.0,2704703,Technology
-JKHY,Jack Henry & Associates Inc. Common Stock,136.87,9724720259.0,2467385,Technology
-VSAT,ViaSat Inc. Common Stock,69.5,9440282370.0,1625422,Technology
-DOCU,DocuSign Inc. Common Stock,47.71,9348576074.0,4111629,Technology
-SNAP,Snap Inc. Class A Common Stock,5.53,9164099965.0,38028891,Technology
-ENS,EnerSys Common Stock,236.98,8733038611.0,642471,Technology
-MXL,MaxLinear Inc. Common Stock,92.34,8268673854.0,6186641,Technology
-MTCH,Match Group Inc. Common Stock,35.4,8257635020.0,3060347,Technology
-CRUS,Cirrus Logic Inc. Common Stock,159.71,8146390097.0,387982,Technology
-QRVO,Qorvo Inc. Common Stock,92.25,8119261334.0,1033469,Technology
-AXTI,AXT Inc Common Stock,123.78,8098081716.0,9773004,Technology
-FROG,JFrog Ltd. Ordinary Shares,66.16,8013280940.0,1733071,Technology
-ALGM,Allegro MicroSystems Inc. Common Stock,43.1,7986036497.0,3526125,Technology
-TEM,Tempus AI Inc. Class A Common Stock,43.93,7888280214.0,5731231,Technology
-YOU,Clear Secure Inc. Class A Common Stock,58.89,7870135450.0,1077437,Technology
-MANH,Manhattan Associates Inc. Common Stock,131.32,7769495535.0,564331,Technology
-FDS,FactSet Research Systems Inc. Common Stock,212.58,7744528978.0,1193003,Technology
-SAIL,SailPoint Inc. Common Stock,13.5,7657504925.0,5038537,Technology
-QBTS,D-Wave Quantum Inc. Common Shares,20.35,7463110180.0,23761794,Technology
-CWAN,Clearwater Analytics Holdings Inc. Class A Common Stock,24.35,7268189886.0,1968336,Technology
-SLAB,Silicon Laboratories Inc. Common Stock,216.59,7143533044.0,573661,Technology
-PCOR,Procore Technologies Inc. Common Stock,46.33,6990743707.0,2265133,Technology
-ENPH,Enphase Energy Inc. Common Stock,52.89,6970807856.0,20331234,Technology
-PLXS,Plexus Corp. Common Stock,258.43,6914661879.0,318383,Technology
-AVT,Avnet Inc. Common Stock,84.06,6894944249.0,1051030,Technology
-PAYC,Paycom Software Inc. Common Stock,136.24,6489308748.0,1128859,Technology
-DBX,Dropbox Inc. Class A Common Stock,26.82,6257123406.0,3146743,Technology
-RGTI,Rigetti Computing Inc. Common Stock,17.85,5933318705.0,27061948,Technology
-COMP,Compass Inc. Class A Common Stock,7.88,5887565995.0,11064808,Technology
-INGM,Ingram Micro Holding Corporation Common Stock,25.27,5853707914.0,969735,Technology
-S,SentinelOne Inc. Class A Common Stock,16.86,5757388172.0,7980486,Technology
-PCTY,Paylocity Holding Corporation Common Stock,107.12,5735639493.0,677181,Technology
-PEGA,Pegasystems Inc. Common Stock,33.71,5633482079.0,1704508,Technology
-TTAN,ServiceTitan Inc. Class A Common Stock,58.52,5582102249.0,1212141,Technology
-MRCY,Mercury Systems Inc Common Stock,92.03,5525783334.0,469976,Technology
-PSN,Parsons Corporation Common Stock,50.38,5389577888.0,987884,Technology
-APPF,AppFolio Inc. Class A Common Stock,151.7,5363889456.0,227699,Technology
-PATH,UiPath Inc. Class A Common Stock,10.27,5344953687.0,47173275,Technology
-ESTC,Elastic N.V. Ordinary Shares,50.6,5237151005.0,2408500,Technology
-ONDS,Ondas Inc. Common Stock,10.62,5234302467.0,140439291,Technology
-DUOL,Duolingo Inc. Class A Common Stock,112.06,5221224691.0,1495989,Technology
-VSH,Vishay Intertechnology Inc. Common Stock,37.23,5067219939.0,5156494,Technology
-NVTS,Navitas Semiconductor Corporation Common Stock,21.32,4982764699.0,31601950,Technology
-SYNA,Synaptics Incorporated Common Stock $0.001 Par Value,128.23,4954510348.0,744037,Technology
-EPAM,EPAM Systems Inc. Common Stock,93.02,4859778832.0,2209675,Technology
-ACLS,Axcelis Technologies Inc. Common Stock,155.18,4769286136.0,556510,Technology
-MARA,MARA Holdings Inc. Common Stock,12.44,4743005057.0,40007200,Technology
-NAVN,Navan Inc. Class A Common Stock,18.46,4662120424.0,3429837,Technology
-DIOD,Diodes Incorporated Common Stock,100.04,4596311189.0,875627,Technology
-NTSK,Netskope Inc. Class A Common Stock,11.22,4491526536.0,2898475,Technology
-IPGP,IPG Photonics Corporation Common Stock,102.76,4361505980.0,390181,Technology
-OLED,Universal Display Corporation Common Stock,92.64,4331002542.0,949073,Technology
-KVYO,Klaviyo Inc. Series A Common Stock,14.38,4303643711.0,6525069,Technology
-CVLT,Commvault Systems Inc. Common Stock,103.9,4285940145.0,808967,Technology
-ZETA,Zeta Global Holdings Corp. Class A Common Stock,17.19,4284738505.0,6936103,Technology
-LASR,nLIGHT Inc. Common Stock,75.61,4265062487.0,1162088,Technology
-ACIW,ACI Worldwide Inc. Common Stock,41.66,4235221006.0,808058,Technology
-PI,Impinj Inc. Common Stock,138.72,4225298143.0,384228,Technology
-HNGE,Hinge Health Inc. Class A Common Stock,54.5,4217217031.0,1097201,Technology
-ACMR,ACM Research Inc. Class A Common Stock,63.67,4216537600.0,2731186,Technology
-POWI,Power Integrations Inc. Common Stock,73.24,4080931628.0,1413501,Technology
-GTLB,GitLab Inc. Class A Common Stock,23.66,4019305578.0,4877043,Technology
-SAIC,Science Applications International Corporation Common Stock,92.93,4005504824.0,351697,Technology
-BILL,BILL Holdings Inc. Common Stock,40.07,3990840851.0,2472695,Technology
-UCTT,Ultra Clean Holdings Inc. Common Stock,85.94,3852548571.0,1279393,Technology
-SOUN,SoundHound AI Inc Class A Common Stock,8.41,3639592630.0,18484590,Technology
-VECO,Veeco Instruments Inc. Common Stock,58.64,3579003560.0,1144521,Technology
-AMBA,Ambarella Inc. Ordinary Shares,81.16,3553905420.0,831583,Technology
-DOCS,Doximity Inc. Class A Common Stock,18.97,3503928933.0,12354655,Technology
-RNG,RingCentral Inc. Class A Common Stock,41.05,3442395694.0,1811955,Technology
-WAY,Waystar Holding Corp. Common Stock,17.93,3439205136.0,2151917,Technology
-BOX,Box Inc. Class A Common Stock,24.67,3429935081.0,1899210,Technology
-OSIS,OSI Systems Inc. Common Stock (DE),205.4,3385585606.0,364763,Technology
-ADEA,Adeia Inc. Common Stock,29.88,3295577220.0,1987102,Technology
-VRNS,Varonis Systems Inc. Common Stock,28.18,3235462747.0,1492455,Technology
-TDC,Teradata Corporation Common Stock,33.81,3181521000.0,1920857,Technology
-QLYS,Qualys Inc. Common Stock,90.02,3176801209.0,532439,Technology
-RUM,Rumble Inc. Class A Common Stock,7.205,3140505234.0,3884600,Technology
-INOD,Innodata Inc. Common Stock,96.1,3138179904.0,2287567,Technology
-LIF,Life360 Inc. Common Stock,38.53,3122151054.0,561194,Technology
-BHE,Benchmark Electronics Inc. Common Stock,84.94,3047395438.0,393111,Technology
-WOLF,Wolfspeed Inc. Common Stock New,62.13,3003307103.0,10023124,Technology
-IAC,IAC Inc. Common Stock,39.88,2966276554.0,985473,Technology
-PLAB,Photronics Inc. Common Stock,50.02,2949499028.0,943237,Technology
-QTWO,Q2 Holdings Inc. Common Stock,45.16,2827035103.0,607763,Technology
-NTCT,NetScout Systems Inc. Common Stock,38.46,2749705969.0,423421,Technology
-FSLY,Fastly Inc. Class A Common Stock,17.0,2660500000.0,6668016,Technology
-WK,Workiva Inc. Class A Common Stock,47.4,2660056526.0,1072292,Technology
-RGTIW,Rigetti Computing Inc. Warrants,7.95,2642570516.0,90105,Technology
-CARG,CarGurus Inc. Class A Common Stock ,28.67,2585664100.0,1553133,Technology
-VISN,Vistance Networks Inc. Common Stock,11.37,2564726704.0,6470680,Technology
-KD,Kyndryl Holdings Inc. Common Stock,11.32,2552062213.0,3713775,Technology
-FA,First Advantage Corporation Common Stock,14.87,2550755889.0,775134,Technology
-ICHR,Ichor Holdings Ordinary Shares,73.27,2546155214.0,882871,Technology
-BRZE,Braze Inc. Class A Common Stock,20.87,2540543751.0,2322001,Technology
-CCC,CCC Intelligent Solutions Holdings Inc. Common Stock,4.32,2535583116.0,8458481,Technology
-FRSH,Freshworks Inc. Class A Common Stock,8.96,2476850136.0,12168698,Technology
-NIQ,NIQ Global Intelligence plc Ordinary Shares,8.2,2420118004.0,2356623,Technology
-DJT,Trump Media & Technology Group Corp. Common Stock,8.67,2401189689.0,2827777,Technology
-BRUN,Boost Run Inc. Class A Common Stock,29.6,2390922122.0,4897431,Technology
-PENG,Penguin Solutions Inc. Common Stock,46.82,2375998325.0,4391147,Technology
-TENB,Tenable Holdings Inc. Common Stock,21.49,2369744700.0,2811589,Technology
-QUBT,Quantum Computing Inc. Common Stock,10.505,2369245038.0,21801205,Technology
-PLUS,ePlus inc. Common Stock,83.1,2193221819.0,172525,Technology
-AVPT,AvePoint Inc. Class A Common Stock,9.93,2105330756.0,1789566,Technology
-ALRM,Alarm.com Holdings Inc. Common Stock,42.52,2103063989.0,505345,Technology
-VERX,Vertex Inc. Class A Common Stock,12.85,2079347563.0,1010198,Technology
-OMCL,Omnicell Inc. Common Stock ($0.001 par value),43.12,1961050556.0,549812,Technology
-BBAI,BigBear.ai Inc. Common Stock,4.08,1954113756.0,33931256,Technology
-AGYS,Agilysys Inc. Common Stock (DE),67.34,1892809353.0,256821,Technology
-SPSC,SPS Commerce Inc. Common Stock,51.17,1878588961.0,475529,Technology
-RAMP,LiveRamp Holdings Inc. Common Stock,29.66,1872284356.0,521481,Technology
-MGNI,Magnite Inc. Common Stock,12.82,1836016338.0,2164988,Technology
-PDFS,PDF Solutions Inc. Common Stock,44.7,1784472723.0,2406466,Technology
-ALKT,Alkami Technology Inc. Common Stock,16.61,1777588480.0,1193490,Technology
-EPAC,Enerpac Tool Group Corp. Common Stock,33.65,1734427637.0,243098,Technology
-SHLS,Shoals Technologies Group Inc. Class A Common Stock,10.33,1733082870.0,11399005,Technology
-BAND,Bandwidth Inc. Class A Common Stock,53.97,1727974059.0,1648639,Technology
-GIGGU,GigCapital7 Corp. Unit,11.0,1714100300.0,7,Technology
-SKYT,SkyWater Technology Inc. Common Stock,34.72,1708383781.0,930290,Technology
-GLOB,Globant S.A. Common Shares,38.91,1680116524.0,6515273,Technology
-EVCM,EverCommerce Inc. Common Stock,9.49,1679262152.0,125383,Technology
-CTS,CTS Corporation Common Stock,58.32,1667538511.0,270122,Technology
-FIVN,Five9 Inc. Common Stock,21.64,1656844700.0,3441831,Technology
-NCNO,nCino Inc. Common Stock,14.97,1628655132.0,4324887,Technology
-INTA,Intapp Inc. Common Stock,20.99,1617522879.0,1541323,Technology
-MQ,Marqeta Inc. Class A Common Stock,3.81,1615555493.0,3158903,Technology
-BL,BlackLine Inc. Common Stock,27.25,1598509988.0,1126299,Technology
-AIP,Arteris Inc. Common Stock,33.71,1556457513.0,1728875,Technology
-AMBQ,Ambiq Micro Inc. Common Stock,70.57,1508486960.0,918963,Technology
-ASAN,Asana Inc. Class A Common Stock,6.2,1495074584.0,5669754,Technology
-KDK,Kodiak AI Inc. Common Stock ,8.11,1491026866.0,917953,Technology
-CNXC,Concentrix Corporation Common Stock,24.03,1465945969.0,1359225,Technology
-DXC,DXC Technology Company Common Stock ,8.94,1461509931.0,9648160,Technology
-SLNHP,Soluna Holdings Inc 9.0% Series A Cumulative Perpetual Preferred Stock ,10.3,1455874667.0,1501,Technology
-RXT,Rackspace Technology Inc. Common Stock,5.82,1450474944.0,36048629,Technology
-BKSY,BlackSky Technology Inc. Class A Common Stock,38.75,1437974758.0,2465940,Technology
-APPN,Appian Corporation Class A Common Stock,19.53,1433738704.0,1092484,Technology
-BLKB,Blackbaud Inc. Common Stock,30.85,1417005470.0,685685,Technology
-DV,DoubleVerify Holdings Inc. Common Stock,9.06,1390385552.0,4244538,Technology
-HLIT,Harmonic Inc. Common Stock,12.54,1360545307.0,2140595,Technology
-SBET,Sharplink Inc. Common Stock,6.72,1325260689.0,7987443,Technology
-VPG,Vishay Precision Group Inc. Common Stock,97.32,1294453320.0,618398,Technology
-AI,C3.ai Inc. Class A Common Stock,8.65,1256769070.0,5240890,Technology
-PRCH,Porch Group Inc. Common Stock,9.84,1256720304.0,2810352,Technology
-AUROW,Aurora Innovation Inc. Warrant,0.6401,1255366097.0,19004,Technology
-ASST,Strive Inc. Class A Common Stock,16.79,1227057374.0,3137698,Technology
-WGS,GeneDx Holdings Corp. Class A Common Stock,40.75,1209787100.0,1630444,Technology
-VIA,Via Transportation Inc. Class A Common Stock,14.75,1199114097.0,554630,Technology
-CXM,Sprinklr Inc. Class A Common Stock,5.11,1195580767.0,2841875,Technology
-ABTC,American Bitcoin Corp. Class A Common Stock,1.11,1179944658.0,12148126,Technology
-PRGS,Progress Software Corporation Common Stock (DE),27.81,1170206144.0,595156,Technology
-RCAT,Red Cat Holdings Inc. Common Stock,9.49,1164825006.0,8923459,Technology
-DJTWW,Trump Media & Technology Group Corp. Warrants,4.17,1154897463.0,13314,Technology
-GTM,ZoomInfo Technologies Inc Common Stock,3.86,1137611611.0,11959008,Technology
-SOUNW,SoundHound AI Inc. Warrant,2.5501,1103605846.0,11700,Technology
-TRIP,TripAdvisor Inc. Common Stock,9.46,1100776659.0,2972959,Technology
-AIAI,AIAI Holdings Corporation Class A Common Stock,14.96,1051897290.0,661386,Technology
-LZ,LegalZoom.com Inc. Common Stock,6.0,1029886584.0,3002104,Technology
-EVLV,Evolv Technologies Holdings Inc. Class A Common Stock,5.7,1025267037.0,4211072,Technology
-CEVA,CEVA Inc. Common Stock,36.51,1017145562.0,646418,Technology
-UPWK,Upwork Inc. Common Stock,8.17,1009143179.0,3472209,Technology
-INDI,indie Semiconductor Inc. Class A Common Stock,4.19,950726662.0,3919641,Technology
-KOPN,Kopin Corporation Common Stock,5.05,923747566.0,9047807,Technology
-COUR,Coursera Inc. Common Stock,5.28,894080542.0,7466457,Technology
-MRAM,Everspin Technologies Inc. Common Stock,37.57,880925468.0,4436103,Technology
-SHAZ,SharonAI Holdings Inc. Class A Common Stock,53.93,870169772.0,498349,Technology
-SCSC,ScanSource Inc. Common Stock,42.11,855865916.0,309215,Technology
-CRCT,Cricut Inc. Class A Common Stock,3.93,824901632.0,587478,Technology
-GDRX,GoodRx Holdings Inc. Class A Common Stock,2.43,822981156.0,1382355,Technology
-AMPL,Amplitude Inc. Class A Common Stock,6.06,803672631.0,2922902,Technology
-UMAC,Unusual Machines Inc. Common Stock,16.2,774261553.0,5535540,Technology
-NXDR,Nextdoor Holdings Inc. Class A Common Stock,2.03,774217082.0,3172011,Technology
-AZTA,Azenta Inc.,16.02,738406720.0,1401737,Technology
-SSYS,Stratasys Ltd. Ordinary Shares (Israel),8.56,737636934.0,684670,Technology
-LPTH,LightPath Technologies Inc. Class A Common Stock,11.52,723333969.0,1908498,Technology
-CRSR,Corsair Gaming Inc. Common Stock,6.72,718248458.0,1629598,Technology
-GEGGL,Great Elm Group Inc.  7.25% Notes due 2027,24.65,714770800.0,5903,Technology
-CERT,Certara Inc. Common Stock,4.48,696929444.0,3042805,Technology
-DSP,Viant Technology Inc. Class A Common Stock,10.55,691382877.0,210404,Technology
-RUMBW,Rumble Inc. Warrant,1.55,675611813.0,13801,Technology
-HSTM,HealthStream Inc. Common Stock,22.7,663184768.0,430991,Technology
-RDVT,Red Violet Inc. Common Stock ,46.93,662131663.0,292179,Technology
-HUYA,HUYA Inc. American depositary shares each  representing one Class A ordinary share,2.92,652717224.0,950036,Technology
-MITK,Mitek Systems Inc. Common Stock,14.26,643965215.0,1319264,Technology
-NABL,N-able Inc. Common Stock,3.39,638602403.0,2753302,Technology
-SABR,Sabre Corporation Common Stock,1.595,630524670.0,9576802,Technology
-EVER,EverQuote Inc. Class A Common Stock,17.48,618324899.0,779115,Technology
-MRLN,Merlin Inc. Common Stock,6.61,615429437.0,1683648,Technology
-SSTK,Shutterstock Inc. Common Stock,16.52,606911991.0,503489,Technology
-EVGO,EVgo Inc. Class A Common Stock,1.9,596332794.0,3103610,Technology
-KE,Kimball Electronics Inc. Common Stock,24.53,589920130.0,170391,Technology
-PD,PagerDuty Inc. Common Stock,6.77,575354509.0,1553965,Technology
-GDYN,Grid Dynamics Holdings Inc. Class A Common Stock,6.71,561130822.0,2581507,Technology
-VELO,Velo3D Inc. Common stock,18.59,554000627.0,2675736,Technology
-CARS,Cars.com Inc. Common Stock ,9.85,550644816.0,827703,Technology
-IIIV,i3 Verticals Inc. Class A Common Stock,18.88,527346984.0,412602,Technology
-CCSI,Consensus Cloud Solutions Inc. Common Stock,28.32,521029944.0,160484,Technology
-OOMA,Ooma Inc. Common Stock,18.82,517734587.0,222247,Technology
-NRDS,NerdWallet Inc. Class A Common Stock,7.77,511256544.0,2163828,Technology
-TASK,TaskUs Inc. Class A Common Stock,5.49,502764345.0,682779,Technology
-ALOY,REalloys Inc. Common Stock,8.64,493585929.0,915393,Technology
-GLOO,Gloo Holdings Inc. Class A Common Stock,5.99,484418033.0,14664,Technology
-CERS,Cerus Corporation Common Stock,2.34,468863399.0,2622471,Technology
-ALMU,Aeluma Inc. Common Stock,24.86,455070628.0,1960902,Technology
-OSPN,OneSpan Inc. Common Stock,12.26,454513141.0,391372,Technology
-RBBN,Ribbon Communications Inc. Common Stock,2.57,452677402.0,1000558,Technology
-PUBM,PubMatic Inc. Class A Common Stock,9.72,451429119.0,551992,Technology
-DDD,3D Systems Corporation Common Stock,3.02,443780100.0,3703035,Technology
-CRNC,Cerence Inc. Common Stock,9.79,442388650.0,763441,Technology
-RPD,Rapid7 Inc. Common Stock,6.5,434399017.0,1253456,Technology
-NVEC,NVE Corporation Common Stock,89.74,434087277.0,156839,Technology
-ERII,Energy Recovery Inc. Common Stock,8.41,433495628.0,1247822,Technology
-GENVR,Gen Digital Inc. Contingent Value Rights,0.71,430021280.0,20191,Technology
-BLZE,Backblaze Inc. Class A Common Stock,7.03,421800000.0,1114886,Technology
-WEAV,Weave Communications Inc. Common Stock,5.28,420106553.0,1073780,Technology
-BMBL,Bumble Inc. Class A Common Stock,3.14,409553868.0,1744222,Technology
-OSS,One Stop Systems Inc. Common Stock,16.47,407945710.0,1703354,Technology
-VREX,Varex Imaging Corporation Common Stock,9.66,406686000.0,696724,Technology
-TBRG,TruBridge Inc. Common Stock,25.86,387877657.0,131950,Technology
-DVLT,Datavault AI Inc. Common Stock,0.5146,384134020.0,113674069,Technology
-SPT,Sprout Social Inc Class A Common Stock,6.25,375659613.0,1122203,Technology
-MEI,Methode Electronics Inc. Common Stock,10.53,373082333.0,1402503,Technology
-XPER,Xperi Inc. Common Stock ,7.71,372172926.0,476153,Technology
-CLMB,Climb Global Solutions Inc. Common Stock,19.59,364319148.0,205632,Technology
-BLND,Blend Labs Inc. Class A Common Stock,1.45,351069151.0,7160076,Technology
-GSIT,GSI Technology Common Stock,9.635,348654066.0,2012217,Technology
-QUIK,QuickLogic Corporation Common Stock,19.1,348093795.0,774697,Technology
-YEXT,Yext Inc. Common Stock,3.46,346463398.0,1041394,Technology
-MPTI,M-tron Industries Inc. Common Stock,79.4,343122574.0,72773,Technology
-ATOM,Atomera Incorporated Common Stock,8.8,340705200.0,1344296,Technology
-XRX,Xerox Holdings Corporation Common Stock,2.58,337402733.0,9098951,Technology
-SWMR,Swarmer Inc Common Stock,29.64,332271988.0,438959,Technology
-SVCO,Silvaco Group Inc. Common Stock,10.09,329827540.0,350213,Technology
-TLS,Telos Corporation Common Stock,4.2,314240535.0,590907,Technology
-PAYS,Paysign Inc. Common Stock,5.62,314190444.0,494666,Technology
-SLNH,Soluna Holdings Inc. Common Stock,2.22,313790462.0,38211843,Technology
-BKTI,BK Technologies Corporation Common Stock,83.44,312415881.0,54425,Technology
-ASYS,Amtech Systems Inc. Common Stock,21.08,305640775.0,249791,Technology
-RDNW,RideNow Group Inc. Class B Common Stock,7.91,305224562.0,172193,Technology
-PDYN,Palladyne AI Corp. Common Stock,6.45,304725251.0,1012941,Technology
-TYGO,Tigo Energy Inc. Common Stock,3.95,299847636.0,432092,Technology
-ISSC,Innovative Solutions and Support Inc. Common Stock,16.275,289342532.0,761915,Technology
-ZIP,ZipRecruiter Inc. Class A Common Stock,3.51,286144151.0,421293,Technology
-OPTX,Syntec Optics Holdings Inc. Class A Common Stock,7.16,278224784.0,764474,Technology
-SLP,Simulations Plus Inc. Common Stock,13.34,269541130.0,300610,Technology
-DUOT,Duos Technologies Group Inc. Common Stock,8.97,262781613.0,1401716,Technology
-MKTW,MarketWise Inc. Class A Common Stock,16.77,262040541.0,18329,Technology
-KDKRW,Kodiak AI Inc. Warrants,1.37,251875069.0,13085,Technology
-VUZI,Vuzix Corporation Common Stock,3.0,249474774.0,3397286,Technology
-RELL,Richardson Electronics Ltd. Common Stock,16.96,246885397.0,1114936,Technology
-LAW,CS Disco Inc. Common Stock,3.83,245634775.0,533585,Technology
-ASUR,Asure Software Inc Common Stock,8.53,244654329.0,47342,Technology
-CMRC,Commerce.com Inc. Series 1 Common Stock,2.72,224433304.0,748589,Technology
-KLTR,Kaltura Inc. Common Stock,1.46,219547123.0,294639,Technology
-UIS,Unisys Corporation New Common Stock,2.99,217986458.0,613208,Technology
-DMRC,Digimarc Corporation Common Stock,9.8,217971355.0,244983,Technology
-SMRT,SmartRent Inc. Class A Common Stock,1.12,215978637.0,858602,Technology
-KVHI,KVH Industries Inc. Common Stock,10.69,208430958.0,128908,Technology
-AVNW,Aviat Networks Inc. Common Stock,16.0,207031408.0,376930,Technology
-IMMR,Immersion Corporation Common Stock,6.15,203567780.0,314944,Technology
-TRT,Trio-Tech International Common Stock,20.05,202757610.0,4710197,Technology
-ESP,Espey Mfg. & Electronics Corp. Common Stock,67.2,201325958.0,37953,Technology
-INSE,Inspired Entertainment Inc. Common Stock,7.34,195797106.0,90078,Technology
-RFIL,RF Industries Ltd. Common Stock,17.81,192602095.0,213079,Technology
-VERI,Veritone Inc. Common Stock,2.07,192425058.0,2595667,Technology
-MVIS,MicroVision Inc. Common Stock,0.5568,182063982.0,21749033,Technology
-EGAN,eGain Corporation Common Stock,6.49,178151026.0,902546,Technology
-TRAK,ReposiTrak Inc. Common Stock,9.7,176283581.0,206723,Technology
-KULR,KULR Technology Group Inc. Common Stock,3.6,166525794.0,2342953,Technology
-DOMO,Domo Inc. Class B Common Stock,3.51,158463857.0,460620,Technology
-GCTS,GCT Semiconductor Holding Inc. Common Stock,1.83,152038825.0,10798765,Technology
-MRDN,Meridian Holdings Inc. Common Stock,10.9,138097321.0,54689,Technology
-WATT,Energous Corporation Common Stock,24.52,134886997.0,387006,Technology
-VWAV,VisionWave Holdings Inc. Common Stock,5.59,133305496.0,343790,Technology
-BNAI,Brand Engagement Network Inc. Common Stock,22.34,130866715.0,181005,Technology
-SPWR,SunPower Inc. Common Stock,1.02,129185824.0,880968,Technology
-VTIX,Virtuix Holdings Inc. Class A Common Stock,3.86,126649275.0,131990,Technology
-QMCO,Quantum Corporation Common Stock,8.35,122227542.0,402061,Technology
-DH,Definitive Healthcare Corp. Class A Common Stock,0.8079,116135278.0,265742,Technology
-CMTL,Comtech Telecommunications Corp. Common Stock,3.76,111800287.0,154169,Technology
-VHUB,VenHub Global Inc. Common Stock,1.3,110575214.0,496675,Technology
-ROC,Rank One Computing Corporation Common stock,5.77,110092333.0,60152,Technology
-GOAI,Eva Live Inc. Common Stock,3.51,110011420.0,17445,Technology
-EXFY,Expensify Inc. Class A Common Stock,1.14,109939456.0,496156,Technology
-ALOT,AstroNova Inc. Common Stock,14.24,109546042.0,14260,Technology
-WYY,WidePoint Corporation Common Stock,10.3,101837964.0,444461,Technology
-PODC,PodcastOne Inc. Common Stock,3.68,101155708.0,91883,Technology
-SKLZ,Skillz Inc. Class A Common Stock,6.18,98048932.0,683204,Technology
-CSPI,CSP Inc. Common Stock,9.3,93668177.0,13097,Technology
-TEAD,Teads Holding Co. Common Stock,0.95,92141859.0,136934,Technology
-INVE,Identiv Inc. Common Stock,3.81,91463668.0,250503,Technology
-CCLD,CareCloud Inc. Common Stock,2.11,89660122.0,392360,Technology
-HCAT,Health Catalyst Inc Common Stock,1.19,87933884.0,851461,Technology
-DTCX,Datacentrex Inc. Common Stock,2.26,87854395.0,186436,Technology
-AIRG,Airgain Inc. Common Stock,6.84,86702335.0,73313,Technology
-AEYE,AudioEye Inc. Common Stock,6.93,86579366.0,123561,Technology
-SSTI,SoundThinking Inc. Common Stock,6.62,85755063.0,149064,Technology
-IDN,Intellicheck Inc. Common Stock,4.14,83840055.0,1005304,Technology
-AISP,Airship AI Holdings Inc. Class A Common Stock,2.4,82588954.0,451100,Technology
-AREN,The Arena Group Holdings Inc. Common Stock,1.68,79972687.0,84612,Technology
-SOTK,Sono-Tek Corporation Common Stock,5.03,79023257.0,14232,Technology
-RSSS,Research Solutions Inc Common Stock,2.39,78644088.0,217947,Technology
-FTCI,FTC Solar Inc. Common Stock,4.79,76665358.0,389423,Technology
-OPXS,Optex Systems Holdings Inc. Common Stock,10.77,74957832.0,28929,Technology
-IPWR,Ideal Power Inc. Common Stock,6.12,74394114.0,1714753,Technology
-MCHX,Marchex Inc. Class B Common Stock,1.62,71770534.0,2495,Technology
-XTIA,XTI Aerospace Inc. Common Stock,1.77,68105687.0,1196499,Technology
-GEG,Great Elm Group Inc. Common Stock,2.16,67731137.0,2081,Technology
-GPUS,Hyperscale Data Inc. Common Stock,0.146,64013526.0,162936152,Technology
-MYPS,PLAYSTUDIOS Inc.  Class A Common Stock,0.4916,63099427.0,989388,Technology
-SKIL,Skillsoft Corp. Class A Common Stock,6.57,58834856.0,99719,Technology
-CAST,FreeCast Inc. Class A Common Stock,1.44,58789123.0,167133,Technology
-FATN,FatPipe Inc. Common Stock,4.1,57090319.0,208432,Technology
-LINK,Interlink Electronics Inc. Common Stock,3.53,55597525.0,27214,Technology
-MLGO,MicroAlgo Inc. Class A Ordinary Shares,4.34,53978581.0,9668748,Technology
-FNGR,FingerMotion Inc. Common Stock,0.85,52089112.0,812214,Technology
-SNAL,Snail Inc. Class A Common Stock,1.16,49441522.0,53670400,Technology
-NTWK,NetSol Technologies Inc. Common  Stock,4.09,48574533.0,27802,Technology
-FUSE,Fusemachines Inc. Common stock,1.62,46881569.0,154597,Technology
-WFCF,Where Food Comes From Inc. Common Stock,9.23,46512517.0,12948,Technology
-LGL,LGL Group Inc. (The) Common Stock,7.0,45783045.0,3804,Technology
-ATHR,Aether Holdings Inc. Common Stock,3.72,45077420.0,14266,Technology
-PXLW,Pixelworks Inc.  Common Stock,6.83,43461052.0,574959,Technology
-ASTI,Ascent Solar Technologies Inc. Common Stock,4.58,43335442.0,960929,Technology
-XRXDW,Xerox Holdings Corporation Warrants,0.32,41848401.0,673241,Technology
-OPTXW,Syntec Optics Holdings Inc. Warrant,1.03,40023956.0,73605,Technology
-CREX,Creative Realities Inc. Common Stock,3.75,39627255.0,94309,Technology
-HOLO,MicroCloud Hologram Inc. Ordinary Shares,1.69,38721888.0,458187,Technology
-TACT,TransAct Technologies Incorporated Common Stock,3.58,36789079.0,164759,Technology
-BEEM,Beam Global Common Stock,1.73,36566981.0,581648,Technology
-CDLX,Cardlytics Inc. Common Stock,0.632,36406788.0,644546,Technology
-CVV,CVD Equipment Corporation Common Stock,5.2,36090647.0,456969,Technology
-KTCC,Key Tronic Corporation Common Stock,3.21,34858253.0,10995,Technology
-NSYS,Nortech Systems Incorporated Common Stock,12.41,34680167.0,38228,Technology
-SST,System1 Inc. Class A Common Stock,3.02,30016481.0,365890,Technology
-AWRE,Aware Inc. Common Stock,1.27,27471754.0,107121,Technology
-LPSN,LivePerson Inc. Common Stock,2.22,27030780.0,134011,Technology
-AIFF,Firefly Neuroscience Inc. Common Stock,1.7,26472026.0,324488,Technology
-XBP,XBP Global Holdings Inc. Common Stock,2.12,24948266.0,10953,Technology
-MOBX,Mobix Labs Inc. Class A Common Stock,2.25,23950904.0,8331646,Technology
-AISPW,Airship AI Holdings Inc. Warrants,0.69,23744324.0,27708,Technology
-SEGG,Sports Entertainment Gaming Global Corporation Common Stock,1.87,23643246.0,5188770,Technology
-VWAVW,VisionWave Holdings Inc. Warrant,0.97,23131723.0,14179,Technology
-SPWRW,SunPower Inc. Warrants,0.1776,22493532.0,565,Technology
-UPLD,Upland Software Inc. Common Stock,0.7268,21341174.0,149480,Technology
-SMSI,Smith Micro Software Inc. Common Stock,0.8308,21233095.0,83116,Technology
-CYN,Cyngn Inc. Common Stock,1.43,20625292.0,394518,Technology
-AUID,authID Inc. Common Stock,1.17,18875010.0,104168,Technology
-MSGM,Motorsport Games Inc. Class A Common Stock,4.5,18783248.0,71198,Technology
-IPM,Intelligent Protection Management Corp. Common Stock ,1.88,16987171.0,15179,Technology
-UUU,Universal Safety Products Inc. Common Stock,6.03,16388256.0,6487,Technology
-NIXX,Nixxy Inc. Common Stock,0.591,15893426.0,774242,Technology
-RAIN,Rain Enhancement Technologies Holdco Inc. Class A Common Stock,1.7398,15653609.0,22958,Technology
-AIMD,Ainos Inc. Common Stock,1.7,14491721.0,5759,Technology
-PRSO,Peraso Inc. Common Stock,0.9765,14341482.0,748379,Technology
-GGRP,The Glimpse Group Inc. Common Stock,0.6493,13684975.0,1889318,Technology
-CSAI,Cloudastructure Inc. Class A Common Stock,0.535,13115941.0,649329,Technology
-EVLVW,Evolv Technologies Holdings Inc. Warrant,0.0688,12375153.0,294429,Technology
-RMSG,Real Messenger Corporation Ordinary Shares,1.29,12346952.0,79311,Technology
-IDAI,T Stamp Inc. Class A Common Stock,2.14,11983923.0,48921,Technology
-BLIN,Bridgeline Digital Inc. Common Stock,0.94,11843886.0,39161,Technology
-MSAI,MultiSensor AI Holdings Inc. Common Stock,5.77,11652134.0,40686,Technology
-CXAI,CXApp Inc. Class A Common Stock,0.1368,9588213.0,3029029,Technology
-VRME,VerifyMe Inc. Common Stock,0.7202,9448351.0,72300,Technology
-BNZI,Banzai International Inc. Class A Common Stock,7.66,9033982.0,296759,Technology
-DTST,Data Storage Corporation Common Stock,4.06,8798580.0,38668,Technology
-GXAI,Gaxos.ai Inc. Common Stock,1.2,8548144.0,192313,Technology
-CETX,Cemtrex Inc. Common Stock,0.8,8062471.0,355983,Technology
-CYCU,Cycurion Inc. Common Stock,0.88,7559218.0,509479,Technology
-SCKT,Socket Mobile Inc. Common Stock,0.8601,7088048.0,20350,Technology
-IPDN,Professional Diversity Network Inc. Common Stock,0.6608,6954280.0,56147,Technology
-DAIC,CID HoldCo Inc. Common Stock,0.18,5446724.0,725738,Technology
-ONFO,Onfolio Holdings Inc. Common Stock,0.8801,5160216.0,126661,Technology
-TWAV,TaoWeave Inc. Common Stock,1.46,4857727.0,3817898,Technology
-SMTK,SmartKem Inc. Common Stock,0.2216,4752481.0,391486,Technology
-AMST,Amesite Inc. Common Stock,0.8238,4477243.0,43345,Technology
-HCTI,Healthcare Triangle Inc. Common Stock,2.17,4400289.0,250752,Technology
-IVDA,Iveda Solutions Inc. Common Stock,0.317,3531298.0,277475,Technology
-FUSEW,Fusemachines Inc. Warrants,0.11,3183316.0,14209,Technology
-EVGOW,EVgo Inc. Warrants,0.0101,3169980.0,36423,Technology
-CXAIW,CXApp Inc. Warrant,0.038,2663393.0,15097,Technology
-PDYNW,Palladyne AI Corp Warrants,0.0556,2626779.0,18843,Technology
-TRNR,Interactive Strength Inc. Common Stock,1.14,2345001.0,178377,Technology
-KUST,Kustom Entertainment Inc. Common Stock,3.15,1658831.0,20016,Technology
-HOLOW,MicroCloud Hologram Inc. Warrant,0.0718,1645107.0,18674,Technology
-RAINW,Rain Enhancement Technologies Holdco Inc. Warrants,0.16,1439578.0,150,Technology
-MOBXW,Mobix Labs Inc Warrants,0.1001,1065549.0,47058,Technology
-AUUD,Auddia Inc. Common Stock,1.96,981791.0,138627991,Technology
-BNAIW,Brand Engagement Network Inc. Warrant,0.1371,803126.0,10992,Technology
-MYPSW,PLAYSTUDIOS Inc. Warrant,0.0048,616105.0,1,Technology
-AIMDW,Ainos Inc. Warrants,0.0702,598423.0,160,Technology
-DAICW,CID HoldCo Inc. Warrants,0.0195,590062.0,233,Technology
-RMSGW,Real Messenger Corporation Warrants,0.06,574277.0,1750,Technology
-ONFOW,Onfolio Holdings Inc. Warrant,0.0874,512445.0,100,Technology
-IVDAW,Iveda Solutions Inc. Warrant,0.0364,405487.0,1900,Technology
-CYCUW,Cycurion Inc. Warrant,0.0212,182108.0,1700,Technology
-LTRYW,Sports Entertainment Gaming Global Corporation Warrants,0.0124,156779.0,870058,Technology
-WGSWW,GeneDx Holdings Corp. Warrant,0.003,89064.0,82980,Technology
-MSAIW,MultiSensor AI Holdings Inc. Warrant,0.0299,60381.0,10100,Technology
-BNZIW,Banzai International Inc. Warrant,0.012,14152.0,11860,Technology
-DTSTW,Data Storage Corporation Warrant,0.0023,4984.0,90358,Technology
-CCIXW,Churchill Capital Corp IX Warrant,0.36,0.0,2871,Technology
-CCIX,Churchill Capital Corp IX Ordinary Shares,10.78,0.0,1966,Technology
-APXT,Apex Treasury Corporation Class A Ordinary Share,10.01,0.0,1971,Technology
-BRUNW,Boost Run Inc. Warrant,17.71,0.0,824782,Technology
+NVDA,NVIDIA Corporation Common Stock,222.32,5405075367199.0,146283296,Technology
+GOOGL,Alphabet Inc. Class A Common Stock,396.94,4809325040000.0,26837309,Technology
+GOOG,Alphabet Inc. Class C Capital Stock,393.11,4762920760000.0,18592812,Technology
+AAPL,Apple Inc. Common Stock,297.84,4374482111040.0,34483130,Technology
+MSFT,Microsoft Corporation Common Stock,423.54,3146239234532.0,32564325,Technology
+AVGO,Broadcom Inc. Common Stock,420.71,1991922251691.0,17863446,Technology
+META,Meta Platforms Inc. Class A Common Stock,611.21,1551509707638.0,13772932,Technology
+MU,Micron Technology Inc. Common Stock,681.54,768595865119.0,60042700,Technology
+AMD,Advanced Micro Devices Inc. Common Stock,420.99,686466563013.0,28432591,Technology
+INTC,Intel Corporation Common Stock,108.17,543662420000.0,145764275,Technology
+ORCL,Oracle Corporation Common Stock,186.61,536698944060.0,19114353,Technology
+LRCX,Lam Research Corporation Common Stock,277.96,347608715160.0,8562158,Technology
+AMAT,Applied Materials Inc. Common Stock,413.57,328213232695.0,8264960,Technology
+PLTR,Palantir Technologies Inc. Class A Common Stock,135.14,323972740572.0,32034924,Technology
+GE,GE Aerospace Common Stock,285.99,298384015838.0,4696221,Technology
+TXN,Texas Instruments Incorporated Common Stock,300.6,273573892975.0,6513145,Technology
+KLAC,KLA Corporation Common Stock,1756.45,229440709260.0,947090,Technology
+QCOM,QUALCOMM Incorporated Common Stock,203.64,214636560000.0,21082541,Technology
+IBM,International Business Machines Corporation Common Stock,222.75,209359446120.0,5946376,Technology
+ADI,Analog Devices Inc. Common Stock,418.58,204352496037.0,4228467,Technology
+PANW,Palo Alto Networks Inc. Common Stock,247.55,202000800000.0,8734874,Technology
+SNDK,Sandisk Corporation Common Stock,1333.01,197405128312.0,13904404,Technology
+NEE,NextEra Energy Inc. Common Stock,89.04,185678803242.0,39950608,Technology
+CRM,Salesforce Inc. Common Stock,179.48,165660040000.0,13671199,Technology
+APP,Applovin Corporation Class A Common Stock,492.38,165410137200.0,4471611,Technology
+WDC,Western Digital Corporation Common Stock,458.68,158098799847.0,8996661,Technology
+CRWD,CrowdStrike Holdings Inc. Class A Common Stock,618.83,157514835290.0,4699851,Technology
+DELL,Dell Technologies Inc. Class C Common Stock ,238.03,154616739355.0,5132560,Technology
+APH,Amphenol Corporation Common Stock,121.72,149744136645.0,9889274,Technology
+MRVL,Marvell Technology Inc. Common Stock,168.93,147907197515.0,24439030,Technology
+VRT,Vertiv Holdings LLC Class A Common Stock,339.73,130493288060.0,8086677,Technology
+INTU,Intuit Inc. Common Stock,403.16,111493898000.0,2637190,Technology
+NOW,ServiceNow Inc. Common Stock,103.42,106626020000.0,51220759,Technology
+ADBE,Adobe Inc. Common Stock,255.64,103329688000.0,5591819,Technology
+SNPS,Synopsys Inc. Common Stock,498.43,95480261118.0,1883517,Technology
+CDNS,Cadence Design Systems Inc. Common Stock,345.99,95429577840.0,1903721,Technology
+FTNT,Fortinet Inc. Common Stock,126.5,92680021462.0,5624872,Technology
+DDOG,Datadog Inc. Class A Common Stock,208.82,74331606667.0,5553133,Technology
+EMR,Emerson Electric Company Common Stock,132.22,74056422000.0,2107248,Technology
+MPWR,Monolithic Power Systems Inc. Common Stock,1486.33,73023392900.0,807342,Technology
+NET,Cloudflare Inc. Class A Common Stock,201.75,71311815332.0,3399521,Technology
+COHR,Coherent Corp. Common Stock,362.83,70983814838.0,6342069,Technology
+DASH,DoorDash Inc. Class A Common Stock,162.67,70878364508.0,4790436,Technology
+MSI,Motorola Solutions Inc. Common Stock,410.27,68103007427.0,1971401,Technology
+CBRS,Cerebras Systems Inc. Class A Common Stock,296.65,63847546688.0,10163322,Technology
+MSTR,Strategy Inc Common Stock Class A,166.63,58395128911.0,19299774,Technology
+SNOW,Snowflake Inc. Common Stock,164.24,56777768000.0,10730082,Technology
+CRWV,CoreWeave Inc. Class A Common Stock,103.77,56613834804.0,38653685,Technology
+ADSK,Autodesk Inc. Common Stock,243.49,51411757166.0,1807722,Technology
+MCHP,Microchip Technology Incorporated Common Stock,92.76,50195725084.0,10149062,Technology
+HPE,Hewlett Packard Enterprise Company Common Stock,33.0,43786184937.0,16653118,Technology
+ON,ON Semiconductor Corporation Common Stock,109.43,42885966191.0,12432413,Technology
+MCHPP,Microchip Technology Incorporated Depositary Shares Each Representing a 1/20th Interest in a Share of 7.50% Series A Mandatory Convertible Preferred Stock,78.97,42733467118.0,10191,Technology
+XYZ,Block Inc. Class A Common Stock,70.63,42037634030.0,4806299,Technology
+GFS,GlobalFoundries Inc. Ordinary Shares,67.84,37747346647.0,3757403,Technology
+ALAB,Astera Labs Inc. Common Stock,215.58,36952123490.0,6161286,Technology
+UI,Ubiquiti Inc. Common Stock,604.0,36555339340.0,175587,Technology
+JBL,Jabil Inc. Common Stock,338.73,35736903150.0,1446103,Technology
+STRF,Strategy Inc 10.00% Series A Perpetual Strife Preferred Stock,99.78,34967688668.0,71890,Technology
+STRC,Strategy Inc Variable Rate Series A Perpetual Stretch Preferred Stock,98.61,34557664658.0,4649307,Technology
+RBLX,Roblox Corporation Class A Common Stock,46.98,33636681440.0,16138546,Technology
+ROP,Roper Technologies Inc. Common Stock,331.01,33404655003.0,1080559,Technology
+WDAY,Workday Inc. Class A Common Stock,128.88,32179473813.0,4611697,Technology
+Q,Qnity Electronics Inc. Common Stock,149.03,31197822019.0,2181139,Technology
+RDDT,Reddit Inc. Class A Common Stock,159.11,30618356557.0,3457187,Technology
+TWLO,Twilio Inc. Class A Common Stock,197.68,30002656645.0,2721549,Technology
+ZM,Zoom Communications Inc. Class A Common Stock,98.87,29074860575.0,6000227,Technology
+CRDO,Credo Technology Group Holding Ltd Ordinary Shares,156.27,28823992124.0,8611744,Technology
+ZS,Zscaler Inc. Common Stock,174.69,28088527907.0,6203349,Technology
+VRSN,VeriSign Inc. Common Stock,305.31,27783210000.0,755403,Technology
+OTIS,Otis Worldwide Corporation Common Stock ,71.13,27293724486.0,4180245,Technology
+MTSI,MACOM Technology Solutions Holdings Inc. Common Stock,356.25,27180369488.0,1984495,Technology
+VEEV,Veeva Systems Inc. Class A Common Stock,163.85,26724517487.0,2450963,Technology
+MDB,MongoDB Inc. Class A Common Stock,330.0,26564978220.0,2690234,Technology
+STRD,Strategy Inc 10.00% Series A Perpetual Stride Preferred Stock,75.22,26360688932.0,102948,Technology
+CW,Curtiss-Wright Corporation Common Stock,710.34,26240786436.0,263336,Technology
+STRK,Strategy Inc 8.00% Series A Perpetual Strike Preferred Stock,74.4,26073321677.0,136503,Technology
+P,Everpure Inc. Class A common stock,77.07,25599001190.0,3327804,Technology
+FSLR,First Solar Inc. Common Stock,233.64,25105403731.0,2002184,Technology
+HUBB,Hubbell Inc Common Stock,470.87,24881607536.0,572660,Technology
+CTSH,Cognizant Technology Solutions Corporation Class A Common Stock,51.395,24354521359.0,15305849,Technology
+NTAP,NetApp Inc. Common Stock,120.6,23798046240.0,2744094,Technology
+HPQ,HP Inc. Common Stock,20.92,19200059104.0,9497764,Technology
+SITM,SiTime Corporation Common Stock,725.59,19153274429.0,450405,Technology
+SMCI,Super Micro Computer Inc. Common Stock,30.85,18553760170.0,26671799,Technology
+IONQ,IonQ Inc. Common Stock,49.31,18405941136.0,31649921,Technology
+SNX,TD SYNNEX Corporation Common Stock,227.88,18319522273.0,555190,Technology
+IOT,Samsara Inc. Class A Common Stock,30.61,17836755610.0,5775699,Technology
+LSCC,Lattice Semiconductor Corporation Common Stock,123.15,16872517590.0,2904569,Technology
+PTC,PTC Inc. Common Stock,144.06,16639764251.0,1072189,Technology
+TTMI,TTM Technologies Inc. Common Stock,158.86,16497620373.0,1627997,Technology
+AMKR,Amkor Technology Inc. Common Stock,66.04,16369501089.0,4091198,Technology
+SSNC,SS&C Technologies Holdings Inc. Common Stock,67.22,16188864102.0,2657263,Technology
+LDOS,Leidos Holdings Inc. Common Stock,124.84,15703057575.0,1286181,Technology
+LOGI,Logitech International S.A. Ordinary Shares,105.21,15422623009.0,986863,Technology
+DOCN,DigitalOcean Holdings Inc. Common Stock,147.43,15386411205.0,2889407,Technology
+OKTA,Okta Inc. Class A Common Stock,87.04,15301727396.0,3914470,Technology
+GEN,Gen Digital Inc. Common Stock,24.34,14741856259.0,7973977,Technology
+AUR,Aurora Innovation Inc. Class A Common Stock,7.42,14552126920.0,26643619,Technology
+PL,Planet Labs PBC Class A Common Stock,41.61,14403261013.0,11441778,Technology
+AAOI,Applied Optoelectronics Inc. Common Stock,173.26,13902861810.0,13223732,Technology
+TYL,Tyler Technologies Inc. Common Stock,320.79,13526897889.0,1033323,Technology
+RMBS,Rambus Inc. Common Stock,123.76,13383031036.0,2146928,Technology
+RBRK,Rubrik Inc. Class A Common Stock,64.98,13373523143.0,2839736,Technology
+CDW,CDW Corporation Common Stock,104.04,13291469042.0,1489861,Technology
+TOST,Toast Inc. Class A Common Stock,22.64,13131200000.0,15074465,Technology
+FIG,Figma Inc. Class A Common Stock,24.36,12871253318.0,39321697,Technology
+NTNX,Nutanix Inc. Class A Common Stock,47.45,12584314003.0,4642984,Technology
+SMTC,Semtech Corporation Common Stock,132.39,12327428787.0,3362088,Technology
+GDDY,GoDaddy Inc. Class A Common Stock,91.39,12100935917.0,1933929,Technology
+SANM,Sanmina Corporation Common Stock,225.14,12066994058.0,645544,Technology
+DT,Dynatrace Inc. Common Stock,39.85,11885306893.0,7329135,Technology
+AEIS,Advanced Energy Industries Inc. Common Stock,309.06,11753754852.0,1011314,Technology
+U,Unity Software Inc. Common Stock,26.8,11699137920.0,9058410,Technology
+VIAV,Viavi Solutions Inc. Common Stock,49.75,11636916533.0,5051855,Technology
+GWRE,Guidewire Software Inc. Common Stock,137.09,11605692562.0,2054331,Technology
+VICR,Vicor Corporation Common Stock,249.02,11350681971.0,1056616,Technology
+PINS,Pinterest Inc. Class A Common Stock,19.93,11163935527.0,11379093,Technology
+CACI,CACI International Inc. Class A Common Stock,494.92,10933428671.0,217028,Technology
+HUBS,HubSpot Inc. Common Stock,208.51,10679410967.0,2047127,Technology
+ARW,Arrow Electronics Inc. Common Stock,207.93,10632281392.0,912298,Technology
+SWKS,Skyworks Solutions Inc. Common Stock,70.35,10581059497.0,6801316,Technology
+WULF,TeraWulf Inc. Common Stock,21.14,10475560115.0,31193947,Technology
+TTD,The Trade Desk Inc. Class A Common Stock,22.27,10469313199.0,20491872,Technology
+BSY,Bentley Systems Incorporated Class B Common Stock,33.31,10119467211.0,3353965,Technology
+JKHY,Jack Henry & Associates Inc. Common Stock,139.11,9883874006.0,1959832,Technology
+VSAT,ViaSat Inc. Common Stock,71.52,9714661800.0,2571992,Technology
+DOCU,DocuSign Inc. Common Stock,49.02,9605265126.0,3182064,Technology
+SNAP,Snap Inc. Class A Common Stock,5.67,9396102496.0,45028148,Technology
+FORM,FormFactor Inc. FormFactor Inc. Common Stock,117.42,9153449328.0,2071341,Technology
+MTCH,Match Group Inc. Common Stock,35.88,8369602953.0,4070430,Technology
+QRVO,Qorvo Inc. Common Stock,94.21,8291768133.0,1337089,Technology
+SAIL,SailPoint Inc. Common Stock,14.59,8275777544.0,6290553,Technology
+ENS,EnerSys Common Stock,224.41,8269816839.0,366488,Technology
+FROG,JFrog Ltd. Ordinary Shares,67.91,8225240457.0,1656272,Technology
+CRUS,Cirrus Logic Inc. Common Stock,160.28,8175464309.0,734743,Technology
+FDS,FactSet Research Systems Inc. Common Stock,224.35,8173323342.0,1054200,Technology
+MANH,Manhattan Associates Inc. Common Stock,136.71,8088392739.0,559491,Technology
+YOU,Clear Secure Inc. Class A Common Stock,59.18,7908891424.0,1657982,Technology
+TEM,Tempus AI Inc. Class A Common Stock,43.62,7832615137.0,5967961,Technology
+MXL,MaxLinear Inc. Common Stock,87.46,7831689574.0,4241819,Technology
+ALGM,Allegro MicroSystems Inc. Common Stock,41.35,7661777475.0,2378612,Technology
+CWAN,Clearwater Analytics Holdings Inc. Class A Common Stock,24.4,7283114300.0,1737486,Technology
+PCOR,Procore Technologies Inc. Common Stock,47.9,7227641346.0,1885937,Technology
+SLAB,Silicon Laboratories Inc. Common Stock,216.6,7143862862.0,340747,Technology
+QBTS,D-Wave Quantum Inc. Common Shares,19.06,6990018675.0,24639838,Technology
+AXTI,AXT Inc Common Stock,105.88,6927006722.0,11785833,Technology
+PLXS,Plexus Corp. Common Stock,258.87,6926434704.0,240927,Technology
+AVT,Avnet Inc. Common Stock,83.33,6835066670.0,1490587,Technology
+PAYC,Paycom Software Inc. Common Stock,139.18,6629345211.0,802089,Technology
+ENPH,Enphase Energy Inc. Common Stock,49.69,6549053552.0,11950210,Technology
+DBX,Dropbox Inc. Class A Common Stock,27.98,6527752159.0,6110174,Technology
+PCTY,Paylocity Holding Corporation Common Stock,112.97,6048872232.0,936159,Technology
+S,SentinelOne Inc. Class A Common Stock,17.54,5989595999.0,8168211,Technology
+TTAN,ServiceTitan Inc. Class A Common Stock,62.52,5963654009.0,1675826,Technology
+INGM,Ingram Micro Holding Corporation Common Stock,25.72,5957948854.0,1203173,Technology
+COMP,Compass Inc. Class A Common Stock,7.91,5909980586.0,17676272,Technology
+PEGA,Pegasystems Inc. Common Stock,34.15,5707013142.0,1932540,Technology
+MRCY,Mercury Systems Inc Common Stock,93.39,5607442199.0,460642,Technology
+APPF,AppFolio Inc. Class A Common Stock,157.91,5583465946.0,201050,Technology
+ESTC,Elastic N.V. Ordinary Shares,53.91,5579739341.0,2192891,Technology
+PATH,UiPath Inc. Class A Common Stock,10.64,5537517744.0,28222037,Technology
+RGTI,Rigetti Computing Inc. Common Stock,16.62,5524468172.0,31095742,Technology
+PSN,Parsons Corporation Common Stock,51.48,5507254261.0,1714225,Technology
+DUOL,Duolingo Inc. Class A Common Stock,113.24,5276204569.0,1585756,Technology
+EPAM,EPAM Systems Inc. Common Stock,100.44,5247432658.0,3526955,Technology
+VSH,Vishay Intertechnology Inc. Common Stock,36.95,5029110308.0,5104750,Technology
+ONDS,Ondas Inc. Common Stock,9.7,4808897705.0,78885347,Technology
+ZETA,Zeta Global Holdings Corp. Class A Common Stock,19.19,4783253747.0,17243673,Technology
+NAVN,Navan Inc. Class A Common Stock,18.4,4646967270.0,2904647,Technology
+MARA,MARA Holdings Inc. Common Stock,12.18,4643874727.0,35663146,Technology
+SYNA,Synaptics Incorporated Common Stock $0.001 Par Value,119.16,4604066545.0,1586203,Technology
+NVTS,Navitas Semiconductor Corporation Common Stock,19.67,4597137975.0,30659453,Technology
+NTSK,Netskope Inc. Class A Common Stock,11.37,4551573682.0,3358568,Technology
+IPGP,IPG Photonics Corporation Common Stock,106.35,4513878562.0,600146,Technology
+ACLS,Axcelis Technologies Inc. Common Stock,146.24,4494525097.0,609193,Technology
+KVYO,Klaviyo Inc. Series A Common Stock,14.61,4372478068.0,5060482,Technology
+CVLT,Commvault Systems Inc. Common Stock,105.94,4370091424.0,796831,Technology
+DIOD,Diodes Incorporated Common Stock,94.84,4357398573.0,677693,Technology
+ACIW,ACI Worldwide Inc. Common Stock,42.8,4351115196.0,926486,Technology
+GTLB,GitLab Inc. Class A Common Stock,25.09,4262230640.0,6389265,Technology
+PI,Impinj Inc. Common Stock,139.3,4242964471.0,370718,Technology
+HNGE,Hinge Health Inc. Class A Common Stock,54.71,4233466858.0,1069792,Technology
+ACMR,ACM Research Inc. Class A Common Stock,63.25,4188723154.0,1209093,Technology
+OLED,Universal Display Corporation Common Stock,89.4,4179529655.0,782005,Technology
+SAIC,Science Applications International Corporation Common Stock,96.01,4138260176.0,568425,Technology
+LASR,nLIGHT Inc. Common Stock,70.83,3995428858.0,1508385,Technology
+BILL,BILL Holdings Inc. Common Stock,38.52,3836465924.0,2524175,Technology
+POWI,Power Integrations Inc. Common Stock,67.62,3767785318.0,1287950,Technology
+DOCS,Doximity Inc. Class A Common Stock,19.58,3616601398.0,7423260,Technology
+SOUN,SoundHound AI Inc Class A Common Stock,8.35,3613626452.0,18478897,Technology
+BOX,Box Inc. Class A Common Stock,25.77,3582870978.0,2703046,Technology
+WAY,Waystar Holding Corp. Common Stock,18.55,3558129128.0,2477450,Technology
+UCTT,Ultra Clean Holdings Inc. Common Stock,77.65,3480921533.0,1347986,Technology
+AMBA,Ambarella Inc. Ordinary Shares,78.88,3459793858.0,877209,Technology
+QLYS,Qualys Inc. Common Stock,97.98,3457709203.0,1069770,Technology
+OSIS,OSI Systems Inc. Common Stock (DE),207.77,3424650055.0,270161,Technology
+RNG,RingCentral Inc. Class A Common Stock,40.68,3411368011.0,1969457,Technology
+VECO,Veeco Instruments Inc. Common Stock,55.65,3396513440.0,1076606,Technology
+VRNS,Varonis Systems Inc. Common Stock,28.78,3304351237.0,1592312,Technology
+RUM,Rumble Inc. Class A Common Stock,7.5,3269089418.0,2552429,Technology
+LIF,Life360 Inc. Common Stock,39.47,3198320844.0,874573,Technology
+INOD,Innodata Inc. Common Stock,94.72,3093115510.0,2111865,Technology
+TDC,Teradata Corporation Common Stock,32.77,3083657000.0,2427016,Technology
+IAC,IAC Inc. Common Stock,40.71,3028011998.0,855640,Technology
+ADEA,Adeia Inc. Common Stock,27.4,3022048723.0,2743834,Technology
+BHE,Benchmark Electronics Inc. Common Stock,82.79,2970259810.0,421722,Technology
+QTWO,Q2 Holdings Inc. Common Stock,46.88,2934707830.0,782617,Technology
+WOLF,Wolfspeed Inc. Common Stock New,59.35,2868924457.0,10118092,Technology
+PLAB,Photronics Inc. Common Stock,47.53,2802672707.0,748305,Technology
+WK,Workiva Inc. Class A Common Stock,49.81,2795304126.0,960445,Technology
+NTCT,NetScout Systems Inc. Common Stock,38.94,2784023672.0,501443,Technology
+NIQ,NIQ Global Intelligence plc Ordinary Shares,9.03,2665081168.0,3367847,Technology
+CCC,CCC Intelligent Solutions Holdings Inc. Common Stock,4.52,2652971223.0,10880116,Technology
+KD,Kyndryl Holdings Inc. Common Stock,11.71,2639986618.0,4524705,Technology
+BRZE,Braze Inc. Class A Common Stock,21.58,2626973366.0,2151424,Technology
+FA,First Advantage Corporation Common Stock,15.29,2622801449.0,611547,Technology
+FSLY,Fastly Inc. Class A Common Stock,16.71,2615115000.0,8704958,Technology
+CARG,CarGurus Inc. Class A Common Stock ,28.66,2584762229.0,2832786,Technology
+TENB,Tenable Holdings Inc. Common Stock,23.12,2549488016.0,4146809,Technology
+VISN,Vistance Networks Inc. Common Stock,11.16,2517357082.0,7683004,Technology
+FRSH,Freshworks Inc. Class A Common Stock,9.05,2501729211.0,12232877,Technology
+RAMP,LiveRamp Holdings Inc. Common Stock,37.77,2384227246.0,13099081,Technology
+RGTIW,Rigetti Computing Inc. Warrants,7.155,2378313464.0,149124,Technology
+PENG,Penguin Solutions Inc. Common Stock,45.71,2319668591.0,3328509,Technology
+ICHR,Ichor Holdings Ordinary Shares,66.6,2314370646.0,1385235,Technology
+DJT,Trump Media & Technology Group Corp. Common Stock,8.27,2290408158.0,4468719,Technology
+QUBT,Quantum Computing Inc. Common Stock,9.715,2191072399.0,18179150,Technology
+PLUS,ePlus inc. Common Stock,82.45,2176066654.0,137301,Technology
+ALRM,Alarm.com Holdings Inc. Common Stock,43.825,2167610050.0,452359,Technology
+AVPT,AvePoint Inc. Class A Common Stock,10.13,2147734195.0,2668152,Technology
+VERX,Vertex Inc. Class A Common Stock,13.26,2145692505.0,1195974,Technology
+BRUN,Boost Run Inc. Class A Common Stock,25.77,2081556185.0,2327841,Technology
+AGYS,Agilysys Inc. Common Stock (DE),70.2,1973198939.0,818469,Technology
+OMCL,Omnicell Inc. Common Stock ($0.001 par value),43.22,1965598447.0,436523,Technology
+SPSC,SPS Commerce Inc. Common Stock,53.04,1947241714.0,460100,Technology
+MGNI,Magnite Inc. Common Stock,13.39,1917648890.0,3020816,Technology
+BBAI,BigBear.ai Inc. Common Stock,3.92,1877481844.0,32506992,Technology
+ALKT,Alkami Technology Inc. Common Stock,16.99,1818255766.0,1703198,Technology
+BAND,Bandwidth Inc. Class A Common Stock,55.95,1791368327.0,855230,Technology
+EVCM,EverCommerce Inc. Common Stock,10.1,1787202080.0,111185,Technology
+BL,BlackLine Inc. Common Stock,29.81,1748681936.0,3348248,Technology
+EPAC,Enerpac Tool Group Corp. Common Stock,33.87,1745767134.0,254523,Technology
+PDFS,PDF Solutions Inc. Common Stock,43.64,1742156368.0,900968,Technology
+GLOB,Globant S.A. Common Shares,39.85,1720705307.0,2399461,Technology
+SKYT,SkyWater Technology Inc. Common Stock,34.29,1687225803.0,970829,Technology
+MQ,Marqeta Inc. Class A Common Stock,3.94,1670679433.0,3132239,Technology
+SLNHP,Soluna Holdings Inc 9.0% Series A Cumulative Perpetual Preferred Stock ,11.7,1653760544.0,6456,Technology
+NCNO,nCino Inc. Common Stock,15.11,1643886376.0,3881406,Technology
+CTS,CTS Corporation Common Stock,56.94,1628080295.0,286604,Technology
+SHLS,Shoals Technologies Group Inc. Class A Common Stock,9.66,1620675752.0,5419319,Technology
+FIVN,Five9 Inc. Common Stock,21.13,1617797066.0,3504595,Technology
+INTA,Intapp Inc. Common Stock,20.87,1608275488.0,1263752,Technology
+BKSY,BlackSky Technology Inc. Class A Common Stock,43.0,1595688118.0,4126398,Technology
+ASAN,Asana Inc. Class A Common Stock,6.56,1581885367.0,6724257,Technology
+APPN,Appian Corporation Class A Common Stock,21.1,1548995732.0,1176686,Technology
+KDK,Kodiak AI Inc. Common Stock ,8.37,1538827974.0,1052557,Technology
+AIP,Arteris Inc. Common Stock,33.29,1537065281.0,1446983,Technology
+AMBQ,Ambiq Micro Inc. Common Stock,71.34,1524946290.0,1023906,Technology
+DXC,DXC Technology Company Common Stock ,9.27,1515458284.0,8747118,Technology
+BLKB,Blackbaud Inc. Common Stock,32.0,1469827392.0,1077599,Technology
+CNXC,Concentrix Corporation Common Stock,23.94,1460455534.0,1088225,Technology
+DV,DoubleVerify Holdings Inc. Common Stock,9.27,1422613032.0,3634038,Technology
+VPG,Vishay Precision Group Inc. Common Stock,105.21,1399398210.0,854051,Technology
+HLIT,Harmonic Inc. Common Stock,12.48,1354035521.0,1652958,Technology
+PRCH,Porch Group Inc. Common Stock,9.97,1273323316.0,2529113,Technology
+AI,C3.ai Inc. Class A Common Stock,8.75,1271298193.0,4662997,Technology
+WGS,GeneDx Holdings Corp. Class A Common Stock,42.69,1267381873.0,1513366,Technology
+SBET,Sharplink Inc. Common Stock,6.31,1244404010.0,9764988,Technology
+PRGS,Progress Software Corporation Common Stock (DE),29.19,1228274626.0,799713,Technology
+CXM,Sprinklr Inc. Class A Common Stock,5.24,1225996716.0,4142471,Technology
+VIA,Via Transportation Inc. Class A Common Stock,14.91,1212121437.0,512128,Technology
+RXT,Rackspace Technology Inc. Common Stock,4.8,1196267995.0,30186559,Technology
+AUROW,Aurora Innovation Inc. Warrant,0.5954,1167700319.0,32236,Technology
+GTM,ZoomInfo Technologies Inc Common Stock,3.92,1155294693.0,8402067,Technology
+ASST,Strive Inc. Class A Common Stock,15.79,1153974743.0,4065209,Technology
+LZ,LegalZoom.com Inc. Common Stock,6.58,1129442287.0,4270658,Technology
+DJTWW,Trump Media & Technology Group Corp. Warrants,4.01,1110584850.0,30943,Technology
+TRIP,TripAdvisor Inc. Common Stock,9.53,1108921941.0,4520182,Technology
+RCAT,Red Cat Holdings Inc. Common Stock,8.93,1096089284.0,11045306,Technology
+ABTC,American Bitcoin Corp. Class A Common Stock,1.03,1094903601.0,17461088,Technology
+SOUNW,SoundHound AI Inc. Warrant,2.525,1092743328.0,5536,Technology
+UPWK,Upwork Inc. Common Stock,8.75,1080783699.0,7433945,Technology
+CEVA,CEVA Inc. Common Stock,36.59,1019374312.0,1088762,Technology
+EVLV,Evolv Technologies Holdings Inc. Class A Common Stock,5.62,1010877324.0,3644457,Technology
+AIAI,AIAI Holdings Corporation Class A Common Stock,14.0,984395860.0,236293,Technology
+COUR,Coursera Inc. Common Stock,5.73,970280588.0,7483067,Technology
+SHAZ,SharonAI Holdings Inc. Class A Common Stock,57.5,962794433.0,1752966,Technology
+KOPN,Kopin Corporation Common Stock,4.94,903626331.0,12227063,Technology
+INDI,indie Semiconductor Inc. Class A Common Stock,3.91,887193616.0,4549744,Technology
+SCSC,ScanSource Inc. Common Stock,42.97,873345011.0,176919,Technology
+GDRX,GoodRx Holdings Inc. Class A Common Stock,2.5,846688433.0,2038353,Technology
+AMPL,Amplitude Inc. Class A Common Stock,6.35,842132212.0,3115026,Technology
+CRCT,Cricut Inc. Class A Common Stock,3.92,822802645.0,526200,Technology
+NXDR,Nextdoor Holdings Inc. Class A Common Stock,2.08,793286468.0,3543399,Technology
+MRAM,Everspin Technologies Inc. Common Stock,33.35,781976693.0,5670750,Technology
+LPTH,LightPath Technologies Inc. Class A Common Stock,12.44,781100223.0,7818395,Technology
+AZTA,Azenta Inc.,16.24,748547137.0,2277444,Technology
+RUMBW,Rumble Inc. Warrant,1.69,736634815.0,13478,Technology
+CRSR,Corsair Gaming Inc. Common Stock,6.88,735349612.0,1008172,Technology
+GEGGL,Great Elm Group Inc.  7.25% Notes due 2027,24.6475,714698308.0,4628,Technology
+CERT,Certara Inc. Common Stock,4.56,709374612.0,3055184,Technology
+SSYS,Stratasys Ltd. Ordinary Shares (Israel),8.23,709199996.0,666176,Technology
+DSP,Viant Technology Inc. Class A Common Stock,10.76,705145001.0,249505,Technology
+RDVT,Red Violet Inc. Common Stock ,49.43,697403965.0,176532,Technology
+HSTM,HealthStream Inc. Common Stock,23.76,694152867.0,265754,Technology
+UMAC,Unusual Machines Inc. Common Stock,14.45,690622187.0,5564537,Technology
+NABL,N-able Inc. Common Stock,3.59,676278061.0,2607271,Technology
+EVER,EverQuote Inc. Class A Common Stock,18.23,644854858.0,484882,Technology
+MITK,Mitek Systems Inc. Common Stock,14.13,638094565.0,916198,Technology
+SABR,Sabre Corporation Common Stock,1.59,628548104.0,8719893,Technology
+HUYA,HUYA Inc. American depositary shares each  representing one Class A ordinary share,2.8,625893229.0,1103428,Technology
+SSTK,Shutterstock Inc. Common Stock,16.71,613892214.0,374154,Technology
+MRLN,Merlin Inc. Common Stock,6.3,608101528.0,1437341,Technology
+EVGO,EVgo Inc. Class A Common Stock,1.92,602609981.0,6685839,Technology
+KE,Kimball Electronics Inc. Common Stock,24.94,599780190.0,150009,Technology
+PD,PagerDuty Inc. Common Stock,6.95,590651970.0,1884171,Technology
+CARS,Cars.com Inc. Common Stock ,10.03,560707361.0,977483,Technology
+GDYN,Grid Dynamics Holdings Inc. Class A Common Stock,6.68,558622041.0,1758983,Technology
+VELO,Velo3D Inc. Common stock,18.63,555192667.0,2350046,Technology
+IIIV,i3 Verticals Inc. Class A Common Stock,19.54,545781784.0,619787,Technology
+OOMA,Ooma Inc. Common Stock,19.36,532589883.0,315868,Technology
+NRDS,NerdWallet Inc. Class A Common Stock,8.05,529680203.0,1042407,Technology
+CCSI,Consensus Cloud Solutions Inc. Common Stock,28.32,521029944.0,169979,Technology
+TASK,TaskUs Inc. Class A Common Stock,5.6,512837948.0,533505,Technology
+ALOY,REalloys Inc. Common Stock,8.78,501583849.0,1159678,Technology
+GENVR,Gen Digital Inc. Contingent Value Rights,0.8199,496583728.0,33075,Technology
+GLOO,Gloo Holdings Inc. Class A Common Stock,6.11,494122568.0,25737,Technology
+CERS,Cerus Corporation Common Stock,2.43,486896607.0,1981040,Technology
+ERII,Energy Recovery Inc. Common Stock,9.06,467000047.0,1335576,Technology
+RBBN,Ribbon Communications Inc. Common Stock,2.64,465007137.0,890533,Technology
+PUBM,PubMatic Inc. Class A Common Stock,9.91,460253351.0,763946,Technology
+OSPN,OneSpan Inc. Common Stock,12.34,457478969.0,411115,Technology
+RPD,Rapid7 Inc. Common Stock,6.73,449770059.0,2220692,Technology
+APXT,Apex Treasury Corporation Class A Ordinary Share,10.01,446045600.0,121411,Technology
+BLZE,Backblaze Inc. Class A Common Stock,7.41,444600000.0,1514517,Technology
+WEAV,Weave Communications Inc. Common Stock,5.44,432837054.0,929643,Technology
+CRNC,Cerence Inc. Common Stock,9.52,430187942.0,950407,Technology
+DVLT,Datavault AI Inc. Common Stock,0.5,427780998.0,56136705,Technology
+DDD,3D Systems Corporation Common Stock,2.83,415860160.0,3415205,Technology
+BMBL,Bumble Inc. Class A Common Stock,3.18,414771114.0,2380309,Technology
+VREX,Varex Imaging Corporation Common Stock,9.7,408370000.0,621267,Technology
+NVEC,NVE Corporation Common Stock,84.11,406854032.0,129351,Technology
+OSS,One Stop Systems Inc. Common Stock,15.99,396056582.0,1707904,Technology
+SPT,Sprout Social Inc Class A Common Stock,6.515,391587580.0,1012689,Technology
+TBRG,TruBridge Inc. Common Stock,25.93,388927596.0,331592,Technology
+BLND,Blend Labs Inc. Class A Common Stock,1.58,382544316.0,6277514,Technology
+ALMU,Aeluma Inc. Common Stock,20.76,380018755.0,2066845,Technology
+MEI,Methode Electronics Inc. Common Stock,10.55,373790942.0,906493,Technology
+CLMB,Climb Global Solutions Inc. Common Stock,20.03,372501916.0,123333,Technology
+XPER,Xperi Inc. Common Stock ,7.61,367345780.0,324670,Technology
+SWMR,Swarmer Inc Common Stock,32.37,362875987.0,458199,Technology
+YEXT,Yext Inc. Common Stock,3.6,360482148.0,910852,Technology
+XRX,Xerox Holdings Corporation Common Stock,2.65,346557070.0,5160898,Technology
+QUIK,QuickLogic Corporation Common Stock,18.46,336429919.0,817728,Technology
+MPTI,M-tron Industries Inc. Common Stock,77.5,334911833.0,61108,Technology
+PAYS,Paysign Inc. Common Stock,5.865,327887359.0,681621,Technology
+GSIT,GSI Technology Common Stock,8.96,324228379.0,1480564,Technology
+TLS,Telos Corporation Common Stock,4.3,321722453.0,822548,Technology
+BKTI,BK Technologies Corporation Common Stock,84.0,314512632.0,78948,Technology
+ATOM,Atomera Incorporated Common Stock,8.005,309925583.0,1544898,Technology
+SVCO,Silvaco Group Inc. Common Stock,9.45,308906864.0,505116,Technology
+VUZI,Vuzix Corporation Common Stock,3.65,303527642.0,6755009,Technology
+TYGO,Tigo Energy Inc. Common Stock,3.98,302124960.0,844260,Technology
+PDYN,Palladyne AI Corp. Common Stock,6.18,291969311.0,1504422,Technology
+ISSC,Innovative Solutions and Support Inc. Common Stock,16.26,290936066.0,670893,Technology
+ASYS,Amtech Systems Inc. Common Stock,20.015,290199246.0,259380,Technology
+RDNW,RideNow Group Inc. Class B Common Stock,7.5,289403820.0,66040,Technology
+SLP,Simulations Plus Inc. Common Stock,13.78,278431542.0,207548,Technology
+SLNH,Soluna Holdings Inc. Common Stock,1.95,275626757.0,33017418,Technology
+ZIP,ZipRecruiter Inc. Class A Common Stock,3.35,273100543.0,710087,Technology
+OPTX,Syntec Optics Holdings Inc. Class A Common Stock,6.55,263833201.0,947282,Technology
+MKTW,MarketWise Inc. Class A Common Stock,16.6,259384196.0,36249,Technology
+KDKRW,Kodiak AI Inc. Warrants,1.4,257390581.0,13887,Technology
+DUOT,Duos Technologies Group Inc. Common Stock,8.49,248956252.0,1546678,Technology
+ASUR,Asure Software Inc Common Stock,8.59,246375227.0,39387,Technology
+LAW,CS Disco Inc. Common Stock,3.63,232807894.0,698620,Technology
+RELL,Richardson Electronics Ltd. Common Stock,15.75,229271522.0,323327,Technology
+CMRC,Commerce.com Inc. Series 1 Common Stock,2.76,227733793.0,613691,Technology
+KLTR,Kaltura Inc. Common Stock,1.5,225562113.0,411363,Technology
+UIS,Unisys Corporation New Common Stock,3.02,220173613.0,877297,Technology
+SMRT,SmartRent Inc. Class A Common Stock,1.14,219835399.0,1119241,Technology
+KVHI,KVH Industries Inc. Common Stock,11.01,214670239.0,409092,Technology
+GCTS,GCT Semiconductor Holding Inc. Common Stock,2.58,214349819.0,60310871,Technology
+AVNW,Aviat Networks Inc. Common Stock,16.11,208454749.0,200151,Technology
+DMRC,Digimarc Parent Inc. Common Stock,9.26,205960689.0,221653,Technology
+IMMR,Immersion Corporation Common Stock,6.14,203236775.0,393939,Technology
+INSE,Inspired Entertainment Inc. Common Stock,7.46,198998148.0,95984,Technology
+VERI,Veritone Inc. Common Stock,2.0,185917930.0,3201258,Technology
+MVIS,MicroVision Inc. Common Stock,0.5569,184676552.0,7869144,Technology
+RFIL,RF Industries Ltd. Common Stock,17.01,183950682.0,287249,Technology
+KULR,KULR Technology Group Inc. Common Stock,3.92,181328087.0,5916191,Technology
+EGAN,eGain Corporation Common Stock,6.6,181170535.0,527285,Technology
+TRAK,ReposiTrak Inc. Common Stock,9.94,180645236.0,112039,Technology
+ESP,Espey Mfg. & Electronics Corp. Common Stock,60.19,180324545.0,131326,Technology
+DOMO,Domo Inc. Class B Common Stock,3.68,166138745.0,737896,Technology
+TRT,Trio-Tech International Common Stock,15.32,154925017.0,3085045,Technology
+MRDN,Meridian Holdings Inc. Common Stock,10.99,139237574.0,50249,Technology
+BNAI,Brand Engagement Network Inc. Common Stock,20.96,136401120.0,435961,Technology
+WATT,Energous Corporation Common Stock,23.76,130706160.0,494247,Technology
+SPWR,SunPower Inc. Common Stock,1.03,130452352.0,1185259,Technology
+GOAI,Eva Live Inc. Common Stock,3.56,130065985.0,76188,Technology
+VWAV,VisionWave Holdings Inc. Common Stock,5.28,125912883.0,429742,Technology
+VTIX,Virtuix Holdings Inc. Class A Common Stock,3.78,124024420.0,176013,Technology
+DH,Definitive Healthcare Corp. Class A Common Stock,0.8406,120835889.0,317270,Technology
+QMCO,Quantum Corporation Common Stock,7.98,116811471.0,472148,Technology
+CMTL,Comtech Telecommunications Corp. Common Stock,3.77,112097629.0,396097,Technology
+EXFY,Expensify Inc. Class A Common Stock,1.15,110903837.0,609235,Technology
+ALOT,AstroNova Inc. Common Stock,14.28,109853755.0,18632,Technology
+PODC,PodcastOne Inc. Common Stock,3.97,109127217.0,299892,Technology
+VHUB,VenHub Global Inc. Common Stock,1.26,107172900.0,291915,Technology
+TEAD,Teads Holding Co. Common Stock,1.07,103780830.0,589681,Technology
+SKLZ,Skillz Inc. Class A Common Stock,6.6,103009876.0,706646,Technology
+WYY,WidePoint Corporation Common Stock,9.67,95609040.0,257821,Technology
+CSPI,CSP Inc. Common Stock,9.44,95078236.0,12448,Technology
+HCAT,Health Catalyst Inc Common Stock,1.27,93845405.0,556786,Technology
+ROC,Rank One Computing Corporation Common stock,4.86,92729417.0,128720,Technology
+INVE,Identiv Inc. Common Stock,3.82,91703730.0,100666,Technology
+AEYE,AudioEye Inc. Common Stock,7.26,90702193.0,126076,Technology
+CCLD,CareCloud Inc. Common Stock,2.12,90085052.0,831106,Technology
+DTCX,Datacentrex Inc. Common Stock,2.23,86688186.0,209738,Technology
+IDN,Intellicheck Inc. Common Stock,4.28,86675226.0,578494,Technology
+AIRG,Airgain Inc. Common Stock,6.71,85054484.0,78927,Technology
+SSTI,SoundThinking Inc. Common Stock,6.51,84330130.0,69523,Technology
+AISP,Airship AI Holdings Inc. Class A Common Stock,2.39,82244833.0,530902,Technology
+SOTK,Sono-Tek Corporation Common Stock,4.88,76666698.0,23934,Technology
+OPXS,Optex Systems Holdings Inc. Common Stock,10.66,74192246.0,29170,Technology
+MCHX,Marchex Inc. Class B Common Stock,1.66,73542646.0,37093,Technology
+AREN,The Arena Group Holdings Inc. Common Stock,1.51,71880213.0,131492,Technology
+FATN,FatPipe Inc. Common Stock,5.15,71711010.0,1145811,Technology
+IPWR,Ideal Power Inc. Common Stock,5.77,70139549.0,643903,Technology
+RSSS,Research Solutions Inc Common Stock,2.12,69759609.0,246377,Technology
+FTCI,FTC Solar Inc. Common Stock,4.35,69623029.0,164989,Technology
+GEG,Great Elm Group Inc. Common Stock,2.15,67417567.0,1054,Technology
+XTIA,XTI Aerospace Inc. Common Stock,1.64,63103574.0,1592999,Technology
+GPUS,Hyperscale Data Inc. Common Stock,0.1386,60769005.0,24268672,Technology
+MYPS,PLAYSTUDIOS Inc.  Class A Common Stock,0.4721,60596500.0,1153451,Technology
+WFCF,Where Food Comes From Inc. Common Stock,11.93,60118563.0,60267,Technology
+SKIL,Skillsoft Corp. Class A Common Stock,6.57,58834856.0,83209,Technology
+LINK,Interlink Electronics Inc. Common Stock,3.71,58432526.0,46308,Technology
+CAST,FreeCast Inc. Class A Common Stock,1.41,58291958.0,301075,Technology
+NTWK,NetSol Technologies Inc. Common  Stock,4.03,47861948.0,56151,Technology
+FNGR,FingerMotion Inc. Common Stock,0.777,47615576.0,246010,Technology
+MLGO,MicroAlgo Inc. Class A Ordinary Shares,3.73,46391730.0,513295,Technology
+ATHR,Aether Holdings Inc. Common Stock,3.8,46149974.0,7138,Technology
+LGL,LGL Group Inc. (The) Common Stock,6.8,44474958.0,11763,Technology
+FUSE,Fusemachines Inc. Common stock,1.48,42830075.0,651306,Technology
+CVV,CVD Equipment Corporation Common Stock,5.97,41434839.0,538830,Technology
+SNAL,Snail Inc. Class A Common Stock,0.96,40917122.0,8390773,Technology
+XRXDW,Xerox Holdings Corporation Warrants,0.3112,40697570.0,262601,Technology
+PXLW,Pixelworks Inc.  Common Stock,6.09,38752241.0,215608,Technology
+TACT,TransAct Technologies Incorporated Common Stock,3.77,38741572.0,58864,Technology
+ASTI,Ascent Solar Technologies Inc. Common Stock,4.07,38509880.0,2578441,Technology
+CREX,Creative Realities Inc. Common Stock,3.57,37725147.0,32362,Technology
+HOLO,MicroCloud Hologram Inc. Ordinary Shares,1.61,36888900.0,392620,Technology
+OPTXW,Syntec Optics Holdings Inc. Warrant,0.9002,36259946.0,332528,Technology
+CDLX,Cardlytics Inc. Common Stock,0.6056,34885998.0,569223,Technology
+NSYS,Nortech Systems Incorporated Common Stock,12.39,34624276.0,12748,Technology
+KTCC,Key Tronic Corporation Common Stock,3.13,33989512.0,3705,Technology
+SEGG,Sports Entertainment Gaming Global Corporation Common Stock,2.4,30344273.0,6477523,Technology
+BEEM,Beam Global Common Stock,1.43,30225886.0,1002271,Technology
+SST,System1 Inc. Class A Common Stock,2.92,29022557.0,202054,Technology
+AWRE,Aware Inc. Common Stock,1.27,27471754.0,34019,Technology
+MOBX,Mobix Labs Inc. Class A Common Stock,2.48,26399218.0,2964428,Technology
+LPSN,LivePerson Inc. Common Stock,2.16,26300218.0,241378,Technology
+AIFF,Firefly Neuroscience Inc. Common Stock,1.66,25849155.0,227892,Technology
+AISPW,Airship AI Holdings Inc. Warrants,0.74,25464927.0,30033,Technology
+XBP,XBP Global Holdings Inc. Common Stock,2.065,24301023.0,6880,Technology
+UPLD,Upland Software Inc. Common Stock,0.7799,22900360.0,209252,Technology
+VWAVW,VisionWave Holdings Inc. Warrant,0.895,21343188.0,29610,Technology
+SMSI,Smith Micro Software Inc. Common Stock,0.8102,20706612.0,87359,Technology
+CYN,Cyngn Inc. Common Stock,1.38,19904128.0,466887,Technology
+MSGM,Motorsport Games Inc. Class A Common Stock,4.7,19618059.0,75100,Technology
+AUID,authID Inc. Common Stock,1.19,19197660.0,185465,Technology
+UUU,Universal Safety Products Inc. Common Stock,6.21,16877457.0,45593,Technology
+IPM,Intelligent Protection Management Corp. Common Stock ,1.85,16716099.0,32175,Technology
+GGRP,The Glimpse Group Inc. Common Stock,0.7899,16648332.0,1358086,Technology
+NIXX,Nixxy Inc. Common Stock,0.553,14871513.0,633221,Technology
+PRSO,Peraso Inc. Common Stock,1.0,14686618.0,1139792,Technology
+AIMD,Ainos Inc. Common Stock,1.6598,14149035.0,19401,Technology
+RAIN,Rain Enhancement Technologies Holdco Inc. Class A Common Stock,1.635,13388742.0,14447,Technology
+CSAI,Cloudastructure Inc. Class A Common Stock,0.5277,12936976.0,591890,Technology
+AUUD,Auddia Inc. Common Stock,2.37,12712799.0,30289043,Technology
+IDAI,T Stamp Inc. Class A Common Stock,2.07,11591925.0,33342,Technology
+RMSG,Real Messenger Corporation Ordinary Shares,1.21,11581250.0,244529,Technology
+MSAI,MultiSensor AI Holdings Inc. Common Stock,5.725,11561260.0,9291,Technology
+BLIN,Bridgeline Digital Inc. Common Stock,0.9061,11416750.0,32040,Technology
+EVLVW,Evolv Technologies Holdings Inc. Warrant,0.0616,11080079.0,10860,Technology
+CXAI,CXApp Inc. Class A Common Stock,0.141,9882588.0,5994195,Technology
+VRME,VerifyMe Inc. Common Stock,0.6901,9053467.0,118157,Technology
+DTST,Data Storage Corporation Common Stock,4.0,8668552.0,77709,Technology
+CETX,Cemtrex Inc. Common Stock,0.77,8563812.0,270574,Technology
+GXAI,Gaxos.ai Inc. Common Stock,1.12,7978267.0,554183,Technology
+CYCU,Cycurion Inc. Common Stock,0.888,7627939.0,511512,Technology
+BNZI,Banzai International Inc. Class A Common Stock,5.08,7398421.0,320649,Technology
+SCKT,Socket Mobile Inc. Common Stock,0.855,7046019.0,6471,Technology
+IPDN,Professional Diversity Network Inc. Common Stock,0.6237,6563839.0,25796,Technology
+SMTK,SmartKem Inc. Common Stock,0.2764,5927733.0,4025655,Technology
+TWAV,TaoWeave Inc. Common Stock,1.58,5460715.0,1383616,Technology
+DAIC,CID HoldCo Inc. Common Stock,0.1754,5307530.0,195443,Technology
+ONFO,Onfolio Holdings Inc. Common Stock,0.7238,4822323.0,1034894,Technology
+HCTI,Healthcare Triangle Inc. Common Stock,2.22,4501678.0,149098,Technology
+AMST,Amesite Inc. Common Stock,0.7861,4272349.0,23770065,Technology
+IVDA,Iveda Solutions Inc. Common Stock,0.3199,3563603.0,186912,Technology
+EVGOW,EVgo Inc. Warrants,0.0105,3295523.0,30800,Technology
+FUSEW,Fusemachines Inc. Warrants,0.0903,2613213.0,120878,Technology
+CXAIW,CXApp Inc. Warrant,0.035,2453125.0,35727,Technology
+TRNR,Interactive Strength Inc. Common Stock,1.06,2180439.0,170016,Technology
+KUST,Kustom Entertainment Inc. Common Stock,3.23,2024758.0,22024,Technology
+PDYNW,Palladyne AI Corp Warrants,0.0404,1908667.0,62127,Technology
+HOLOW,MicroCloud Hologram Inc. Warrant,0.0796,1823824.0,47964,Technology
+RAINW,Rain Enhancement Technologies Holdco Inc. Warrants,0.2075,1699183.0,762,Technology
+MOBXW,Mobix Labs Inc Warrants,0.091,968681.0,43107,Technology
+BNAIW,Brand Engagement Network Inc. Warrant,0.138,898061.0,7091,Technology
+XBPEW,XBP Europe Holdings Inc. Warrant,0.063,741387.0,1602,Technology
+ONFOW,Onfolio Holdings Inc. Warrant,0.0879,585634.0,7183,Technology
+RMSGW,Real Messenger Corporation Warrants,0.0531,508235.0,3020,Technology
+DAICW,CID HoldCo Inc. Warrants,0.016,484153.0,27126,Technology
+MYPSW,PLAYSTUDIOS Inc. Warrant,0.0032,410737.0,18102,Technology
+LTRYW,Sports Entertainment Gaming Global Corporation Warrants,0.0143,180801.0,3080550,Technology
+WGSWW,GeneDx Holdings Corp. Warrant,0.0034,100939.0,84947,Technology
+MSAIW,MultiSensor AI Holdings Inc. Warrant,0.0298,60179.0,2000,Technology
+BNZIW,Banzai International Inc. Warrant,0.0139,20244.0,55162,Technology
+CCIX,Churchill Capital Corp IX Ordinary Shares,10.77,0.0,2407,Technology
+BRUNW,Boost Run Inc. Warrant,14.33,0.0,146140,Technology
+ILLU,Illumination Acquisition Corp I Class A Ordinary Shares,9.87,0.0,2,Technology
