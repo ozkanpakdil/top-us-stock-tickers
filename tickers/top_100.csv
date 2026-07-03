@@ -1,101 +1,101 @@
 symbol,name,price,marketCap,volume,industry
-NVDA,NVIDIA Corporation Common Stock,197.58,4781436000000.0,146149732,Technology
-GOOGL,Alphabet Inc. Class A Common Stock,361.21,4376420360000.0,26736562,Technology
-GOOG,Alphabet Inc. Class C Capital Stock,357.89,4336195240000.0,19546789,Technology
-AAPL,Apple Inc. Common Stock,294.38,4323663859280.0,50164471,Technology
-MSFT,Microsoft Corporation Common Stock,384.28,2854598888053.0,48066031,Technology
-AMZN,Amazon.com Inc. Common Stock,241.7,2599993350681.0,53829967,Consumer Discretionary
-SPCX,Space Exploration Technologies Corp. Class A Common Stock,157.54,2062333133646.0,109318160,Technology
-AVGO,Broadcom Inc. Common Stock,369.34,1757164670329.0,23712968,Technology
-TSLA,Tesla Inc. Common Stock,425.3,1597309362336.0,40128884,Industrials
-META,Meta Platforms Inc. Class A Common Stock,612.91,1555825027255.0,45537141,Technology
-MU,Micron Technology Inc. Common Stock,1032.28,1165849961914.0,51329281,Technology
-LLY,Eli Lilly and Company Common Stock,1191.74,1122310903186.0,2720666,Health Care
-BRK/A,Berkshire Hathaway Inc.,750999.99,1104626359291.0,259,Uncategorized
-BRK/B,Berkshire Hathaway Inc.,499.74,1102582044544.0,4101309,Uncategorized
-JPM,JP Morgan Chase & Co. Common Stock,334.07,895144379411.0,15210228,Finance
-AMD,Advanced Micro Devices Inc. Common Stock,540.88,881959273622.0,28327547,Technology
-WMT,Walmart Inc. Common Stock,108.82,865998173647.0,40391427,Consumer Discretionary
-V,Visa Inc.,351.08,665109810344.0,13025969,Consumer Discretionary
-INTC,Intel Corporation Common Stock,127.02,638402520000.0,113107616,Technology
-GOOGM,Alphabet Inc. Depositary Shares representing a 1/20th Interest in a Share of Series A Mandatory Convertible Preferred Stock,51.08,618885280000.0,4313629,Technology
-GOOGN,Alphabet Inc. Depositary Shares representing a 1/20th Interest in a Share of Series B Mandatory Convertible Preferred Stock,50.61,613190760000.0,5185827,Technology
-JNJ,Johnson & Johnson Common Stock,253.98,611384966295.0,6516516,Health Care
-XOM,Exxon Mobil Corporation Common Stock,136.28,564873399237.0,12433382,Energy
-AMAT,Applied Materials Inc. Common Stock,650.91,516796132581.0,16089232,Technology
-LRCX,Lam Research Corporation Common Stock,391.26,489298409460.0,18699348,Technology
-MA,Mastercard Incorporated Common Stock,522.44,461619549206.0,4413214,Consumer Discretionary
-CSCO,Cisco Systems Inc. Common Stock (DE),117.01,461187270152.0,32015968,Telecommunications
-CAT,Caterpillar Inc. Common Stock,991.41,456680153947.0,3914174,Industrials
-ABBV,AbbVie Inc. Common Stock,251.06,443571005640.0,6987991,Health Care
-BAC,Bank of America Corporation Common Stock,58.36,414157030392.0,35288369,Finance
-ORCL,Oracle Corporation Common Stock,142.5,410467117500.0,45964066,Technology
-COST,Costco Wholesale Corporation Common Stock,924.67,410071545695.0,2909945,Consumer Discretionary
-GE,GE Aerospace Common Stock,374.94,391188862891.0,3951408,Technology
-UNH,UnitedHealth Group Incorporated Common Stock (DE),426.54,387359914082.0,4985871,Health Care
-KO,Coca-Cola Company (The) Common Stock,81.29,349884587371.0,21734842,Consumer Staples
-HD,Home Depot Inc. (The) Common Stock,350.84,349828416713.0,4041335,Consumer Discretionary
-KLAC,KLA Corporation Common Stock,266.19,347717398150.0,24163615,Technology
-PG,Procter & Gamble Company (The) Common Stock,147.43,343305347327.0,9571741,Consumer Discretionary
-MS,Morgan Stanley Common Stock,211.86,334163561330.0,4689989,Finance
-CVX,Chevron Corporation Common Stock,165.69,329987828215.0,9175531,Energy
-NFLX,Netflix Inc. Common Stock,74.19,312399142792.0,43842147,Consumer Discretionary
-MRK,Merck & Company Inc. Common Stock (new),125.37,309641886909.0,10761471,Health Care
-GEV,GE Vernova Inc. Common Stock,1134.35,304822526328.0,2359604,Uncategorized
-PLTR,Palantir Technologies Inc. Class A Common Stock,125.73,301414034868.0,58561641,Technology
-SNDK,Sandisk Corporation Common Stock,2032.22,300950968003.0,11056697,Technology
-GS,Goldman Sachs Group Inc. (The) Common Stock,1019.61,300792516526.0,1735029,Finance
-PANW,Palo Alto Networks Inc. Common Stock,352.04,286912600000.0,7265481,Technology
-PM,Philip Morris International Inc Common Stock,177.69,276940321346.0,5910581,Health Care
-DELL,Dell Technologies Inc. Class C Common Stock ,425.25,275607923173.0,6027606,Technology
-TXN,Texas Instruments Incorporated Common Stock,298.41,271580789762.0,8737137,Technology
-IBM,International Business Machines Corporation Common Stock,286.25,269042161400.0,6905823,Technology
-WFC,Wells Fargo & Company Common Stock,85.94,262992685114.0,14670618,Finance
-RTX,RTX Corporation Common Stock,191.78,258266947822.0,3780461,Industrials
-LIN,Linde plc Ordinary Shares,533.55,246819984033.0,3087476,Basic Materials
-C,Citigroup Inc. Common Stock,140.13,239002498704.0,13702850,Finance
-MRVL,Marvell Technology Inc. Common Stock,272.05,237989340000.0,33822739,Technology
-CCZ,Comcast Holdings ZONES,66.5,237659127755.0,119,Telecommunications
-AXP,American Express Company Common Stock,348.0,237449602164.0,2918029,Finance
-APH,Amphenol Corporation Common Stock,172.22,211870976118.0,8011463,Technology
-ANET,Arista Networks Inc. Common Stock,166.62,209808336046.0,9098200,Telecommunications
-WDC,Western Digital Corporation Common Stock,598.37,206247446726.0,7934227,Technology
-CRWD,CrowdStrike Holdings Inc. Class A Common Stock,772.74,196712419007.0,2685075,Technology
-AMGN,Amgen Inc. Common Stock,361.33,195012790644.0,2244793,Health Care
-PEP,PepsiCo Inc. Common Stock,141.16,192933015345.0,9391716,Consumer Staples
-QCOM,QUALCOMM Incorporated Common Stock,181.92,191743680000.0,23313203,Technology
-MCD,McDonald's Corporation Common Stock,269.43,191431593590.0,3902065,Consumer Discretionary
-TMO,Thermo Fisher Scientific Inc Common Stock,513.33,190764446628.0,2220029,Industrials
-GLW,Corning Incorporated Common Stock,220.63,189882523330.0,22393554,Industrials
-APP,Applovin Corporation Class A Common Stock,564.61,189675083400.0,5920092,Technology
-ADI,Analog Devices Inc. Common Stock,388.98,189467116819.0,5750949,Technology
-TMUS,T-Mobile US Inc. Common Stock,173.06,187286348324.0,5941097,Telecommunications
-NEE,NextEra Energy Inc. Common Stock,86.37,180110941555.0,9709226,Technology
-VZ,Verizon Communications Inc. Common Stock,41.99,175331718631.0,57139703,Telecommunications
-BA,Boeing Company (The) Common Stock,218.58,172307123510.0,4205554,Industrials
-DE,Deere & Company Common Stock,627.63,169420826053.0,1637019,Industrials
-TJX,TJX Companies Inc. (The) Common Stock,151.35,167197017902.0,5047693,Consumer Discretionary
-SCHW,Charles Schwab Corporation (The) Common Stock,95.78,166574398860.0,10685420,Finance
-DIS,Walt Disney Company (The) Common Stock,95.71,166201508391.0,11590501,Consumer Discretionary
-UNP,Union Pacific Corporation Common Stock,277.73,164891970646.0,2223539,Industrials
-WELL,Welltower Inc. Common Stock,230.19,162494447246.0,2735922,Real Estate
-ABT,Abbott Laboratories Common Stock,92.18,160560269705.0,13935853,Health Care
-IBKR,Interactive Brokers Group Inc. Class A Common Stock,93.25,158184986442.0,7441917,Finance
-GILD,Gilead Sciences Inc. Common Stock,125.97,156400557028.0,6654936,Health Care
-BLK,BlackRock Inc. Common Stock,980.38,152188298136.0,969313,Finance
-UBER,Uber Technologies Inc. Common Stock,72.66,147906624285.0,12648134,Consumer Discretionary
-TBB,AT&T Inc. 5.350% Global Notes due 2066,20.63,147512452452.0,439105,Telecommunications
-ISRG,Intuitive Surgical Inc. Common Stock,402.38,142508044364.0,1939314,Health Care
-T,AT&T Inc.,20.48,142301979341.0,137694442,Telecommunications
-BKNG,Booking Holdings Inc. Common Stock,182.64,141523797551.0,7101138,Consumer Discretionary
-SCCO,Southern Copper Corporation Common Stock,168.8,140834651813.0,1140392,Basic Materials
-DHR,Danaher Corporation Common Stock,193.72,137109325862.0,4515634,Industrials
-PFE,Pfizer Inc. Common Stock,23.88,136102726756.0,49385299,Health Care
-CVS,CVS Health Corporation Common Stock,104.81,133729941047.0,7508410,Consumer Staples
-CRM,Salesforce Inc. Common Stock,163.23,133685370000.0,14164655,Technology
-PGR,Progressive Corporation (The) Common Stock,225.3,131651005339.0,3622280,Finance
-PLD,Prologis Inc. Common Stock,136.8,127543838400.0,3140501,Real Estate
-VRTX,Vertex Pharmaceuticals Incorporated Common Stock,498.01,126397635720.0,1444536,Health Care
-COF,Capital One Financial Corporation Common Stock,204.82,126173110098.0,3358711,Finance
-COP,ConocoPhillips Common Stock,103.22,125752307403.0,5744563,Energy
-LOW,Lowe's Companies Inc. Common Stock,221.92,124432106539.0,2864708,Consumer Discretionary
+NVDA,NVIDIA Corporation Common Stock,194.83,4714886000000.0,142065535,Technology
+AAPL,Apple Inc. Common Stock,308.63,4532958682280.0,75350459,Technology
+GOOGL,Alphabet Inc. Class A Common Stock,359.91,4360669560000.0,25974272,Technology
+GOOG,Alphabet Inc. Class C Capital Stock,356.18,4315476880000.0,15532846,Technology
+MSFT,Microsoft Corporation Common Stock,390.49,2900729467565.0,42128756,Technology
+AMZN,Amazon.com Inc. Common Stock,242.67,2610427746834.0,48246030,Consumer Discretionary
+SPCX,Space Exploration Technologies Corp. Class A Common Stock,162.0,2120718342330.0,60988288,Technology
+AVGO,Broadcom Inc. Common Stock,360.45,1714869782369.0,26749508,Technology
+META,Meta Platforms Inc. Class A Common Stock,582.9,1479646943902.0,21706161,Technology
+TSLA,Tesla Inc. Common Stock,393.45,1477689557045.0,73713704,Industrials
+LLY,Eli Lilly and Company Common Stock,1213.91,1143189310157.0,3296223,Health Care
+BRK/B,Berkshire Hathaway Inc.,507.78,1120320787966.0,4386444,Uncategorized
+BRK/A,Berkshire Hathaway Inc.,761579.98,1120188191503.0,203,Uncategorized
+MU,Micron Technology Inc. Common Stock,975.56,1101790782390.0,61314714,Technology
+JPM,JP Morgan Chase & Co. Common Stock,334.47,896216183978.0,8413891,Finance
+WMT,Walmart Inc. Common Stock,111.84,890031572695.0,29512218,Consumer Discretionary
+AMD,Advanced Micro Devices Inc. Common Stock,517.82,844357622887.0,28141810,Technology
+V,Visa Inc.,362.13,686043681268.0,9814650,Consumer Discretionary
+JNJ,Johnson & Johnson Common Stock,263.04,633194352052.0,7998685,Health Care
+GOOGM,Alphabet Inc. Depositary Shares representing a 1/20th Interest in a Share of Series A Mandatory Convertible Preferred Stock,50.87,616340920000.0,3190631,Technology
+GOOGN,Alphabet Inc. Depositary Shares representing a 1/20th Interest in a Share of Series B Mandatory Convertible Preferred Stock,50.42,610888720000.0,7833546,Technology
+INTC,Intel Corporation Common Stock,120.35,604879100000.0,124574640,Technology
+XOM,ExxonMobil Holdings Corporation Common Stock,137.09,568230806439.0,13703298,Energy
+AMAT,Applied Materials Inc. Common Stock,603.04,478789294667.0,15071544,Technology
+MA,Mastercard Incorporated Common Stock,539.39,476596295548.0,3900126,Consumer Discretionary
+ABBV,AbbVie Inc. Common Stock,261.07,461256601778.0,7112752,Health Care
+CSCO,Cisco Systems Inc. Common Stock (DE),112.69,444160272399.0,24251045,Telecommunications
+CAT,Caterpillar Inc. Common Stock,963.53,443837593662.0,3568283,Industrials
+LRCX,Lam Research Corporation Common Stock,351.41,439463155110.0,18951612,Technology
+COST,Costco Wholesale Corporation Common Stock,951.67,422045473403.0,2785913,Consumer Discretionary
+BAC,Bank of America Corporation Common Stock,58.73,416782768933.0,29329571,Finance
+ORCL,Oracle Corporation Common Stock,140.27,404043667170.0,44164434,Technology
+GE,GE Aerospace Common Stock,377.52,393880672957.0,3274693,Technology
+UNH,UnitedHealth Group Incorporated Common Stock (DE),425.36,386288303685.0,3928153,Health Care
+KO,Coca-Cola Company (The) Common Stock,84.14,362151423071.0,18307004,Consumer Staples
+HD,Home Depot Inc. (The) Common Stock,357.9,356868060488.0,3110507,Consumer Discretionary
+PG,Procter & Gamble Company (The) Common Stock,151.41,352573171259.0,9255922,Consumer Discretionary
+MS,Morgan Stanley Common Stock,213.93,337428540901.0,3745314,Finance
+CVX,Chevron Corporation Common Stock,169.2,336978336254.0,9561809,Energy
+NFLX,Netflix Inc. Common Stock,77.65,326968505699.0,55456574,Consumer Discretionary
+MRK,Merck & Company Inc. Common Stock (new),129.56,319990451207.0,7832205,Health Care
+PLTR,Palantir Technologies Inc. Class A Common Stock,129.3,309972438626.0,60649208,Technology
+KLAC,KLA Corporation Common Stock,235.55,307693125716.0,23622548,Technology
+GS,Goldman Sachs Group Inc. (The) Common Stock,1021.0,301202576841.0,1543485,Finance
+GEV,GE Vernova Inc. Common Stock,1113.11,299114913634.0,2360386,Uncategorized
+PM,Philip Morris International Inc Common Stock,182.27,284078520860.0,4928485,Health Care
+PANW,Palo Alto Networks Inc. Common Stock,348.06,283668900000.0,7697690,Technology
+IBM,International Business Machines Corporation Common Stock,289.52,272115586266.0,5943853,Technology
+RTX,RTX Corporation Common Stock,199.25,268326673029.0,5192400,Industrials
+TXN,Texas Instruments Incorporated Common Stock,293.08,266729995186.0,9765990,Technology
+WFC,Wells Fargo & Company Common Stock,85.51,261676803632.0,10781951,Finance
+SNDK,Sandisk Corporation Common Stock,1745.0,258416627710.0,17265981,Technology
+DELL,Dell Technologies Inc. Class C Common Stock ,394.32,255561943011.0,6611908,Technology
+LIN,Linde plc Ordinary Shares,546.64,252875411999.0,2275620,Basic Materials
+AXP,American Express Company Common Stock,351.96,240151614878.0,2440292,Finance
+C,Citigroup Inc. Common Stock,139.97,238729606391.0,9499682,Finance
+CCZ,Comcast Holdings ZONES,66.5,237659127755.0,13,Telecommunications
+MRVL,Marvell Technology Inc. Common Stock,245.29,214579692000.0,38434171,Technology
+APH,Amphenol Corporation Common Stock,164.59,202484287303.0,8303161,Technology
+AMGN,Amgen Inc. Common Stock,374.15,201931850717.0,2487585,Health Care
+ANET,Arista Networks Inc. Common Stock,159.99,201459822854.0,9764541,Telecommunications
+MCD,McDonald's Corporation Common Stock,280.63,199389259211.0,6871622,Consumer Discretionary
+PEP,PepsiCo Inc. Common Stock,144.22,197115326389.0,13040216,Consumer Staples
+TMO,Thermo Fisher Scientific Inc Common Stock,523.44,194521539640.0,2321754,Industrials
+TMUS,T-Mobile US Inc. Common Stock,177.52,192112981362.0,7221340,Telecommunications
+WDC,Western Digital Corporation Common Stock,539.0,185783668609.0,8925709,Technology
+QCOM,QUALCOMM Incorporated Common Stock,176.25,185767500000.0,18661209,Technology
+NEE,NextEra Energy Inc. Common Stock,88.34,184219064223.0,14281840,Technology
+ADI,Analog Devices Inc. Common Stock,377.16,183709748006.0,6144056,Technology
+BA,Boeing Company (The) Common Stock,226.49,178542594948.0,6050709,Industrials
+VZ,Verizon Communications Inc. Common Stock,42.56,177711787210.0,59018834,Telecommunications
+APP,Applovin Corporation Class A Common Stock,527.06,177060536400.0,5996971,Technology
+DIS,Walt Disney Company (The) Common Stock,99.5,172782886688.0,11297782,Consumer Discretionary
+TJX,TJX Companies Inc. (The) Common Stock,154.26,170411707840.0,4918847,Consumer Discretionary
+GLW,Corning Incorporated Common Stock,196.79,169364917582.0,21142030,Industrials
+SCHW,Charles Schwab Corporation (The) Common Stock,97.0,168696144179.0,8892798,Finance
+DE,Deere & Company Common Stock,621.27,167704024030.0,1288830,Industrials
+UNP,Union Pacific Corporation Common Stock,282.25,167575554369.0,2272516,Industrials
+WELL,Welltower Inc. Common Stock,236.06,166638165067.0,4131889,Real Estate
+ABT,Abbott Laboratories Common Stock,95.4,166168905727.0,10643861,Health Care
+GILD,Gilead Sciences Inc. Common Stock,131.27,162980877360.0,8088419,Health Care
+IBKR,Interactive Brokers Group Inc. Class A Common Stock,91.33,154927987257.0,6588260,Finance
+BLK,BlackRock Inc. Common Stock,995.73,154571139867.0,634732,Finance
+UBER,Uber Technologies Inc. Common Stock,74.43,151509634538.0,14090234,Consumer Discretionary
+ISRG,Intuitive Surgical Inc. Common Stock,426.01,150876912320.0,3139924,Health Care
+TBB,AT&T Inc. 5.350% Global Notes due 2066,20.61,147369444743.0,210987,Telecommunications
+SCCO,Southern Copper Corporation Common Stock,172.01,143512846317.0,1454519,Basic Materials
+BKNG,Booking Holdings Inc. Common Stock,184.56,143011564148.0,14188420,Consumer Discretionary
+T,AT&T Inc.,20.58,142996813224.0,129299268,Telecommunications
+DHR,Danaher Corporation Common Stock,197.93,140089040202.0,4035353,Industrials
+PFE,Pfizer Inc. Common Stock,24.32,138610482190.0,53096908,Health Care
+CRM,Salesforce Inc. Common Stock,166.11,136044090000.0,10486174,Technology
+PGR,Progressive Corporation (The) Common Stock,232.22,135694613670.0,3107697,Finance
+VRTX,Vertex Pharmaceuticals Incorporated Common Stock,528.04,134019412393.0,1855601,Health Care
+CVS,CVS Health Corporation Common Stock,104.72,133615107589.0,5522619,Consumer Staples
+SPGI,S&P Global Inc. Common Stock,439.89,130207440000.0,3749337,Finance
+PLD,Prologis Inc. Common Stock,139.43,129995887340.0,2906832,Real Estate
+COP,ConocoPhillips Common Stock,104.73,127591931353.0,6933905,Energy
+LOW,Lowe's Companies Inc. Common Stock,227.5,127560851828.0,2332546,Consumer Discretionary
+COF,Capital One Financial Corporation Common Stock,205.12,126357915943.0,2567113,Finance
