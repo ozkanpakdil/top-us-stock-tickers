@@ -1,0 +1,10 @@
+{
+  "name": "top-us-stock-tickers-visualizer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/server.ts",
+    "dev": "bun --watch src/server.ts"
+  }
+}

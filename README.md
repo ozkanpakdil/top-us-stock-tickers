@@ -105,3 +105,32 @@ python update_tickers.py
 - Wikipedia is used only to determine current S&P 500 membership.
 - Symbol normalization is required for some share classes, such as `BRK.B` <-> `BRK/B` and `BF.B` <-> `BF/B`.
 - The GitHub Actions workflow runs the update automatically on weekdays.
+
+
+## added web app to show graphics from the CSVs
+Run it
+
+From the repo root:
+
+```bash
+bun install
+bun run dev
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
+If you want the server on a different port:
+
+```bash
+PORT=3100 bun run src/server.ts
+```
+
+Then open:
+
+```text
+http://localhost:3100
+```

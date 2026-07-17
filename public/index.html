@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>US Stock Ticker Graph</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #08111d;
+        --panel: #102033;
+        --panel-2: #132740;
+        --accent: #60a5fa;
+        --green: #22c55e;
+        --red: #ef4444;
+        --text: #e5eefc;
+        --muted: #9fb1ca;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, Arial, sans-serif;
+        background: radial-gradient(circle at top, #123056, var(--bg));
+        color: var(--text);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .panel {
+        background: rgba(16, 32, 51, 0.95);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      }
+
+      h1 { margin: 0 0 10px; font-size: 1.5rem; }
+      h2 { margin: 0 0 12px; }
+      .muted { color: var(--muted); font-size: 0.9rem; }
+
+      label {
+        display: block;
+        margin-top: 12px;
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+      }
+
+      select, input, button {
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: var(--panel-2);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+      }
+
+      button {
+        cursor: pointer;
+        transition: 0.18s ease;
+      }
+
+      button:hover { background: #1d385a; }
+      button.active {
+        background: var(--accent);
+        color: #07111a;
+        font-weight: 700;
+      }
+
+      .range-grid, .interval-grid, .indicator-grid, .period-grid {
+        display: grid;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .range-grid { grid-template-columns: repeat(3, 1fr); }
+      .interval-grid, .indicator-grid, .period-grid { grid-template-columns: 1fr; }
+
+      .chart-wrap {
+        width: 100%;
+        min-height: 500px;
+        overflow: auto;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+        border: 1px solid rgba(255,255,255,0.08);
+        padding: 12px;
+      }
+
+      svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .indicator-table {
+        width: 100%;
+        margin-top: 16px;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        overflow: hidden;
+      }
+
+      .indicator-table th,
+      .indicator-table td {
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        text-align: left;
+      }
+
+      .indicator-table th {
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .indicator-table tr:hover {
+        background: rgba(255,255,255,0.03);
+      }
+
+      .legend {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 4px;
+        color: var(--muted);
+      }
+
+      .tooltip {
+        position: absolute;
+        pointer-events: none;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(7, 17, 26, 0.92);
+        color: var(--text);
+        font-size: 0.82rem;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.24);
+        display: none;
+        min-width: 180px;
+      }
+
+      .dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      @media (max-width: 900px) {
+        .layout { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="panel">
+        <h2>Stock picker</h2>
+        <label for="tickerSearch">Search</label>
+        <input id="tickerSearch" placeholder="Type a symbol or company" />
+
+        <label for="tickerSelect">Ticker</label>
+        <select id="tickerSelect" size="16"></select>
+
+        <label>History range</label>
+        <div class="range-grid" id="rangeGrid">
+          <button data-range="10d">10d</button>
+          <button data-range="1mo">1m</button>
+          <button data-range="3mo">3m</button>
+          <button data-range="6mo">6m</button>
+          <button data-range="1y">1y</button>
+          <button data-range="2y">2y</button>
+        </div>
+
+        <label for="intervalSelect">Time step</label>
+        <div class="interval-grid">
+          <select id="intervalSelect">
+            <option value="1d">1 day</option>
+            <option value="1wk">1 week</option>
+            <option value="1mo">1 month</option>
+          </select>
+        </div>
+
+        <label for="indicatorSelect">Indicator</label>
+        <div class="indicator-grid">
+          <select id="indicatorSelect">
+            <option value="none">None</option>
+            <option value="rsi">RSI</option>
+            <option value="hrsi">HRSI</option>
+            <option value="mfi">MFI</option>
+            <option value="rsi+hrsi">RSI + HRSI</option>
+            <option value="rsi+mfi">RSI + MFI</option>
+            <option value="all">All indicators</option>
+          </select>
+        </div>
+
+        <label for="rsiPeriodSelect">RSI period</label>
+        <div class="period-grid">
+          <select id="rsiPeriodSelect">
+            <option value="6">6d</option>
+            <option value="14" selected>14d</option>
+            <option value="21">21d</option>
+          </select>
+        </div>
+
+        <label for="mfiPeriodSelect">MFI period</label>
+        <div class="period-grid">
+          <select id="mfiPeriodSelect">
+            <option value="14" selected>14d</option>
+          </select>
+        </div>
+      </aside>
+
+      <main class="panel">
+        <h1>Stock history chart</h1>
+        <div class="muted" id="tickerMeta">Loading tickers…</div>
+        <div class="legend">
+          <span class="dot" style="background: var(--green)"></span>Up
+          <span class="dot" style="background: var(--red)"></span>Down
+          <span class="dot" style="background: #60a5fa"></span>RSI / HRSI / MFI
+        </div>
+        <div class="chart-wrap" id="chartWrap" style="position: relative;">
+          <div class="tooltip" id="hoverTooltip"></div>
+          <svg id="chart" viewBox="0 0 900 620" role="img" aria-label="Stock history chart"></svg>
+        </div>
+
+        <table class="indicator-table" id="indicatorTable">
+          <thead>
+            <tr>
+              <th>Indicator</th>
+              <th>Period</th>
+              <th>Last value</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </main>
+    </div>
+
+    <script>
+      const chartSvg = document.getElementById('chart');
+      const tickerSelect = document.getElementById('tickerSelect');
+      const tickerSearch = document.getElementById('tickerSearch');
+      const tickerMeta = document.getElementById('tickerMeta');
+      const intervalSelect = document.getElementById('intervalSelect');
+      const indicatorSelect = document.getElementById('indicatorSelect');
+      const rsiPeriodSelect = document.getElementById('rsiPeriodSelect');
+      const mfiPeriodSelect = document.getElementById('mfiPeriodSelect');
+      const hoverTooltip = document.getElementById('hoverTooltip');
+      const chartWrap = document.getElementById('chartWrap');
+      const indicatorTableBody = document.querySelector('#indicatorTable tbody');
+      const rangeButtons = Array.from(document.querySelectorAll('[data-range]'));
+
+      let currentSymbol = 'AAPL';
+      let currentRange = '10d';
+      let tickerList = [];
+
+      function buildOptions(filterText = '') {
+        const normalized = filterText.trim().toLowerCase();
+        const filtered = tickerList.filter((ticker) => {
+          const haystack = `${ticker.symbol} ${ticker.name} ${ticker.industry}`.toLowerCase();
+          return haystack.includes(normalized);
+        });
+
+        tickerSelect.innerHTML = '';
+
+        filtered.slice(0, 250).forEach((ticker) => {
+          const option = document.createElement('option');
+          option.value = ticker.symbol;
+          option.textContent = `${ticker.symbol} — ${ticker.name || ticker.industry || 'Stock'}`;
+          tickerSelect.appendChild(option);
+        });
+
+        if (filtered.length === 0) {
+          const fallback = document.createElement('option');
+          fallback.textContent = 'No matching tickers';
+          tickerSelect.appendChild(fallback);
+        }
+
+        if (!filtered.some((ticker) => ticker.symbol === currentSymbol)) {
+          currentSymbol = filtered[0]?.symbol || 'AAPL';
+        }
+
+        tickerSelect.value = currentSymbol;
+      }
+
+      async function fetchTickers() {
+        const response = await fetch('/api/tickers');
+        const payload = await response.json();
+        tickerList = payload.tickers || [];
+        buildOptions();
+        tickerSelect.value = currentSymbol;
+        await loadHistory();
+      }
+
+      async function loadHistory() {
+        currentSymbol = tickerSelect.value || currentSymbol;
+        const response = await fetch(`/api/history?symbol=${currentSymbol}&range=${currentRange}&interval=${intervalSelect.value}`);
+        const payload = await response.json();
+
+        if (!response.ok || payload.error) {
+          renderPlaceholder(payload.error || 'Unable to load chart data');
+          return;
+        }
+
+        const points = payload.points || [];
+        if (!points.length) {
+          renderPlaceholder('No chart points returned for this time window.');
+          return;
+        }
+
+        const ticker = tickerList.find((item) => item.symbol === currentSymbol);
+        const indicatorText = formatIndicatorSummary(points);
+        tickerMeta.textContent = `${currentSymbol} — ${ticker?.name || ''} • ${currentRange} • ${intervalSelect.options[intervalSelect.selectedIndex].text}${indicatorText}`;
+        renderChart(points);
+        renderIndicatorTable(points);
+      }
+
+      function renderPlaceholder(message) {
+        chartSvg.innerHTML = '';
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', '50%');
+        text.setAttribute('y', '50%');
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('fill', '#9fb1ca');
+        text.setAttribute('font-size', '18');
+        text.textContent = message;
+        chartSvg.appendChild(text);
+      }
+
+      function renderChart(points) {
+        const width = 900;
+        const height = 620;
+        const pricePadding = { top: 24, right: 14, bottom: 34, left: 56 };
+        const indicatorPadding = { top: 360, right: 14, bottom: 30, left: 56 };
+        const priceInnerWidth = width - pricePadding.left - pricePadding.right;
+        const priceInnerHeight = 270;
+        const indicatorInnerWidth = width - indicatorPadding.left - indicatorPadding.right;
+        const indicatorInnerHeight = 120;
+        const values = points.map((item) => Number(item.close));
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+        const domain = max - min || 1;
+        const yScale = (value) => pricePadding.top + priceInnerHeight - ((value - min) / domain) * priceInnerHeight;
+        const indicatorMode = indicatorSelect.value;
+        const rsiPeriod = Number(rsiPeriodSelect.value || 14);
+        const mfiPeriod = Number(mfiPeriodSelect.value || 14);
+        const indicatorSeries = computeIndicatorSeries(points, indicatorMode, rsiPeriod, mfiPeriod);
+
+        chartSvg.innerHTML = '';
+        hoverTooltip.style.display = 'none';
+
+        [0, 0.25, 0.5, 0.75, 1].forEach((ratio) => {
+          const y = pricePadding.top + priceInnerHeight * ratio;
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', pricePadding.left);
+          line.setAttribute('x2', width - pricePadding.right);
+          line.setAttribute('y1', y);
+          line.setAttribute('y2', y);
+          line.setAttribute('stroke', 'rgba(255,255,255,0.1)');
+          line.setAttribute('stroke-width', '1');
+          chartSvg.appendChild(line);
+
+          const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          label.setAttribute('x', 10);
+          label.setAttribute('y', y + 4);
+          label.setAttribute('font-size', '11');
+          label.setAttribute('fill', '#9fb1ca');
+          label.textContent = `$${(max - (domain * ratio)).toFixed(2)}`;
+          chartSvg.appendChild(label);
+        });
+
+        const xStep = points.length > 1 ? priceInnerWidth / (points.length - 1) : priceInnerWidth;
+
+        points.forEach((point, index) => {
+          const currentClose = Number(point.close);
+          const prevClose = Number(points[index - 1]?.close);
+          const color = index === 0 || currentClose >= prevClose ? '#22c55e' : '#ef4444';
+          const x = pricePadding.left + index * xStep;
+          const barHeight = Math.max(4, (Math.abs(currentClose - min) / domain) * priceInnerHeight * 0.32);
+          const y = yScale(currentClose);
+
+          const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          rect.setAttribute('x', x - 3);
+          rect.setAttribute('y', y);
+          rect.setAttribute('width', 6);
+          rect.setAttribute('height', barHeight);
+          rect.setAttribute('fill', color);
+          rect.setAttribute('rx', '2');
+          rect.style.cursor = 'crosshair';
+          rect.addEventListener('mousemove', (event) => showTooltip(event, point, points, indicatorSeries));
+          rect.addEventListener('mouseleave', hideTooltip);
+          chartSvg.appendChild(rect);
+        });
+
+        const pricePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const priceD = points.map((point, index) => {
+          const x = pricePadding.left + index * xStep;
+          const y = yScale(Number(point.close));
+          return `${index === 0 ? 'M' : 'L'} ${x} ${y}`;
+        }).join(' ');
+        pricePath.setAttribute('d', priceD);
+        pricePath.setAttribute('fill', 'none');
+        pricePath.setAttribute('stroke', '#60a5fa');
+        pricePath.setAttribute('stroke-width', '2');
+        chartSvg.appendChild(pricePath);
+
+        const baseline = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        baseline.setAttribute('x1', pricePadding.left);
+        baseline.setAttribute('x2', width - pricePadding.right);
+        baseline.setAttribute('y1', pricePadding.top + priceInnerHeight);
+        baseline.setAttribute('y2', pricePadding.top + priceInnerHeight);
+        baseline.setAttribute('stroke', 'rgba(255,255,255,0.18)');
+        baseline.setAttribute('stroke-width', '1');
+        chartSvg.appendChild(baseline);
+
+        chartSvg.onmousemove = (event) => {
+          const rect = chartSvg.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const index = Math.max(0, Math.min(points.length - 1, Math.round((x - pricePadding.left) / xStep)));
+          const point = points[index];
+          if (point) {
+            showTooltip(event, point, points, indicatorSeries, index);
+          }
+        };
+        chartSvg.onmouseleave = hideTooltip;
+
+        if (indicatorSeries.length) {
+          const indicatorY = (value) => indicatorPadding.top + indicatorInnerHeight - (value / 100) * indicatorInnerHeight;
+          const indicatorXStep = points.length > 1 ? indicatorInnerWidth / (points.length - 1) : indicatorInnerWidth;
+
+          [30, 50, 70].forEach((threshold) => {
+            const y = indicatorY(threshold);
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', indicatorPadding.left);
+            line.setAttribute('x2', width - indicatorPadding.right);
+            line.setAttribute('y1', y);
+            line.setAttribute('y2', y);
+            line.setAttribute('stroke', 'rgba(255,255,255,0.08)');
+            line.setAttribute('stroke-width', '1');
+            chartSvg.appendChild(line);
+          });
+
+          const rsiLegend = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          rsiLegend.setAttribute('x', indicatorPadding.left);
+          rsiLegend.setAttribute('y', indicatorPadding.top - 8);
+          rsiLegend.setAttribute('font-size', '11');
+          rsiLegend.setAttribute('fill', '#9fb1ca');
+          rsiLegend.textContent = indicatorMode === 'all' ? 'RSI / HRSI / MFI (0-100)' : `${indicatorMode.toUpperCase().replace('+', ' + ')} (0-100)`;
+          chartSvg.appendChild(rsiLegend);
+
+          indicatorSeries.forEach((series, seriesIndex) => {
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            const pathData = series.values.map((value, index) => {
+              const x = indicatorPadding.left + index * indicatorXStep;
+              const y = indicatorY(value);
+              return `${index === 0 ? 'M' : 'L'} ${x} ${y}`;
+            }).join(' ');
+            path.setAttribute('d', pathData);
+            path.setAttribute('fill', 'none');
+            path.setAttribute('stroke', seriesIndex === 0 ? '#60a5fa' : seriesIndex === 1 ? '#f59e0b' : '#34d399');
+            path.setAttribute('stroke-width', seriesIndex === 0 ? '2' : '1.5');
+            path.setAttribute('stroke-dasharray', seriesIndex === 1 ? '7 4' : '');
+            chartSvg.appendChild(path);
+
+            const lastValue = Number(series.values.at(-1) ?? 0);
+            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            label.setAttribute('x', width - 120);
+            label.setAttribute('y', indicatorPadding.top + 16 + seriesIndex * 16);
+            label.setAttribute('font-size', '11');
+            label.setAttribute('fill', '#e5eefc');
+            label.textContent = `${series.name} ${lastValue.toFixed(1)}`;
+            chartSvg.appendChild(label);
+          });
+        }
+      }
+
+      function computeIndicatorSeries(points, mode, rsiPeriod = 14, mfiPeriod = 14) {
+        const closes = points.map((point) => Number(point.close));
+        const highs = points.map((point) => Number(point.high));
+        const lows = points.map((point) => Number(point.low));
+        const volumes = points.map((point) => Number(point.volume));
+        if (!closes.length) {
+          return [];
+        }
+
+        const rsiSeries = computeRsi(closes, rsiPeriod);
+        const hrsiSeries = computeHullRsi(closes, 14);
+        const mfiSeries = computeMfi(closes, highs, lows, volumes, mfiPeriod);
+        if (mode === 'none') {
+          return [];
+        }
+
+        if (mode === 'rsi') {
+          return [{ name: 'RSI', period: rsiPeriod, values: rsiSeries }];
+        }
+
+        if (mode === 'hrsi') {
+          return [{ name: 'HRSI', period: 14, values: hrsiSeries }];
+        }
+
+        if (mode === 'mfi') {
+          return [{ name: 'MFI', period: mfiPeriod, values: mfiSeries }];
+        }
+
+        if (mode === 'rsi+hrsi') {
+          return [
+            { name: 'RSI', period: rsiPeriod, values: rsiSeries },
+            { name: 'HRSI', period: 14, values: hrsiSeries },
+          ];
+        }
+
+        if (mode === 'rsi+mfi') {
+          return [
+            { name: 'RSI', period: rsiPeriod, values: rsiSeries },
+            { name: 'MFI', period: mfiPeriod, values: mfiSeries },
+          ];
+        }
+
+        return [
+          { name: 'RSI', period: rsiPeriod, values: rsiSeries },
+          { name: 'HRSI', period: 14, values: hrsiSeries },
+          { name: 'MFI', period: mfiPeriod, values: mfiSeries },
+        ];
+      }
+
+      function computeRsi(closes, period = 14) {
+        const values = new Array(closes.length).fill(50);
+        if (closes.length <= period) {
+          return values;
+        }
+
+        let avgGain = 0;
+        let avgLoss = 0;
+
+        for (let i = 1; i <= period; i += 1) {
+          const delta = closes[i] - closes[i - 1];
+          if (delta >= 0) avgGain += delta;
+          else avgLoss += Math.abs(delta);
+        }
+
+        avgGain /= period;
+        avgLoss /= period;
+
+        for (let i = period + 1; i < closes.length; i += 1) {
+          const delta = closes[i] - closes[i - 1];
+          const gain = delta > 0 ? delta : 0;
+          const loss = delta < 0 ? Math.abs(delta) : 0;
+          avgGain = (avgGain * (period - 1) + gain) / period;
+          avgLoss = (avgLoss * (period - 1) + loss) / period;
+          const rs = avgLoss === 0 ? 100 : avgGain / avgLoss;
+          values[i] = Math.max(0, Math.min(100, 100 - 100 / (1 + rs)));
+        }
+
+        return values;
+      }
+
+      function computeHullRsi(closes, period = 14) {
+        const hma = computeHullMovingAverage(closes, period);
+        return computeRsi(hma, period);
+      }
+
+      function computeMfi(closes, highs, lows, volumes, period = 14) {
+        const values = new Array(closes.length).fill(50);
+        if (closes.length <= period || highs.length !== closes.length || lows.length !== closes.length || volumes.length !== closes.length) {
+          return values;
+        }
+
+        const typicalPrice = closes.map((close, index) => (close + (highs[index] || close) + (lows[index] || close)) / 3);
+        const rawMoneyFlow = typicalPrice.map((price, index) => price * (volumes[index] || 0));
+
+        for (let i = period; i < closes.length; i += 1) {
+          let positiveFlow = 0;
+          let negativeFlow = 0;
+
+          for (let j = i - period + 1; j <= i; j += 1) {
+            const delta = typicalPrice[j] - typicalPrice[j - 1];
+            if (delta >= 0) positiveFlow += rawMoneyFlow[j];
+            else negativeFlow += rawMoneyFlow[j];
+          }
+
+          const moneyFlowRatio = negativeFlow === 0 ? 100 : positiveFlow / negativeFlow;
+          values[i] = Math.max(0, Math.min(100, 100 - 100 / (1 + moneyFlowRatio)));
+        }
+
+        return values;
+      }
+
+      function computeHullMovingAverage(closes, period) {
+        const half = Math.max(1, Math.floor(period / 2));
+        const sqrtPeriod = Math.max(1, Math.round(Math.sqrt(period)));
+        const first = computeWma(closes, half);
+        const second = computeWma(closes, period);
+        const hull = closes.map((_, index) => (2 * first[index] - second[index]));
+        return computeWma(hull, sqrtPeriod);
+      }
+
+      function computeWma(values, period) {
+        const result = new Array(values.length).fill(0);
+        if (period <= 0 || values.length === 0) {
+          return result;
+        }
+
+        for (let i = 0; i < values.length; i += 1) {
+          const start = Math.max(0, i - period + 1);
+          const slice = values.slice(start, i + 1);
+          const denominator = slice.length * (slice.length + 1) / 2;
+          const numerator = slice.reduce((sum, value, offset) => sum + value * (slice.length - offset), 0);
+          result[i] = numerator / denominator;
+        }
+
+        return result;
+      }
+
+      function formatIndicatorSummary(points) {
+        const mode = indicatorSelect.value;
+        const indicatorSeries = computeIndicatorSeries(points, mode, Number(rsiPeriodSelect.value || 14), Number(mfiPeriodSelect.value || 14));
+        if (!indicatorSeries.length) {
+          return '';
+        }
+
+        const lastValues = indicatorSeries.map((series) => {
+          const value = Number(series.values.at(-1) ?? 0);
+          return `${series.name}(${series.period}d): ${value.toFixed(1)}`;
+        }).join(' • ');
+
+        return ` • ${lastValues}`;
+      }
+
+      function showTooltip(event, point, points, indicatorSeries, index = -1) {
+        const actualIndex = index >= 0 ? index : points.findIndex((item) => item.timestamp === point.timestamp);
+        const indicatorValues = indicatorSeries.map((series) => {
+          const value = Number(series.values[actualIndex] ?? 0);
+          return `${series.name}(${series.period}d): ${value.toFixed(1)}`;
+        }).join('<br />');
+
+        hoverTooltip.innerHTML = `
+          <div><strong>${new Date(point.date).toLocaleDateString()}</strong></div>
+          <div>Close: $${Number(point.close).toFixed(2)}</div>
+          <div>Open: $${Number(point.open).toFixed(2)}</div>
+          <div>High: $${Number(point.high).toFixed(2)}</div>
+          <div>Low: $${Number(point.low).toFixed(2)}</div>
+          <div>${indicatorValues || 'No indicators selected'}</div>
+        `;
+
+        hoverTooltip.style.display = 'block';
+        const wrapRect = chartWrap.getBoundingClientRect();
+        hoverTooltip.style.left = `${Math.min(event.clientX - wrapRect.left + 12, wrapRect.width - 200)}px`;
+        hoverTooltip.style.top = `${Math.max(event.clientY - wrapRect.top - 8, 8)}px`;
+      }
+
+      function hideTooltip() {
+        hoverTooltip.style.display = 'none';
+      }
+
+      function renderIndicatorTable(points) {
+        const rows = [
+          {
+            indicator: 'RSI',
+            period: Number(rsiPeriodSelect.value || 14),
+          },
+          {
+            indicator: 'HRSI',
+            period: 14,
+          },
+          {
+            indicator: 'MFI',
+            period: Number(mfiPeriodSelect.value || 14),
+          },
+        ];
+
+        indicatorTableBody.innerHTML = '';
+
+        rows.forEach((row) => {
+          const value = getIndicatorValue(points, row.indicator, row.period);
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${row.indicator}</td>
+            <td>${row.period}d</td>
+            <td>${value.toFixed(1)}</td>
+            <td>${getIndicatorState(row.indicator, value)}</td>
+          `;
+          indicatorTableBody.appendChild(tr);
+        });
+      }
+
+      function getIndicatorValue(points, indicator, period) {
+        const closes = points.map((point) => Number(point.close));
+        const highs = points.map((point) => Number(point.high));
+        const lows = points.map((point) => Number(point.low));
+        const volumes = points.map((point) => Number(point.volume));
+
+        if (indicator === 'RSI') {
+          const series = computeRsi(closes, period);
+          return Number(series.at(-1) ?? 50);
+        }
+
+        if (indicator === 'HRSI') {
+          const series = computeHullRsi(closes, 14);
+          return Number(series.at(-1) ?? 50);
+        }
+
+        if (indicator === 'MFI') {
+          const series = computeMfi(closes, highs, lows, volumes, period);
+          return Number(series.at(-1) ?? 50);
+        }
+
+        return 50;
+      }
+
+      function getIndicatorState(indicator, value) {
+        if (indicator === 'MFI' || indicator === 'RSI') {
+          if (value < 30) return 'Oversold';
+          if (value > 70) return 'Overbought';
+          return 'Neutral';
+        }
+
+        if (value < 35) return 'Weak';
+        if (value > 65) return 'Strong';
+        return 'Balanced';
+      }
+
+      tickerSelect.addEventListener('change', () => {
+        currentSymbol = tickerSelect.value;
+        loadHistory();
+      });
+
+      tickerSearch.addEventListener('input', (event) => {
+        buildOptions(event.target.value);
+        if (tickerSelect.value) {
+          currentSymbol = tickerSelect.value;
+          loadHistory();
+        }
+      });
+
+      rangeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          currentRange = button.dataset.range;
+          rangeButtons.forEach((item) => item.classList.remove('active'));
+          button.classList.add('active');
+          loadHistory();
+        });
+      });
+
+      intervalSelect.addEventListener('change', loadHistory);
+      indicatorSelect.addEventListener('change', loadHistory);
+      rsiPeriodSelect.addEventListener('change', loadHistory);
+      mfiPeriodSelect.addEventListener('change', loadHistory);
+
+      rangeButtons[0].classList.add('active');
+      fetchTickers();
+    </script>
+  </body>
+</html>
