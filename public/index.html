@@ -175,8 +175,63 @@
         display: inline-block;
       }
 
+      .hover-line {
+        stroke: rgba(125, 211, 252, 0.55);
+        stroke-width: 1.2;
+        stroke-dasharray: 4 4;
+      }
+
+      .hover-point {
+        fill: #07111b;
+        stroke-width: 2.5;
+      }
+
+      .axis-tick {
+        stroke: rgba(255,255,255,0.18);
+        stroke-width: 1;
+      }
+
+      .axis-label {
+        font-size: 10px;
+        fill: #9fb1ca;
+      }
+
+      .indicator-guide {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(16, 27, 43, 0.98), rgba(11, 20, 32, 0.98));
+        border: 1px solid var(--border);
+      }
+
+      .indicator-guide h3 {
+        margin: 0 0 10px;
+        font-size: 0.95rem;
+        color: var(--text);
+      }
+
+      .indicator-guide dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 8px 12px;
+        font-size: 0.84rem;
+      }
+
+      .indicator-guide dt {
+        color: var(--accent-strong);
+        font-weight: 700;
+      }
+
+      .indicator-guide dd {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
       @media (max-width: 960px) {
         .layout { grid-template-columns: 1fr; }
+        .indicator-guide dl { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -225,8 +280,10 @@
             <option value="rsi">RSI</option>
             <option value="hrsi">HRSI</option>
             <option value="mfi">MFI</option>
+            <option value="stoch">Stochastic %K</option>
             <option value="rsi+hrsi">RSI + HRSI</option>
             <option value="rsi+mfi">RSI + MFI</option>
+            <option value="rsi+stoch">RSI + Stoch</option>
             <option value="all">All indicators</option>
           </select>
         </div>
@@ -246,6 +303,15 @@
             <option value="14" selected>14d</option>
           </select>
         </div>
+
+        <label for="stochPeriodSelect">Stochastic period</label>
+        <div class="period-grid">
+          <select id="stochPeriodSelect">
+            <option value="10">10d</option>
+            <option value="14" selected>14d</option>
+            <option value="21">21d</option>
+          </select>
+        </div>
       </aside>
 
       <main class="panel">
@@ -254,11 +320,11 @@
         <div class="legend">
           <span class="dot" style="background: var(--green)"></span>Up
           <span class="dot" style="background: var(--red)"></span>Down
-          <span class="dot" style="background: #60a5fa"></span>RSI / HRSI / MFI
+          <span class="dot" style="background: #60a5fa"></span>RSI / HRSI / MFI / Stoch
         </div>
         <div class="chart-wrap" id="chartWrap" style="position: relative;">
           <div class="tooltip" id="hoverTooltip"></div>
-          <svg id="chart" viewBox="0 0 900 620" role="img" aria-label="Stock history chart"></svg>
+          <svg id="chart" viewBox="0 0 960 560" role="img" aria-label="Stock history chart"></svg>
         </div>
 
         <table class="indicator-table" id="indicatorTable">
@@ -266,12 +332,31 @@
             <tr>
               <th>Indicator</th>
               <th>Period</th>
-              <th>Last value</th>
+              <th>Last</th>
+              <th>Min</th>
+              <th>Max</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
+
+        <div class="indicator-guide">
+          <h3>Indicator guide</h3>
+          <dl>
+            <dt>RSI</dt>
+            <dd>Measures the speed and size of recent price moves to flag overbought (&gt;70) or oversold (&lt;30) conditions.</dd>
+            <dt>HRSI</dt>
+            <dd>A faster, less lagging version of RSI built on the Hull Moving Average; readings below 35 suggest weak momentum and above 65 strong momentum.</dd>
+            <dt>MFI</dt>
+            <dd>Combines price and volume to gauge buying or selling pressure; high values mean heavy buying, low values mean heavy selling.</dd>
+            <dt>Stoch %K</dt>
+            <dd>Compares the latest close to the recent high-low range to show where momentum is heading and when a reversal may be near.</dd>
+          </dl>
+          <p class="muted" style="margin-top:12px;margin-bottom:0;font-size:0.8rem;">
+            Status: <strong>Oversold</strong> / <strong>Overbought</strong> = extreme levels for RSI, MFI and Stoch; <strong>Weak</strong> / <strong>Strong</strong> = momentum strength for HRSI.
+          </p>
+        </div>
       </main>
     </div>
 
@@ -284,6 +369,7 @@
       const indicatorSelect = document.getElementById('indicatorSelect');
       const rsiPeriodSelect = document.getElementById('rsiPeriodSelect');
       const mfiPeriodSelect = document.getElementById('mfiPeriodSelect');
+      const stochPeriodSelect = document.getElementById('stochPeriodSelect');
       const startDateInput = document.getElementById('startDate');
       const endDateInput = document.getElementById('endDate');
       const applyCustomRangeButton = document.getElementById('applyCustomRange');
@@ -419,7 +505,12 @@
         const indicatorMode = indicatorSelect.value;
         const rsiPeriod = Number(rsiPeriodSelect.value || 14);
         const mfiPeriod = Number(mfiPeriodSelect.value || 14);
-        const indicatorSeries = computeIndicatorSeries(points, indicatorMode, rsiPeriod, mfiPeriod);
+        const stochPeriod = Number(stochPeriodSelect.value || 14);
+        const indicatorSeries = computeIndicatorSeries(points, indicatorMode, rsiPeriod, mfiPeriod, stochPeriod);
+        const indicatorColor = (index) => {
+          const colors = ['#60a5fa', '#f59e0b', '#34d399', '#a78bfa'];
+          return colors[index % colors.length];
+        };
 
         chartSvg.innerHTML = '';
         hoverTooltip.style.display = 'none';
@@ -462,8 +553,6 @@
           rect.setAttribute('fill', color);
           rect.setAttribute('rx', '2');
           rect.style.cursor = 'crosshair';
-          rect.addEventListener('mousemove', (event) => showTooltip(event, point, points, indicatorSeries));
-          rect.addEventListener('mouseleave', hideTooltip);
           chartSvg.appendChild(rect);
         });
 
@@ -489,16 +578,68 @@
         baseline.setAttribute('stroke-width', '1');
         chartSvg.appendChild(baseline);
 
+        const axisY = pricePadding.top + priceInnerHeight;
+        const labelCount = Math.min(points.length, 6);
+        for (let i = 0; i < labelCount; i += 1) {
+          const index = labelCount > 1 ? Math.round((i / (labelCount - 1)) * (points.length - 1)) : 0;
+          const x = pricePadding.left + index * xStep;
+          const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          tick.setAttribute('x1', x);
+          tick.setAttribute('x2', x);
+          tick.setAttribute('y1', axisY);
+          tick.setAttribute('y2', axisY + 5);
+          tick.setAttribute('class', 'axis-tick');
+          chartSvg.appendChild(tick);
+
+          const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          label.setAttribute('x', x);
+          label.setAttribute('y', axisY + 18);
+          label.setAttribute('text-anchor', i === 0 ? 'start' : i === labelCount - 1 ? 'end' : 'middle');
+          label.setAttribute('class', 'axis-label');
+          label.textContent = formatAxisDate(points[index].date);
+          chartSvg.appendChild(label);
+        }
+
+        const hoverGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        hoverGroup.setAttribute('id', 'hoverMarker');
+        hoverGroup.style.display = 'none';
+
+        const hoverLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        hoverLine.setAttribute('class', 'hover-line');
+        hoverLine.setAttribute('y1', pricePadding.top);
+        hoverLine.setAttribute('y2', indicatorSeries.length ? indicatorPadding.top + indicatorInnerHeight : axisY);
+        hoverGroup.appendChild(hoverLine);
+
+        const priceHoverPoint = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        priceHoverPoint.setAttribute('r', '5');
+        priceHoverPoint.setAttribute('class', 'hover-point');
+        priceHoverPoint.setAttribute('stroke', '#7dd3fc');
+        hoverGroup.appendChild(priceHoverPoint);
+
+        const indicatorHoverPoints = indicatorSeries.map((_, seriesIndex) => {
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('r', '4');
+          circle.setAttribute('class', 'hover-point');
+          circle.setAttribute('stroke', indicatorColor(seriesIndex));
+          hoverGroup.appendChild(circle);
+          return circle;
+        });
+
         chartSvg.onmousemove = (event) => {
           const rect = chartSvg.getBoundingClientRect();
-          const x = event.clientX - rect.left;
+          const scaleX = width / rect.width;
+          const x = (event.clientX - rect.left) * scaleX;
           const index = Math.max(0, Math.min(points.length - 1, Math.round((x - pricePadding.left) / xStep)));
           const point = points[index];
           if (point) {
             showTooltip(event, point, points, indicatorSeries, index);
+            updateHoverMarker(index, xStep, pricePadding.left, point.close, yScale, indicatorPadding.top, indicatorInnerHeight, indicatorSeries, hoverGroup, hoverLine, priceHoverPoint, indicatorHoverPoints);
           }
         };
-        chartSvg.onmouseleave = hideTooltip;
+        chartSvg.onmouseleave = () => {
+          hideTooltip();
+          hoverGroup.style.display = 'none';
+        };
 
         if (indicatorSeries.length) {
           const indicatorY = (value) => indicatorPadding.top + indicatorInnerHeight - (value / 100) * indicatorInnerHeight;
@@ -521,7 +662,7 @@
           rsiLegend.setAttribute('y', indicatorPadding.top - 8);
           rsiLegend.setAttribute('font-size', '11');
           rsiLegend.setAttribute('fill', '#9fb1ca');
-          rsiLegend.textContent = indicatorMode === 'all' ? 'RSI / HRSI / MFI (0-100)' : `${indicatorMode.toUpperCase().replace('+', ' + ')} (0-100)`;
+          rsiLegend.textContent = indicatorMode === 'all' ? 'RSI / HRSI / MFI / Stoch (0-100)' : `${indicatorMode.toUpperCase().replace('+', ' + ')} (0-100)`;
           chartSvg.appendChild(rsiLegend);
 
           indicatorSeries.forEach((series, seriesIndex) => {
@@ -533,7 +674,7 @@
             }).join(' ');
             path.setAttribute('d', pathData);
             path.setAttribute('fill', 'none');
-            path.setAttribute('stroke', seriesIndex === 0 ? '#60a5fa' : seriesIndex === 1 ? '#f59e0b' : '#34d399');
+            path.setAttribute('stroke', indicatorColor(seriesIndex));
             path.setAttribute('stroke-width', seriesIndex === 0 ? '2' : '1.5');
             path.setAttribute('stroke-dasharray', seriesIndex === 1 ? '7 4' : '');
             chartSvg.appendChild(path);
@@ -546,11 +687,25 @@
             label.setAttribute('fill', '#e5eefc');
             label.textContent = `${series.name} ${lastValue.toFixed(1)}`;
             chartSvg.appendChild(label);
+
+            const minValue = Math.min(...series.values);
+            const minIndex = series.values.indexOf(minValue);
+            const minX = indicatorPadding.left + minIndex * indicatorXStep;
+            const minY = indicatorY(minValue);
+            const minLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            minLabel.setAttribute('x', minX + 6);
+            minLabel.setAttribute('y', minY - 6);
+            minLabel.setAttribute('font-size', '10');
+            minLabel.setAttribute('fill', indicatorColor(seriesIndex));
+            minLabel.textContent = `min ${minValue.toFixed(1)}`;
+            chartSvg.appendChild(minLabel);
           });
         }
+
+        chartSvg.appendChild(hoverGroup);
       }
 
-      function computeIndicatorSeries(points, mode, rsiPeriod = 14, mfiPeriod = 14) {
+      function computeIndicatorSeries(points, mode, rsiPeriod = 14, mfiPeriod = 14, stochPeriod = 14) {
         const closes = points.map((point) => Number(point.close));
         const highs = points.map((point) => Number(point.high));
         const lows = points.map((point) => Number(point.low));
@@ -562,6 +717,7 @@
         const rsiSeries = computeRsi(closes, rsiPeriod);
         const hrsiSeries = computeHullRsi(closes, 14);
         const mfiSeries = computeMfi(closes, highs, lows, volumes, mfiPeriod);
+        const stochSeries = computeStochasticK(closes, highs, lows, stochPeriod);
         if (mode === 'none') {
           return [];
         }
@@ -578,6 +734,10 @@
           return [{ name: 'MFI', period: mfiPeriod, values: mfiSeries }];
         }
 
+        if (mode === 'stoch') {
+          return [{ name: 'Stoch %K', period: stochPeriod, values: stochSeries }];
+        }
+
         if (mode === 'rsi+hrsi') {
           return [
             { name: 'RSI', period: rsiPeriod, values: rsiSeries },
@@ -592,10 +752,18 @@
           ];
         }
 
+        if (mode === 'rsi+stoch') {
+          return [
+            { name: 'RSI', period: rsiPeriod, values: rsiSeries },
+            { name: 'Stoch %K', period: stochPeriod, values: stochSeries },
+          ];
+        }
+
         return [
           { name: 'RSI', period: rsiPeriod, values: rsiSeries },
           { name: 'HRSI', period: 14, values: hrsiSeries },
           { name: 'MFI', period: mfiPeriod, values: mfiSeries },
+          { name: 'Stoch %K', period: stochPeriod, values: stochSeries },
         ];
       }
 
@@ -661,6 +829,24 @@
         return values;
       }
 
+      function computeStochasticK(closes, highs, lows, period = 14) {
+        const values = new Array(closes.length).fill(50);
+        if (closes.length <= period || highs.length !== closes.length || lows.length !== closes.length) {
+          return values;
+        }
+
+        for (let i = period; i < closes.length; i += 1) {
+          const sliceHighs = highs.slice(i - period + 1, i + 1);
+          const sliceLows = lows.slice(i - period + 1, i + 1);
+          const highestHigh = Math.max(...sliceHighs);
+          const lowestLow = Math.min(...sliceLows);
+          const range = highestHigh - lowestLow;
+          values[i] = range === 0 ? 50 : Math.max(0, Math.min(100, ((closes[i] - lowestLow) / range) * 100));
+        }
+
+        return values;
+      }
+
       function computeHullMovingAverage(closes, period) {
         const half = Math.max(1, Math.floor(period / 2));
         const sqrtPeriod = Math.max(1, Math.round(Math.sqrt(period)));
@@ -689,7 +875,7 @@
 
       function formatIndicatorSummary(points) {
         const mode = indicatorSelect.value;
-        const indicatorSeries = computeIndicatorSeries(points, mode, Number(rsiPeriodSelect.value || 14), Number(mfiPeriodSelect.value || 14));
+        const indicatorSeries = computeIndicatorSeries(points, mode, Number(rsiPeriodSelect.value || 14), Number(mfiPeriodSelect.value || 14), Number(stochPeriodSelect.value || 14));
         if (!indicatorSeries.length) {
           return '';
         }
@@ -709,13 +895,21 @@
           return `${series.name}(${series.period}d): ${value.toFixed(1)}`;
         }).join('<br />');
 
+        const pointDate = new Date(point.date);
+        const dateLabel = pointDate.toLocaleDateString(undefined, {
+          weekday: 'short',
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        });
+
         hoverTooltip.innerHTML = `
-          <div><strong>${new Date(point.date).toLocaleDateString()}</strong></div>
+          <div style="margin-bottom:6px;color:#7dd3fc;font-size:0.9rem;"><strong>${dateLabel}</strong></div>
           <div>Close: $${Number(point.close).toFixed(2)}</div>
           <div>Open: $${Number(point.open).toFixed(2)}</div>
           <div>High: $${Number(point.high).toFixed(2)}</div>
           <div>Low: $${Number(point.low).toFixed(2)}</div>
-          <div>${indicatorValues || 'No indicators selected'}</div>
+          <div style="margin-top:6px;border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;">${indicatorValues || 'No indicators selected'}</div>
         `;
 
         hoverTooltip.style.display = 'block';
@@ -728,63 +922,89 @@
         hoverTooltip.style.display = 'none';
       }
 
+      function formatAxisDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+      }
+
+      function updateHoverMarker(index, xStep, priceLeft, close, yScale, indicatorTop, indicatorInnerHeight, indicatorSeries, hoverGroup, hoverLine, priceHoverPoint, indicatorHoverPoints) {
+        const x = priceLeft + index * xStep;
+        hoverLine.setAttribute('x1', x);
+        hoverLine.setAttribute('x2', x);
+        priceHoverPoint.setAttribute('cx', x);
+        priceHoverPoint.setAttribute('cy', yScale(Number(close)));
+
+        if (indicatorSeries.length) {
+          const indicatorY = (value) => indicatorTop + indicatorInnerHeight - (value / 100) * indicatorInnerHeight;
+          indicatorHoverPoints.forEach((circle, seriesIndex) => {
+            const value = Number(indicatorSeries[seriesIndex].values[index] ?? 0);
+            circle.setAttribute('cx', x);
+            circle.setAttribute('cy', indicatorY(value));
+          });
+        }
+
+        hoverGroup.style.display = 'block';
+      }
+
       function renderIndicatorTable(points) {
         const rows = [
-          {
-            indicator: 'RSI',
-            period: Number(rsiPeriodSelect.value || 14),
-          },
-          {
-            indicator: 'HRSI',
-            period: 14,
-          },
-          {
-            indicator: 'MFI',
-            period: Number(mfiPeriodSelect.value || 14),
-          },
+          { indicator: 'RSI', period: Number(rsiPeriodSelect.value || 14) },
+          { indicator: 'HRSI', period: 14 },
+          { indicator: 'MFI', period: Number(mfiPeriodSelect.value || 14) },
+          { indicator: 'Stoch %K', period: Number(stochPeriodSelect.value || 14) },
         ];
 
         indicatorTableBody.innerHTML = '';
 
         rows.forEach((row) => {
-          const value = getIndicatorValue(points, row.indicator, row.period);
+          const series = getIndicatorSeries(points, row.indicator, row.period);
+          const last = Number(series.at(-1) ?? 0);
+          const min = Math.min(...series);
+          const max = Math.max(...series);
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td>${row.indicator}</td>
             <td>${row.period}d</td>
-            <td>${value.toFixed(1)}</td>
-            <td>${getIndicatorState(row.indicator, value)}</td>
+            <td>${last.toFixed(1)}</td>
+            <td>${min.toFixed(1)}</td>
+            <td>${max.toFixed(1)}</td>
+            <td>${getIndicatorState(row.indicator, last)}</td>
           `;
           indicatorTableBody.appendChild(tr);
         });
       }
 
-      function getIndicatorValue(points, indicator, period) {
+      function getIndicatorSeries(points, indicator, period) {
         const closes = points.map((point) => Number(point.close));
         const highs = points.map((point) => Number(point.high));
         const lows = points.map((point) => Number(point.low));
         const volumes = points.map((point) => Number(point.volume));
 
         if (indicator === 'RSI') {
-          const series = computeRsi(closes, period);
-          return Number(series.at(-1) ?? 50);
+          return computeRsi(closes, period);
         }
 
         if (indicator === 'HRSI') {
-          const series = computeHullRsi(closes, 14);
-          return Number(series.at(-1) ?? 50);
+          return computeHullRsi(closes, 14);
         }
 
         if (indicator === 'MFI') {
-          const series = computeMfi(closes, highs, lows, volumes, period);
-          return Number(series.at(-1) ?? 50);
+          return computeMfi(closes, highs, lows, volumes, period);
         }
 
-        return 50;
+        if (indicator === 'Stoch %K') {
+          return computeStochasticK(closes, highs, lows, period);
+        }
+
+        return new Array(points.length).fill(50);
+      }
+
+      function getIndicatorValue(points, indicator, period) {
+        return Number(getIndicatorSeries(points, indicator, period).at(-1) ?? 0);
       }
 
       function getIndicatorState(indicator, value) {
-        if (indicator === 'MFI' || indicator === 'RSI') {
+        if (indicator === 'MFI' || indicator === 'RSI' || indicator === 'Stoch %K') {
           if (value < 30) return 'Oversold';
           if (value > 70) return 'Overbought';
           return 'Neutral';
@@ -828,6 +1048,7 @@
       indicatorSelect.addEventListener('change', loadHistory);
       rsiPeriodSelect.addEventListener('change', loadHistory);
       mfiPeriodSelect.addEventListener('change', loadHistory);
+      stochPeriodSelect.addEventListener('change', loadHistory);
 
       const today = new Date();
       const defaultEnd = new Date(today);
