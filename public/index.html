@@ -7,59 +7,67 @@
     <style>
       :root {
         color-scheme: dark;
-        --bg: #08111d;
-        --panel: #102033;
-        --panel-2: #132740;
-        --accent: #60a5fa;
+        --bg: #07111b;
+        --bg-2: #0b1827;
+        --panel: #101b2b;
+        --panel-2: #15263b;
+        --panel-3: #1a3350;
+        --accent: #7dd3fc;
+        --accent-strong: #38bdf8;
         --green: #22c55e;
-        --red: #ef4444;
-        --text: #e5eefc;
-        --muted: #9fb1ca;
+        --red: #f87171;
+        --text: #e8f1ff;
+        --muted: #98abc0;
+        --border: rgba(255,255,255,0.08);
       }
 
       * { box-sizing: border-box; }
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: Inter, Arial, sans-serif;
-        background: radial-gradient(circle at top, #123056, var(--bg));
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 30%),
+          radial-gradient(circle at top right, rgba(34,197,94,0.12), transparent 26%),
+          linear-gradient(180deg, #09111b 0%, #050b12 100%);
         color: var(--text);
       }
 
       .layout {
         display: grid;
-        grid-template-columns: 320px 1fr;
-        gap: 20px;
-        padding: 20px;
+        grid-template-columns: 320px minmax(0, 1fr);
+        gap: 18px;
+        padding: 18px;
       }
 
       .panel {
-        background: rgba(16, 32, 51, 0.95);
-        border: 1px solid rgba(255,255,255,0.06);
-        border-radius: 16px;
-        padding: 18px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+        background: linear-gradient(180deg, rgba(16, 27, 43, 0.98), rgba(11, 20, 32, 0.98));
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       }
 
-      h1 { margin: 0 0 10px; font-size: 1.5rem; }
-      h2 { margin: 0 0 12px; }
-      .muted { color: var(--muted); font-size: 0.9rem; }
+      h1 { margin: 0 0 8px; font-size: 1.45rem; }
+      h2 { margin: 0 0 12px; font-size: 1rem; }
+      .muted { color: var(--muted); font-size: 0.88rem; }
 
       label {
         display: block;
-        margin-top: 12px;
-        margin-bottom: 6px;
-        font-size: 0.9rem;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 0.82rem;
+        color: #d6e4f7;
       }
 
       select, input, button {
         width: 100%;
-        border: 1px solid rgba(255,255,255,0.12);
-        background: var(--panel-2);
+        border: 1px solid rgba(255,255,255,0.1);
+        background: linear-gradient(180deg, #16263c, #101b2b);
         color: var(--text);
-        padding: 10px 12px;
+        padding: 9px 10px;
         border-radius: 10px;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
 
       button {
@@ -69,28 +77,40 @@
 
       button:hover { background: #1d385a; }
       button.active {
-        background: var(--accent);
-        color: #07111a;
+        background: linear-gradient(180deg, #7dd3fc, #38bdf8);
+        color: #052031;
         font-weight: 700;
       }
 
-      .range-grid, .interval-grid, .indicator-grid, .period-grid {
+      .range-grid, .interval-grid, .indicator-grid, .period-grid, .date-grid {
         display: grid;
         gap: 8px;
-        margin-top: 8px;
+        margin-top: 6px;
       }
 
       .range-grid { grid-template-columns: repeat(3, 1fr); }
-      .interval-grid, .indicator-grid, .period-grid { grid-template-columns: 1fr; }
+      .interval-grid, .indicator-grid, .period-grid, .date-grid { grid-template-columns: 1fr; }
+
+      .date-grid {
+        margin-top: 8px;
+      }
+
+      .compact-row {
+        display: flex;
+        gap: 8px;
+      }
+
+      .compact-row > * { flex: 1; }
 
       .chart-wrap {
         width: 100%;
-        min-height: 500px;
+        min-height: 480px;
         overflow: auto;
         border-radius: 14px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
         border: 1px solid rgba(255,255,255,0.08);
-        padding: 12px;
+        padding: 10px;
+        margin-top: 10px;
       }
 
       svg {
@@ -101,22 +121,22 @@
 
       .indicator-table {
         width: 100%;
-        margin-top: 16px;
+        margin-top: 14px;
         border-collapse: collapse;
-        font-size: 0.9rem;
+        font-size: 0.86rem;
         overflow: hidden;
       }
 
       .indicator-table th,
       .indicator-table td {
         padding: 10px 12px;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
+        border-bottom: 1px solid rgba(255,255,255,0.07);
         text-align: left;
       }
 
       .indicator-table th {
         color: var(--muted);
-        font-weight: 600;
+        font-weight: 700;
       }
 
       .indicator-table tr:hover {
@@ -126,9 +146,11 @@
       .legend {
         display: flex;
         align-items: center;
-        gap: 18px;
-        margin-top: 4px;
+        gap: 14px;
+        margin-top: 6px;
         color: var(--muted);
+        font-size: 0.82rem;
+        flex-wrap: wrap;
       }
 
       .tooltip {
@@ -136,23 +158,24 @@
         pointer-events: none;
         padding: 10px 12px;
         border-radius: 10px;
-        border: 1px solid rgba(255,255,255,0.1);
-        background: rgba(7, 17, 26, 0.92);
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(8, 14, 22, 0.94);
         color: var(--text);
         font-size: 0.82rem;
-        box-shadow: 0 10px 24px rgba(0,0,0,0.24);
+        box-shadow: 0 12px 26px rgba(0,0,0,0.34);
         display: none;
-        min-width: 180px;
+        min-width: 182px;
+        backdrop-filter: blur(10px);
       }
 
       .dot {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         display: inline-block;
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 960px) {
         .layout { grid-template-columns: 1fr; }
       }
     </style>
@@ -167,14 +190,23 @@
         <label for="tickerSelect">Ticker</label>
         <select id="tickerSelect" size="16"></select>
 
-        <label>History range</label>
+        <label>Quick ranges</label>
         <div class="range-grid" id="rangeGrid">
-          <button data-range="10d">10d</button>
-          <button data-range="1mo">1m</button>
-          <button data-range="3mo">3m</button>
-          <button data-range="6mo">6m</button>
-          <button data-range="1y">1y</button>
-          <button data-range="2y">2y</button>
+          <button data-range="5d">5D</button>
+          <button data-range="1mo">1M</button>
+          <button data-range="3mo">3M</button>
+          <button data-range="6mo">6M</button>
+          <button data-range="1y">1Y</button>
+          <button data-range="2y">2Y</button>
+        </div>
+
+        <label>Custom dates</label>
+        <div class="date-grid">
+          <div class="compact-row">
+            <input id="startDate" type="date" />
+            <input id="endDate" type="date" />
+          </div>
+          <button id="applyCustomRange">Apply custom window</button>
         </div>
 
         <label for="intervalSelect">Time step</label>
@@ -252,13 +284,16 @@
       const indicatorSelect = document.getElementById('indicatorSelect');
       const rsiPeriodSelect = document.getElementById('rsiPeriodSelect');
       const mfiPeriodSelect = document.getElementById('mfiPeriodSelect');
+      const startDateInput = document.getElementById('startDate');
+      const endDateInput = document.getElementById('endDate');
+      const applyCustomRangeButton = document.getElementById('applyCustomRange');
       const hoverTooltip = document.getElementById('hoverTooltip');
       const chartWrap = document.getElementById('chartWrap');
       const indicatorTableBody = document.querySelector('#indicatorTable tbody');
       const rangeButtons = Array.from(document.querySelectorAll('[data-range]'));
 
       let currentSymbol = 'AAPL';
-      let currentRange = '10d';
+      let currentRange = '1mo';
       let tickerList = [];
 
       function buildOptions(filterText = '') {
@@ -301,7 +336,21 @@
 
       async function loadHistory() {
         currentSymbol = tickerSelect.value || currentSymbol;
-        const response = await fetch(`/api/history?symbol=${currentSymbol}&range=${currentRange}&interval=${intervalSelect.value}`);
+        const interval = intervalSelect.value;
+        const customWindow = getCustomWindowParams();
+        const query = new URLSearchParams({
+          symbol: currentSymbol,
+          interval,
+        });
+
+        if (customWindow) {
+          query.set('period1', String(customWindow.period1));
+          query.set('period2', String(customWindow.period2));
+        } else {
+          query.set('range', currentRange);
+        }
+
+        const response = await fetch(`/api/history?${query.toString()}`);
         const payload = await response.json();
 
         if (!response.ok || payload.error) {
@@ -317,9 +366,28 @@
 
         const ticker = tickerList.find((item) => item.symbol === currentSymbol);
         const indicatorText = formatIndicatorSummary(points);
-        tickerMeta.textContent = `${currentSymbol} — ${ticker?.name || ''} • ${currentRange} • ${intervalSelect.options[intervalSelect.selectedIndex].text}${indicatorText}`;
+        tickerMeta.textContent = `${currentSymbol} — ${ticker?.name || ''} • ${customWindow ? 'Custom window' : currentRange} • ${intervalSelect.options[intervalSelect.selectedIndex].text}${indicatorText}`;
         renderChart(points);
         renderIndicatorTable(points);
+      }
+
+      function getCustomWindowParams() {
+        const startValue = startDateInput.value;
+        const endValue = endDateInput.value;
+        if (!startValue || !endValue) {
+          return null;
+        }
+
+        const startDate = new Date(`${startValue}T00:00:00Z`);
+        const endDate = new Date(`${endValue}T23:59:59Z`);
+        if (Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime()) || startDate > endDate) {
+          return null;
+        }
+
+        return {
+          period1: Math.floor(startDate.getTime() / 1000),
+          period2: Math.floor(endDate.getTime() / 1000),
+        };
       }
 
       function renderPlaceholder(message) {
@@ -335,14 +403,14 @@
       }
 
       function renderChart(points) {
-        const width = 900;
-        const height = 620;
-        const pricePadding = { top: 24, right: 14, bottom: 34, left: 56 };
-        const indicatorPadding = { top: 360, right: 14, bottom: 30, left: 56 };
+        const width = 960;
+        const height = 560;
+        const pricePadding = { top: 24, right: 18, bottom: 34, left: 56 };
+        const indicatorPadding = { top: 332, right: 18, bottom: 28, left: 56 };
         const priceInnerWidth = width - pricePadding.left - pricePadding.right;
-        const priceInnerHeight = 270;
+        const priceInnerHeight = 250;
         const indicatorInnerWidth = width - indicatorPadding.left - indicatorPadding.right;
-        const indicatorInnerHeight = 120;
+        const indicatorInnerHeight = 110;
         const values = points.map((item) => Number(item.close));
         const min = Math.min(...values);
         const max = Math.max(...values);
@@ -407,8 +475,9 @@
         }).join(' ');
         pricePath.setAttribute('d', priceD);
         pricePath.setAttribute('fill', 'none');
-        pricePath.setAttribute('stroke', '#60a5fa');
-        pricePath.setAttribute('stroke-width', '2');
+        pricePath.setAttribute('stroke', '#7dd3fc');
+        pricePath.setAttribute('stroke-width', '2.2');
+        pricePath.setAttribute('filter', 'drop-shadow(0 0 7px rgba(56,189,248,0.35))');
         chartSvg.appendChild(pricePath);
 
         const baseline = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -744,14 +813,28 @@
           currentRange = button.dataset.range;
           rangeButtons.forEach((item) => item.classList.remove('active'));
           button.classList.add('active');
+          startDateInput.value = '';
+          endDateInput.value = '';
           loadHistory();
         });
+      });
+
+      applyCustomRangeButton.addEventListener('click', () => {
+        rangeButtons.forEach((item) => item.classList.remove('active'));
+        loadHistory();
       });
 
       intervalSelect.addEventListener('change', loadHistory);
       indicatorSelect.addEventListener('change', loadHistory);
       rsiPeriodSelect.addEventListener('change', loadHistory);
       mfiPeriodSelect.addEventListener('change', loadHistory);
+
+      const today = new Date();
+      const defaultEnd = new Date(today);
+      const defaultStart = new Date(today);
+      defaultStart.setDate(defaultStart.getDate() - 30);
+      startDateInput.value = defaultStart.toISOString().slice(0, 10);
+      endDateInput.value = defaultEnd.toISOString().slice(0, 10);
 
       rangeButtons[0].classList.add('active');
       fetchTickers();

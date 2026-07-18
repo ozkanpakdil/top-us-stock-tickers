@@ -21,15 +21,29 @@ const server = Bun.serve({
 
     if (url.pathname === "/api/history") {
       const symbol = url.searchParams.get("symbol")?.trim().toUpperCase();
-      const range = url.searchParams.get("range") || "10d";
+      const range = url.searchParams.get("range") || "1mo";
       const interval = url.searchParams.get("interval") || "1d";
+      const period1Raw = url.searchParams.get("period1");
+      const period2Raw = url.searchParams.get("period2");
+      const period1 = Number(period1Raw);
+      const period2 = Number(period2Raw);
+      const hasCustomWindow = Boolean(period1Raw && period2Raw && Number.isFinite(period1) && Number.isFinite(period2));
 
       if (!symbol) {
         return jsonResponse({ error: "Missing symbol query parameter." }, 400);
       }
 
       try {
-        const yahooUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=${range}&interval=${interval}`;
+        const yahooUrl = new URL(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}`);
+        if (hasCustomWindow) {
+          yahooUrl.searchParams.set("period1", String(Math.floor(period1)));
+          yahooUrl.searchParams.set("period2", String(Math.floor(period2)));
+          yahooUrl.searchParams.set("interval", interval);
+        } else {
+          yahooUrl.searchParams.set("range", range);
+          yahooUrl.searchParams.set("interval", interval);
+        }
+
         const response = await fetch(yahooUrl, {
           headers: {
             "User-Agent": "Mozilla/5.0",
