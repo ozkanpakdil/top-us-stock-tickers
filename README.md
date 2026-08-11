@@ -1,5 +1,7 @@
 # Top US Stock Tickers
 
+> **Live site:** <https://ozkanpakdil.github.io/top-us-stock-tickers/> — interactive candlestick charts with RSI / MFI / Stochastic indicators.
+
 Automatically updated CSV lists of US-listed stocks from NASDAQ (grouped by industry), plus a daily S&P 500 constituent list matched against the NASDAQ universe and sorted by market capitalization.
 
 ## Folder Structure
