@@ -18,18 +18,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Run update script
         # Generates the daily CSV snapshots, appends today's dated cross-section
         # to tickers/history.csv, and regenerates the importable tickers/history.sql.
-        run: python update_tickers.py
+        run: bun run src/update_tickers.ts
 
       - name: Archive per-ticker OHLC history
         # Builds/refreshes ohlc/<SYMBOL>.json (full daily OHLCV) and the small
@@ -41,7 +36,7 @@ jobs:
         # step). Set HISTORY_MAX_YEARS (repo Variables, e.g. 20) to cap depth.
         env:
           HISTORY_MAX_YEARS: ${{ vars.HISTORY_MAX_YEARS }}
-        run: python archive_history.py
+        run: bun run src/archive_history.ts
 
       - name: Build full-history SQL artifact
         # Rebuild tickers/history.csv + history.sql from the archived per-ticker
@@ -60,7 +55,7 @@ jobs:
           args=""
           [ "$LIMIT" != "0" ] && args="$args --limit $LIMIT"
           [ -n "$HISTORY_SQL_YEARS" ] && args="$args --max-years $HISTORY_SQL_YEARS"
-          python3 backfill_history.py $args
+          bun run src/backfill_history.ts $args
 
       - name: Upload history.sql artifact
         uses: actions/upload-artifact@v4

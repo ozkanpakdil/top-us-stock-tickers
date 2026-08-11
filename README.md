@@ -36,7 +36,7 @@ as a downloadable **GitHub Actions artifact**, not committed to the repo.
 Why not committed? A full backfill (top 200 tickers × full listing history) is
 already ~240 MB and grows every day — well past GitHub's 100 MB-per-file push
 limit. So the dump is regenerated each run from the per-ticker JSON archives
-(`docs/data/<SYMBOL>.json`) and uploaded under the **`history-sql`** artifact of
+(`ohlc/<SYMBOL>.json`) and uploaded under the **`history-sql`** artifact of
 the latest *Daily Stock Ticker Update* run. Download it from:
 
 ```text
@@ -150,8 +150,8 @@ print(rows[0])
 ## Local Development
 
 ```bash
-python -m pip install -r requirements.txt
-python update_tickers.py
+bun install
+bun run update
 ```
 
 ## Notes
@@ -203,7 +203,7 @@ only changed/new files are actually transferred on each push.
 
 ### Archiving history
 
-`archive_history.py` builds and refreshes the per-ticker OHLC archive:
+`archive_history.ts` builds and refreshes the per-ticker OHLC archive:
 
 - A **missing** file → full backfill of daily OHLCV from Yahoo Finance
   (`period1=0 … period2=now`).
@@ -213,12 +213,12 @@ only changed/new files are actually transferred on each push.
 
 Files are written to `ohlc/<SYMBOL>.json` (gitignored on `main`), then the daily
 workflow publishes them to the orphan `data` branch for jsDelivr to serve. It runs
-in the daily workflow after `update_tickers.py`. You can also run it locally:
+in the daily workflow after `update_tickers.ts`. You can also run it locally:
 
 ```bash
-python3 archive_history.py --only AAPL,MSFT,NVDA   # a few tickers (smoke test)
-python3 archive_history.py --limit 100             # first 100 by market cap
-python3 archive_history.py --max-years 10          # cap history depth
+bun run src/archive_history.ts --only AAPL,MSFT,NVDA   # a few tickers (smoke test)
+bun run src/archive_history.ts --limit 100            # first 100 by market cap
+bun run src/archive_history.ts --max-years 10         # cap history depth
 ```
 
 History depth defaults to **unlimited** (full listing history). Full coverage of

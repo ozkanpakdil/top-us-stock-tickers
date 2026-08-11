@@ -1,6 +1,3 @@
-.venv/
-__pycache__/
-*.py[cod]
 .DS_Store
 
 # Full-history SQL/CSV are generated from the per-ticker JSON archives by

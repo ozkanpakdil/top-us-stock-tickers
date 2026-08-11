@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "start": "bun run src/server.ts",
-    "dev": "bun --watch src/server.ts"
+    "dev": "bun --watch src/server.ts",
+    "update": "bun run src/update_tickers.ts",
+    "archive": "bun run src/archive_history.ts",
+    "backfill": "bun run src/backfill_history.ts"
   }
 }
