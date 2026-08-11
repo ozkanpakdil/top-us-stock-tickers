@@ -32,23 +32,76 @@ jobs:
         run: python update_tickers.py
 
       - name: Archive per-ticker OHLC history
-        # Builds/refreshes docs/data/<SYMBOL>.json (full daily OHLCV) and
-        # docs/data/manifest.json for the static GitHub Pages site. Resumable:
-        # existing files get a cheap 3-month merge; only missing files do a full
-        # backfill, so a run that times out continues the long tail next time.
-        # Set HISTORY_MAX_YEARS (repo Variables, e.g. 20) to cap depth if the repo grows too large.
+        # Builds/refreshes ohlc/<SYMBOL>.json (full daily OHLCV) and the small
+        # docs/data/manifest.json + docs/data/tickers.json indexes for the static
+        # GitHub Pages site. Resumable: existing files get a cheap 3-month merge;
+        # only missing files do a full backfill, so a run that times out continues
+        # the long tail next time. The OHLC files are NOT committed to main (they
+        # are gitignored and published to the orphan `data` branch in the next
+        # step). Set HISTORY_MAX_YEARS (repo Variables, e.g. 20) to cap depth.
         env:
           HISTORY_MAX_YEARS: ${{ vars.HISTORY_MAX_YEARS }}
         run: python archive_history.py
+
+      - name: Build full-history SQL artifact
+        # Rebuild tickers/history.csv + history.sql from the archived per-ticker
+        # JSONs in ohlc/ (full daily OHLC, decades deep) and publish history.sql
+        # as a downloadable GitHub Actions artifact. It is NOT committed to git —
+        # a full backfill is hundreds of MB and grows daily, so it would blow
+        # past GitHub's 100MB/file push limit. Fetch it from the workflow run.
+        # Scope with repo variables (Settings → Secrets and variables → Actions → Variables):
+        #   HISTORY_SQL_LIMIT  — number of tickers by market cap (default 200; 0 = all archived).
+        #   HISTORY_SQL_YEARS  — depth cap in years (default: full listing history).
+        env:
+          HISTORY_SQL_LIMIT: ${{ vars.HISTORY_SQL_LIMIT }}
+          HISTORY_SQL_YEARS: ${{ vars.HISTORY_SQL_YEARS }}
+        run: |
+          LIMIT="${HISTORY_SQL_LIMIT:-200}"
+          args=""
+          [ "$LIMIT" != "0" ] && args="$args --limit $LIMIT"
+          [ -n "$HISTORY_SQL_YEARS" ] && args="$args --max-years $HISTORY_SQL_YEARS"
+          python3 backfill_history.py $args
+
+      - name: Upload history.sql artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: history-sql
+          path: tickers/history.sql
+          retention-days: 14
+
+      - name: Publish OHLC to the data branch (served via jsDelivr)
+        # Publish the freshly built ohlc/<SYMBOL>.json files to an orphan
+        # `data` branch (NOT main). The static site lazy-loads them from the
+        # jsDelivr CDN: cdn.jsdelivr.net/gh/<repo>@data/ohlc/<SYMBOL>.json.
+        # Each run force-pushes a fresh single-commit orphan so the branch
+        # history never grows; unchanged blobs are content-addressed so only
+        # changed/new files are actually transferred.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          TMP="$(mktemp -d)"
+          cd "$TMP"
+          git init -q
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git checkout -q --orphan data
+          cp -r "${GITHUB_WORKSPACE}/ohlc" ./ohlc
+          git add ohlc/
+          git -c user.name="GitHub Actions Bot" -c user.email="actions@github.com" \
+            commit -q -m "OHLC data: $(date -u +%Y-%m-%d)"
+          git push --force origin data
+          echo "Published $(ls ohlc/*.json | wc -l) OHLC files to the data branch."
 
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
 
-          # Add all generated files: ticker CSVs, by-industry, and the archived OHLC history for Pages.
+          # Add the committed-to-main outputs: ticker CSVs, by-industry, and the
+          # small docs/data indexes (manifest.json + tickers.json). The OHLC files
+          # live in ohlc/ (gitignored) and are published to the `data` branch above.
           git add tickers/ by_industry/ docs/data/
-          
+
           # Check for changes before committing to avoid empty commit errors
           if git diff --staged --quiet; then
             echo "No changes to commit."

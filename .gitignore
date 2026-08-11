@@ -2,3 +2,15 @@
 __pycache__/
 *.py[cod]
 .DS_Store
+
+# Full-history SQL/CSV are generated from the per-ticker JSON archives by
+# backfill_history.py and published as a GitHub Actions artifact (downloadable
+# from the daily workflow run). They are far too large to commit — a full
+# backfill is hundreds of MB and grows daily — so they stay out of git.
+tickers/history.csv
+tickers/history.sql
+
+# Per-ticker OHLC archives. Published to an orphan `data` branch by the daily
+# workflow and served to the static site via the jsDelivr CDN — never committed
+# to `main` (thousands of files / ~1GB would bloat the repo).
+ohlc/

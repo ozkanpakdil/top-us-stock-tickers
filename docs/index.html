@@ -457,10 +457,18 @@
       // ---------- ticker list / search ----------
       async function loadTickerList() {
         let list = null;
+        // Prefer the full search index (every ticker in all.csv, even un-archived ones).
         try {
-          const r = await fetch("./data/manifest.json", { cache: "no-store" });
+          const r = await fetch("./data/tickers.json", { cache: "no-store" });
           if (r.ok) list = (await r.json());
         } catch (e) {}
+        // Fall back to the "has archived data" manifest, then the local dev API.
+        if (!list) {
+          try {
+            const r = await fetch("./data/manifest.json", { cache: "no-store" });
+            if (r.ok) list = (await r.json());
+          } catch (e) {}
+        }
         if (!list) {
           try {
             const r = await fetch("/api/tickers");
@@ -523,6 +531,11 @@
       });
 
       // ---------- data loading ----------
+      // OHLC lives on an orphan `data` branch and is served (lazy, one file per
+      // ticker) from the jsDelivr CDN — not committed to `main`, so the repo
+      // stays small. Local dev falls back to the /api/history Yahoo proxy.
+      const OHLC_BASE = "https://cdn.jsdelivr.net/gh/ozkanpakdil/top-us-stock-tickers@data/ohlc/";
+
       function barsToPoints(bars) {
         return bars.map(b => ({
           date: b[0],
@@ -533,7 +546,7 @@
 
       async function loadSymbol() {
         chartMeta.textContent = "Loading…";
-        const file = `./data/${safeName(currentSymbol)}.json`;
+        const file = `${OHLC_BASE}${safeName(currentSymbol)}.json`;
         try {
           const r = await fetch(file, { cache: "no-store" });
           if (r.ok) {

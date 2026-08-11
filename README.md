@@ -11,8 +11,8 @@ Automatically updated CSV lists of US-listed stocks from NASDAQ (grouped by indu
 │   ├── top_50.csv     # Top 50 by market cap
 │   ├── top_100.csv    # Top 100 by market cap
 │   ├── top_200.csv    # Top 200 by market cap
-│   ├── history.csv    # Daily dated snapshots (accumulating)
-│   └── history.sql    # Same history as an importable SQL dump
+│   ├── history.csv    # Full OHLC backfill (generated locally; gitignored — see "Historical SQL archive")
+│   └── history.sql    # Same data as a portable SQL dump (shipped as a CI artifact, not committed)
 │
 └── by_industry/       # Tickers grouped by industry
     ├── technology.csv
@@ -29,19 +29,33 @@ Data is automatically updated **daily at 10:00 UTC** (before US market open) via
 ## Historical SQL archive
 
 The CSV lists above are snapshots overwritten every day. For people who want the
-time series without digging through git history, there is an accumulating archive:
+full time series without digging through git history, the daily workflow also
+produces a **portable SQL dump with decades of daily OHLC** — but it is published
+as a downloadable **GitHub Actions artifact**, not committed to the repo.
 
-- `tickers/history.csv` — one dated row per symbol per trading day, appended daily.
-- `tickers/history.sql` — the same data regenerated each run as a portable SQL dump.
+Why not committed? A full backfill (top 200 tickers × full listing history) is
+already ~240 MB and grows every day — well past GitHub's 100 MB-per-file push
+limit. So the dump is regenerated each run from the per-ticker JSON archives
+(`docs/data/<SYMBOL>.json`) and uploaded under the **`history-sql`** artifact of
+the latest *Daily Stock Ticker Update* run. Download it from:
 
-Each daily run captures the most recent **completed** US trading session, so:
+```text
+https://github.com/ozkanpakdil/top-us-stock-tickers/actions/workflows/daily_update.yml
+```
 
-- A Monday run records Friday's session, a Tuesday run records Monday's session, etc.
-- Re-running the workflow on the same day does **not** create duplicate rows (the
-  snapshot date is skipped if already present).
-- `tickers/history.sql` contains a `CREATE TABLE IF NOT EXISTS us_tickers (...)`
-  statement with `PRIMARY KEY (date, symbol)`, followed by one multi-row `INSERT`
-  per trading day. The syntax is portable across SQLite, PostgreSQL, and MySQL.
+Open the most recent successful run → scroll to **Artifacts** → download
+`history-sql` → unzip → you get `tickers/history.sql`.
+
+`history.sql` contains a `CREATE TABLE IF NOT EXISTS us_tickers (...)` statement
+with `PRIMARY KEY (date, symbol)`, followed by one multi-row `INSERT` per trading
+day. The syntax is portable across SQLite, PostgreSQL, and MySQL.
+
+Scope is controlled by repository variables (Settings → Secrets and variables →
+Actions → Variables):
+
+- `HISTORY_SQL_LIMIT` — number of tickers by market cap (default **200**; set `0`
+  for every archived ticker — note the artifact then grows into the gigabytes).
+- `HISTORY_SQL_YEARS` — depth cap in years (default: full listing history).
 
 Import it, for example with SQLite:
 
@@ -160,19 +174,36 @@ runs entirely client-side.
 The site lives in `docs/` and is deployed by `.github/workflows/pages.yml`, which
 uploads `docs/` and deploys it on every push to `main` (and via `workflow_dispatch`).
 
-**One-time setup:** in the repo settings → *Settings → Pages → Build and
-deployment → Source*, choose **GitHub Actions** (not "Deploy from a branch").
-After the next push to `main`, the site is live at
+The site is live at **<https://ozkanpakdil.github.io/top-us-stock-tickers/>**
+(deployed automatically by the `pages.yml` workflow on every push to `main`).
+
+**One-time setup (already done):** the repo's *Settings → Pages → Build and
+deployment → Source* is set to **GitHub Actions** (not "Deploy from a branch").
+For a new repo, set that, then push to `main` — the site goes live at
 `https://<your-user>.github.io/<repo>/`.
 
-The historical OHLC data the charts read comes from `docs/data/<SYMBOL>.json`
-(plus `docs/data/manifest.json`, the ticker list for the search box). These files
-are generated and committed by the daily workflow (see *Archiving history* below).
+The historical OHLC data the charts read is **not committed to `main`**. The
+per-ticker JSONs live on an orphan `data` branch and are served to the page by
+the **jsDelivr CDN**, one ~50–600 KB file per ticker (lazy-loaded when you click a
+symbol):
+
+```text
+https://cdn.jsdelivr.net/gh/ozkanpakdil/top-us-stock-tickers@data/ohlc/<SYMBOL>.json
+```
+
+Only the small indexes that the search box and picker need are committed to
+`main` under `docs/data/`:
+
+- `docs/data/tickers.json` — every ticker in `all.csv` (the search index; ~5,000 rows, ~500 KB).
+- `docs/data/manifest.json` — only the tickers that actually have an OHLC file (the picker list).
+
+The orphan `data` branch is force-pushed as a fresh single-commit orphan each
+daily run, so its history never grows; because git stores blobs by content hash,
+only changed/new files are actually transferred on each push.
 
 ### Archiving history
 
-`archive_history.py` builds and refreshes the per-ticker OHLC archive used by the
-static site:
+`archive_history.py` builds and refreshes the per-ticker OHLC archive:
 
 - A **missing** file → full backfill of daily OHLCV from Yahoo Finance
   (`period1=0 … period2=now`).
@@ -180,8 +211,9 @@ static site:
   that times out simply resumes the long tail next time. Failed tickers are
   skipped; `manifest.json` lists only the tickers that have a file.
 
-It runs in the daily workflow after `update_tickers.py`. You can also run it
-locally:
+Files are written to `ohlc/<SYMBOL>.json` (gitignored on `main`), then the daily
+workflow publishes them to the orphan `data` branch for jsDelivr to serve. It runs
+in the daily workflow after `update_tickers.py`. You can also run it locally:
 
 ```bash
 python3 archive_history.py --only AAPL,MSFT,NVDA   # a few tickers (smoke test)
@@ -189,10 +221,11 @@ python3 archive_history.py --limit 100             # first 100 by market cap
 python3 archive_history.py --max-years 10          # cap history depth
 ```
 
-History depth defaults to **unlimited** (full listing history). For all ~5,000 US
-tickers that is a large commit — on the order of **0.5–1.5 GB** of JSON (only one
-~50–600 KB file loads per view, so the site itself stays fast). To cap the depth,
-set the `HISTORY_MAX_YEARS` repository variable (e.g. `20`) or pass `--max-years`.
+History depth defaults to **unlimited** (full listing history). Full coverage of
+all ~5,000 US tickers is ~0.5–1.5 GB of JSON; since each file lives on the `data`
+branch (not `main`) and only one loads per view, the repo and the site both stay
+light. To cap the depth, set the `HISTORY_MAX_YEARS` repository variable (e.g.
+`20`) or pass `--max-years`.
 
 ### Local development
 
@@ -203,9 +236,10 @@ deployed site) **and** keeps two local-only endpoints for live play:
 - `/api/history` — a server-side proxy to Yahoo Finance (browsers can't call Yahoo
   directly)
 
-When a ticker has no `docs/data/<SYMBOL>.json` yet, the page falls back to
-`/api/history` so you can chart any ticker live while developing. On GitHub Pages
-that fallback is absent, so only archived tickers chart.
+The page first tries the jsDelivr CDN (`<repo>@data/ohlc/<SYMBOL>.json`); if that
+has no file for a ticker yet, it falls back to `/api/history` so you can chart any
+ticker live while developing. On GitHub Pages that fallback is absent, so only
+archived tickers chart there.
 
 ```bash
 bun install
