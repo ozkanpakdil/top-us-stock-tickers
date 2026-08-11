@@ -148,30 +148,74 @@ python update_tickers.py
 - The GitHub Actions workflow runs the update automatically on weekdays.
 
 
-## added web app to show graphics from the CSVs
-Run it
+## Web app — stock charts with indicators
 
-From the repo root:
+A static single-page app (`docs/index.html`) renders Revolut/IBKR-style candlestick
+charts with volume, a right-side price axis, a crosshair + OHLCV tooltip, and the
+RSI / HRSI / MFI / Stochastic %K indicators. It is deployed to **GitHub Pages** and
+runs entirely client-side.
+
+### GitHub Pages deployment
+
+The site lives in `docs/` and is deployed by `.github/workflows/pages.yml`, which
+uploads `docs/` and deploys it on every push to `main` (and via `workflow_dispatch`).
+
+**One-time setup:** in the repo settings → *Settings → Pages → Build and
+deployment → Source*, choose **GitHub Actions** (not "Deploy from a branch").
+After the next push to `main`, the site is live at
+`https://<your-user>.github.io/<repo>/`.
+
+The historical OHLC data the charts read comes from `docs/data/<SYMBOL>.json`
+(plus `docs/data/manifest.json`, the ticker list for the search box). These files
+are generated and committed by the daily workflow (see *Archiving history* below).
+
+### Archiving history
+
+`archive_history.py` builds and refreshes the per-ticker OHLC archive used by the
+static site:
+
+- A **missing** file → full backfill of daily OHLCV from Yahoo Finance
+  (`period1=0 … period2=now`).
+- An **existing** file → a cheap 3-month window is fetched and merged in, so a run
+  that times out simply resumes the long tail next time. Failed tickers are
+  skipped; `manifest.json` lists only the tickers that have a file.
+
+It runs in the daily workflow after `update_tickers.py`. You can also run it
+locally:
+
+```bash
+python3 archive_history.py --only AAPL,MSFT,NVDA   # a few tickers (smoke test)
+python3 archive_history.py --limit 100             # first 100 by market cap
+python3 archive_history.py --max-years 10          # cap history depth
+```
+
+History depth defaults to **unlimited** (full listing history). For all ~5,000 US
+tickers that is a large commit — on the order of **0.5–1.5 GB** of JSON (only one
+~50–600 KB file loads per view, so the site itself stays fast). To cap the depth,
+set the `HISTORY_MAX_YEARS` repository variable (e.g. `20`) or pass `--max-years`.
+
+### Local development
+
+`bun run dev` runs `src/server.ts`, which serves `docs/` (so you preview the exact
+deployed site) **and** keeps two local-only endpoints for live play:
+
+- `/api/tickers` — reads `tickers/all.csv`
+- `/api/history` — a server-side proxy to Yahoo Finance (browsers can't call Yahoo
+  directly)
+
+When a ticker has no `docs/data/<SYMBOL>.json` yet, the page falls back to
+`/api/history` so you can chart any ticker live while developing. On GitHub Pages
+that fallback is absent, so only archived tickers chart.
 
 ```bash
 bun install
 bun run dev
+# open http://localhost:3000
 ```
 
-Then open:
-
-```text
-http://localhost:3000
-```
-
-If you want the server on a different port:
+Different port:
 
 ```bash
 PORT=3100 bun run src/server.ts
-```
-
-Then open:
-
-```text
-http://localhost:3100
+# open http://localhost:3100
 ```

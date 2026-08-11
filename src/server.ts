@@ -1,14 +1,37 @@
+// Static + live-fallback dev server.
+//
+// Serves the GitHub Pages site from docs/ so `bun run dev` previews the exact
+// deployed app. Two API endpoints are kept for LOCAL LIVE PLAY ONLY:
+//   /api/tickers  -> reads tickers/all.csv (so the search box can show tickers
+//                   that aren't archived yet)
+//   /api/history  -> server-side proxy to Yahoo Finance (browsers can't call
+//                   Yahoo directly). docs/index.html uses this as a fallback when
+//                   a ticker has no docs/data/<SYMBOL>.json file.
+// On GitHub Pages these endpoints don't exist; the client then falls back to
+// "no archived data" and only archived tickers chart.
+
 const repoRoot = new URL("../", import.meta.url);
 const tickerCsvPath = new URL("tickers/all.csv", repoRoot);
-const publicDir = new URL("../public/", import.meta.url);
+const docsDir = new URL("../docs/", import.meta.url);
 
 const tickerRows = await loadTickerRows();
+
+const MIME: Record<string, string> = {
+  ".html": "text/html; charset=utf-8",
+  ".js": "text/javascript; charset=utf-8",
+  ".css": "text/css; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".ico": "image/x-icon",
+};
 
 const server = Bun.serve({
   port: Number(process.env.PORT || 3000),
   async fetch(req) {
     const url = new URL(req.url);
 
+    // --- API: ticker list -------------------------------------------------
     if (url.pathname === "/api/tickers") {
       return jsonResponse({
         tickers: tickerRows.map((row) => ({
@@ -19,6 +42,7 @@ const server = Bun.serve({
       });
     }
 
+    // --- API: Yahoo history proxy (local live fallback) -------------------
     if (url.pathname === "/api/history") {
       const symbol = url.searchParams.get("symbol")?.trim().toUpperCase();
       const range = url.searchParams.get("range") || "1mo";
@@ -45,10 +69,7 @@ const server = Bun.serve({
         }
 
         const response = await fetch(yahooUrl, {
-          headers: {
-            "User-Agent": "Mozilla/5.0",
-            Accept: "application/json",
-          },
+          headers: { "User-Agent": "Mozilla/5.0", Accept: "application/json" },
         });
 
         if (!response.ok) {
@@ -57,7 +78,6 @@ const server = Bun.serve({
 
         const payload = await response.json();
         const chart = payload?.chart?.result?.[0];
-
         if (!chart) {
           return jsonResponse({ error: "No chart data returned for the requested symbol." }, 404);
         }
@@ -91,39 +111,40 @@ const server = Bun.serve({
       }
     }
 
-    if (url.pathname === "/") {
-      return new Response(Bun.file(new URL("index.html", publicDir)).stream(), {
-        headers: { "Content-Type": "text/html; charset=utf-8" },
+    // --- Static: serve docs/ ---------------------------------------------
+    // SPA-style: unknown paths fall back to docs/index.html (the site is one page).
+    let rel = decodeURIComponent(url.pathname);
+    if (rel === "/" || rel === "") rel = "/index.html";
+
+    const filePath = new URL("." + rel, docsDir);
+    if (!filePath.href.startsWith(docsDir.href)) {
+      return new Response("Forbidden", { status: 403 });
+    }
+
+    const file = Bun.file(filePath);
+    if (await file.exists()) {
+      const ext = filePath.pathname.slice(filePath.pathname.lastIndexOf("."));
+      return new Response(file.stream(), {
+        headers: { "Content-Type": MIME[ext] ?? "application/octet-stream" },
       });
     }
 
-    const filePath = new URL(url.pathname.slice(1) || "index.html", publicDir);
-    const file = Bun.file(filePath);
-
-    if (await file.exists()) {
-      return new Response(file.stream(), {
-        headers: {
-          "Content-Type": filePath.pathname.endsWith(".css") ? "text/css; charset=utf-8" : "text/javascript; charset=utf-8",
-        },
-      });
+    // Fall back to index.html for non-API, non-file routes.
+    const indexFile = Bun.file(new URL("index.html", docsDir));
+    if (await indexFile.exists()) {
+      return new Response(indexFile.stream(), { headers: { "Content-Type": "text/html; charset=utf-8" } });
     }
 
     return new Response("Not found", { status: 404 });
   },
 });
 
-console.log(`Stock chart server running at http://localhost:${server.port}`);
+console.log(`Stock chart server (docs/ + live fallback) running at http://localhost:${server.port}`);
 
 async function loadTickerRows() {
   const csv = await Bun.file(tickerCsvPath).text();
-  const lines = csv
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  if (lines.length < 2) {
-    return [];
-  }
+  const lines = csv.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+  if (lines.length < 2) return [];
 
   const headers = splitCsvLine(lines[0]);
   const records = lines.slice(1).map((line) => {
@@ -148,7 +169,6 @@ function splitCsvLine(line: string) {
 
   for (let i = 0; i < line.length; i += 1) {
     const char = line[i];
-
     if (char === '"') {
       const next = line[i + 1];
       if (insideQuotes && next === '"') {
@@ -159,16 +179,13 @@ function splitCsvLine(line: string) {
       }
       continue;
     }
-
     if (char === "," && !insideQuotes) {
       result.push(current);
       current = "";
       continue;
     }
-
     current += char;
   }
-
   result.push(current);
   return result;
 }
@@ -176,8 +193,6 @@ function splitCsvLine(line: string) {
 function jsonResponse(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-    },
+    headers: { "Content-Type": "application/json; charset=utf-8" },
   });
 }
