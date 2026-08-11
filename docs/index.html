@@ -509,12 +509,26 @@
         resultsBox.classList.add("show");
       }
 
+      function syncURL(sym) {
+        const u = new URL(location.href);
+        if (sym) u.searchParams.set("symbol", sym); else u.searchParams.delete("symbol");
+        history.replaceState(null, "", u);
+      }
       function selectSymbol(sym) {
         currentSymbol = sym.toUpperCase();
         searchInput.value = currentSymbol;
         resultsBox.classList.remove("show");
+        syncURL(currentSymbol);
         loadSymbol();
       }
+      window.addEventListener("popstate", () => {
+        const s = new URL(location.href).searchParams.get("symbol");
+        if (s && s.toUpperCase() !== currentSymbol) {
+          currentSymbol = s.toUpperCase();
+          searchInput.value = currentSymbol;
+          loadSymbol();
+        }
+      });
 
       searchInput.addEventListener("focus", () => renderResults(searchInput.value));
       searchInput.addEventListener("input", () => renderResults(searchInput.value));
@@ -1147,7 +1161,10 @@
       // ---------- boot ----------
       (async function init() {
         await loadTickerList();
+        const q = new URL(location.href).searchParams.get("symbol");
+        if (q && tickerList.some(t => t.symbol === q.toUpperCase())) currentSymbol = q.toUpperCase();
         searchInput.value = currentSymbol;
+        syncURL(currentSymbol);
         await loadSymbol();
       })();
     })();
