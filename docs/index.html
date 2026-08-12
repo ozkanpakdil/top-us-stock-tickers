@@ -572,21 +572,28 @@
         // CDN fetch with retry + browser cache. Archive files are immutable per
         // symbol, so caching is safe and survives transient jsDelivr hiccups
         // (rate limits, orphan `data` branch re-cache lag). Try up to 3 times.
-        let cdnStatus = 0, cdnErr = null, cdnEmpty = false;
+        // NOTE: only fetch + parse here — keep render() OUT of this try so a
+        // rendering bug can't masquerade as a CDN failure (we once caught a
+        // ReferenceError from render() and wrongly blamed the CDN / retried).
+        let cdnStatus = 0, cdnErr = null, cdnEmpty = false, cdnData = null;
         for (let attempt = 0; attempt < 3; attempt++) {
           try {
             const r = await fetch(file, { cache: "default" });
             cdnStatus = r.status;
             if (r.ok) {
               const d = await r.json();
-              symbolMeta = { name: d.name || "", industry: d.industry || "" };
-              allBars = barsToPoints(d.bars || []);
-              if (!allBars.length) { cdnEmpty = true; break; } // empty payload, don't retry
-              render();
-              return;
+              if (!d || !Array.isArray(d.bars) || !d.bars.length) { cdnEmpty = true; break; }
+              cdnData = d;
+              break;
             }
           } catch (e) { cdnErr = e; }
           if (attempt < 2) await new Promise(res => setTimeout(res, 400 * (attempt + 1)));
+        }
+        if (cdnData) {
+          symbolMeta = { name: cdnData.name || "", industry: cdnData.industry || "" };
+          allBars = barsToPoints(cdnData.bars || []);
+          render();
+          return;
         }
         // local live fallback (only works behind src/server.ts in local dev)
         try {
@@ -809,7 +816,7 @@
         const indicators = computeIndicatorSeries(points, mode, rsiP, mfiP, stochP);
 
         const { points: dp, indicators: di } = bucketize(points, indicators, MAX_BARS);
-        drawChart(dp, di, points);
+        drawChart(dp, di, points, mode);
         renderTable(points);
         renderQuote();
         renderLegend(di);
@@ -840,7 +847,7 @@
         return d.toLocaleString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
       }
 
-      function drawChart(points, indicators, rawPoints) {
+      function drawChart(points, indicators, rawPoints, mode) {
         // Measure the container width so the drawing space matches real pixels —
         // this keeps candles and text undistorted (the old fixed viewBox + non-uniform
         // stretch was what made the chart look ugly).
