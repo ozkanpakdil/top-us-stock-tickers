@@ -22,8 +22,9 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Run update script
-        # Generates the daily CSV snapshots, appends today's dated cross-section
-        # to tickers/history.csv, and regenerates the importable tickers/history.sql.
+        # Generates the daily CSV snapshots (one daily snapshot of every US
+        # ticker, with OHLC), committed to main so the git history of
+        # tickers/all.csv is the source of truth for the historical archive.
         run: bun run src/update_tickers.ts
 
       - name: Archive per-ticker OHLC history
@@ -37,32 +38,6 @@ jobs:
         env:
           HISTORY_MAX_YEARS: ${{ vars.HISTORY_MAX_YEARS }}
         run: bun run src/archive_history.ts
-
-      - name: Build full-history SQL artifact
-        # Rebuild tickers/history.csv + history.sql from the archived per-ticker
-        # JSONs in ohlc/ (full daily OHLC, decades deep) and publish history.sql
-        # as a downloadable GitHub Actions artifact. It is NOT committed to git —
-        # a full backfill is hundreds of MB and grows daily, so it would blow
-        # past GitHub's 100MB/file push limit. Fetch it from the workflow run.
-        # Scope with repo variables (Settings → Secrets and variables → Actions → Variables):
-        #   HISTORY_SQL_LIMIT  — number of tickers by market cap (default 200; 0 = all archived).
-        #   HISTORY_SQL_YEARS  — depth cap in years (default: full listing history).
-        env:
-          HISTORY_SQL_LIMIT: ${{ vars.HISTORY_SQL_LIMIT }}
-          HISTORY_SQL_YEARS: ${{ vars.HISTORY_SQL_YEARS }}
-        run: |
-          LIMIT="${HISTORY_SQL_LIMIT:-200}"
-          args=""
-          [ "$LIMIT" != "0" ] && args="$args --limit $LIMIT"
-          [ -n "$HISTORY_SQL_YEARS" ] && args="$args --max-years $HISTORY_SQL_YEARS"
-          bun run src/backfill_history.ts $args
-
-      - name: Upload history.sql artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: history-sql
-          path: tickers/history.sql
-          retention-days: 14
 
       - name: Publish OHLC to the data branch (served via jsDelivr)
         # Publish the freshly built ohlc/<SYMBOL>.json files to an orphan

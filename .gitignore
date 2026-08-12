@@ -1,12 +1,11 @@
 .DS_Store
 
-# Full-history CSV is generated from the per-ticker JSON archives by
-# backfill_history.py and published as a GitHub Actions artifact (downloadable
-# from the daily workflow run). It can be far too large to commit — a full
-# backfill is hundreds of MB and grows daily — so it stays out of git.
-# history.sql (the daily incremental snapshot) IS committed so the repo always
-# has the latest full SQL dump available.
+# history.csv / history.sql are NOT committed — they are rebuilt on demand from
+# the git history of tickers/all.csv by `bun run src/gen_history_sql.ts`
+# (see README → "Historical SQL archive"). A full dump is ~100 MB+ and grows
+# daily, far past GitHub's 100 MB-per-file push limit, so it stays out of git.
 tickers/history.csv
+tickers/history.sql
 
 # Per-ticker OHLC archives. Published to an orphan `data` branch by the daily
 # workflow and served to the static site via the jsDelivr CDN — never committed

@@ -8,13 +8,13 @@ Automatically updated CSV lists of US-listed stocks from NASDAQ (grouped by indu
 
 ```
 ├── tickers/           # General ticker lists
-│   ├── all.csv        # All US stocks (~5,300+)
+│   ├── all.csv        # All US stocks (~5,300+), with OHLC
 │   ├── sp500.csv      # Current S&P 500 constituents
 │   ├── top_50.csv     # Top 50 by market cap
 │   ├── top_100.csv    # Top 100 by market cap
 │   ├── top_200.csv    # Top 200 by market cap
-│   ├── history.csv    # Full OHLC backfill (generated locally; gitignored — see "Historical SQL archive")
-│   └── history.sql    # Same data as a portable SQL dump (shipped as a CI artifact, not committed)
+│   ├── history.csv    # Rebuilt on demand from git (gitignored — see "Historical SQL archive")
+│   └── history.sql    # Portable SQL dump, rebuilt on demand from git (gitignored — not committed)
 │
 └── by_industry/       # Tickers grouped by industry
     ├── technology.csv
@@ -30,34 +30,39 @@ Data is automatically updated **daily at 10:00 UTC** (before US market open) via
 
 ## Historical SQL archive
 
-The CSV lists above are snapshots overwritten every day. For people who want the
-full time series without digging through git history, the daily workflow also
-produces a **portable SQL dump with decades of daily OHLC** — but it is published
-as a downloadable **GitHub Actions artifact**, not committed to the repo.
+The CSV lists above are snapshots overwritten every day, and `tickers/all.csv` is
+re-committed each daily run. That git history **is** the time series: one commit
+per trading day, each holding a full snapshot of every US ticker (with OHLC).
 
-Why not committed? A full backfill (top 200 tickers × full listing history) is
-already ~240 MB and grows every day — well past GitHub's 100 MB-per-file push
-limit. So the dump is regenerated each run from the per-ticker JSON archives
-(`ohlc/<SYMBOL>.json`) and uploaded under the **`history-sql`** artifact of
-the latest *Daily Stock Ticker Update* run. Download it from:
+To get the full history as a single portable SQL dump, generate it on demand from
+the git history of `tickers/all.csv`:
 
-```text
-https://github.com/ozkanpakdil/top-us-stock-tickers/actions/workflows/daily_update.yml
+```bash
+bun run src/gen_history_sql.ts
 ```
 
-Open the most recent successful run → scroll to **Artifacts** → download
-`history-sql` → unzip → you get `tickers/history.sql`.
+This writes `tickers/history.sql` (and `tickers/history.csv`) — both **gitignored**,
+nothing is committed. A full dump is ~100 MB+ and grows daily, well past GitHub's
+100 MB-per-file push limit, so it is never stored in the repo; run the command
+locally whenever you need it.
 
 `history.sql` contains a `CREATE TABLE IF NOT EXISTS us_tickers (...)` statement
 with `PRIMARY KEY (date, symbol)`, followed by one multi-row `INSERT` per trading
 day. The syntax is portable across SQLite, PostgreSQL, and MySQL.
 
-Scope is controlled by repository variables (Settings → Secrets and variables →
-Actions → Variables):
+> **Note on OHLC coverage:** `all.csv` gained `open`/`high`/`low`/`close` columns
+> when the pipeline migrated to TypeScript. Snapshots committed before that
+> point have `NULL` for `open`/`high`/`low` (only `price` = close is available);
+> every snapshot from the first post-migration daily run onward carries real
+> OHLC. The generator reads each snapshot's header, so it handles both schemas.
 
-- `HISTORY_SQL_LIMIT` — number of tickers by market cap (default **200**; set `0`
-  for every archived ticker — note the artifact then grows into the gigabytes).
-- `HISTORY_SQL_YEARS` — depth cap in years (default: full listing history).
+Optional flags:
+
+```bash
+bun run src/gen_history_sql.ts --all-csv tickers/all.csv   # source snapshot (default)
+bun run src/gen_history_sql.ts --out tickers/history.sql   # SQL output path
+bun run src/gen_history_sql.ts --csv-out ''                 # skip the CSV output
+```
 
 Import it, for example with SQLite:
 
@@ -153,7 +158,9 @@ print(rows[0])
 
 ```bash
 bun install
-bun run update
+bun run update        # fetch + write the daily CSV snapshots (tickers/, by_industry/)
+bun run archive       # refresh per-ticker OHLC archives in ohlc/ (gitignored)
+bun run history-sql   # rebuild tickers/history.sql on demand from git (gitignored)
 ```
 
 ## Notes

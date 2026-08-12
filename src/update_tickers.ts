@@ -3,8 +3,10 @@
 // Fetches US stock tickers from NASDAQ's stock screener API (NYSE/NASDAQ/AMEX),
 // supplements open/high/low/close from Yahoo Finance for the most recent
 // completed session, matches an S&P 500 constituent list from Wikipedia, and
-// writes market-cap-sorted CSVs. Also appends one dated cross-section to
-// tickers/history.csv (idempotent by date) and regenerates tickers/history.sql.
+// writes market-cap-sorted CSVs (one daily snapshot per run, committed to git).
+//
+// The full historical SQL dump is NOT maintained here — it is rebuilt on demand
+// from the git history of tickers/all.csv by src/gen_history_sql.ts.
 //
 // Run:  bun run src/update_tickers.ts
 
@@ -14,9 +16,6 @@ import {
   HEADERS,
   YAHOO_WORKERS,
   HISTORY_COLUMNS,
-  HISTORY_STRING_COLUMNS,
-  HISTORY_CSV_PATH,
-  HISTORY_SQL_PATH,
   normalizeSymbol,
   parseMarketCap,
   parseNumber,
@@ -24,7 +23,6 @@ import {
   pyFloatRepr,
   intRepr,
   csvField,
-  readCsv,
   writeCsv,
   mapLimit,
   fetchYahooChartRaw,
@@ -33,10 +31,9 @@ import {
   ensureDir,
 } from "./lib.ts";
 
-import { appendFile } from "node:fs/promises";
-
 // Snapshot CSVs (all.csv, sp500.csv, top_*, by_industry/*) use the history
-// columns WITHOUT the `date` column (date only lives in history.csv/.sql).
+// columns WITHOUT the `date` column (date only lives in the on-demand
+// history.sql built from git by src/gen_history_sql.ts).
 const OUTPUT_COLUMNS = HISTORY_COLUMNS.filter((c) => c !== "date");
 
 const SP500_SYMBOL_RE = /^\|\{\{(?:NyseSymbol|NasdaqSymbol|BZX link)\|([^}|]+)/gm;
@@ -202,189 +199,6 @@ async function fetchOhlcMap(symbols: Iterable<string>): Promise<Map<string, Ohlc
   return ohlcMap;
 }
 
-// --- History archive (CSV + SQL) -------------------------------------------
-
-function snapshotDateFromOhlc(ohlcMap: Map<string, Ohlc>, fallback: string | null): string | null {
-  let max: string | null = null;
-  for (const v of ohlcMap.values()) {
-    if (v?.date && (max === null || v.date > max)) max = v.date;
-  }
-  return max ?? fallback;
-}
-
-function tickerHistoryRow(t: Ticker, o: Ohlc | null, snapshotDate: string): string[] {
-  return [
-    snapshotDate, // date
-    t.symbol, // symbol
-    t.name, // name
-    pyFloatRepr(t.price), // price
-    pyFloatRepr(o?.open ?? null), // open
-    pyFloatRepr(o?.high ?? null), // high
-    pyFloatRepr(o?.low ?? null), // low
-    pyFloatRepr(o?.close ?? null), // close
-    pyFloatRepr(t.marketCap), // marketCap
-    intRepr(t.volume), // volume
-    t.industry, // industry
-  ];
-}
-
-async function appendHistoryCsv(
-  tickers: Ticker[],
-  ohlcMap: Map<string, Ohlc>,
-  snapshotDate: string,
-  path = HISTORY_CSV_PATH,
-): Promise<boolean> {
-  ohlcMap = ohlcMap ?? new Map();
-  ensureDir(path.slice(0, path.lastIndexOf("/")) || ".");
-
-  // Idempotency: skip if the snapshot date is already present.
-  if (await Bun.file(path).exists()) {
-    try {
-      const { header, rows } = await readCsv(path);
-      const dateI = header.indexOf("date");
-      if (dateI >= 0) {
-        const existing = new Set(rows.map((r) => r[dateI] ?? ""));
-        if (existing.has(snapshotDate)) {
-          console.log(`  history.csv already contains ${snapshotDate}; skipping append`);
-          return false;
-        }
-      }
-    } catch {
-      // corrupt/empty file → fall through and append
-    }
-  }
-
-  const dayRows = tickers
-    .map((t) => ({ mc: t.marketCap, cells: tickerHistoryRow(t, ohlcMap.get(t.symbol) ?? null, snapshotDate) }))
-    .sort((a, b) => {
-      const ma = a.mc === null ? -Infinity : a.mc;
-      const mb = b.mc === null ? -Infinity : b.mc;
-      return mb - ma; // marketCap desc, nulls last
-    });
-
-  const exists = await Bun.file(path).exists();
-  const body = dayRows.map((r) => r.cells.map(csvField).join(",")).join("\n") + "\n";
-  if (!exists) {
-    const header = HISTORY_COLUMNS.map(csvField).join(",");
-    await Bun.write(path, header + "\n" + body);
-  } else {
-    await appendFile(path, body, "utf8");
-  }
-  console.log(`  Appended ${dayRows.length} rows for ${snapshotDate} to ${path}`);
-  return true;
-}
-
-/** Render a CSV cell of a numeric column as a SQL literal, replicating pandas'
- *  per-column dtype inference: a column is int64 only if every cell is an
- *  integer string and none are empty — otherwise float64. This keeps the SQL
- *  byte-identical to what pandas `str(value)` produced. */
-function makeSqlLiteral(dtype: Record<string, "int" | "float">) {
-  return (cell: string, col: string): string => {
-    if (HISTORY_STRING_COLUMNS.has(col)) {
-      return "'" + cell.replace(/'/g, "''") + "'";
-    }
-    if (cell === "") return "NULL";
-    if (dtype[col] === "int") return cell;
-    const n = Number(cell);
-    if (Number.isNaN(n)) return "NULL";
-    return pyFloatRepr(n);
-  };
-}
-
-export async function generateHistorySql(
-  csvPath = HISTORY_CSV_PATH,
-  sqlPath = HISTORY_SQL_PATH,
-): Promise<boolean> {
-  if (!(await Bun.file(csvPath).exists())) {
-    console.log("  No history.csv found; skipping SQL generation");
-    return false;
-  }
-  const { header, rows } = await readCsv(csvPath);
-  if (!header.length) return false;
-
-  const idx: Record<string, number> = {};
-  header.forEach((h, i) => (idx[h] = i));
-
-  // Per-column dtype inference (pandas read_csv behavior).
-  const numericCols = HISTORY_COLUMNS.filter((c) => !HISTORY_STRING_COLUMNS.has(c));
-  const dtype: Record<string, "int" | "float"> = {};
-  for (const c of numericCols) {
-    const ci = idx[c];
-    let allInt = true;
-    let hasEmpty = false;
-    for (const r of rows) {
-      const cell = r[ci] ?? "";
-      if (cell === "") {
-        hasEmpty = true;
-        continue;
-      }
-      if (!/^-?\d+$/.test(cell)) allInt = false;
-    }
-    dtype[c] = allInt && !hasEmpty ? "int" : "float";
-  }
-
-  const dateI = idx["date"];
-  const mcI = idx["marketCap"];
-  const sorted = [...rows].sort((a, b) => {
-    const da = a[dateI] ?? "";
-    const db = b[dateI] ?? "";
-    if (da < db) return -1;
-    if (da > db) return 1;
-    const ma = (a[mcI] ?? "") === "" ? -Infinity : Number(a[mcI]);
-    const mb = (b[mcI] ?? "") === "" ? -Infinity : Number(b[mcI]);
-    return mb - ma; // marketCap desc, nulls last
-  });
-
-  // Group consecutive rows by date (already sorted by date asc).
-  const groups: { date: string; rows: string[][] }[] = [];
-  for (const r of sorted) {
-    const d = r[dateI];
-    if (!groups.length || groups[groups.length - 1].date !== d) {
-      groups.push({ date: d, rows: [] });
-    }
-    groups[groups.length - 1].rows.push(r);
-  }
-
-  const lines: string[] = [
-    "-- US stock ticker history (auto-generated daily by update_tickers.ts).",
-    "-- Columns: date = trading day of the OHLC bar; price/marketCap/volume",
-    "-- are the NASDAQ screener snapshot taken during the same run.",
-    "-- Portable SQL: works on SQLite, PostgreSQL, and MySQL.",
-    "",
-    "CREATE TABLE IF NOT EXISTS us_tickers (",
-    "    date      DATE        NOT NULL,",
-    "    symbol    VARCHAR(32) NOT NULL,",
-    "    name      VARCHAR(255),",
-    "    price     DECIMAL(18,4),",
-    "    open      DECIMAL(18,4),",
-    "    high      DECIMAL(18,4),",
-    "    low       DECIMAL(18,4),",
-    "    close     DECIMAL(18,4),",
-    "    marketCap DECIMAL(24,2),",
-    "    volume    BIGINT,",
-    "    industry  VARCHAR(128),",
-    "    PRIMARY KEY (date, symbol)",
-    ");",
-    "",
-  ];
-
-  const sqlLiteral = makeSqlLiteral(dtype);
-  let totalRows = 0;
-  for (const group of groups) {
-    lines.push("INSERT INTO us_tickers (" + HISTORY_COLUMNS.join(", ") + ") VALUES");
-    const valueRows = group.rows.map(
-      (r) => "    (" + HISTORY_COLUMNS.map((c) => sqlLiteral(r[idx[c]] ?? "", c)).join(", ") + ")",
-    );
-    totalRows += valueRows.length;
-    lines.push(valueRows.join(",\n") + ";");
-    lines.push("");
-  }
-
-  await Bun.write(sqlPath, lines.join("\n"));
-  console.log(`  Wrote ${sqlPath} (${totalRows} rows across ${groups.length} dates)`);
-  return true;
-}
-
 // --- Filtering + file output -----------------------------------------------
 
 function filterSp500Tickers(tickers: Ticker[], sp500Symbols: string[]): Ticker[] {
@@ -521,14 +335,6 @@ async function main() {
   for (const t of tickers) ohlcSymbols.add(t.symbol);
   for (const t of sp500Tickers) ohlcSymbols.add(t.symbol);
   const ohlcMap = await fetchOhlcMap(ohlcSymbols);
-
-  const fallback = new Date().toISOString().slice(0, 10);
-  const snapshotDate = snapshotDateFromOhlc(ohlcMap, fallback);
-  console.log(`\nSnapshot date for history archive: ${snapshotDate}`);
-
-  console.log("\nUpdating history archive...");
-  await appendHistoryCsv(tickers, ohlcMap, snapshotDate);
-  await generateHistorySql();
 
   if (await saveFiles(tickers, sp500Tickers, ohlcMap)) {
     console.log("\n==================================================");
