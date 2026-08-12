@@ -82,6 +82,58 @@ WHERE date = (SELECT MAX(date) FROM us_tickers);
 SELECT date, close FROM us_tickers WHERE symbol = 'AAPL' ORDER BY date;
 ```
 
+## Daily Screener
+
+> **Live site:** <https://ozkanpakdil.github.io/top-us-stock-tickers/screener.html> —
+> today's breakout hits, watchlist, and conviction list, rendered from the CSVs below.
+
+A daily breakout screener runs right after the ticker update (same GitHub Action,
+`bun run src/screener.ts`). It scans **every US stock** in `tickers/all.csv` for
+"trend is friend" candidates — institutions moving in, making new highs, in an
+uptrend — and records the results so recurring names surface on a watchlist /
+conviction list over time.
+
+**History source:** the git history of `tickers/all.csv` (close = its `price`
+column + `volume`, one row per trading day), plus today's working snapshot. There
+is no `open`/`high`/`low` in that history, so **gap-up is proxied by the
+close-vs-prev-close day change**. VIX (not in `all.csv`) is fetched from Yahoo
+(`^VIX`) and used as a global market gate.
+
+**A symbol is a hit when ALL hold:**
+
+1. **VIX < 21** — global market gate.
+2. **Close at 20-day high** — `lastClose >= max(close, last 20)`.
+3. **Volume spike** — `lastVolume >= 1.5 × avg(volume, last 50)`.
+4. **Above 50-day SMA** — `lastClose > SMA50`.
+5. **Trend up** — `SMA50 > SMA(long)`, where `long = 200` if ≥200 bars exist,
+   else `long = bars.length` if ≥120 bars, else the rule is **skipped** (history
+   doesn't reach back far enough yet — the rule tightens automatically as the
+   archive grows past 120 then 200 trading days).
+6. **Momentum** — `dayChangePct >= 2` (close vs prev close; the gap-up proxy).
+
+All thresholds are top-of-file constants in `src/screener.ts` — edit them there,
+no logic changes needed.
+
+**Outputs (all committed to main under `docs/data/screener/`, published to the
+GitHub Pages site and rendered by `docs/screener.html`):**
+
+```
+docs/data/screener/
+├── LATEST.csv          # today's hits, overwritten daily
+├── hits_log.csv        # date,symbol,score,... append-only time series
+├── watchlist_15.csv    # symbols hitting >=8 of last 15 calendar days
+└── conviction_30.csv   # symbols hitting >=15 of last 30 calendar days
+```
+
+`hits_log.csv` is the screener's persistent record (append-only, idempotent per
+day) — same idea as `all.csv`'s git history being the source of truth elsewhere.
+Run locally any time:
+
+```bash
+bun run screener                 # full run
+bun run screener -- --no-vix     # skip the VIX<21 gate (testing)
+```
+
 ## Data Fields
 
 | Column | Description |
