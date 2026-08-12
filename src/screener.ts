@@ -43,6 +43,7 @@ export const HIGH_WINDOW = 20; // "making highs" = new N-day high
 export const VOL_SPIKE_MULT = 1.5; // volume >= MULT x 50-day avg volume
 export const DAY_CHANGE_MIN = 2; // gap-up proxy: close vs prev close, percent
 export const MIN_BARS = 50; // need SMA50 + a day change to screen at all
+export const MAX_AGE_DAYS = 4; // drop symbols whose last bar is older than this (delisted/stale tickers). Active symbols are overlaid as today (age 0); 4d tolerates a long weekend + 1 CI gap.
 
 // Highlight windows (calendar days, ending today).
 export const WATCH_DAYS = 15;
@@ -225,13 +226,18 @@ interface HitRow {
 }
 
 /** Screen one symbol; returns a HitRow if it passes all rules, else null. */
-function screenSymbol(sym: string, s: Sym, vixOk: boolean): HitRow | null {
+function screenSymbol(sym: string, s: Sym, vixOk: boolean, today: string): HitRow | null {
   const bars = s.bars;
   if (bars.length < MIN_BARS) return null;
+
+  // Recency gate: a symbol whose last bar is stale (e.g. delisted and removed
+  // from all.csv) must not be emitted as a fresh hit off frozen old data.
+  const last = bars[bars.length - 1];
+  const ageDays = Math.round((new Date(today + "T00:00:00Z").getTime() - new Date(last.date + "T00:00:00Z").getTime()) / 86400000);
+  if (ageDays > MAX_AGE_DAYS) return null;
   const closes = bars.map((b) => b.close);
   const vols = bars.map((b) => b.volume);
 
-  const last = bars[bars.length - 1];
   const prev = bars[bars.length - 2];
   const dayChangePct = prev && prev.close ? ((last.close - prev.close) / prev.close) * 100 : 0;
 
@@ -414,7 +420,7 @@ async function main() {
   let screened = 0;
   for (const [sym, s] of symbols) {
     screened++;
-    const hit = screenSymbol(sym, s, vixOk);
+    const hit = screenSymbol(sym, s, vixOk, today);
     if (hit) hits.push(hit);
   }
   hits.sort((a, b) => b.score - a.score || b.dayChangePct - a.dayChangePct);
