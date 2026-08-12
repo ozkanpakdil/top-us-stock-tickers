@@ -36,7 +36,9 @@ import {
 // history.sql built from git by src/gen_history_sql.ts).
 const OUTPUT_COLUMNS = HISTORY_COLUMNS.filter((c) => c !== "date");
 
-const SP500_SYMBOL_RE = /^\|\{\{(?:NyseSymbol|NasdaqSymbol|BZX link)\|([^}|]+)/gm;
+// Tolerant of Wikipedia table drift: cells may start with "|" or "||" and
+// have whitespace before/inside the {{NyseSymbol|SYM}} template.
+const SP500_SYMBOL_RE = /^\|+\s*\{\{(?:NyseSymbol|NasdaqSymbol|BZX link)\s*\|\s*([A-Za-z][^}|]*)/gm;
 
 interface Ticker {
   symbol: string;
@@ -323,12 +325,14 @@ async function main() {
     console.log("\nNo data found!");
     process.exit(1);
   }
+  let sp500Tickers: Ticker[] = [];
   if (!sp500Symbols.length) {
-    console.log("\nNo S&P 500 data found!");
-    process.exit(1);
+    // S&P 500 list is supplementary (sp500.csv only). Don't kill the whole
+    // pipeline — all.csv, top_*, by_industry, and the screener don't need it.
+    console.log("\nWarning: no S&P 500 data — skipping sp500.csv (continuing).");
+  } else {
+    sp500Tickers = filterSp500Tickers(allTickers, sp500Symbols);
   }
-
-  const sp500Tickers = filterSp500Tickers(allTickers, sp500Symbols);
 
   // OHLC for every symbol we will write out (US list + S&P 500 match).
   const ohlcSymbols = new Set<string>();
