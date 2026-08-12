@@ -569,17 +569,26 @@
       async function loadSymbol() {
         chartMeta.textContent = "Loading…";
         const file = `${OHLC_BASE}${safeName(currentSymbol)}.json`;
-        try {
-          const r = await fetch(file, { cache: "no-store" });
-          if (r.ok) {
-            const d = await r.json();
-            symbolMeta = { name: d.name || "", industry: d.industry || "" };
-            allBars = barsToPoints(d.bars || []);
-            render();
-            return;
-          }
-        } catch (e) {}
-        // local live fallback (only works behind src/server.ts)
+        // CDN fetch with retry + browser cache. Archive files are immutable per
+        // symbol, so caching is safe and survives transient jsDelivr hiccups
+        // (rate limits, orphan `data` branch re-cache lag). Try up to 3 times.
+        let cdnStatus = 0, cdnErr = null, cdnEmpty = false;
+        for (let attempt = 0; attempt < 3; attempt++) {
+          try {
+            const r = await fetch(file, { cache: "default" });
+            cdnStatus = r.status;
+            if (r.ok) {
+              const d = await r.json();
+              symbolMeta = { name: d.name || "", industry: d.industry || "" };
+              allBars = barsToPoints(d.bars || []);
+              if (!allBars.length) { cdnEmpty = true; break; } // empty payload, don't retry
+              render();
+              return;
+            }
+          } catch (e) { cdnErr = e; }
+          if (attempt < 2) await new Promise(res => setTimeout(res, 400 * (attempt + 1)));
+        }
+        // local live fallback (only works behind src/server.ts in local dev)
         try {
           const now = Math.floor(Date.now() / 1000);
           const r = await fetch(`/api/history?symbol=${encodeURIComponent(currentSymbol)}&period1=0&period2=${now}&interval=1d`);
@@ -594,8 +603,19 @@
             return;
           }
         } catch (e) {}
+        // Failed. Tell the user where the data was supposed to come from and
+        // that the CDN likely rate-limited us — not that local dev is required.
         allBars = [];
-        renderPlaceholder(`No archived data for ${currentSymbol}. (Live data is only available in local dev.)`);
+        const why = cdnEmpty
+          ? "archived file is empty"
+          : cdnStatus === 404
+            ? "no archived file for this symbol"
+            : `CDN fetch failed (HTTP ${cdnStatus || "—"}${cdnErr ? ": " + (cdnErr.message || cdnErr) : ""})`;
+        renderPlaceholder(
+          `No data for ${currentSymbol} — ${why}.` +
+          `\nArchive source: ${file}` +
+          `\nLikely rate-limited or transient; retry shortly.`
+        );
       }
 
       // ---------- aggregation / filtering ----------
@@ -799,8 +819,15 @@
         svg.innerHTML = "";
         svg.setAttribute("viewBox", `0 0 ${Math.max(320, wrap.clientWidth)} ${CHART_H}`);
         svg.setAttribute("preserveAspectRatio", "none");
+        const lines = String(msg).split("\n");
         const t = el("text", { x: "50%", y: "50%", "text-anchor": "middle", fill: "var(--muted)", "font-size": "15" });
-        t.textContent = msg;
+        lines.forEach((line, i) => {
+          const ts = el("tspan", { x: "50%", dy: i === 0 ? `${-(lines.length - 1) * 0.6}em` : "1.2em" });
+          // shrink long URL-ish lines so they fit the chart width
+          if (line.length > 60) ts.setAttribute("font-size", "11");
+          ts.textContent = line;
+          t.appendChild(ts);
+        });
         svg.appendChild(t);
         indTableBody.innerHTML = "";
         renderQuote();
