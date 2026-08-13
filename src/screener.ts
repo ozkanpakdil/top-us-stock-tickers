@@ -223,6 +223,56 @@ interface HitRow {
   trendUp: boolean;
   trendSkipped: boolean;
   score: number;
+  employees: number | null;
+}
+
+// --- employee count (stockanalysis.com) -------------------------------------
+
+const SA_HEADERS: Record<string, string> = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+  Accept: "text/html,application/xhtml+xml",
+};
+
+/** Fetch full-time employee count for a symbol from stockanalysis.com.
+ *  Returns null if the page doesn't contain the data or the fetch fails. */
+async function fetchEmployeeCount(symbol: string): Promise<number | null> {
+  const sym = symbol.toLowerCase().replace(/\./g, "-").replace(/\//g, "-");
+  const url = `https://stockanalysis.com/stocks/${sym}/`;
+  try {
+    const res = await fetch(url, { headers: SA_HEADERS, signal: AbortSignal.timeout(15000) });
+    if (!res.ok) return null;
+    const html = await res.text();
+    // Pattern: employees/" class="dothref text-default">166,000
+    const m = html.match(/employees\/"[^>]*>([0-9,]+)/);
+    if (m) {
+      const n = parseInt(m[1].replace(/,/g, ""), 10);
+      return Number.isFinite(n) ? n : null;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/** Fetch employee counts for a list of symbols with limited concurrency. */
+async function fetchEmployeeCounts(
+  symbols: string[],
+  concurrency = 10,
+): Promise<Map<string, number | null>> {
+  const result = new Map<string, number | null>();
+  let next = 0;
+  const total = symbols.length;
+  const workers = Array.from({ length: Math.min(concurrency, total) }, async () => {
+    while (true) {
+      const i = next++;
+      if (i >= total) break;
+      const sym = symbols[i];
+      const count = await fetchEmployeeCount(sym);
+      result.set(sym, count);
+    }
+  });
+  await Promise.all(workers);
+  return result;
 }
 
 /** Screen one symbol; returns a HitRow if it passes all rules, else null. */
@@ -281,6 +331,7 @@ function screenSymbol(sym: string, s: Sym, vixOk: boolean, today: string): HitRo
     trendUp,
     trendSkipped,
     score,
+    employees: null, // filled in after screening (fetched from stockanalysis.com)
   };
 }
 
@@ -288,7 +339,7 @@ function screenSymbol(sym: string, s: Sym, vixOk: boolean, today: string): HitRo
 
 const LATEST_COLUMNS = [
   "symbol", "name", "industry", "close", "dayChangePct", "volume", "volRatio",
-  "sma50", "smaLong", "at20DayHigh", "trendUp", "trendSkipped", "score", "vix",
+  "sma50", "smaLong", "at20DayHigh", "trendUp", "trendSkipped", "score", "vix", "employees",
 ];
 const HITS_LOG_COLUMNS = ["date", "symbol", "score", "dayChangePct", "close", "industry"];
 const HIGHLIGHT_COLUMNS = [
@@ -425,11 +476,23 @@ async function main() {
   }
   hits.sort((a, b) => b.score - a.score || b.dayChangePct - a.dayChangePct);
 
+  // Fetch employee counts for hit symbols (from stockanalysis.com).
+  if (hits.length > 0) {
+    console.log(`Fetching employee counts for ${hits.length} hit symbols...`);
+    const empMap = await fetchEmployeeCounts(hits.map((h) => h.symbol));
+    let found = 0;
+    for (const h of hits) {
+      h.employees = empMap.get(h.symbol) ?? null;
+      if (h.employees !== null) found++;
+    }
+    console.log(`  Employee counts: ${found}/${hits.length} found.`);
+  }
+
   // Write LATEST.csv.
   const latestRows = hits.map((h) => [
     h.symbol, h.name, h.industry, h.close, h.dayChangePct, h.volume, h.volRatio,
     h.sma50 ?? "", h.smaLong ?? "", h.at20DayHigh, h.trendUp, h.trendSkipped, h.score,
-    vix !== null ? Math.round(vix * 100) / 100 : "",
+    vix !== null ? Math.round(vix * 100) / 100 : "", h.employees ?? "",
   ]);
   await Bun.write(`${OUT_DIR}/LATEST.csv`, toCsv(LATEST_COLUMNS, latestRows));
 

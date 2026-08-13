@@ -5,6 +5,9 @@ on:
     # Run weekdays at 10:00 UTC (Mon-Fri, before US Market Open)
     - cron: '0 10 * * 1-5'
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write

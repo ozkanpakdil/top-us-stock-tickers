@@ -91,6 +91,11 @@
       table.stbl th, table.stbl td { padding: 9px 12px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
       table.stbl th:first-child, table.stbl td:first-child { text-align: left; }
       table.stbl th { color: var(--muted); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.6px; position: sticky; top: 0; background: var(--panel); }
+      table.stbl th.sortable { cursor: pointer; user-select: none; }
+      table.stbl th.sortable:hover { color: var(--text); }
+      table.stbl th.sortable::after { content: " ↕"; opacity: 0.3; font-size: 0.65rem; }
+      table.stbl th.sortable.asc::after { content: " ↑"; opacity: 1; color: var(--accent); }
+      table.stbl th.sortable.desc::after { content: " ↓"; opacity: 1; color: var(--accent); }
       table.stbl tbody tr:hover { background: var(--panel-2); }
       table.stbl td { font-family: var(--mono); }
       table.stbl td.sym { font-family: var(--font); font-weight: 700; }
@@ -130,7 +135,7 @@
           <dt>Trend up</dt><dd>SMA50 &gt; SMA(long). Long = 200 days once enough history exists, else the longest window ≥ 120 days; below 120 days the rule is skipped (history only goes back to Dec 2025).</dd>
           <dt>Momentum</dt><dd>Day change ≥ 2% (close vs previous close — proxies "gapping up", since open/high/low aren't in the history).</dd>
         </dl>
-        <p class="note">Score = dayChange% + 2 × volumeRatio. Sorted by score. Click a symbol to open its chart. Thresholds are constants in <code>src/screener.ts</code>.</p>
+        <p class="note">Score = dayChange% + 2 × volumeRatio. Sorted by score. Employee count from stockanalysis.com — larger companies may be stronger growth candidates. Click a symbol to open its chart. Click any column header to sort. Thresholds are constants in <code>src/screener.ts</code>.</p>
       </section>
 
       <section class="panel">
@@ -218,26 +223,99 @@
       const fmtNum = (n, d = 2) => n === null ? "" : n.toFixed(d);
       const fmtInt = (n) => n === null ? "" : Math.round(n).toLocaleString();
 
-      function table(head, rows, makeCell) {
-        if (!rows.length) return '<div class="empty">No entries.</div>';
+      // ---------- sortable table infrastructure ----------
+      // makeSortableTable(cols, rows, makeCell, sortKeyFn, initialSort)
+      // Returns HTML string for a table with clickable sortable headers.
+      // sortKeyFn(colName, row, idx) → number|string|null  (value to sort by)
+      // initialSort: { col, dir } or null
+      const sortStates = new Map(); // wrapId → { col, dir }
+      const tableData = new Map();  // wrapId → { rows, cols, makeCell, sortKeyFn, idx }
+
+      function makeSortableTable(wrapId, cols, rows, makeCell, sortKeyFn, idx, initialSort) {
+        const state = initialSort || { col: null, dir: "desc" };
+        sortStates.set(wrapId, state);
+        tableData.set(wrapId, { rows, cols, makeCell, sortKeyFn, idx });
+
+        // Apply initial sort to rows
+        let sorted = rows;
+        if (state.col) {
+          sorted = sortRows(rows, state.col, state.dir, sortKeyFn, idx);
+        }
+
         let h = '<table class="stbl"><thead><tr>';
-        head.forEach(c => h += `<th>${c}</th>`);
+        cols.forEach(c => {
+          const cls = 'sortable' + (state.col === c ? ' ' + state.dir : "");
+          h += `<th class="${cls}" data-col="${c}" data-wrap="${wrapId}">${c}</th>`;
+        });
         h += "</tr></thead><tbody>";
-        rows.forEach((r, ri) => {
+        sorted.forEach((r, ri) => {
           h += "<tr>";
-          head.forEach((c, ci) => { h += makeCell(r, c, ci, ri); });
+          cols.forEach((c, ci) => { h += makeCell(r, c, ci, ri); });
           h += "</tr>";
         });
         return h + "</tbody></table>";
       }
+
+      function sortRows(rows, col, dir, sortKeyFn, idx) {
+        return [...rows].sort((a, b) => {
+          const va = sortKeyFn(col, a, idx);
+          const vb = sortKeyFn(col, b, idx);
+          // null/empty always sort to bottom
+          if (va === null || va === undefined || va === "") return 1;
+          if (vb === null || vb === undefined || vb === "") return -1;
+          let cmp;
+          if (typeof va === "number" && typeof vb === "number") cmp = va - vb;
+          else cmp = String(va).localeCompare(String(vb));
+          return dir === "asc" ? cmp : -cmp;
+        });
+      }
+
+      function rerenderTable(wrapId) {
+        const data = tableData.get(wrapId);
+        const state = sortStates.get(wrapId);
+        if (!data || !state) return;
+        const { rows, cols, makeCell, sortKeyFn, idx } = data;
+        const sorted = state.col ? sortRows(rows, state.col, state.dir, sortKeyFn, idx) : rows;
+        const wrap = $(wrapId);
+        // Update header indicators
+        wrap.querySelectorAll("th.sortable").forEach(th => {
+          th.classList.remove("asc", "desc");
+          if (th.dataset.col === state.col) th.classList.add(state.dir);
+        });
+        // Re-render tbody
+        let h = "";
+        sorted.forEach((r, ri) => {
+          h += "<tr>";
+          cols.forEach((c, ci) => { h += makeCell(r, c, ci, ri); });
+          h += "</tr>";
+        });
+        wrap.querySelector("tbody").innerHTML = h;
+      }
+
+      // Global click handler for sortable headers (delegated)
+      document.addEventListener("click", (e) => {
+        const th = e.target.closest("th.sortable");
+        if (!th) return;
+        const wrapId = th.dataset.wrap;
+        if (!wrapId || !sortStates.has(wrapId)) return;
+        const state = sortStates.get(wrapId);
+        const col = th.dataset.col;
+        if (state.col === col) {
+          state.dir = state.dir === "asc" ? "desc" : "asc";
+        } else {
+          state.col = col;
+          state.dir = "desc";
+        }
+        rerenderTable(wrapId);
+      });
 
       // ---------- render LATEST ----------
       async function renderLatest() {
         const { header, rows } = await loadCsv("LATEST.csv");
         $("latestCount").textContent = rows.length ? `${rows.length} symbols` : "";
         const idx = {}; header.forEach((h, i) => idx[h] = i);
-        const cols = ["symbol", "close", "dayChangePct", "volume", "volRatio", "sma50", "smaLong", "score", "vix"];
-        $("latestWrap").innerHTML = table(cols, rows, (r, c, ci) => {
+        const cols = ["symbol", "close", "dayChangePct", "volume", "volRatio", "sma50", "smaLong", "score", "vix", "employees"];
+        const makeCell = (r, c, ci) => {
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
             const nm = r[idx.name] || "";
@@ -251,8 +329,16 @@
           if (c === "smaLong") return `<td>${r[idx.smaLong] ? fmtNum(num(r[idx.smaLong])) : "—"}</td>`;
           if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
           if (c === "vix") return `<td>${r[idx.vix] || "—"}</td>`;
+          if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
           return `<td>${r[idx[c]] ?? ""}</td>`;
-        });
+        };
+        const sortKeyFn = (col, r) => {
+          if (col === "symbol") return r[idx.symbol] || "";
+          return num(r[idx[col]]);
+        };
+        $("latestWrap").innerHTML = rows.length
+          ? makeSortableTable("latestWrap", cols, rows, makeCell, sortKeyFn, idx, { col: "score", dir: "desc" })
+          : '<div class="empty">No entries.</div>';
       }
 
       // ---------- render highlight lists ----------
@@ -261,7 +347,7 @@
         $(countId).textContent = rows.length ? `${rows.length} symbols` : "";
         const idx = {}; header.forEach((h, i) => idx[h] = i);
         const cols = ["symbol", "hits", "firstHit", "lastHit", "avgScore", "latestClose", "latestDayChange"];
-        $(wrapId).innerHTML = table(cols, rows, (r, c) => {
+        const makeCell = (r, c) => {
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
             const ind = r[idx.industry] || "";
@@ -272,7 +358,15 @@
           if (c === "latestClose") return `<td>${fmtNum(num(r[idx.latestClose]))}</td>`;
           if (c === "avgScore") return `<td>${fmtNum(num(r[idx.avgScore]))}</td>`;
           return `<td>${r[idx[c]] ?? ""}</td>`;
-        });
+        };
+        const sortKeyFn = (col, r) => {
+          if (col === "symbol") return r[idx.symbol] || "";
+          if (col === "firstHit" || col === "lastHit") return r[idx[col]] || "";
+          return num(r[idx[col]]);
+        };
+        $(wrapId).innerHTML = rows.length
+          ? makeSortableTable(wrapId, cols, rows, makeCell, sortKeyFn, idx, { col: "hits", dir: "desc" })
+          : '<div class="empty">No entries.</div>';
       }
 
       // ---------- render hits_log ----------
@@ -280,10 +374,8 @@
         const { header, rows } = await loadCsv("hits_log.csv");
         $("logCount").textContent = rows.length ? `${rows.length} rows` : "";
         const idx = {}; header.forEach((h, i) => idx[h] = i);
-        // newest first
-        const sorted = [...rows].sort((a, b) => (a[idx.date] < b[idx.date] ? 1 : -1));
         const cols = ["date", "symbol", "score", "dayChangePct", "close", "industry"];
-        $("logWrap").innerHTML = table(cols, sorted, (r, c) => {
+        const makeCell = (r, c) => {
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
             return `<td class="sym"><a href="index.html?symbol=${encodeURIComponent(sym)}">${sym}</a></td>`;
@@ -292,7 +384,15 @@
           if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
           if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
           return `<td>${r[idx[c]] ?? ""}</td>`;
-        });
+        };
+        const sortKeyFn = (col, r) => {
+          if (col === "symbol" || col === "industry") return r[idx[col]] || "";
+          if (col === "date") return r[idx.date] || "";
+          return num(r[idx[col]]);
+        };
+        $("logWrap").innerHTML = rows.length
+          ? makeSortableTable("logWrap", cols, rows, makeCell, sortKeyFn, idx, { col: "date", dir: "desc" })
+          : '<div class="empty">No entries.</div>';
       }
 
       // ---------- meta (run date + VIX gate) from LATEST ----------
