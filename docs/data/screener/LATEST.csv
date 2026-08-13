@@ -1,3 +1,16 @@
-symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix
-MASS,908 Devices Inc. Common Stock,Industrials,10.02,2.56,858440,2.65,8.33,7.12,true,true,false,7.86,14.6
-BWEN,Broadwind Inc. Common Stock,Telecommunications,5.44,2.45,1070812,1.76,4.34,3.22,true,true,false,5.96,14.6
+symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
+RRGB,Red Robin Gourmet Burgers Inc. Common Stock,Consumer Discretionary,10.08,20.43,1530895,3.22,6.02,4.52,true,true,false,26.87,14.7,18852
+USIO,Usio Inc. Common Stock,Finance,2.625,9.38,1544008,7.87,1.94,1.51,true,true,false,25.12,14.7,110
+MXCT,MaxCyte Inc. Common Stock,Health Care,1.505,18.97,2304898,1.72,1.19,1.02,true,true,false,22.42,14.7,91
+AVAH,Aveanna Healthcare Holdings Inc. Common Stock,Health Care,10.735,18.03,3663069,1.67,8.16,7.67,true,true,false,21.38,14.7,35500
+SENEB,Seneca Foods Corp. Class B Common Stock,Consumer Staples,196.6299,10.33,1322,5.35,158.53,140.74,true,true,false,21.02,14.7,2800
+CHCI,Comstock Holding Companies Inc. Class A Common Stock,Finance,17.71,15.98,63241,2.26,15.63,14.56,true,true,false,20.5,14.7,524
+BFRI,Biofrontera Inc. Common Stock,Health Care,1.3609,9.31,812329,2.6,1,0.94,true,true,false,14.51,14.7,94
+GTIM,Good Times Restaurants Inc. Common Stock,Consumer Discretionary,1.6,5.96,180541,4.24,1.36,1.26,true,true,false,14.45,14.7,2078
+QMCO,Quantum Corporation Common Stock,Technology,23.83,9.46,2186739,1.69,11.95,8.35,true,true,false,12.84,14.7,490
+PARK,Park Dental Partners Inc. Common Stock,Health Care,22.8,9.09,49352,1.54,19.4,18.02,true,true,false,12.17,14.7,1212
+CYCN,Cyclerion Therapeutics Inc. Common Stock,Health Care,4.13,5.22,50795,1.57,3.32,2.46,true,true,false,8.36,14.7,1
+HQI,HireQuest Inc. Common Stock (DE),Consumer Discretionary,17.29,2.82,47987,2.71,12.97,11.61,true,true,false,8.25,14.7,88
+OVBC,Ohio Valley Banc Corp. Common Stock,Finance,46.37,3.85,63918,1.61,45.86,43.87,true,true,false,7.07,14.7,269
+MLSS,Milestone Scientific Inc. Common Stock,Health Care,0.5415,2.83,345784,1.66,0.38,0.32,true,true,false,6.15,14.7,15
+RUM,Rumble Inc. Class A Common Stock,Technology,7.725,2.05,6906787,1.83,7.22,6.43,true,true,false,5.7,14.7,156
