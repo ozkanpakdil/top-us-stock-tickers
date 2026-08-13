@@ -341,9 +341,9 @@ const LATEST_COLUMNS = [
   "symbol", "name", "industry", "close", "dayChangePct", "volume", "volRatio",
   "sma50", "smaLong", "at20DayHigh", "trendUp", "trendSkipped", "score", "vix", "employees",
 ];
-const HITS_LOG_COLUMNS = ["date", "symbol", "score", "dayChangePct", "close", "industry"];
+const HITS_LOG_COLUMNS = ["date", "symbol", "score", "dayChangePct", "close", "volume", "volRatio", "industry", "employees"];
 const HIGHLIGHT_COLUMNS = [
-  "symbol", "industry", "hits", "firstHit", "lastHit", "avgScore", "latestClose", "latestDayChange",
+  "symbol", "industry", "hits", "firstHit", "lastHit", "avgScore", "latestClose", "latestDayChange", "employees",
 ];
 
 function csvCell(v: unknown): string {
@@ -364,7 +364,10 @@ interface LogRow {
   score: number;
   dayChangePct: number;
   close: number;
+  volume: number;
+  volRatio: number;
   industry: string;
+  employees: number | null;
 }
 
 function readHitsLog(path: string): LogRow[] {
@@ -387,7 +390,10 @@ function readHitsLog(path: string): LogRow[] {
       score: parseNumber(r[idx.score]) ?? 0,
       dayChangePct: parseNumber(r[idx.dayChangePct]) ?? 0,
       close: parseNumber(r[idx.close]) ?? 0,
+      volume: idx.volume !== undefined ? (parseNumber(r[idx.volume]) ?? 0) : 0,
+      volRatio: idx.volRatio !== undefined ? (parseNumber(r[idx.volRatio]) ?? 0) : 0,
       industry: r[idx.industry] ?? "",
+      employees: idx.employees !== undefined ? (parseNumber(r[idx.employees]) ?? null) : null,
     });
   }
   return out;
@@ -399,7 +405,7 @@ function highlightFromLog(
   today: string,
   days: number,
   minHits: number,
-): { symbol: string; industry: string; hits: number; firstHit: string; lastHit: string; avgScore: number; latestClose: number; latestDayChange: number }[] {
+): { symbol: string; industry: string; hits: number; firstHit: string; lastHit: string; avgScore: number; latestClose: number; latestDayChange: number; employees: number | null }[] {
   const todayMs = new Date(today + "T00:00:00Z").getTime();
   const cutoff = todayMs - days * 86400000;
   const bySymbol = new Map<string, LogRow[]>();
@@ -431,6 +437,7 @@ function highlightFromLog(
       avgScore: Math.round(avg * 100) / 100,
       latestClose: last.close,
       latestDayChange: last.dayChangePct,
+      employees: last.employees,
     });
   }
   out.sort((a, b) => b.hits - a.hits || b.avgScore - a.avgScore);
@@ -499,16 +506,16 @@ async function main() {
   // Append today's hits to hits_log.csv (idempotent: drop today's rows first).
   const logPath = `${OUT_DIR}/hits_log.csv`;
   const existingLog = readHitsLog(logPath).filter((r) => r.date !== today);
-  const newLogRows = hits.map((h) => [today, h.symbol, h.score, h.dayChangePct, h.close, h.industry]);
-  const allLog = existingLog.map((r) => [r.date, r.symbol, r.score, r.dayChangePct, r.close, r.industry]);
+  const newLogRows = hits.map((h) => [today, h.symbol, h.score, h.dayChangePct, h.close, h.volume, h.volRatio, h.industry, h.employees ?? ""]);
+  const allLog = existingLog.map((r) => [r.date, r.symbol, r.score, r.dayChangePct, r.close, r.volume, r.volRatio, r.industry, r.employees ?? ""]);
   await Bun.write(logPath, toCsv(HITS_LOG_COLUMNS, [...allLog, ...newLogRows]));
 
   // Highlight lists.
   const fullLog = readHitsLog(logPath);
   const watch = highlightFromLog(fullLog, today, WATCH_DAYS, WATCH_MIN_HITS);
   const convict = highlightFromLog(fullLog, today, CONVICTION_DAYS, CONVICTION_MIN_HITS);
-  await Bun.write(`${OUT_DIR}/watchlist_15.csv`, toCsv(HIGHLIGHT_COLUMNS, watch.map((w) => [w.symbol, w.industry, w.hits, w.firstHit, w.lastHit, w.avgScore, w.latestClose, w.latestDayChange])));
-  await Bun.write(`${OUT_DIR}/conviction_30.csv`, toCsv(HIGHLIGHT_COLUMNS, convict.map((w) => [w.symbol, w.industry, w.hits, w.firstHit, w.lastHit, w.avgScore, w.latestClose, w.latestDayChange])));
+  await Bun.write(`${OUT_DIR}/watchlist_15.csv`, toCsv(HIGHLIGHT_COLUMNS, watch.map((w) => [w.symbol, w.industry, w.hits, w.firstHit, w.lastHit, w.avgScore, w.latestClose, w.latestDayChange, w.employees ?? ""])));
+  await Bun.write(`${OUT_DIR}/conviction_30.csv`, toCsv(HIGHLIGHT_COLUMNS, convict.map((w) => [w.symbol, w.industry, w.hits, w.firstHit, w.lastHit, w.avgScore, w.latestClose, w.latestDayChange, w.employees ?? ""])));
 
   // Summary.
   console.log("---");

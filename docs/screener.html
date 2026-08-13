@@ -346,7 +346,7 @@
         const { header, rows } = await loadCsv(name);
         $(countId).textContent = rows.length ? `${rows.length} symbols` : "";
         const idx = {}; header.forEach((h, i) => idx[h] = i);
-        const cols = ["symbol", "hits", "firstHit", "lastHit", "avgScore", "latestClose", "latestDayChange"];
+        const cols = ["symbol", "hits", "firstHit", "lastHit", "avgScore", "latestClose", "latestDayChange", "employees"];
         const makeCell = (r, c) => {
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
@@ -357,6 +357,7 @@
           if (c === "latestDayChange") { const n = num(r[idx.latestDayChange]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
           if (c === "latestClose") return `<td>${fmtNum(num(r[idx.latestClose]))}</td>`;
           if (c === "avgScore") return `<td>${fmtNum(num(r[idx.avgScore]))}</td>`;
+          if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
           return `<td>${r[idx[c]] ?? ""}</td>`;
         };
         const sortKeyFn = (col, r) => {
@@ -374,7 +375,7 @@
         const { header, rows } = await loadCsv("hits_log.csv");
         $("logCount").textContent = rows.length ? `${rows.length} rows` : "";
         const idx = {}; header.forEach((h, i) => idx[h] = i);
-        const cols = ["date", "symbol", "score", "dayChangePct", "close", "industry"];
+        const cols = ["date", "symbol", "score", "dayChangePct", "close", "volume", "volRatio", "industry", "employees"];
         const makeCell = (r, c) => {
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
@@ -382,7 +383,10 @@
           }
           if (c === "dayChangePct") { const n = num(r[idx.dayChangePct]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
           if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
+          if (c === "volume") return `<td>${r[idx.volume] ? fmtInt(num(r[idx.volume])) : "—"}</td>`;
+          if (c === "volRatio") return `<td>${r[idx.volRatio] ? fmtNum(num(r[idx.volRatio])) + "×" : "—"}</td>`;
           if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
+          if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
           return `<td>${r[idx[c]] ?? ""}</td>`;
         };
         const sortKeyFn = (col, r) => {
