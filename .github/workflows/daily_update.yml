@@ -11,6 +11,13 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+# Avoid concurrent Pages deploys.
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   update-data:
@@ -96,3 +103,12 @@ jobs:
             git commit -m "Auto-update ticker lists: $(date -u)"
             git push
           fi
+
+      - name: Upload Pages artifact
+        # Upload docs/ (with freshly generated CSVs) and deploy to Pages.
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
