@@ -236,14 +236,16 @@ const SA_HEADERS: Record<string, string> = {
 /** Fetch full-time employee count for a symbol from stockanalysis.com.
  *  Returns null if the page doesn't contain the data or the fetch fails. */
 async function fetchEmployeeCount(symbol: string): Promise<number | null> {
-  const sym = symbol.toLowerCase().replace(/\./g, "-").replace(/\//g, "-");
+  const sym = symbol.toLowerCase().replace(/[./^]/g, "-");
   const url = `https://stockanalysis.com/stocks/${sym}/`;
   try {
     const res = await fetch(url, { headers: SA_HEADERS, signal: AbortSignal.timeout(15000) });
     if (!res.ok) return null;
     const html = await res.text();
     // Pattern: employees/" class="dothref text-default">166,000
-    const m = html.match(/employees\/"[^>]*>([0-9,]+)/);
+    let m = html.match(/employees\/"[^>]*>([0-9,]+)/);
+    // Fallback: <span ...>Employees</span> ... >5,300<
+    if (!m) m = html.match(/Employees<\/span>[^]*?>([0-9,]{1,12})</);
     if (m) {
       const n = parseInt(m[1].replace(/,/g, ""), 10);
       return Number.isFinite(n) ? n : null;
@@ -506,6 +508,28 @@ async function main() {
   // Append today's hits to hits_log.csv (idempotent: drop today's rows first).
   const logPath = `${OUT_DIR}/hits_log.csv`;
   const existingLog = readHitsLog(logPath).filter((r) => r.date !== today);
+
+  // Backfill employee counts for historical log rows that are missing them.
+  // This happens when the employee feature was added after hits were already
+  // logged — old entries have empty employees fields.
+  const needsBackfill = existingLog.filter((r) => r.employees === null);
+  if (needsBackfill.length > 0) {
+    const backfillSymbols = [...new Set(needsBackfill.map((r) => r.symbol))];
+    console.log(`Backfilling employee counts for ${backfillSymbols.length} symbols from hits_log...`);
+    const empMap = await fetchEmployeeCounts(backfillSymbols);
+    let found = 0;
+    for (const r of existingLog) {
+      if (r.employees === null) {
+        const count = empMap.get(r.symbol) ?? null;
+        if (count !== null) {
+          r.employees = count;
+          found++;
+        }
+      }
+    }
+    console.log(`  Backfilled employee counts: ${found}/${needsBackfill.length} rows updated.`);
+  }
+
   const newLogRows = hits.map((h) => [today, h.symbol, h.score, h.dayChangePct, h.close, h.volume, h.volRatio, h.industry, h.employees ?? ""]);
   const allLog = existingLog.map((r) => [r.date, r.symbol, r.score, r.dayChangePct, r.close, r.volume, r.volRatio, r.industry, r.employees ?? ""]);
   await Bun.write(logPath, toCsv(HITS_LOG_COLUMNS, [...allLog, ...newLogRows]));
