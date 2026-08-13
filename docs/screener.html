@@ -87,8 +87,8 @@
 
       /* ---- table ---- */
       .scroll { overflow-x: auto; }
-      table.stbl { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
-      table.stbl th, table.stbl td { padding: 9px 12px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+      table.stbl { width: 100%; border-collapse: collapse; font-size: 0.84rem; table-layout: auto; }
+      table.stbl th, table.stbl td { padding: 8px 8px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
       table.stbl th:first-child, table.stbl td:first-child { text-align: left; }
       table.stbl th { color: var(--muted); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.6px; position: sticky; top: 0; background: var(--panel); }
       table.stbl th.sortable { cursor: pointer; user-select: none; }
@@ -98,10 +98,13 @@
       table.stbl th.sortable.desc::after { content: " ↓"; opacity: 1; color: var(--accent); }
       table.stbl tbody tr:hover { background: var(--panel-2); }
       table.stbl td { font-family: var(--mono); }
-      table.stbl td.sym { font-family: var(--font); font-weight: 700; }
+      table.stbl td.sym { font-family: var(--font); font-weight: 700; max-width: 220px; }
       table.stbl td.sym a { color: var(--accent); text-decoration: none; }
       table.stbl td.sym a:hover { text-decoration: underline; }
-      table.stbl td.sym .nm { display: block; font-weight: 400; color: var(--text-dim); font-size: 0.74rem; font-family: var(--font); }
+      table.stbl td.sym .nm { display: block; font-weight: 400; color: var(--text-dim); font-size: 0.74rem; font-family: var(--font); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      table.stbl td.sym .sa { display: inline-flex; align-items: center; vertical-align: middle; margin-left: 4px; color: var(--muted); text-decoration: none; font-size: 0.7rem; transition: color 0.15s; }
+      table.stbl td.sym .sa:hover { color: var(--s2); }
+      table.stbl td.sym .sa svg { width: 12px; height: 12px; vertical-align: middle; }
       .up { color: var(--up); } .down { color: var(--down); }
       .empty { color: var(--muted); font-size: 0.85rem; padding: 14px 2px; }
 
@@ -309,6 +312,14 @@
         rerenderTable(wrapId);
       });
 
+      // ---------- shared symbol cell ----------
+      const SA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+      function symCell(sym, sub) {
+        const saSym = sym.replace(/\./g, "-").replace(/\//g, "-");
+        const subHtml = sub ? `<span class="nm">${sub}</span>` : "";
+        return `<td class="sym"><a href="index.html?symbol=${encodeURIComponent(sym)}">${sym}</a><a class="sa" href="https://seekingalpha.com/symbol/${encodeURIComponent(saSym)}" target="_blank" rel="noopener" title="Seeking Alpha">${SA_ICON}</a>${subHtml}</td>`;
+      }
+
       // ---------- render LATEST ----------
       async function renderLatest() {
         const { header, rows } = await loadCsv("LATEST.csv");
@@ -319,7 +330,7 @@
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
             const nm = r[idx.name] || "";
-            return `<td class="sym"><a href="index.html?symbol=${encodeURIComponent(sym)}">${sym}</a><span class="nm">${nm}</span></td>`;
+            return symCell(sym, nm);
           }
           if (c === "dayChangePct") { const n = num(r[idx.dayChangePct]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
           if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
@@ -351,7 +362,7 @@
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
             const ind = r[idx.industry] || "";
-            return `<td class="sym"><a href="index.html?symbol=${encodeURIComponent(sym)}">${sym}</a><span class="nm">${ind}</span></td>`;
+            return symCell(sym, ind);
           }
           if (c === "hits") return `<td><b>${r[idx.hits] || ""}</b></td>`;
           if (c === "latestDayChange") { const n = num(r[idx.latestDayChange]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
@@ -379,7 +390,7 @@
         const makeCell = (r, c) => {
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
-            return `<td class="sym"><a href="index.html?symbol=${encodeURIComponent(sym)}">${sym}</a></td>`;
+            return symCell(sym);
           }
           if (c === "dayChangePct") { const n = num(r[idx.dayChangePct]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
           if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
