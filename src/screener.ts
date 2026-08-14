@@ -9,7 +9,7 @@
 // VIX (not in all.csv) is fetched from Yahoo (^VIX) and used as a global market gate.
 //
 // Outputs (all committed to main under docs/data/screener/, so they're published to
-// the GitHub Pages site and rendered by docs/screener.html; hits_log.csv is the
+// the GitHub Pages site and rendered by docs/index.html; hits_log.csv is the
 // append-only time series, mirroring how tickers/all.csv's git history is the source
 // of truth elsewhere):
 //   docs/data/screener/LATEST.csv         — today's hits, overwritten daily

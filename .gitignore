@@ -7,7 +7,6 @@
 tickers/history.csv
 tickers/history.sql
 
-# Per-ticker OHLC archives. Published to an orphan `data` branch by the daily
-# workflow and served to the static site via the jsDelivr CDN — never committed
-# to `main` (thousands of files / ~1GB would bloat the repo).
+# Per-ticker OHLC archives — generated locally by archive_history.ts for
+# local charting only. Never committed to main.
 ohlc/

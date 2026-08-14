@@ -3,273 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>US Stock Charts — indicators</title>
+    <title>US Stock Screener — breakout hits</title>
+    <meta name="description" content="Daily breakout screener scanning every US stock for institutional volume, new highs, and uptrend signals." />
     <style>
-      /* ---- design tokens (Revolut / IBKR-inspired) ---- */
+      /* ---- design tokens ---- */
       :root {
         --font: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, system-ui, sans-serif;
         --mono: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
       }
       :root[data-theme="dark"] {
-        --bg: #0c0d11;
-        --panel: #14161c;
-        --panel-2: #1a1d25;
-        --panel-3: #20242e;
-        --text: #eaecf2;
-        --text-dim: #9aa0ac;
-        --muted: #5e6573;
-        --grid: #1b1f28;
-        --axis: #2a2f3b;
-        --border: rgba(255,255,255,0.06);
-        --border-strong: rgba(255,255,255,0.12);
-        --up: #26c281;
-        --up-ink: #0e1a16;
-        --down: #ff5151;
-        --down-ink: #1a0e0e;
+        --bg: #0c0d11; --panel: #14161c; --panel-2: #1a1d25; --panel-3: #20242e;
+        --text: #eaecf2; --text-dim: #9aa0ac; --muted: #5e6573;
+        --grid: #1b1f28; --axis: #2a2f3b;
+        --border: rgba(255,255,255,0.06); --border-strong: rgba(255,255,255,0.12);
+        --up: #26c281; --up-ink: #0e1a16; --down: #ff5151; --down-ink: #1a0e0e;
         --accent: #3b82f6;
-        --s1: #3b82f6; --s2: #f59e0b; --s3: #22d3ee; --s4: #a78bfa; --s5: #f472b6; --s6: #34d399;
+        --s2: #f59e0b; --s4: #a78bfa;
         --shadow: 0 14px 40px rgba(0,0,0,0.55);
-        --glow-up: rgba(38,194,129,0.18);
-        --glow-down: rgba(255,81,81,0.18);
+        --glow-up: rgba(38,194,129,0.18); --glow-down: rgba(255,81,81,0.18);
       }
       :root[data-theme="light"] {
-        --bg: #f4f5f7;
-        --panel: #ffffff;
-        --panel-2: #f7f8fa;
-        --panel-3: #eef0f3;
-        --text: #0c0d11;
-        --text-dim: #4b5563;
-        --muted: #8a90a0;
-        --grid: #e7e9ee;
-        --axis: #c9cdd6;
-        --border: rgba(12,13,17,0.08);
-        --border-strong: rgba(12,13,17,0.16);
-        --up: #16a06a;
-        --up-ink: #ffffff;
-        --down: #e23b3b;
-        --down-ink: #ffffff;
+        --bg: #f4f5f7; --panel: #ffffff; --panel-2: #f7f8fa; --panel-3: #eef0f3;
+        --text: #0c0d11; --text-dim: #4b5563; --muted: #8a90a0;
+        --grid: #e7e9ee; --axis: #c9cdd6;
+        --border: rgba(12,13,17,0.08); --border-strong: rgba(12,13,17,0.16);
+        --up: #16a06a; --up-ink: #ffffff; --down: #e23b3b; --down-ink: #ffffff;
         --accent: #2563eb;
-        --s1: #2563eb; --s2: #d97706; --s3: #0891b2; --s4: #7c3aed; --s5: #db2777; --s6: #059669;
+        --s2: #d97706; --s4: #7c3aed;
         --shadow: 0 10px 28px rgba(0,0,0,0.12);
-        --glow-up: rgba(22,160,106,0.16);
-        --glow-down: rgba(226,59,59,0.16);
+        --glow-up: rgba(22,160,106,0.16); --glow-down: rgba(226,59,59,0.16);
       }
-
       * { box-sizing: border-box; }
       html, body { height: 100%; }
       body {
-        margin: 0;
-        font-family: var(--font);
-        background: var(--bg);
-        color: var(--text);
-        -webkit-font-smoothing: antialiased;
-        font-variant-numeric: tabular-nums;
-        letter-spacing: 0.1px;
+        margin: 0; font-family: var(--font); background: var(--bg); color: var(--text);
+        -webkit-font-smoothing: antialiased; font-variant-numeric: tabular-nums; letter-spacing: 0.1px;
       }
 
       /* ---- top bar ---- */
       .topbar {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 11px 18px;
-        border-bottom: 1px solid var(--border);
-        background: var(--panel);
-        position: sticky; top: 0; z-index: 20;
+        display: flex; align-items: center; gap: 14px;
+        padding: 11px 18px; border-bottom: 1px solid var(--border);
+        background: var(--panel); position: sticky; top: 0; z-index: 20;
         backdrop-filter: saturate(140%) blur(8px);
       }
-      .brand { font-weight: 700; font-size: 1rem; letter-spacing: 0.2px; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+      .brand { font-weight: 700; font-size: 1rem; letter-spacing: 0.2px; white-space: nowrap; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
       .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: linear-gradient(135deg, var(--up), var(--accent)); box-shadow: 0 0 10px var(--glow-up); }
       .brand .accent { color: var(--accent); }
-
-      .search { position: relative; flex: 1; max-width: 380px; }
-      .search input {
-        width: 100%;
-        padding: 10px 12px 10px 36px;
-        border: 1px solid var(--border);
-        border-radius: 11px;
-        background: var(--panel-2);
-        color: var(--text);
-        font-size: 0.92rem;
-        font-family: var(--font);
-        transition: border-color 0.15s, background 0.15s;
-      }
-      .search input:focus { outline: none; border-color: var(--accent); background: var(--panel-3); }
-      .search::before {
-        content: ""; position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
-        width: 14px; height: 14px;
-        border: 1.6px solid var(--muted); border-radius: 999px;
-        box-shadow: 6px 6px 0 -4px var(--muted);
-      }
-      .search .results {
-        position: absolute; top: calc(100% + 6px); left: 0; right: 0;
-        max-height: 340px; overflow: auto;
-        background: var(--panel-2);
-        border: 1px solid var(--border-strong);
-        border-radius: 12px;
-        box-shadow: var(--shadow);
-        display: none; z-index: 30; padding: 4px;
-      }
-      .search .results.show { display: block; }
-      .search .opt {
-        padding: 9px 11px; cursor: pointer; display: flex; gap: 11px; align-items: baseline;
-        border-radius: 8px;
-      }
-      .search .opt:hover, .search .opt.active { background: var(--panel-3); }
-      .search .opt .sym { font-weight: 700; font-size: 0.9rem; min-width: 54px; }
-      .search .opt .nm { color: var(--text-dim); font-size: 0.82rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-      .quote { display: flex; align-items: baseline; gap: 12px; margin-left: auto; white-space: nowrap; }
-      .quote .sym { font-size: 1.05rem; font-weight: 700; }
-      .quote .name { color: var(--text-dim); font-size: 0.85rem; max-width: 240px; overflow: hidden; text-overflow: ellipsis; }
-      .quote .px { font-size: 1.2rem; font-weight: 700; font-family: var(--mono); }
-      .quote .chg {
-        font-size: 0.86rem; font-weight: 700; font-family: var(--mono);
-        padding: 4px 9px; border-radius: 8px;
-      }
-      .quote .chg.up { color: var(--up); background: var(--glow-up); }
-      .quote .chg.down { color: var(--down); background: var(--glow-down); }
-
+      .topbar .spacer { flex: 1; }
       .theme-btn {
-        border: 1px solid var(--border);
-        background: var(--panel-2);
-        color: var(--text);
-        width: 38px; height: 38px;
-        border-radius: 10px; font-size: 1rem; cursor: pointer;
+        border: 1px solid var(--border); background: var(--panel-2); color: var(--text);
+        width: 38px; height: 38px; border-radius: 10px; font-size: 1rem; cursor: pointer;
         display: grid; place-items: center; transition: border-color 0.15s, background 0.15s;
       }
       .theme-btn:hover { border-color: var(--border-strong); background: var(--panel-3); }
-      .nav-link {
-        border: 1px solid var(--border); background: var(--panel-2); color: var(--text);
-        padding: 8px 12px; border-radius: 10px; font-size: 0.85rem; font-weight: 600;
-        text-decoration: none; cursor: pointer; white-space: nowrap;
-        transition: border-color 0.15s, background 0.15s;
-      }
-      .nav-link:hover { border-color: var(--accent); color: var(--accent); }
 
       /* ---- layout ---- */
-      .layout { display: grid; grid-template-columns: 248px minmax(0,1fr); gap: 14px; padding: 14px 18px 0; }
-      @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
-
-      .panel {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-      }
-
-      aside.panel { padding: 14px 14px 18px; }
-      aside label {
-        display: block; margin: 16px 4px 6px;
-        font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.8px;
-        color: var(--muted); font-weight: 700;
-      }
-      aside label:first-child { margin-top: 2px; }
-      aside .row { display: flex; gap: 8px; }
-      aside .row > * { flex: 1; }
-      select, input[type="date"] {
-        width: 100%;
-        border: 1px solid var(--border);
-        background: var(--panel-2);
-        color: var(--text);
-        padding: 9px 10px;
-        border-radius: 9px;
-        font-size: 0.85rem;
-        font-family: var(--font);
-        cursor: pointer;
-        transition: border-color 0.15s;
-      }
-      select:focus, input:focus { outline: none; border-color: var(--accent); }
-
-      .pills { display: flex; gap: 4px; flex-wrap: wrap; }
-      .pill {
-        border: 1px solid var(--border);
-        background: var(--panel-2);
-        color: var(--text-dim);
-        padding: 7px 11px;
-        border-radius: 8px;
-        font-size: 0.78rem; font-weight: 600;
-        cursor: pointer; text-align: center;
-        transition: 0.12s;
-        flex: 1 1 auto; min-width: 44px;
-      }
-      .pill:hover { color: var(--text); border-color: var(--border-strong); }
-      .pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-      .apply {
-        width: 100%; margin-top: 8px;
-        border: 1px solid var(--border);
-        background: var(--panel-2);
-        color: var(--text);
-        padding: 9px; border-radius: 9px; cursor: pointer;
-        font-size: 0.82rem; font-weight: 600; transition: border-color 0.15s;
-      }
-      .apply:hover { border-color: var(--accent); color: var(--accent); }
-
-      /* ---- chart ---- */
-      main.panel { padding: 12px 14px 16px; overflow: hidden; }
-      .chart-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 2px 4px 10px; }
-      .legend { display: flex; gap: 16px; align-items: center; color: var(--text-dim); font-size: 0.78rem; flex-wrap: wrap; }
-      .legend .item { display: inline-flex; align-items: center; gap: 6px; }
-      .legend .sw { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
-      .chart-meta { color: var(--muted); font-size: 0.78rem; margin-left: auto; text-align: right; font-family: var(--mono); }
-
-      .chart-wrap { position: relative; width: 100%; overflow: hidden; border-radius: 10px; }
-      svg.chart { width: 100%; height: 560px; display: block; }
-      .axis-label { font-size: 10.5px; fill: var(--muted); font-family: var(--mono); letter-spacing: 0.2px; }
-      .grid-line { stroke: var(--grid); stroke-width: 1; }
-      .axis-line { stroke: var(--axis); stroke-width: 1; }
-      .ind-threshold { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 2 3; }
-      .last-line { stroke-width: 1; stroke-dasharray: 4 3; }
-
-      .crosshair { stroke: var(--border-strong); stroke-width: 1; stroke-dasharray: 3 3; }
-      .axis-tag-up { fill: var(--up); }
-      .axis-tag-down { fill: var(--down); }
-      .axis-tag { fill: var(--panel-3); stroke: var(--border-strong); stroke-width: 1; }
-      .axis-tag-text { font-size: 10.5px; fill: var(--up-ink); font-family: var(--mono); font-weight: 700; }
-      .axis-tag-text-down { font-size: 10.5px; fill: var(--down-ink); font-family: var(--mono); font-weight: 700; }
-      .axis-tag-text-out { font-size: 10.5px; fill: var(--text); font-family: var(--mono); font-weight: 700; }
-
-      /* tooltip card */
-      .tip {
-        position: absolute; pointer-events: none;
-        background: var(--panel-2);
-        border: 1px solid var(--border-strong);
-        border-radius: 12px;
-        box-shadow: var(--shadow);
-        padding: 10px 12px;
-        font-size: 0.78rem; line-height: 1.55;
-        display: none; min-width: 176px; z-index: 10;
-      }
-      .tip .d { color: var(--text); font-weight: 700; margin-bottom: 6px; font-size: 0.8rem; }
-      .tip .kv { display: flex; justify-content: space-between; gap: 16px; color: var(--text); }
-      .tip .kv span:first-child { color: var(--muted); }
-      .tip .kv .up { color: var(--up); }
-      .tip .kv .down { color: var(--down); }
-      .tip .ind { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
-      .tip .ind .kv span:first-child { display: inline-flex; align-items: center; gap: 6px; }
-      .tip .ind .dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
-
-      /* ---- table & guide ---- */
-      .ind-table { width: 100%; margin-top: 14px; border-collapse: collapse; font-size: 0.84rem; }
-      .ind-table th, .ind-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: right; }
-      .ind-table th:first-child, .ind-table td:first-child { text-align: left; }
-      .ind-table th { color: var(--muted); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.6px; }
-      .ind-table tbody tr:hover { background: var(--panel-2); }
-      .ind-table td { font-family: var(--mono); }
-      .ind-table td:first-child { font-family: var(--font); font-weight: 700; }
-      .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2px; }
-      .badge.obs { color: var(--up); background: var(--glow-up); }
-      .badge.ob { color: var(--down); background: var(--glow-down); }
-      .badge.weak { color: var(--s2); background: color-mix(in srgb, var(--s2) 16%, transparent); }
-      .badge.strong { color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+      .wrap { max-width: 1180px; margin: 0 auto; padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+      .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+      .hero h1 { margin: 0 0 6px; font-size: 1.45rem; }
+      .hero p { margin: 0; color: var(--text-dim); font-size: 0.92rem; line-height: 1.5; }
+      .hero .meta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+      .badge { display: inline-block; padding: 4px 11px; border-radius: 999px; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.2px; font-family: var(--mono); }
+      .badge.up { color: var(--up); background: var(--glow-up); }
+      .badge.down { color: var(--down); background: var(--glow-down); }
       .badge.neutral { color: var(--text-dim); background: var(--panel-2); }
+      .badge.warn { color: var(--s2); background: color-mix(in srgb, var(--s2) 16%, transparent); }
 
-      .guide { margin-top: 16px; padding: 15px 16px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--border); }
-      .guide h3 { margin: 0 0 12px; font-size: 0.9rem; }
-      .guide dl { margin: 0; display: grid; grid-template-columns: 92px 1fr; gap: 8px 12px; font-size: 0.82rem; }
+      .guide h2 { margin: 0 0 12px; font-size: 1rem; }
+      .guide dl { margin: 0; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 0.85rem; }
       .guide dt { color: var(--accent); font-weight: 700; }
       .guide dd { margin: 0; color: var(--text-dim); line-height: 1.5; }
       .guide .note { color: var(--muted); font-size: 0.78rem; margin-top: 12px; margin-bottom: 0; }
+
+      .sect-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+      .sect-head h2 { margin: 0; font-size: 1.05rem; }
+      .sect-head .count { color: var(--muted); font-size: 0.8rem; font-family: var(--mono); }
+
+      /* ---- table ---- */
+      .scroll { overflow-x: auto; }
+      table.stbl { width: 100%; border-collapse: collapse; font-size: 0.84rem; table-layout: auto; }
+      table.stbl th, table.stbl td { padding: 8px 8px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+      table.stbl th:first-child, table.stbl td:first-child { text-align: left; }
+      table.stbl th { color: var(--muted); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.6px; position: sticky; top: 0; background: var(--panel); }
+      table.stbl th.sortable { cursor: pointer; user-select: none; }
+      table.stbl th.sortable:hover { color: var(--text); }
+      table.stbl th.sortable::after { content: " ↕"; opacity: 0.3; font-size: 0.65rem; }
+      table.stbl th.sortable.asc::after { content: " ↑"; opacity: 1; color: var(--accent); }
+      table.stbl th.sortable.desc::after { content: " ↓"; opacity: 1; color: var(--accent); }
+      table.stbl tbody tr:hover { background: var(--panel-2); }
+      table.stbl td { font-family: var(--mono); }
+      table.stbl td.sym { font-family: var(--font); font-weight: 700; max-width: 220px; }
+      table.stbl td.sym a { color: var(--accent); text-decoration: none; }
+      table.stbl td.sym a:hover { text-decoration: underline; }
+      table.stbl td.sym .nm { display: block; font-weight: 400; color: var(--text-dim); font-size: 0.74rem; font-family: var(--font); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      table.stbl td.sym .sa { display: inline-flex; align-items: center; vertical-align: middle; margin-left: 4px; color: var(--muted); text-decoration: none; font-size: 0.7rem; transition: color 0.15s; }
+      table.stbl td.sym .sa:hover { color: var(--s2); }
+      table.stbl td.sym .sa svg { width: 12px; height: 12px; vertical-align: middle; }
+      .up { color: var(--up); } .down { color: var(--down); }
+      .empty { color: var(--muted); font-size: 0.85rem; padding: 14px 2px; }
 
       .footer { padding: 18px; text-align: center; color: var(--muted); font-size: 0.76rem; }
       .footer a { color: var(--accent); text-decoration: none; }
@@ -278,162 +110,65 @@
   </head>
   <body>
     <div class="topbar">
-      <div class="brand"><span class="dot"></span> US Stock <span class="accent">charts</span></div>
-      <div class="search">
-        <input id="search" type="text" placeholder="Search symbol or company…" autocomplete="off" spellcheck="false" />
-        <div class="results" id="results"></div>
-      </div>
-      <div class="quote">
-        <span class="sym" id="qSym"></span>
-        <span class="name" id="qName"></span>
-        <span class="px" id="qPrice">—</span>
-        <span class="chg" id="qChange"></span>
-      </div>
-      <a class="nav-link" href="screener.html" title="Daily breakout screener">Screener</a>
+      <a class="brand" href="."><span class="dot"></span> US Stock <span class="accent">screener</span></a>
+      <div class="spacer"></div>
       <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
     </div>
 
-    <div class="layout">
-      <aside class="panel">
-        <label>Range</label>
-        <div class="pills" id="rangePills">
-          <button class="pill" data-range="5d">5D</button>
-          <button class="pill active" data-range="1mo">1M</button>
-          <button class="pill" data-range="3mo">3M</button>
-          <button class="pill" data-range="6mo">6M</button>
-          <button class="pill" data-range="1y">1Y</button>
-          <button class="pill" data-range="2y">2Y</button>
-          <button class="pill" data-range="5y">5Y</button>
-          <button class="pill" data-range="10y">10Y</button>
-          <button class="pill" data-range="max">Max</button>
-        </div>
+    <div class="wrap">
+      <section class="panel hero">
+        <h1>Daily breakout screener — <span style="color:var(--up)">trend is friend</span></h1>
+        <p>Scans every US stock every day for institutions moving in: new highs, volume spikes, uptrend, and a low-VIX market. Stocks that keep hitting day after day graduate to the watchlist and conviction list. Not financial advice — a starting point for your own research.</p>
+        <div class="meta" id="meta"></div>
+      </section>
 
-        <label>Custom window</label>
-        <div class="row">
-          <input id="startDate" type="date" />
-          <input id="endDate" type="date" />
-        </div>
-        <button class="apply" id="applyCustom">Apply custom window</button>
+      <section class="panel guide">
+        <h2>What it looks for (a hit passes ALL)</h2>
+        <dl>
+          <dt>VIX &lt; 21</dt><dd>Global market gate — fetched live from Yahoo (^VIX). When VIX is high, no new hits are recorded.</dd>
+          <dt>20-day high</dt><dd>Latest close is at or above the highest close of the last 20 days (making highs).</dd>
+          <dt>Volume spike</dt><dd>Today's volume ≥ 1.5× the 50-day average volume (institutions moving in).</dd>
+          <dt>Above SMA50</dt><dd>Price is above its 50-day simple moving average.</dd>
+          <dt>Trend up</dt><dd>SMA50 &gt; SMA(long). Long = 200 days once enough history exists, else the longest window ≥ 120 days; below 120 days the rule is skipped (history only goes back to Dec 2025).</dd>
+          <dt>Momentum</dt><dd>Day change ≥ 2% (close vs previous close — proxies "gapping up", since open/high/low aren't in the history).</dd>
+        </dl>
+        <p class="note">Score = dayChange% + 2 × volumeRatio. Sorted by score. Employee count from stockanalysis.com — larger companies may be stronger growth candidates. Click a symbol to view it on Seeking Alpha. Click any column header to sort. Thresholds are constants in <code>src/screener.ts</code>.</p>
+      </section>
 
-        <label>Time step</label>
-        <select id="intervalSelect">
-          <option value="1d">1 day</option>
-          <option value="1wk">1 week</option>
-          <option value="1mo">1 month</option>
-        </select>
+      <section class="panel">
+        <div class="sect-head"><h2>Today's hits</h2><span class="count" id="latestCount"></span></div>
+        <div class="scroll" id="latestWrap"></div>
+      </section>
 
-        <label>Indicator</label>
-        <select id="indicatorSelect">
-          <option value="none">None</option>
-          <option value="rsi">RSI</option>
-          <option value="hrsi">HRSI</option>
-          <option value="mfi">MFI</option>
-          <option value="stoch">Stochastic %K</option>
-          <option value="rsi+hrsi">RSI + HRSI</option>
-          <option value="rsi+mfi">RSI + MFI</option>
-          <option value="rsi+stoch">RSI + Stoch</option>
-          <option value="all">All indicators</option>
-        </select>
+      <section class="panel">
+        <div class="sect-head"><h2>Conviction list — 30-day</h2><span class="count" id="convCount"></span></div>
+        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Symbols hitting ≥ 15 of the last 30 calendar days.</p>
+        <div class="scroll" id="convWrap"></div>
+      </section>
 
-        <label>RSI period</label>
-        <select id="rsiPeriodSelect">
-          <option value="6">6d</option>
-          <option value="14" selected>14d</option>
-          <option value="21">21d</option>
-        </select>
+      <section class="panel">
+        <div class="sect-head"><h2>Watchlist — 15-day</h2><span class="count" id="watchCount"></span></div>
+        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Symbols hitting ≥ 8 of the last 15 calendar days.</p>
+        <div class="scroll" id="watchWrap"></div>
+      </section>
 
-        <label>MFI period</label>
-        <select id="mfiPeriodSelect">
-          <option value="14" selected>14d</option>
-        </select>
-
-        <label>Stochastic period</label>
-        <select id="stochPeriodSelect">
-          <option value="10">10d</option>
-          <option value="14" selected>14d</option>
-          <option value="21">21d</option>
-        </select>
-      </aside>
-
-      <main class="panel">
-        <div class="chart-head">
-          <div class="legend" id="legend"></div>
-          <div class="chart-meta" id="chartMeta">Loading…</div>
-        </div>
-        <div class="chart-wrap" id="chartWrap">
-          <div class="tip" id="tip"></div>
-          <svg class="chart" id="chart" role="img" aria-label="Stock chart"></svg>
-        </div>
-
-        <table class="ind-table" id="indTable">
-          <thead>
-            <tr><th>Indicator</th><th>Period</th><th>Last</th><th>Min</th><th>Max</th><th>Status</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-
-        <div class="guide">
-          <h3>Indicator guide</h3>
-          <dl>
-            <dt>RSI</dt><dd>Speed and size of recent price moves; overbought (&gt;70) or oversold (&lt;30).</dd>
-            <dt>HRSI</dt><dd>Faster RSI on the Hull Moving Average; below 35 = weak momentum, above 65 = strong.</dd>
-            <dt>MFI</dt><dd>Price + volume gauge of buying/selling pressure; high = heavy buying, low = selling.</dd>
-            <dt>Stoch %K</dt><dd>Latest close vs recent high-low range; signals where momentum is heading.</dd>
-          </dl>
-          <p class="note"><strong>Oversold</strong> / <strong>Overbought</strong> = extreme levels for RSI, MFI and Stoch; <strong>Weak</strong> / <strong>Strong</strong> = momentum strength for HRSI.</p>
-        </div>
-      </main>
+      <section class="panel">
+        <div class="sect-head"><h2>Full hit log</h2><span class="count" id="logCount"></span></div>
+        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Every hit, every day (append-only). Scroll to browse.</p>
+        <div class="scroll" style="max-height:520px" id="logWrap"></div>
+      </section>
     </div>
 
     <div class="footer">
-      Static data archived daily from Yahoo Finance via the repo's daily GitHub Action.
-      <a id="repoLink" href="#" target="_blank" rel="noopener">Source</a>
+      Generated daily from the git history of <code>tickers/all.csv</code> + live VIX.
+      <a id="repoLink" href="#" target="_blank" rel="noopener">Source</a> · Run <code>bun run dev</code> locally for interactive charts.
     </div>
 
     <script>
     (function () {
       "use strict";
-      const NS = "http://www.w3.org/2000/svg";
       const $ = (id) => document.getElementById(id);
-      const svg = $("chart");
-      const wrap = $("chartWrap");
-      const tip = $("tip");
-
-      const searchInput = $("search");
-      const resultsBox = $("results");
-      const intervalSelect = $("intervalSelect");
-      const indicatorSelect = $("indicatorSelect");
-      const rsiPeriodSelect = $("rsiPeriodSelect");
-      const mfiPeriodSelect = $("mfiPeriodSelect");
-      const stochPeriodSelect = $("stochPeriodSelect");
-      const startInput = $("startDate");
-      const endInput = $("endDate");
-      const applyCustom = $("applyCustom");
-      const rangePills = Array.from(document.querySelectorAll("[data-range]"));
-      const indTableBody = document.querySelector("#indTable tbody");
-      const legendEl = $("legend");
-      const chartMeta = $("chartMeta");
-      const qSym = $("qSym");
-      const qName = $("qName");
-      const qPrice = $("qPrice");
-      const qChange = $("qChange");
-
-      const INDICATOR_COLORS = ["var(--s1)", "var(--s2)", "var(--s3)", "var(--s4)", "var(--s5)", "var(--s6)"];
-      const UP = "var(--up)", DOWN = "var(--down)";
-      const MAX_BARS = 820; // render budget; wider views are bucketed for drawing
-      const CHART_H = 560;  // internal drawing height (px) — width is measured live
-
-      let tickerList = [];
-      let currentSymbol = "AAPL";
-      let currentRange = "1mo";
-      let useCustom = false;
-      let allBars = [];     // full daily series for the selected symbol
-      let symbolMeta = null; // {name, industry}
-
-      // ---------- data filename (must match archive_history.py safe_filename) ----------
-      function safeName(symbol) {
-        return symbol.toUpperCase().replace(/\./g, "-").replace(/\//g, "-");
-      }
+      const DIR = "data/screener";
 
       // ---------- theme ----------
       const themeBtn = $("themeBtn");
@@ -443,771 +178,252 @@
         try { localStorage.setItem("theme", t); } catch (e) {}
       }
       (function initTheme() {
-        let t;
-        try { t = localStorage.getItem("theme"); } catch (e) {}
+        let t; try { t = localStorage.getItem("theme"); } catch (e) {}
         setTheme(t === "light" ? "light" : "dark");
       })();
       themeBtn.addEventListener("click", () => {
         setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
-        if (allBars.length) render();
       });
 
-      // ---------- SVG helpers ----------
-      function el(name, attrs) {
-        const e = document.createElementNS(NS, name);
-        if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
-        return e;
-      }
-      function cssVar(name) {
-        return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-      }
-
-      // ---------- ticker list / search ----------
-      async function loadTickerList() {
-        let list = null;
-        // Prefer the full search index (every ticker in all.csv, even un-archived ones).
-        try {
-          const r = await fetch("./data/tickers.json", { cache: "no-store" });
-          if (r.ok) list = (await r.json());
-        } catch (e) {}
-        // Fall back to the "has archived data" manifest, then the local dev API.
-        if (!list) {
-          try {
-            const r = await fetch("./data/manifest.json", { cache: "no-store" });
-            if (r.ok) list = (await r.json());
-          } catch (e) {}
-        }
-        if (!list) {
-          try {
-            const r = await fetch("/api/tickers");
-            if (r.ok) list = (await r.json()).tickers;
-          } catch (e) {}
-        }
-        tickerList = (list || []).map(t => ({
-          symbol: (t.symbol || "").toUpperCase(),
-          name: t.name || "",
-          industry: t.industry || "",
-        }));
-        if (!tickerList.length) {
-          tickerList = [{ symbol: "AAPL", name: "Apple Inc.", industry: "Technology" }];
-        }
-      }
-
-      function renderResults(filter) {
-        const q = filter.trim().toLowerCase();
-        const matches = !q ? tickerList.slice(0, 12) :
-          tickerList.filter(t => (t.symbol + " " + t.name + " " + t.industry).toLowerCase().includes(q)).slice(0, 50);
-        resultsBox.innerHTML = "";
-        if (!matches.length) {
-          resultsBox.classList.remove("show");
-          return;
-        }
-        const shown = matches.slice(0, 50);
-        shown.forEach((t, i) => {
-          const d = document.createElement("div");
-          d.className = "opt" + (i === 0 ? " active" : "");
-          d.dataset.symbol = t.symbol;
-          d.innerHTML = `<span class="sym">${t.symbol}</span><span class="nm">${t.name || t.industry || ""}</span>`;
-          d.addEventListener("mousedown", (ev) => {
-            ev.preventDefault();
-            selectSymbol(t.symbol);
-          });
-          resultsBox.appendChild(d);
-        });
-        resultsBox.classList.add("show");
-      }
-
-      function syncURL(sym) {
-        const u = new URL(location.href);
-        if (sym) u.searchParams.set("symbol", sym); else u.searchParams.delete("symbol");
-        history.replaceState(null, "", u);
-      }
-      function selectSymbol(sym) {
-        currentSymbol = sym.toUpperCase();
-        searchInput.value = currentSymbol;
-        resultsBox.classList.remove("show");
-        syncURL(currentSymbol);
-        loadSymbol();
-      }
-      window.addEventListener("popstate", () => {
-        const s = new URL(location.href).searchParams.get("symbol");
-        if (s && s.toUpperCase() !== currentSymbol) {
-          currentSymbol = s.toUpperCase();
-          searchInput.value = currentSymbol;
-          loadSymbol();
-        }
-      });
-
-      searchInput.addEventListener("focus", () => renderResults(searchInput.value));
-      searchInput.addEventListener("input", () => renderResults(searchInput.value));
-      searchInput.addEventListener("keydown", (ev) => {
-        if (ev.key === "Enter") {
-          const active = resultsBox.querySelector(".opt.active") || resultsBox.querySelector(".opt");
-          if (active) selectSymbol(active.dataset.symbol);
-        } else if (ev.key === "Escape") {
-          resultsBox.classList.remove("show");
-        }
-      });
-      document.addEventListener("click", (ev) => {
-        if (!ev.target.closest(".search")) resultsBox.classList.remove("show");
-      });
-
-      // ---------- data loading ----------
-      // OHLC lives on an orphan `data` branch and is served (lazy, one file per
-      // ticker) from the jsDelivr CDN — not committed to `main`, so the repo
-      // stays small. Local dev falls back to the /api/history Yahoo proxy.
-      const OHLC_BASE = "https://cdn.jsdelivr.net/gh/ozkanpakdil/top-us-stock-tickers@data/ohlc/";
-
-      function barsToPoints(bars) {
-        return bars.map(b => ({
-          date: b[0],
-          open: b[1], high: b[2], low: b[3], close: b[4],
-          volume: b[5],
-        }));
-      }
-
-      async function loadSymbol() {
-        chartMeta.textContent = "Loading…";
-        const file = `${OHLC_BASE}${safeName(currentSymbol)}.json`;
-        // CDN fetch with retry + browser cache. Archive files are immutable per
-        // symbol, so caching is safe and survives transient jsDelivr hiccups
-        // (rate limits, orphan `data` branch re-cache lag). Try up to 3 times.
-        // NOTE: only fetch + parse here — keep render() OUT of this try so a
-        // rendering bug can't masquerade as a CDN failure (we once caught a
-        // ReferenceError from render() and wrongly blamed the CDN / retried).
-        let cdnStatus = 0, cdnErr = null, cdnEmpty = false, cdnData = null;
-        for (let attempt = 0; attempt < 3; attempt++) {
-          try {
-            const r = await fetch(file, { cache: "default" });
-            cdnStatus = r.status;
-            if (r.ok) {
-              const d = await r.json();
-              if (!d || !Array.isArray(d.bars) || !d.bars.length) { cdnEmpty = true; break; }
-              cdnData = d;
-              break;
-            }
-          } catch (e) { cdnErr = e; }
-          if (attempt < 2) await new Promise(res => setTimeout(res, 400 * (attempt + 1)));
-        }
-        if (cdnData) {
-          symbolMeta = { name: cdnData.name || "", industry: cdnData.industry || "" };
-          allBars = barsToPoints(cdnData.bars || []);
-          render();
-          return;
-        }
-        // local live fallback (only works behind src/server.ts in local dev)
-        try {
-          const now = Math.floor(Date.now() / 1000);
-          const r = await fetch(`/api/history?symbol=${encodeURIComponent(currentSymbol)}&period1=0&period2=${now}&interval=1d`);
-          if (r.ok) {
-            const d = await r.json();
-            const pts = (d.points || []).map(p => ({
-              date: p.date, open: p.open, high: p.high, low: p.low, close: p.close, volume: p.volume,
-            }));
-            symbolMeta = tickerList.find(t => t.symbol === currentSymbol) || { name: "", industry: "" };
-            allBars = pts;
-            render();
-            return;
-          }
-        } catch (e) {}
-        // Failed. Tell the user where the data was supposed to come from and
-        // that the CDN likely rate-limited us — not that local dev is required.
-        allBars = [];
-        const why = cdnEmpty
-          ? "archived file is empty"
-          : cdnStatus === 404
-            ? "no archived file for this symbol"
-            : `CDN fetch failed (HTTP ${cdnStatus || "—"}${cdnErr ? ": " + (cdnErr.message || cdnErr) : ""})`;
-        renderPlaceholder(
-          `No data for ${currentSymbol} — ${why}.` +
-          `\nArchive source: ${file}` +
-          `\nLikely rate-limited or transient; retry shortly.`
-        );
-      }
-
-      // ---------- aggregation / filtering ----------
-      function aggregate(bars, interval) {
-        if (interval === "1d" || bars.length < 2) return bars.slice();
-        const groups = new Map();
-        for (const b of bars) {
-          const key = interval === "1wk" ? weekKey(b.date) : b.date.slice(0, 7);
-          let g = groups.get(key);
-          if (!g) { g = { date: b.date, open: b.open, high: b.high, low: b.low, close: b.close, volume: b.volume || 0 }; groups.set(key, g); }
-          else {
-            g.high = Math.max(g.high, b.high);
-            g.low = Math.min(g.low, b.low);
-            g.close = b.close;
-            g.volume = (g.volume || 0) + (b.volume || 0);
-          }
-        }
-        return Array.from(groups.values()).sort((a, b) => a.date < b.date ? -1 : 1);
-      }
-      function weekKey(date) {
-        const d = new Date(date + "T00:00:00Z");
-        const day = d.getUTCDay();
-        const diff = (day + 6) % 7; // Monday=0
-        d.setUTCDate(d.getUTCDate() - diff);
-        return d.toISOString().slice(0, 10);
-      }
-
-      function rangeCutoff(range, lastDate) {
-        if (range === "max") return null;
-        const map = { "5d": 5, "1mo": 30, "3mo": 90, "6mo": 180, "1y": 365, "2y": 730, "5y": 1825, "10y": 3650 };
-        const days = map[range];
-        if (!days) return null;
-        const d = new Date(lastDate + "T00:00:00Z");
-        d.setUTCDate(d.getUTCDate() - days);
-        return d.toISOString().slice(0, 10);
-      }
-
-      function viewBars() {
-        const interval = intervalSelect.value;
-        let series = aggregate(allBars, interval);
-        const last = series[series.length - 1];
-        if (!last) return series;
-        if (useCustom) {
-          const s = startInput.value, e = endInput.value;
-          if (s && e) series = series.filter(b => b.date >= s && b.date <= e);
-        } else {
-          const cutoff = rangeCutoff(currentRange, last.date);
-          if (cutoff) series = series.filter(b => b.date >= cutoff);
-        }
-        return series;
-      }
-
-      // ---------- bucketing for render ----------
-      function bucketize(points, indicators, maxBars) {
-        const n = points.length;
-        if (n <= maxBars) return { points, indicators };
-        const step = n / maxBars;
-        const out = [], outInd = indicators.map(s => ({ name: s.name, period: s.period, values: [] }));
-        for (let b = 0; b < maxBars; b++) {
-          const lo = Math.floor(b * step), hi = Math.max(lo + 1, Math.floor((b + 1) * step));
-          const slice = points.slice(lo, hi);
-          if (!slice.length) continue;
-          const open = slice[0].open, close = slice[slice.length - 1].close;
-          let high = -Infinity, low = Infinity, vol = 0;
-          for (const p of slice) {
-            if (p.high > high) high = p.high;
-            if (p.low < low) low = p.low;
-            vol += (p.volume || 0);
-          }
-          out.push({ date: slice[slice.length - 1].date, open, high, low, close, volume: vol });
-          const li = hi - 1;
-          outInd.forEach((s, i) => outInd[i].values.push(s.values[li] ?? s.values[s.values.length - 1] ?? 50));
-        }
-        return { points: out, indicators: outInd };
-      }
-
-      // ============================================================
-      // INDICATOR MATH (unchanged from the original app)
-      // ============================================================
-      function computeIndicatorSeries(points, mode, rsiPeriod = 14, mfiPeriod = 14, stochPeriod = 14) {
-        const closes = points.map((p) => Number(p.close));
-        const highs = points.map((p) => Number(p.high));
-        const lows = points.map((p) => Number(p.low));
-        const volumes = points.map((p) => Number(p.volume));
-        if (!closes.length) return [];
-        const rsiSeries = computeRsi(closes, rsiPeriod);
-        const hrsiSeries = computeHullRsi(closes, 14);
-        const mfiSeries = computeMfi(closes, highs, lows, volumes, mfiPeriod);
-        const stochSeries = computeStochasticK(closes, highs, lows, stochPeriod);
-        if (mode === "none") return [];
-        if (mode === "rsi") return [{ name: "RSI", period: rsiPeriod, values: rsiSeries }];
-        if (mode === "hrsi") return [{ name: "HRSI", period: 14, values: hrsiSeries }];
-        if (mode === "mfi") return [{ name: "MFI", period: mfiPeriod, values: mfiSeries }];
-        if (mode === "stoch") return [{ name: "Stoch %K", period: stochPeriod, values: stochSeries }];
-        if (mode === "rsi+hrsi") return [{ name: "RSI", period: rsiPeriod, values: rsiSeries }, { name: "HRSI", period: 14, values: hrsiSeries }];
-        if (mode === "rsi+mfi") return [{ name: "RSI", period: rsiPeriod, values: rsiSeries }, { name: "MFI", period: mfiPeriod, values: mfiSeries }];
-        if (mode === "rsi+stoch") return [{ name: "RSI", period: rsiPeriod, values: rsiSeries }, { name: "Stoch %K", period: stochPeriod, values: stochSeries }];
-        return [{ name: "RSI", period: rsiPeriod, values: rsiSeries }, { name: "HRSI", period: 14, values: hrsiSeries }, { name: "MFI", period: mfiPeriod, values: mfiSeries }, { name: "Stoch %K", period: stochPeriod, values: stochSeries }];
-      }
-      function computeRsi(closes, period = 14) {
-        const values = new Array(closes.length).fill(50);
-        if (closes.length <= period) return values;
-        let avgGain = 0, avgLoss = 0;
-        for (let i = 1; i <= period; i++) { const d = closes[i] - closes[i - 1]; if (d >= 0) avgGain += d; else avgLoss += Math.abs(d); }
-        avgGain /= period; avgLoss /= period;
-        for (let i = period + 1; i < closes.length; i++) {
-          const d = closes[i] - closes[i - 1];
-          const gain = d > 0 ? d : 0, loss = d < 0 ? Math.abs(d) : 0;
-          avgGain = (avgGain * (period - 1) + gain) / period;
-          avgLoss = (avgLoss * (period - 1) + loss) / period;
-          const rs = avgLoss === 0 ? 100 : avgGain / avgLoss;
-          values[i] = Math.max(0, Math.min(100, 100 - 100 / (1 + rs)));
-        }
-        return values;
-      }
-      function computeHullRsi(closes, period = 14) { return computeRsi(computeHullMovingAverage(closes, period), period); }
-      function computeMfi(closes, highs, lows, volumes, period = 14) {
-        const values = new Array(closes.length).fill(50);
-        if (closes.length <= period || highs.length !== closes.length || lows.length !== closes.length || volumes.length !== closes.length) return values;
-        const tp = closes.map((c, i) => (c + (highs[i] || c) + (lows[i] || c)) / 3);
-        const rmf = tp.map((p, i) => p * (volumes[i] || 0));
-        for (let i = period; i < closes.length; i++) {
-          let pos = 0, neg = 0;
-          for (let j = i - period + 1; j <= i; j++) { const d = tp[j] - tp[j - 1]; if (d >= 0) pos += rmf[j]; else neg += rmf[j]; }
-          const r = neg === 0 ? 100 : pos / neg;
-          values[i] = Math.max(0, Math.min(100, 100 - 100 / (1 + r)));
-        }
-        return values;
-      }
-      function computeStochasticK(closes, highs, lows, period = 14) {
-        const values = new Array(closes.length).fill(50);
-        if (closes.length <= period || highs.length !== closes.length || lows.length !== closes.length) return values;
-        for (let i = period; i < closes.length; i++) {
-          const hh = Math.max(...highs.slice(i - period + 1, i + 1));
-          const ll = Math.min(...lows.slice(i - period + 1, i + 1));
-          const range = hh - ll;
-          values[i] = range === 0 ? 50 : Math.max(0, Math.min(100, ((closes[i] - ll) / range) * 100));
-        }
-        return values;
-      }
-      function computeHullMovingAverage(closes, period) {
-        const half = Math.max(1, Math.floor(period / 2));
-        const sq = Math.max(1, Math.round(Math.sqrt(period)));
-        const first = computeWma(closes, half);
-        const second = computeWma(closes, period);
-        const hull = closes.map((_, i) => 2 * first[i] - second[i]);
-        return computeWma(hull, sq);
-      }
-      function computeWma(values, period) {
-        const out = new Array(values.length).fill(0);
-        if (period <= 0 || !values.length) return out;
-        for (let i = 0; i < values.length; i++) {
-          const start = Math.max(0, i - period + 1);
-          const slice = values.slice(start, i + 1);
-          const den = slice.length * (slice.length + 1) / 2;
-          let num = 0;
-          for (let k = 0; k < slice.length; k++) num += slice[k] * (slice.length - k);
-          out[i] = num / den;
-        }
-        return out;
-      }
-
-      function getIndicatorState(indicator, value) {
-        if (indicator === "MFI" || indicator === "RSI" || indicator === "Stoch %K") {
-          if (value < 30) return "Oversold";
-          if (value > 70) return "Overbought";
-          return "Neutral";
-        }
-        if (value < 35) return "Weak";
-        if (value > 65) return "Strong";
-        return "Balanced";
-      }
-      function badgeClass(ind, st) {
-        if (st === "Oversold") return "obs";
-        if (st === "Overbought") return "ob";
-        if (st === "Weak") return "weak";
-        if (st === "Strong") return "strong";
-        return "neutral";
-      }
-
-      // ---------- render ----------
-      function render() {
-        if (!allBars.length) { renderPlaceholder("No data"); return; }
-        const points = viewBars();
-        if (!points.length) { renderPlaceholder("No bars in the selected window."); return; }
-
-        const mode = indicatorSelect.value;
-        const rsiP = Number(rsiPeriodSelect.value || 14);
-        const mfiP = Number(mfiPeriodSelect.value || 14);
-        const stochP = Number(stochPeriodSelect.value || 14);
-        const indicators = computeIndicatorSeries(points, mode, rsiP, mfiP, stochP);
-
-        const { points: dp, indicators: di } = bucketize(points, indicators, MAX_BARS);
-        drawChart(dp, di, points, mode);
-        renderTable(points);
-        renderQuote();
-        renderLegend(di);
-      }
-
-      function renderPlaceholder(msg) {
-        svg.innerHTML = "";
-        svg.setAttribute("viewBox", `0 0 ${Math.max(320, wrap.clientWidth)} ${CHART_H}`);
-        svg.setAttribute("preserveAspectRatio", "none");
-        const lines = String(msg).split("\n");
-        const t = el("text", { x: "50%", y: "50%", "text-anchor": "middle", fill: "var(--muted)", "font-size": "15" });
-        lines.forEach((line, i) => {
-          const ts = el("tspan", { x: "50%", dy: i === 0 ? `${-(lines.length - 1) * 0.6}em` : "1.2em" });
-          // shrink long URL-ish lines so they fit the chart width
-          if (line.length > 60) ts.setAttribute("font-size", "11");
-          ts.textContent = line;
-          t.appendChild(ts);
-        });
-        svg.appendChild(t);
-        indTableBody.innerHTML = "";
-        renderQuote();
-      }
-
-      function fmtDate(s, interval) {
-        const d = new Date(s + "T00:00:00Z");
-        if (interval === "1mo") return d.toLocaleString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
-        if (interval === "1wk") return d.toLocaleString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
-        return d.toLocaleString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
-      }
-
-      function drawChart(points, indicators, rawPoints, mode) {
-        // Measure the container width so the drawing space matches real pixels —
-        // this keeps candles and text undistorted (the old fixed viewBox + non-uniform
-        // stretch was what made the chart look ugly).
-        const W = Math.max(320, Math.floor(wrap.clientWidth));
-        const H = CHART_H;
-        svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-        svg.setAttribute("preserveAspectRatio", "none");
-
-        const axisW = 68;
-        const plotL = 14, plotR = W - axisW;
-        const plotW = plotR - plotL;
-        const priceTop = 16, priceBot = 332;
-        const volTop = 344, volBot = 392;
-        const dateY = 406;
-        const indTop = 432, indBot = 548;
-        const indH = indBot - indTop;
-        const hasInd = indicators.length > 0;
-
-        // price domain
-        let pmin = Infinity, pmax = -Infinity;
-        for (const p of points) { if (p.low < pmin) pmin = p.low; if (p.high > pmax) pmax = p.high; }
-        if (!isFinite(pmin)) { pmin = 0; pmax = 1; }
-        const pad = (pmax - pmin) * 0.06 || pmax * 0.06 || 1;
-        pmin -= pad; pmax += pad;
-        const yP = (v) => priceTop + (priceBot - priceTop) * (pmax - v) / (pmax - pmin);
-
-        // volume domain
-        let vmax = 0;
-        for (const p of points) if ((p.volume || 0) > vmax) vmax = p.volume || 0;
-        const yV = (v) => volBot - (volBot - volTop) * (vmax ? v / vmax : 0);
-
-        // x scale
-        const n = points.length;
-        const slot = plotW / n;
-        const cx = (i) => plotL + slot * (i + 0.5);
-        const bodyW = Math.max(1, Math.min(16, slot * 0.66));
-
-        svg.innerHTML = "";
-        const g = (cls) => { const x = el("g"); if (cls) x.setAttribute("class", cls); svg.appendChild(x); return x; };
-
-        // gradient defs for indicator area fills
-        const defs = el("defs");
-        indicators.forEach((s, si) => {
-          const col = INDICATOR_COLORS[si % INDICATOR_COLORS.length];
-          const grad = el("linearGradient", { id: `indFill${si}`, x1: "0", y1: "0", x2: "0", y2: "1" });
-          grad.appendChild(el("stop", { offset: "0%", "stop-color": col, "stop-opacity": "0.22" }));
-          grad.appendChild(el("stop", { offset: "100%", "stop-color": col, "stop-opacity": "0" }));
-          defs.appendChild(grad);
-        });
-        svg.appendChild(defs);
-
-        // horizontal price grid + right labels
-        const gridG = g();
-        const ticks = 5;
-        for (let i = 0; i <= ticks; i++) {
-          const v = pmax - (pmax - pmin) * (i / ticks);
-          const y = yP(v);
-          gridG.appendChild(el("line", { x1: plotL, x2: plotR, y1: y, y2: y, class: "grid-line" }));
-          const lb = el("text", { x: plotR + 8, y: y + 3.5, class: "axis-label" });
-          lb.textContent = v >= 1000 ? v.toFixed(0) : v.toFixed(2);
-          gridG.appendChild(lb);
-        }
-
-        // vertical date grid (light) aligned to labels
-        const labelCount = Math.min(n, 6);
-        for (let i = 0; i < labelCount; i++) {
-          const idx = labelCount > 1 ? Math.round((i / (labelCount - 1)) * (n - 1)) : 0;
-          const x = cx(idx);
-          if (i > 0 && i < labelCount - 1)
-            gridG.appendChild(el("line", { x1: x, x2: x, y1: priceTop, y2: hasInd ? indBot : dateY, class: "grid-line" }));
-        }
-
-        // volume baseline
-        gridG.appendChild(el("line", { x1: plotL, x2: plotR, y1: volBot, y2: volBot, class: "axis-line" }));
-
-        // candles + volume
-        const candleG = g(), volG = g();
-        for (let i = 0; i < n; i++) {
-          const p = points[i];
-          const up = p.close >= p.open;
-          const col = up ? UP : DOWN;
-          const x = cx(i);
-          // wick
-          candleG.appendChild(el("line", { x1: x, x2: x, y1: yP(p.high), y2: yP(p.low), stroke: col, "stroke-width": 1, opacity: "0.9" }));
-          // body
-          const yO = yP(p.open), yC = yP(p.close);
-          const top = Math.min(yO, yC);
-          const h = Math.max(1, Math.abs(yO - yC));
-          candleG.appendChild(el("rect", { x: x - bodyW / 2, y: top, width: bodyW, height: h, fill: col, rx: 1.2 }));
-          // volume bar (recessive)
-          const vy = yV(p.volume || 0);
-          volG.appendChild(el("rect", { x: x - bodyW / 2, y: vy, width: bodyW, height: Math.max(0.5, volBot - vy), fill: col, opacity: 0.28, rx: 1 }));
-        }
-
-        // last price line + tag on right axis
-        const last = points[n - 1];
-        const prevClose = points[n - 2]?.close ?? last.close;
-        const lastUp = last.close >= prevClose;
-        const ly = yP(last.close);
-        const tagH = 18, tagW = axisW - 4;
-        const lastLineG = g();
-        lastLineG.appendChild(el("line", { x1: plotL, x2: plotR, y1: ly, y2: ly, class: "last-line", stroke: lastUp ? UP : DOWN, opacity: "0.55" }));
-        const tag = el("g");
-        tag.appendChild(el("rect", { x: plotR + 2, y: ly - tagH / 2, width: tagW, height: tagH, rx: 4, class: lastUp ? "axis-tag-up" : "axis-tag-down" }));
-        const tagTxt = el("text", { x: plotR + 2 + tagW / 2, y: ly + 3.5, "text-anchor": "middle", class: lastUp ? "axis-tag-text" : "axis-tag-text-down" });
-        tagTxt.textContent = last.close >= 1000 ? last.close.toFixed(0) : last.close.toFixed(2);
-        tag.appendChild(tagTxt);
-        svg.appendChild(tag);
-
-        // date axis
-        for (let i = 0; i < labelCount; i++) {
-          const idx = labelCount > 1 ? Math.round((i / (labelCount - 1)) * (n - 1)) : 0;
-          const x = cx(idx);
-          svg.appendChild(el("text", { x: x, y: dateY, "text-anchor": i === 0 ? "start" : i === labelCount - 1 ? "end" : "middle", class: "axis-label" }))
-            .textContent = fmtDate(points[idx].date, intervalSelect.value);
-        }
-
-        // indicator panel
-        if (hasInd) {
-          const indG = g();
-          indG.appendChild(el("line", { x1: plotL, x2: plotR, y1: indTop, y2: indTop, class: "axis-line" }));
-          indG.appendChild(el("line", { x1: plotL, x2: plotR, y1: indBot, y2: indBot, class: "axis-line" }));
-          [30, 50, 70].forEach(t => {
-            const y = indTop + indH - (t / 100) * indH;
-            indG.appendChild(el("line", { x1: plotL, x2: plotR, y1: y, y2: y, class: "ind-threshold", opacity: t === 50 ? "0.5" : "0.8" }));
-            const lb = el("text", { x: plotR + 8, y: y + 3.5, class: "axis-label" }); lb.textContent = t; indG.appendChild(lb);
-          });
-          const title = el("text", { x: plotL, y: indTop - 6, class: "axis-label" });
-          title.textContent = mode === "all" ? "RSI / HRSI / MFI / Stoch" : mode.toUpperCase().replace("+", " + ");
-          indG.appendChild(title);
-
-          const indX = (i) => plotL + slot * (i + 0.5);
-          const indY = (v) => indTop + indH - (v / 100) * indH;
-          indicators.forEach((s, si) => {
-            const col = INDICATOR_COLORS[si % INDICATOR_COLORS.length];
-            let d = "", area = "";
-            for (let i = 0; i < s.values.length; i++) {
-              const x = indX(i), y = indY(s.values[i]);
-              d += (i === 0 ? "M" : "L") + x.toFixed(1) + " " + y.toFixed(1) + " ";
-              if (i === 0) area += "M" + x.toFixed(1) + " " + indBot + " L" + x.toFixed(1) + " " + y.toFixed(1) + " ";
-              else area += "L" + x.toFixed(1) + " " + y.toFixed(1) + " ";
-            }
-            const lastX = indX(s.values.length - 1);
-            area += "L" + lastX.toFixed(1) + " " + indBot + " Z";
-            indG.appendChild(el("path", { d: area, fill: `url(#indFill${si})` }));
-            const path = el("path", { d: d.trim(), fill: "none", stroke: col, "stroke-width": si === 0 ? 1.9 : 1.5, "stroke-dasharray": si >= 1 ? "6 3" : "", "stroke-linejoin": "round", "stroke-linecap": "round" });
-            indG.appendChild(path);
-            // last value label
-            const lv = Number(s.values[s.values.length - 1] ?? 0);
-            const lb = el("text", { x: plotR + 8, y: indTop + 12 + si * 14, class: "axis-label" });
-            lb.setAttribute("style", `fill:${col}`);
-            lb.textContent = `${s.name} ${lv.toFixed(1)}`;
-            indG.appendChild(lb);
-          });
-        }
-
-        // crosshair + hover
-        const crossG = g("crosshair-group");
-        const vline = el("line", { x1: 0, x2: 0, y1: priceTop, y2: hasInd ? indBot : dateY, class: "crosshair" });
-        const hline = el("line", { x1: plotL, x2: plotR, y1: 0, y2: 0, class: "crosshair", style: "display:none" });
-        const yTag = el("g", { style: "display:none" });
-        yTag.appendChild(el("rect", { x: plotR + 2, y: 0, width: axisW - 4, height: 16, rx: 4, class: "axis-tag" }));
-        const yTagT = el("text", { x: plotR + 2 + (axisW - 4) / 2, y: 0, "text-anchor": "middle", class: "axis-tag-text-out" });
-        yTag.appendChild(yTagT);
-        const dateTag = el("g", { style: "display:none" });
-        dateTag.appendChild(el("rect", { x: 0, y: dateY - 13, width: 92, height: 17, rx: 4, class: "axis-tag" }));
-        const dateTagT = el("text", { x: 0, y: dateY, "text-anchor": "middle", class: "axis-tag-text-out" });
-        dateTag.appendChild(dateTagT);
-        crossG.appendChild(vline); crossG.appendChild(hline); crossG.appendChild(yTag); crossG.appendChild(dateTag);
-        const hoverDots = indicators.map(() => { const c = el("circle", { r: 3.2, fill: "var(--panel)", "stroke-width": 2, style: "display:none" }); crossG.appendChild(c); return c; });
-
-        svg.appendChild(crossG);
-
-        svg.onmousemove = (ev) => {
-          const r = svg.getBoundingClientRect();
-          // viewBox width == render width, so no scaling needed
-          const sx = (ev.clientX - r.left) * (W / r.width);
-          const i = Math.max(0, Math.min(n - 1, Math.floor((sx - plotL) / slot)));
-          const p = points[i];
-          if (!p) return;
-          const x = cx(i);
-          vline.setAttribute("x1", x); vline.setAttribute("x2", x);
-          const sy = (ev.clientY - r.top) * (H / r.height);
-          if (sy >= priceTop && sy <= priceBot) {
-            hline.style.display = null;
-            hline.setAttribute("y1", sy); hline.setAttribute("y2", sy);
-            yTag.style.display = null;
-            const price = pmax - (pmax - pmin) * (sy - priceTop) / (priceBot - priceTop);
-            yTagT.setAttribute("y", sy + 3.5);
-            yTag.querySelector("rect").setAttribute("y", sy - 8);
-            yTagT.textContent = price >= 1000 ? price.toFixed(0) : price.toFixed(2);
-          } else {
-            hline.style.display = "none"; yTag.style.display = "none";
-          }
-          dateTag.style.display = null;
-          dateTagT.setAttribute("x", x);
-          dateTag.querySelector("rect").setAttribute("x", x - 46);
-          dateTagT.textContent = fmtDate(p.date, intervalSelect.value);
-          indicators.forEach((s, si) => {
-            if (s.values[i] == null) { hoverDots[si].style.display = "none"; return; }
-            hoverDots[si].style.display = null;
-            hoverDots[si].setAttribute("cx", x);
-            hoverDots[si].setAttribute("cy", indTop + indH - (s.values[i] / 100) * indH);
-            hoverDots[si].setAttribute("stroke", INDICATOR_COLORS[si % INDICATOR_COLORS.length]);
-          });
-          showTip(ev, p, points, indicators, i);
-        };
-        svg.onmouseleave = () => { tip.style.display = "none"; crossG.style.opacity = 0; };
-        svg.onmouseenter = () => { crossG.style.opacity = 1; };
-      }
-
-      function showTip(ev, p, points, indicators, idx) {
-        const up = p.close >= p.open;
-        const prev = points[idx - 1];
-        const chg = prev ? p.close - prev.close : 0;
-        const chgPct = prev && prev.close ? (chg / prev.close) * 100 : 0;
-        const indHtml = indicators.length ? indicators.map((s, si) => {
-          const v = Number(s.values[idx] ?? 0);
-          return `<div class="kv"><span><i class="dot" style="background:${INDICATOR_COLORS[si % INDICATOR_COLORS.length]}"></i>${s.name}</span><span>${v.toFixed(1)}</span></div>`;
-        }).join("") : '<div class="kv"><span>No indicator</span><span>—</span></div>';
-        const chgCls = chg >= 0 ? "up" : "down";
-        tip.innerHTML = `
-          <div class="d">${new Date(p.date + "T00:00:00Z").toLocaleDateString("en-US", { weekday: "short", year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })}</div>
-          <div class="kv"><span>Open</span><span>${fmt(p.open)}</span></div>
-          <div class="kv"><span>High</span><span>${fmt(p.high)}</span></div>
-          <div class="kv"><span>Low</span><span>${fmt(p.low)}</span></div>
-          <div class="kv"><span>Close</span><span>${fmt(p.close)}</span></div>
-          <div class="kv"><span>Change</span><span class="${chgCls}">${chg >= 0 ? "+" : ""}${chg.toFixed(2)} (${chgPct.toFixed(2)}%)</span></div>
-          <div class="kv"><span>Volume</span><span>${fmtVol(p.volume)}</span></div>
-          <div class="ind">${indHtml}</div>`;
-        tip.style.display = "block";
-        const wr = wrap.getBoundingClientRect();
-        const tw = tip.offsetWidth, th = tip.offsetHeight;
-        let left = ev.clientX - wr.left + 16;
-        let top = ev.clientY - wr.top + 16;
-        if (left + tw > wr.width) left = ev.clientX - wr.left - tw - 16;
-        if (top + th > wr.height) top = ev.clientY - wr.top - th - 12;
-        tip.style.left = Math.max(6, left) + "px";
-        tip.style.top = Math.max(6, top) + "px";
-      }
-      function fmt(v) { if (v == null || isNaN(v)) return "—"; return v >= 1000 ? v.toFixed(0) : v.toFixed(2); }
-      function fmtVol(v) { if (!v) return "—"; if (v >= 1e9) return (v / 1e9).toFixed(2) + "B"; if (v >= 1e6) return (v / 1e6).toFixed(2) + "M"; if (v >= 1e3) return (v / 1e3).toFixed(1) + "K"; return String(v); }
-
-      function renderLegend(indicators) {
-        legendEl.innerHTML = "";
-        const up = document.createElement("span"); up.className = "item";
-        up.innerHTML = `<i class="sw" style="background:var(--up)"></i>Up`;
-        const dn = document.createElement("span"); dn.className = "item";
-        dn.innerHTML = `<i class="sw" style="background:var(--down)"></i>Down`;
-        legendEl.appendChild(up); legendEl.appendChild(dn);
-        indicators.forEach((s, si) => {
-          const sp = document.createElement("span"); sp.className = "item";
-          sp.innerHTML = `<i class="sw" style="background:${INDICATOR_COLORS[si % INDICATOR_COLORS.length]}"></i>${s.name}`;
-          legendEl.appendChild(sp);
-        });
-        const vol = document.createElement("span"); vol.className = "item";
-        vol.innerHTML = `<i class="sw" style="background:var(--muted);opacity:.4"></i>Volume`;
-        legendEl.appendChild(vol);
-      }
-
-      function renderTable(points) {
-        const rows = [
-          { indicator: "RSI", period: Number(rsiPeriodSelect.value || 14) },
-          { indicator: "HRSI", period: 14 },
-          { indicator: "MFI", period: Number(mfiPeriodSelect.value || 14) },
-          { indicator: "Stoch %K", period: Number(stochPeriodSelect.value || 14) },
-        ];
-        indTableBody.innerHTML = "";
-        for (const row of rows) {
-          const s = getSeries(points, row.indicator, row.period);
-          const last = Number(s.at(-1) ?? 0), mn = Math.min(...s), mx = Math.max(...s);
-          const st = getIndicatorState(row.indicator, last);
-          const tr = document.createElement("tr");
-          tr.innerHTML = `<td>${row.indicator}</td><td>${row.period}d</td><td>${last.toFixed(1)}</td><td>${mn.toFixed(1)}</td><td>${mx.toFixed(1)}</td><td><span class="badge ${badgeClass(row.indicator, st)}">${st}</span></td>`;
-          indTableBody.appendChild(tr);
-        }
-      }
-      function getSeries(points, ind, period) {
-        const closes = points.map(p => Number(p.close));
-        const highs = points.map(p => Number(p.high));
-        const lows = points.map(p => Number(p.low));
-        const vols = points.map(p => Number(p.volume));
-        if (ind === "RSI") return computeRsi(closes, period);
-        if (ind === "HRSI") return computeHullRsi(closes, 14);
-        if (ind === "MFI") return computeMfi(closes, highs, lows, vols, period);
-        if (ind === "Stoch %K") return computeStochasticK(closes, highs, lows, period);
-        return new Array(points.length).fill(50);
-      }
-
-      function renderQuote() {
-        const t = tickerList.find(x => x.symbol === currentSymbol) || symbolMeta || {};
-        qSym.textContent = currentSymbol;
-        qName.textContent = t.name || symbolMeta?.name || "";
-        if (!allBars.length) { qPrice.textContent = "—"; qChange.textContent = ""; qChange.className = "chg"; return; }
-        const last = allBars[allBars.length - 1];
-        const prev = allBars[allBars.length - 2];
-        const close = Number(last.close);
-        qPrice.textContent = fmt(close);
-        if (prev) {
-          const d = close - Number(prev.close);
-          const pct = Number(prev.close) ? (d / Number(prev.close)) * 100 : 0;
-          qChange.textContent = `${d >= 0 ? "+" : ""}${d.toFixed(2)} (${pct.toFixed(2)}%)`;
-          qChange.className = "chg " + (d >= 0 ? "up" : "down");
-        }
-        const interval = intervalSelect.options[intervalSelect.selectedIndex].text;
-        const windowLabel = useCustom ? "Custom" : currentRange.toUpperCase();
-        chartMeta.textContent = `${currentSymbol} · ${windowLabel} · ${interval} · ${allBars.length} bars`;
-      }
-
-      // ---------- wiring ----------
-      rangePills.forEach(b => b.addEventListener("click", () => {
-        currentRange = b.dataset.range; useCustom = false;
-        rangePills.forEach(x => x.classList.remove("active")); b.classList.add("active");
-        startInput.value = ""; endInput.value = "";
-        render();
-      }));
-      applyCustom.addEventListener("click", () => {
-        if (!startInput.value || !endInput.value) return;
-        useCustom = true; rangePills.forEach(x => x.classList.remove("active")); render();
-      });
-      intervalSelect.addEventListener("change", render);
-      indicatorSelect.addEventListener("change", render);
-      rsiPeriodSelect.addEventListener("change", render);
-      mfiPeriodSelect.addEventListener("change", render);
-      stochPeriodSelect.addEventListener("change", render);
-
-      // default custom dates (last 30d)
-      (function () {
-        const e = new Date(); const s = new Date(e); s.setDate(s.getDate() - 30);
-        endInput.value = e.toISOString().slice(0, 10);
-        startInput.value = s.toISOString().slice(0, 10);
-      })();
-
-      // responsive: redraw on container resize (debounced)
-      let resizeT = null;
-      if (typeof ResizeObserver !== "undefined") {
-        new ResizeObserver(() => {
-          clearTimeout(resizeT);
-          resizeT = setTimeout(() => { if (allBars.length) render(); }, 120);
-        }).observe(wrap);
-      } else {
-        window.addEventListener("resize", () => {
-          clearTimeout(resizeT);
-          resizeT = setTimeout(() => { if (allBars.length) render(); }, 120);
-        });
-      }
-
-      // repo link (best-effort from current origin)
+      // repo link
       try {
         $("repoLink").href = "https://github.com" + (location.pathname.replace(/\/[^/]*$/, "").replace(/\/docs\/?$/, ""));
       } catch (e) {}
 
-      // ---------- boot ----------
+      // ---------- tiny CSV parser ----------
+      function parseCsv(text) {
+        const rows = []; let row = [], field = "", q = false;
+        for (let i = 0; i < text.length; i++) {
+          const c = text[i];
+          if (q) {
+            if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else q = false; }
+            else field += c;
+          } else if (c === '"') q = true;
+          else if (c === ",") { row.push(field); field = ""; }
+          else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+          else if (c !== "\r") field += c;
+        }
+        if (field.length > 0 || row.length > 0) { row.push(field); rows.push(row); }
+        return rows.filter(r => !(r.length === 1 && r[0] === ""));
+      }
+      async function loadCsv(name) {
+        try {
+          const res = await fetch(DIR + "/" + name, { cache: "no-cache" });
+          if (!res.ok) return [];
+          const rows = parseCsv(await res.text());
+          if (!rows.length) return { header: [], rows: [] };
+          return { header: rows[0], rows: rows.slice(1) };
+        } catch (e) { return { header: [], rows: [] }; }
+      }
+      const num = (v) => { const n = parseFloat(v); return Number.isNaN(n) ? null : n; };
+      const fmtPct = (n) => n === null ? "" : (n >= 0 ? "+" : "") + n.toFixed(2) + "%";
+      const fmtNum = (n, d = 2) => n === null ? "" : n.toFixed(d);
+      const fmtInt = (n) => n === null ? "" : Math.round(n).toLocaleString();
+
+      // ---------- sortable table infrastructure ----------
+      // makeSortableTable(cols, rows, makeCell, sortKeyFn, initialSort)
+      // Returns HTML string for a table with clickable sortable headers.
+      // sortKeyFn(colName, row, idx) → number|string|null  (value to sort by)
+      // initialSort: { col, dir } or null
+      const sortStates = new Map(); // wrapId → { col, dir }
+      const tableData = new Map();  // wrapId → { rows, cols, makeCell, sortKeyFn, idx }
+
+      function makeSortableTable(wrapId, cols, rows, makeCell, sortKeyFn, idx, initialSort) {
+        const state = initialSort || { col: null, dir: "desc" };
+        sortStates.set(wrapId, state);
+        tableData.set(wrapId, { rows, cols, makeCell, sortKeyFn, idx });
+
+        // Apply initial sort to rows
+        let sorted = rows;
+        if (state.col) {
+          sorted = sortRows(rows, state.col, state.dir, sortKeyFn, idx);
+        }
+
+        let h = '<table class="stbl"><thead><tr>';
+        cols.forEach(c => {
+          const cls = 'sortable' + (state.col === c ? ' ' + state.dir : "");
+          h += `<th class="${cls}" data-col="${c}" data-wrap="${wrapId}">${c}</th>`;
+        });
+        h += "</tr></thead><tbody>";
+        sorted.forEach((r, ri) => {
+          h += "<tr>";
+          cols.forEach((c, ci) => { h += makeCell(r, c, ci, ri); });
+          h += "</tr>";
+        });
+        return h + "</tbody></table>";
+      }
+
+      function sortRows(rows, col, dir, sortKeyFn, idx) {
+        return [...rows].sort((a, b) => {
+          const va = sortKeyFn(col, a, idx);
+          const vb = sortKeyFn(col, b, idx);
+          // null/empty always sort to bottom
+          if (va === null || va === undefined || va === "") return 1;
+          if (vb === null || vb === undefined || vb === "") return -1;
+          let cmp;
+          if (typeof va === "number" && typeof vb === "number") cmp = va - vb;
+          else cmp = String(va).localeCompare(String(vb));
+          return dir === "asc" ? cmp : -cmp;
+        });
+      }
+
+      function rerenderTable(wrapId) {
+        const data = tableData.get(wrapId);
+        const state = sortStates.get(wrapId);
+        if (!data || !state) return;
+        const { rows, cols, makeCell, sortKeyFn, idx } = data;
+        const sorted = state.col ? sortRows(rows, state.col, state.dir, sortKeyFn, idx) : rows;
+        const wrap = $(wrapId);
+        // Update header indicators
+        wrap.querySelectorAll("th.sortable").forEach(th => {
+          th.classList.remove("asc", "desc");
+          if (th.dataset.col === state.col) th.classList.add(state.dir);
+        });
+        // Re-render tbody
+        let h = "";
+        sorted.forEach((r, ri) => {
+          h += "<tr>";
+          cols.forEach((c, ci) => { h += makeCell(r, c, ci, ri); });
+          h += "</tr>";
+        });
+        wrap.querySelector("tbody").innerHTML = h;
+      }
+
+      // Global click handler for sortable headers (delegated)
+      document.addEventListener("click", (e) => {
+        const th = e.target.closest("th.sortable");
+        if (!th) return;
+        const wrapId = th.dataset.wrap;
+        if (!wrapId || !sortStates.has(wrapId)) return;
+        const state = sortStates.get(wrapId);
+        const col = th.dataset.col;
+        if (state.col === col) {
+          state.dir = state.dir === "asc" ? "desc" : "asc";
+        } else {
+          state.col = col;
+          state.dir = "desc";
+        }
+        rerenderTable(wrapId);
+      });
+
+      // ---------- shared symbol cell ----------
+      const SA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+      function symCell(sym, sub) {
+        const saSym = sym.replace(/\./g, "-").replace(/\//g, "-");
+        const subHtml = sub ? `<span class="nm">${sub}</span>` : "";
+        return `<td class="sym"><a href="https://seekingalpha.com/symbol/${encodeURIComponent(saSym)}" target="_blank" rel="noopener">${sym}</a><a class="sa" href="https://seekingalpha.com/symbol/${encodeURIComponent(saSym)}" target="_blank" rel="noopener" title="Seeking Alpha">${SA_ICON}</a>${subHtml}</td>`;
+      }
+
+      // ---------- render LATEST ----------
+      async function renderLatest() {
+        const { header, rows } = await loadCsv("LATEST.csv");
+        $("latestCount").textContent = rows.length ? `${rows.length} symbols` : "";
+        const idx = {}; header.forEach((h, i) => idx[h] = i);
+        const cols = ["symbol", "close", "dayChangePct", "volume", "volRatio", "sma50", "smaLong", "score", "vix", "employees"];
+        const makeCell = (r, c, ci) => {
+          if (c === "symbol") {
+            const sym = r[idx.symbol] || "";
+            const nm = r[idx.name] || "";
+            return symCell(sym, nm);
+          }
+          if (c === "dayChangePct") { const n = num(r[idx.dayChangePct]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
+          if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
+          if (c === "volume") return `<td>${fmtInt(num(r[idx.volume]))}</td>`;
+          if (c === "volRatio") return `<td>${fmtNum(num(r[idx.volRatio]))}×</td>`;
+          if (c === "sma50") return `<td>${fmtNum(num(r[idx.sma50]))}</td>`;
+          if (c === "smaLong") return `<td>${r[idx.smaLong] ? fmtNum(num(r[idx.smaLong])) : "—"}</td>`;
+          if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
+          if (c === "vix") return `<td>${r[idx.vix] || "—"}</td>`;
+          if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
+          return `<td>${r[idx[c]] ?? ""}</td>`;
+        };
+        const sortKeyFn = (col, r) => {
+          if (col === "symbol") return r[idx.symbol] || "";
+          return num(r[idx[col]]);
+        };
+        $("latestWrap").innerHTML = rows.length
+          ? makeSortableTable("latestWrap", cols, rows, makeCell, sortKeyFn, idx, { col: "score", dir: "desc" })
+          : '<div class="empty">No entries.</div>';
+      }
+
+      // ---------- render highlight lists ----------
+      async function renderHighlight(name, wrapId, countId) {
+        const { header, rows } = await loadCsv(name);
+        $(countId).textContent = rows.length ? `${rows.length} symbols` : "";
+        const idx = {}; header.forEach((h, i) => idx[h] = i);
+        const cols = ["symbol", "hits", "firstHit", "lastHit", "avgScore", "latestClose", "latestDayChange", "employees"];
+        const makeCell = (r, c) => {
+          if (c === "symbol") {
+            const sym = r[idx.symbol] || "";
+            const ind = r[idx.industry] || "";
+            return symCell(sym, ind);
+          }
+          if (c === "hits") return `<td><b>${r[idx.hits] || ""}</b></td>`;
+          if (c === "latestDayChange") { const n = num(r[idx.latestDayChange]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
+          if (c === "latestClose") return `<td>${fmtNum(num(r[idx.latestClose]))}</td>`;
+          if (c === "avgScore") return `<td>${fmtNum(num(r[idx.avgScore]))}</td>`;
+          if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
+          return `<td>${r[idx[c]] ?? ""}</td>`;
+        };
+        const sortKeyFn = (col, r) => {
+          if (col === "symbol") return r[idx.symbol] || "";
+          if (col === "firstHit" || col === "lastHit") return r[idx[col]] || "";
+          return num(r[idx[col]]);
+        };
+        $(wrapId).innerHTML = rows.length
+          ? makeSortableTable(wrapId, cols, rows, makeCell, sortKeyFn, idx, { col: "hits", dir: "desc" })
+          : '<div class="empty">No entries.</div>';
+      }
+
+      // ---------- render hits_log ----------
+      async function renderLog() {
+        const { header, rows } = await loadCsv("hits_log.csv");
+        $("logCount").textContent = rows.length ? `${rows.length} rows` : "";
+        const idx = {}; header.forEach((h, i) => idx[h] = i);
+        const cols = ["date", "symbol", "score", "dayChangePct", "close", "volume", "volRatio", "industry", "employees"];
+        const makeCell = (r, c) => {
+          if (c === "symbol") {
+            const sym = r[idx.symbol] || "";
+            return symCell(sym);
+          }
+          if (c === "dayChangePct") { const n = num(r[idx.dayChangePct]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
+          if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
+          if (c === "volume") return `<td>${r[idx.volume] ? fmtInt(num(r[idx.volume])) : "—"}</td>`;
+          if (c === "volRatio") return `<td>${r[idx.volRatio] ? fmtNum(num(r[idx.volRatio])) + "×" : "—"}</td>`;
+          if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
+          if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
+          return `<td>${r[idx[c]] ?? ""}</td>`;
+        };
+        const sortKeyFn = (col, r) => {
+          if (col === "symbol" || col === "industry") return r[idx[col]] || "";
+          if (col === "date") return r[idx.date] || "";
+          return num(r[idx[col]]);
+        };
+        $("logWrap").innerHTML = rows.length
+          ? makeSortableTable("logWrap", cols, rows, makeCell, sortKeyFn, idx, { col: "date", dir: "desc" })
+          : '<div class="empty">No entries.</div>';
+      }
+
+      // ---------- meta (run date + VIX gate) from LATEST ----------
+      async function renderMeta() {
+        const { header, rows } = await loadCsv("LATEST.csv");
+        const vixI = header.indexOf("vix");
+        let vix = null;
+        if (rows.length && vixI >= 0) vix = num(rows[0][vixI]);
+        const today = new Date().toISOString().slice(0, 10);
+        const gateOpen = rows.length > 0; // hits recorded ⟹ gate was open
+        $("meta").innerHTML =
+          `<span class="badge neutral">run: ${today}</span>` +
+          (vix !== null ? `<span class="badge ${gateOpen ? "up" : "warn"}">VIX ${vix.toFixed(2)} — gate ${gateOpen ? "open" : "closed"}</span>` : "") +
+          (rows.length ? `<span class="badge up">${rows.length} hits</span>` : `<span class="badge warn">no hits</span>`);
+      }
+
       (async function init() {
-        await loadTickerList();
-        const q = new URL(location.href).searchParams.get("symbol");
-        if (q && tickerList.some(t => t.symbol === q.toUpperCase())) currentSymbol = q.toUpperCase();
-        searchInput.value = currentSymbol;
-        syncURL(currentSymbol);
-        await loadSymbol();
+        await renderLatest();
+        await renderHighlight("conviction_30.csv", "convWrap", "convCount");
+        await renderHighlight("watchlist_15.csv", "watchWrap", "watchCount");
+        await renderLog();
+        renderMeta();
       })();
     })();
     </script>

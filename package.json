@@ -7,7 +7,6 @@
     "start": "bun run src/server.ts",
     "dev": "bun --watch src/server.ts",
     "update": "bun run src/update_tickers.ts",
-    "archive": "bun run src/archive_history.ts",
     "history-sql": "bun run src/gen_history_sql.ts",
     "screener": "bun run src/screener.ts"
   }

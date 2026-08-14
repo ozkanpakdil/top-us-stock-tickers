@@ -84,7 +84,7 @@ SELECT date, close FROM us_tickers WHERE symbol = 'AAPL' ORDER BY date;
 
 ## Daily Screener
 
-> **Live site:** <https://ozkanpakdil.github.io/top-us-stock-tickers/screener.html> —
+> **Live site:** <https://ozkanpakdil.github.io/top-us-stock-tickers/> —
 > today's breakout hits, watchlist, and conviction list, rendered from the CSVs below.
 
 A daily breakout screener runs right after the ticker update (same GitHub Action,
@@ -115,7 +115,7 @@ All thresholds are top-of-file constants in `src/screener.ts` — edit them ther
 no logic changes needed.
 
 **Outputs (all committed to main under `docs/data/screener/`, published to the
-GitHub Pages site and rendered by `docs/screener.html`):**
+GitHub Pages site and rendered by `docs/index.html`):**
 
 ```
 docs/data/screener/
@@ -211,7 +211,6 @@ print(rows[0])
 ```bash
 bun install
 bun run update        # fetch + write the daily CSV snapshots (tickers/, by_industry/)
-bun run archive       # refresh per-ticker OHLC archives in ohlc/ (gitignored)
 bun run history-sql   # rebuild tickers/history.sql on demand from git (gitignored)
 ```
 
@@ -223,70 +222,25 @@ bun run history-sql   # rebuild tickers/history.sql on demand from git (gitignor
 - The GitHub Actions workflow runs the update automatically on weekdays.
 
 
-## Web app — stock charts with indicators
+## Web app — daily screener
 
-A static single-page app (`docs/index.html`) renders Revolut/IBKR-style candlestick
-charts with volume, a right-side price axis, a crosshair + OHLCV tooltip, and the
-RSI / HRSI / MFI / Stochastic %K indicators. It is deployed to **GitHub Pages** and
-runs entirely client-side.
+A static single-page app (`docs/index.html`) renders the daily breakout screener:
+today's hits, conviction list, watchlist, and the full append-only hit log. It is
+deployed to **GitHub Pages** and runs entirely client-side (fetches CSVs from
+`docs/data/screener/`).
 
 ### GitHub Pages deployment
 
-The site lives in `docs/` and is deployed by `.github/workflows/pages.yml`, which
-uploads `docs/` and deploys it on every push to `main` (and via `workflow_dispatch`).
+The site lives in `docs/` and is deployed by the daily workflow
+(`.github/workflows/daily_update.yml`), which uploads `docs/` and deploys it on
+every push to `main` (and via `workflow_dispatch`).
 
-The site is live at **<https://ozkanpakdil.github.io/top-us-stock-tickers/>**
-(deployed automatically by the `pages.yml` workflow on every push to `main`).
+The site is live at **<https://ozkanpakdil.github.io/top-us-stock-tickers/>**.
 
 **One-time setup (already done):** the repo's *Settings → Pages → Build and
 deployment → Source* is set to **GitHub Actions** (not "Deploy from a branch").
 For a new repo, set that, then push to `main` — the site goes live at
 `https://<your-user>.github.io/<repo>/`.
-
-The historical OHLC data the charts read is **not committed to `main`**. The
-per-ticker JSONs live on an orphan `data` branch and are served to the page by
-the **jsDelivr CDN**, one ~50–600 KB file per ticker (lazy-loaded when you click a
-symbol):
-
-```text
-https://cdn.jsdelivr.net/gh/ozkanpakdil/top-us-stock-tickers@data/ohlc/<SYMBOL>.json
-```
-
-Only the small indexes that the search box and picker need are committed to
-`main` under `docs/data/`:
-
-- `docs/data/tickers.json` — every ticker in `all.csv` (the search index; ~5,000 rows, ~500 KB).
-- `docs/data/manifest.json` — only the tickers that actually have an OHLC file (the picker list).
-
-The orphan `data` branch is force-pushed as a fresh single-commit orphan each
-daily run, so its history never grows; because git stores blobs by content hash,
-only changed/new files are actually transferred on each push.
-
-### Archiving history
-
-`archive_history.ts` builds and refreshes the per-ticker OHLC archive:
-
-- A **missing** file → full backfill of daily OHLCV from Yahoo Finance
-  (`period1=0 … period2=now`).
-- An **existing** file → a cheap 3-month window is fetched and merged in, so a run
-  that times out simply resumes the long tail next time. Failed tickers are
-  skipped; `manifest.json` lists only the tickers that have a file.
-
-Files are written to `ohlc/<SYMBOL>.json` (gitignored on `main`), then the daily
-workflow publishes them to the orphan `data` branch for jsDelivr to serve. It runs
-in the daily workflow after `update_tickers.ts`. You can also run it locally:
-
-```bash
-bun run src/archive_history.ts --only AAPL,MSFT,NVDA   # a few tickers (smoke test)
-bun run src/archive_history.ts --limit 100            # first 100 by market cap
-bun run src/archive_history.ts --max-years 10         # cap history depth
-```
-
-History depth defaults to **unlimited** (full listing history). Full coverage of
-all ~5,000 US tickers is ~0.5–1.5 GB of JSON; since each file lives on the `data`
-branch (not `main`) and only one loads per view, the repo and the site both stay
-light. To cap the depth, set the `HISTORY_MAX_YEARS` repository variable (e.g.
-`20`) or pass `--max-years`.
 
 ### Local development
 
@@ -296,11 +250,6 @@ deployed site) **and** keeps two local-only endpoints for live play:
 - `/api/tickers` — reads `tickers/all.csv`
 - `/api/history` — a server-side proxy to Yahoo Finance (browsers can't call Yahoo
   directly)
-
-The page first tries the jsDelivr CDN (`<repo>@data/ohlc/<SYMBOL>.json`); if that
-has no file for a ticker yet, it falls back to `/api/history` so you can chart any
-ticker live while developing. On GitHub Pages that fallback is absent, so only
-archived tickers chart there.
 
 ```bash
 bun install

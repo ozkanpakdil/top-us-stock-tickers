@@ -41,41 +41,6 @@ jobs:
         # tickers/all.csv is the source of truth for the historical archive.
         run: bun run src/update_tickers.ts
 
-      - name: Archive per-ticker OHLC history
-        # Builds/refreshes ohlc/<SYMBOL>.json (full daily OHLCV) and the small
-        # docs/data/manifest.json + docs/data/tickers.json indexes for the static
-        # GitHub Pages site. Resumable: existing files get a cheap 3-month merge;
-        # only missing files do a full backfill, so a run that times out continues
-        # the long tail next time. The OHLC files are NOT committed to main (they
-        # are gitignored and published to the orphan `data` branch in the next
-        # step). Set HISTORY_MAX_YEARS (repo Variables, e.g. 20) to cap depth.
-        env:
-          HISTORY_MAX_YEARS: ${{ vars.HISTORY_MAX_YEARS }}
-        run: bun run src/archive_history.ts
-
-      - name: Publish OHLC to the data branch (served via jsDelivr)
-        # Publish the freshly built ohlc/<SYMBOL>.json files to an orphan
-        # `data` branch (NOT main). The static site lazy-loads them from the
-        # jsDelivr CDN: cdn.jsdelivr.net/gh/<repo>@data/ohlc/<SYMBOL>.json.
-        # Each run force-pushes a fresh single-commit orphan so the branch
-        # history never grows; unchanged blobs are content-addressed so only
-        # changed/new files are actually transferred.
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -e
-          TMP="$(mktemp -d)"
-          cd "$TMP"
-          git init -q
-          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git checkout -q --orphan data
-          cp -r "${GITHUB_WORKSPACE}/ohlc" ./ohlc
-          git add ohlc/
-          git -c user.name="GitHub Actions Bot" -c user.email="actions@github.com" \
-            commit -q -m "OHLC data: $(date -u +%Y-%m-%d)"
-          git push --force origin data
-          echo "Published $(ls ohlc/*.json | wc -l) OHLC files to the data branch."
-
       - name: Run daily screener
         # Scans all US stocks for breakout candidates (trend + volume + new
         # highs + VIX<21) from the git history of tickers/all.csv, writes
@@ -92,8 +57,7 @@ jobs:
           # Add the committed-to-main outputs: ticker CSVs, by-industry, the
           # small docs/data indexes (manifest.json + tickers.json), and the
           # daily screener outputs (docs/data/screener/*.csv, published to the
-          # Pages site). The OHLC files live in ohlc/ (gitignored) and are
-          # published to the `data` branch above.
+          # Pages site).
           git add tickers/ by_industry/ docs/data/
 
           # Check for changes before committing to avoid empty commit errors
