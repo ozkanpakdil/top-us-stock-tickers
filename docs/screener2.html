@@ -205,7 +205,15 @@
           </div>
           <div class="fgrp">
             <label for="fEmp">Min employees</label>
-            <input type="number" id="fEmp" value="1000" min="0" step="100" />
+            <input type="number" id="fEmp" value="10000" min="0" step="1000" />
+          </div>
+          <div class="fgrp">
+            <label for="fMcap">Min mkt cap ($B)</label>
+            <input type="number" id="fMcap" value="10" min="0" step="1" />
+          </div>
+          <div class="fgrp">
+            <label for="fPrice">Min price $</label>
+            <input type="number" id="fPrice" value="20" min="0" step="5" />
           </div>
           <div class="fgrp">
             <label for="fScore">Min score</label>
@@ -420,7 +428,9 @@
       // ---------- filter state ----------
       const filterState = {
         search: "",
-        minEmp: 1000,
+        minEmp: 10000,
+        minMcap: 10,  // in $B
+        minPrice: 20,
         minScore: 0,
         minRules: 0,
         industry: "",
@@ -446,6 +456,12 @@
           // min employees
           const emp = num(r[idx.employees]);
           if (filterState.minEmp > 0 && (emp === null || emp < filterState.minEmp)) return false;
+          // min market cap (input is in $B, CSV stores raw number)
+          const mc = num(r[idx.marketCap]);
+          if (filterState.minMcap > 0 && (mc === null || mc < filterState.minMcap * 1e9)) return false;
+          // min price
+          const price = num(r[idx.close]);
+          if (filterState.minPrice > 0 && (price === null || price < filterState.minPrice)) return false;
           // min score
           const sc = num(r[idx.score]);
           if (filterState.minScore > 0 && (sc === null || sc < filterState.minScore)) return false;
@@ -549,6 +565,14 @@
           filterState.minEmp = num(e.target.value) ?? 0;
           debounced(renderFilteredTable);
         });
+        $("fMcap").addEventListener("input", (e) => {
+          filterState.minMcap = num(e.target.value) ?? 0;
+          debounced(renderFilteredTable);
+        });
+        $("fPrice").addEventListener("input", (e) => {
+          filterState.minPrice = num(e.target.value) ?? 0;
+          debounced(renderFilteredTable);
+        });
         $("fScore").addEventListener("input", (e) => {
           filterState.minScore = num(e.target.value) ?? 0;
           debounced(renderFilteredTable);
@@ -582,11 +606,13 @@
           renderFilteredTable();
         });
         $("fReset").addEventListener("click", () => {
-          filterState.search = ""; filterState.minEmp = 1000; filterState.minScore = 0;
+          filterState.search = ""; filterState.minEmp = 10000; filterState.minMcap = 10;
+          filterState.minPrice = 20; filterState.minScore = 0;
           filterState.minRules = 0; filterState.industry = "";
           filterState.vcpOnly = false; filterState.allSma = true;
           filterState.epsUp = false; filterState.fcfUp = false; filterState.peUp = false;
-          $("fSearch").value = ""; $("fEmp").value = "1000"; $("fScore").value = "0";
+          $("fSearch").value = ""; $("fEmp").value = "10000"; $("fMcap").value = "10";
+          $("fPrice").value = "20"; $("fScore").value = "0";
           $("fRules").value = "0"; $("fIndustry").value = "";
           $("fVcpOnly").checked = false; $("fAllSma").checked = true;
           $("fEpsUp").checked = false; $("fFcfUp").checked = false; $("fPeUp").checked = false;
