@@ -57,7 +57,7 @@ export const OUT_DIR = "docs/data/screener";
 
 // --- git helpers (mirror src/gen_history_sql.ts) ----------------------------
 
-function git(args: string[]): string {
+export function git(args: string[]): string {
   const r = spawnSync("git", args, { encoding: "utf8", maxBuffer: 1024 * 1024 * 512 });
   if (r.status !== 0) {
     throw new Error(`git ${args.join(" ")} failed (${r.status}):\n${r.stderr || ""}`);
@@ -66,7 +66,7 @@ function git(args: string[]): string {
 }
 
 /** (commitHash, committerDateISO) for every commit touching `path`, oldest first. */
-function snapshotCommits(path: string): { hash: string; date: string }[] {
+export function snapshotCommits(path: string): { hash: string; date: string }[] {
   const out = git(["log", "--format=%H %cI", "--reverse", "--", path]).trim();
   if (!out) return [];
   return out.split("\n").map((line) => {
@@ -75,24 +75,24 @@ function snapshotCommits(path: string): { hash: string; date: string }[] {
   });
 }
 
-function showAt(hash: string, path: string): string {
+export function showAt(hash: string, path: string): string {
   return git(["show", `${hash}:${path}`]);
 }
 
 // --- history build ----------------------------------------------------------
 
-interface Bar {
+export interface Bar {
   date: string;
   close: number;
   volume: number;
 }
-interface Sym {
+export interface Sym {
   name: string;
   industry: string;
   bars: Bar[];
 }
 
-function columnIndex(header: string[]): Record<string, number> {
+export function columnIndex(header: string[]): Record<string, number> {
   const idx: Record<string, number> = {};
   header.forEach((h, i) => (idx[h] = i));
   return idx;
@@ -101,7 +101,7 @@ function columnIndex(header: string[]): Record<string, number> {
 /** Parse one snapshot (git version or working file) into per-symbol bars for `date`.
  *  close = `price` column (all.csv has no close/open/high/low; price is the last close).
  *  Returns rows as [date, symbol, name, close, volume, industry] for merging. */
-function parseSnapshot(
+export function parseSnapshot(
   text: string,
   date: string,
 ): { date: string; symbol: string; name: string; close: number; volume: number; industry: string }[] {
@@ -132,7 +132,7 @@ function parseSnapshot(
 
 /** Build the full symbol→Sym history map from git history of all.csv + today's working
  *  snapshot. Newest snapshot per (date, symbol) wins (walked oldest→newest, then today). */
-async function buildHistory(allCsv: string, today: string): Promise<Map<string, Sym>> {
+export async function buildHistory(allCsv: string, today: string): Promise<Map<string, Sym>> {
   const symbols = new Map<string, Sym>();
   // date+symbol → last bar seen (for dedup within the same day across commits)
   const latest = new Map<string, { bar: Bar; name: string; industry: string }>();
@@ -195,14 +195,14 @@ async function buildHistory(allCsv: string, today: string): Promise<Map<string, 
 
 // --- indicators -------------------------------------------------------------
 
-function sma(values: number[], window: number): number | null {
+export function sma(values: number[], window: number): number | null {
   if (values.length < window) return null;
   let sum = 0;
   for (let i = values.length - window; i < values.length; i++) sum += values[i];
   return sum / window;
 }
 
-function maxLast(values: number[], window: number): number | null {
+export function maxLast(values: number[], window: number): number | null {
   if (values.length < window) return null;
   let m = -Infinity;
   for (let i = values.length - window; i < values.length; i++) if (values[i] > m) m = values[i];
@@ -228,14 +228,14 @@ interface HitRow {
 
 // --- employee count (stockanalysis.com) -------------------------------------
 
-const SA_HEADERS: Record<string, string> = {
+export const SA_HEADERS: Record<string, string> = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
   Accept: "text/html,application/xhtml+xml",
 };
 
 /** Fetch full-time employee count for a symbol from stockanalysis.com.
  *  Returns null if the page doesn't contain the data or the fetch fails. */
-async function fetchEmployeeCount(symbol: string): Promise<number | null> {
+export async function fetchEmployeeCount(symbol: string): Promise<number | null> {
   const sym = symbol.toLowerCase().replace(/[./^]/g, "-");
   const url = `https://stockanalysis.com/stocks/${sym}/`;
   try {
@@ -257,7 +257,7 @@ async function fetchEmployeeCount(symbol: string): Promise<number | null> {
 }
 
 /** Fetch employee counts for a list of symbols with limited concurrency. */
-async function fetchEmployeeCounts(
+export async function fetchEmployeeCounts(
   symbols: string[],
   concurrency = 10,
 ): Promise<Map<string, number | null>> {
@@ -348,13 +348,13 @@ const HIGHLIGHT_COLUMNS = [
   "symbol", "industry", "hits", "firstHit", "lastHit", "avgScore", "latestClose", "latestDayChange", "employees",
 ];
 
-function csvCell(v: unknown): string {
+export function csvCell(v: unknown): string {
   if (v === null || v === undefined) return "";
   const s = String(v);
   if (/[",\n]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
   return s;
 }
-function toCsv(header: string[], rows: unknown[][]): string {
+export function toCsv(header: string[], rows: unknown[][]): string {
   return [header, ...rows].map((r) => r.map(csvCell).join(",")).join("\n") + "\n";
 }
 

@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>US Stock Screener — breakout hits</title>
-    <meta name="description" content="Daily breakout screener scanning every US stock for institutional volume, new highs, and uptrend signals." />
+    <title>VCP Screener — Volatility Contraction Pattern</title>
+    <meta name="description" content="Daily VCP screener scanning US stocks for Minervini-style volatility contraction patterns with fundamental confirmation." />
     <style>
-      /* ---- design tokens ---- */
+      /* ---- design tokens (mirrors index.html) ---- */
       :root {
         --font: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, system-ui, sans-serif;
         --mono: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
@@ -17,7 +17,7 @@
         --grid: #1b1f28; --axis: #2a2f3b;
         --border: rgba(255,255,255,0.06); --border-strong: rgba(255,255,255,0.12);
         --up: #26c281; --up-ink: #0e1a16; --down: #ff5151; --down-ink: #1a0e0e;
-        --accent: #3b82f6;
+        --accent: #a78bfa; --accent-2: #3b82f6;
         --s2: #f59e0b; --s4: #a78bfa;
         --shadow: 0 14px 40px rgba(0,0,0,0.55);
         --glow-up: rgba(38,194,129,0.18); --glow-down: rgba(255,81,81,0.18);
@@ -28,7 +28,7 @@
         --grid: #e7e9ee; --axis: #c9cdd6;
         --border: rgba(12,13,17,0.08); --border-strong: rgba(12,13,17,0.16);
         --up: #16a06a; --up-ink: #ffffff; --down: #e23b3b; --down-ink: #ffffff;
-        --accent: #2563eb;
+        --accent: #7c3aed; --accent-2: #2563eb;
         --s2: #d97706; --s4: #7c3aed;
         --shadow: 0 10px 28px rgba(0,0,0,0.12);
         --glow-up: rgba(22,160,106,0.16); --glow-down: rgba(226,59,59,0.16);
@@ -48,9 +48,11 @@
         backdrop-filter: saturate(140%) blur(8px);
       }
       .brand { font-weight: 700; font-size: 1rem; letter-spacing: 0.2px; white-space: nowrap; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
-      .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: linear-gradient(135deg, var(--up), var(--accent)); box-shadow: 0 0 10px var(--glow-up); }
+      .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 0 10px rgba(167,139,250,0.3); }
       .brand .accent { color: var(--accent); }
       .topbar .spacer { flex: 1; }
+      .nav-link { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: color 0.15s, background 0.15s; }
+      .nav-link:hover { color: var(--text); background: var(--panel-2); }
       .theme-btn {
         border: 1px solid var(--border); background: var(--panel-2); color: var(--text);
         width: 38px; height: 38px; border-radius: 10px; font-size: 1rem; cursor: pointer;
@@ -69,9 +71,10 @@
       .badge.down { color: var(--down); background: var(--glow-down); }
       .badge.neutral { color: var(--text-dim); background: var(--panel-2); }
       .badge.warn { color: var(--s2); background: color-mix(in srgb, var(--s2) 16%, transparent); }
+      .badge.accent { color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
 
       .guide h2 { margin: 0 0 12px; font-size: 1rem; }
-      .guide dl { margin: 0; display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; font-size: 0.85rem; }
+      .guide dl { margin: 0; display: grid; grid-template-columns: 140px 1fr; gap: 8px 12px; font-size: 0.85rem; }
       .guide dt { color: var(--accent); font-weight: 700; }
       .guide dd { margin: 0; color: var(--text-dim); line-height: 1.5; }
       .guide .note { color: var(--muted); font-size: 0.78rem; margin-top: 12px; margin-bottom: 0; }
@@ -101,7 +104,14 @@
       table.stbl td.sym .sa:hover { color: var(--s2); }
       table.stbl td.sym .sa svg { width: 12px; height: 12px; vertical-align: middle; }
       .up { color: var(--up); } .down { color: var(--down); }
+      .check { color: var(--up); } .cross { color: var(--down); } .dash { color: var(--muted); }
       .empty { color: var(--muted); font-size: 0.85rem; padding: 14px 2px; }
+
+      /* ---- rule pills ---- */
+      .rule-pill { display: inline-block; padding: 2px 7px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; font-family: var(--mono); }
+      .rule-pill.pass { color: var(--up); background: var(--glow-up); }
+      .rule-pill.fail { color: var(--down); background: var(--glow-down); }
+      .rule-pill.unknown { color: var(--muted); background: var(--panel-2); }
 
       .footer { padding: 18px; text-align: center; color: var(--muted); font-size: 0.76rem; }
       .footer a { color: var(--accent); text-decoration: none; }
@@ -110,59 +120,54 @@
   </head>
   <body>
     <div class="topbar">
-      <a class="brand" href="."><span class="dot"></span> US Stock <span class="accent">screener</span></a>
+      <a class="brand" href="."><span class="dot"></span> VCP <span class="accent">screener-2</span></a>
       <div class="spacer"></div>
+      <a class="nav-link" href="./index.html">← Breakout Screener</a>
       <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
     </div>
 
     <div class="wrap">
       <section class="panel hero">
-        <h1>Daily breakout screener — <span style="color:var(--up)">trend is friend</span></h1>
-        <p>Scans every US stock every day for institutions moving in: new highs, volume spikes, uptrend, and a low-VIX market. Stocks that keep hitting day after day graduate to the watchlist and conviction list. Not financial advice — a starting point for your own research.</p>
+        <h1>VCP Screener — <span style="color:var(--accent)">Volatility Contraction Pattern</span></h1>
+        <p>Scans US stocks daily for Minervini-style VCP setups: market cap $2B–$100B, price above 12-month / 200-day / 150-day SMAs, P/E trending up, VCP chart pattern (higher lows + flat ceiling + contracting volatility), insiders holding, free cash flow trending up, and EPS trending up. Inspired by <a href="https://en.wikipedia.org/wiki/Mark_Minervini" target="_blank" rel="noopener" style="color:var(--accent)">Mark Minervini's</a> methodology. Not financial advice.</p>
         <div class="meta" id="meta"></div>
       </section>
 
       <section class="panel guide">
-        <h2>What it looks for (a hit passes ALL)</h2>
+        <h2>The 12 rules (from the strategy)</h2>
         <dl>
-          <dt>VIX &lt; 21</dt><dd>Global market gate — fetched live from Yahoo (^VIX). When VIX is high, no new hits are recorded.</dd>
-          <dt>20-day high</dt><dd>Latest close is at or above the highest close of the last 20 days (making highs).</dd>
-          <dt>Volume spike</dt><dd>Today's volume ≥ 1.5× the 50-day average volume (institutions moving in).</dd>
-          <dt>Above SMA50</dt><dd>Price is above its 50-day simple moving average.</dd>
-          <dt>Trend up</dt><dd>SMA50 &gt; SMA(long). Long = 200 days once enough history exists, else the longest window ≥ 120 days; below 120 days the rule is skipped (history only goes back to Dec 2025).</dd>
-          <dt>Momentum</dt><dd>Day change ≥ 2% (close vs previous close — proxies "gapping up", since open/high/low aren't in the history).</dd>
+          <dt>Market cap $2B–$100B</dt><dd>Sweet spot for explosive percent moves. Above $1T = no explosive moves; below $2B = too volatile.</dd>
+          <dt>Cash flow &gt; 0</dt><dd>The business whose entire point is to make money, is making money. (Proxy: free cash flow &gt; 0.)</dd>
+          <dt>Price &gt; 12-mo SMA</dt><dd>Long-term macro uptrend confirmed — "wind in your sails." Below = wind blowing in your face.</dd>
+          <dt>Price &gt; $10</dt><dd>Harder to get institutional money into sub-$10 stocks.</dd>
+          <dt>Employees &gt; 20</dt><dd>Weed out shell companies and sheds in Nevada.</dd>
+          <dt>Price &gt; 200-day SMA</dt><dd>Confirmed long-term uptrend.</dd>
+          <dt>Price &gt; 150-day SMA</dt><dd>No local consolidation zone (price can be above 200 but below 150 = consolidation, avoid).</dd>
+          <dt>P/E trending up</dt><dd>Don't care about the actual value, just want to see P/E generally trending upwards.</dd>
+          <dt>VCP pattern</dt><dd>Volatility Contraction Pattern: higher lows + flat price ceiling + each contraction wave smaller than the prior. 85% odds of winning.</dd>
+          <dt>Insiders holding</dt><dd>Free float &lt; 70% or closely held &gt; 20%. If insiders dumped, it's a negative variable.</dd>
+          <dt>FCF trending up</dt><dd>Free cash flow making more and more money every quarter and every year.</dd>
+          <dt>EPS trending up</dt><dd>Earnings per share trending upwards — greedy shareholders making more money.</dd>
         </dl>
-        <p class="note">Score = dayChange% + 2 × volumeRatio. Sorted by score. Employee count from stockanalysis.com — larger companies may be stronger growth candidates. Click a symbol to view it on Seeking Alpha. Click any column header to sort. Thresholds are constants in <code>src/screener.ts</code>.</p>
+        <p class="note">Score = rules passed + VCP quality bonus (contractions × 2 + (1 − volatility ratio) × 3). Sorted by score. Fundamentals from Yahoo Finance. Employee count from stockanalysis.com. Click a symbol to view it on Seeking Alpha. Click any column header to sort. Thresholds are constants in <code>src/screener2.ts</code>.</p>
       </section>
 
       <section class="panel">
-        <div class="sect-head"><h2>Today's hits</h2><span class="count" id="latestCount"></span></div>
+        <div class="sect-head"><h2>Today's results</h2><span class="count" id="latestCount"></span></div>
         <div class="scroll" id="latestWrap"></div>
       </section>
 
       <section class="panel">
-        <div class="sect-head"><h2>Conviction list — 30-day</h2><span class="count" id="convCount"></span></div>
-        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Symbols hitting ≥ 15 of the last 30 calendar days.</p>
-        <div class="scroll" id="convWrap"></div>
-      </section>
-
-      <section class="panel">
-        <div class="sect-head"><h2>Watchlist — 15-day</h2><span class="count" id="watchCount"></span></div>
-        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Symbols hitting ≥ 8 of the last 15 calendar days.</p>
-        <div class="scroll" id="watchWrap"></div>
-      </section>
-
-      <section class="panel">
         <div class="sect-head"><h2>Full hit log</h2><span class="count" id="logCount"></span></div>
-        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Every hit, every day (append-only). Scroll to browse.</p>
+        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Every result, every day (append-only). Scroll to browse.</p>
         <div class="scroll" style="max-height:520px" id="logWrap"></div>
       </section>
     </div>
 
     <div class="footer">
-      Generated daily from the git history of <code>tickers/all.csv</code> + live VIX.
+      Generated daily from the git history of <code>tickers/all.csv</code> + Yahoo Finance fundamentals.
       <a id="repoLink" href="#" target="_blank" rel="noopener">Source</a> ·
-      <a href="screener2.html">VCP Screener-2</a> ·
+      <a href="./index.html">Breakout Screener</a> ·
       Run <code>bun run dev</code> locally for interactive charts.
     </div>
 
@@ -170,7 +175,7 @@
     (function () {
       "use strict";
       const $ = (id) => document.getElementById(id);
-      const DIR = "data/screener";
+      const DIR = "data/screener2";
 
       // ---------- theme ----------
       const themeBtn = $("themeBtn");
@@ -221,21 +226,18 @@
       const fmtPct = (n) => n === null ? "" : (n >= 0 ? "+" : "") + n.toFixed(2) + "%";
       const fmtNum = (n, d = 2) => n === null ? "" : n.toFixed(d);
       const fmtInt = (n) => n === null ? "" : Math.round(n).toLocaleString();
+      const fmtBn = (n) => n === null ? "—" : n >= 1e12 ? "$" + (n / 1e12).toFixed(2) + "T" : "$" + (n / 1e9).toFixed(1) + "B";
+      const fmtM = (n) => n === null ? "—" : n >= 1e9 ? "$" + (n / 1e9).toFixed(2) + "B" : n >= 1e6 ? "$" + (n / 1e6).toFixed(0) + "M" : "$" + n.toFixed(0);
 
       // ---------- sortable table infrastructure ----------
-      // makeSortableTable(cols, rows, makeCell, sortKeyFn, initialSort)
-      // Returns HTML string for a table with clickable sortable headers.
-      // sortKeyFn(colName, row, idx) → number|string|null  (value to sort by)
-      // initialSort: { col, dir } or null
-      const sortStates = new Map(); // wrapId → { col, dir }
-      const tableData = new Map();  // wrapId → { rows, cols, makeCell, sortKeyFn, idx }
+      const sortStates = new Map();
+      const tableData = new Map();
 
       function makeSortableTable(wrapId, cols, rows, makeCell, sortKeyFn, idx, initialSort) {
         const state = initialSort || { col: null, dir: "desc" };
         sortStates.set(wrapId, state);
         tableData.set(wrapId, { rows, cols, makeCell, sortKeyFn, idx });
 
-        // Apply initial sort to rows
         let sorted = rows;
         if (state.col) {
           sorted = sortRows(rows, state.col, state.dir, sortKeyFn, idx);
@@ -259,7 +261,6 @@
         return [...rows].sort((a, b) => {
           const va = sortKeyFn(col, a, idx);
           const vb = sortKeyFn(col, b, idx);
-          // null/empty always sort to bottom
           if (va === null || va === undefined || va === "") return 1;
           if (vb === null || vb === undefined || vb === "") return -1;
           let cmp;
@@ -276,12 +277,10 @@
         const { rows, cols, makeCell, sortKeyFn, idx } = data;
         const sorted = state.col ? sortRows(rows, state.col, state.dir, sortKeyFn, idx) : rows;
         const wrap = $(wrapId);
-        // Update header indicators
         wrap.querySelectorAll("th.sortable").forEach(th => {
           th.classList.remove("asc", "desc");
           if (th.dataset.col === state.col) th.classList.add(state.dir);
         });
-        // Re-render tbody
         let h = "";
         sorted.forEach((r, ri) => {
           h += "<tr>";
@@ -291,7 +290,6 @@
         wrap.querySelector("tbody").innerHTML = h;
       }
 
-      // Global click handler for sortable headers (delegated)
       document.addEventListener("click", (e) => {
         const th = e.target.closest("th.sortable");
         if (!th) return;
@@ -316,65 +314,73 @@
         return `<td class="sym"><a href="https://seekingalpha.com/symbol/${encodeURIComponent(saSym)}" target="_blank" rel="noopener">${sym}</a><a class="sa" href="https://seekingalpha.com/symbol/${encodeURIComponent(saSym)}" target="_blank" rel="noopener" title="Seeking Alpha">${SA_ICON}</a>${subHtml}</td>`;
       }
 
+      // ---------- trend / boolean pills ----------
+      function trendPill(val) {
+        if (val === "up") return '<span class="rule-pill pass">↑</span>';
+        if (val === "down") return '<span class="rule-pill fail">↓</span>';
+        if (val === "flat") return '<span class="rule-pill unknown">→</span>';
+        return '<span class="rule-pill unknown">?</span>';
+      }
+      function boolPill(val) {
+        if (val === true || val === "true") return '<span class="check">✓</span>';
+        if (val === false || val === "false") return '<span class="cross">✗</span>';
+        return '<span class="dash">—</span>';
+      }
+
       // ---------- render LATEST ----------
       async function renderLatest() {
         const { header, rows } = await loadCsv("LATEST.csv");
         $("latestCount").textContent = rows.length ? `${rows.length} symbols` : "";
         const idx = {}; header.forEach((h, i) => idx[h] = i);
-        const cols = ["symbol", "close", "dayChangePct", "volume", "volRatio", "sma50", "smaLong", "score", "vix", "employees"];
+        const cols = ["symbol", "close", "marketCap", "aboveSma12m", "aboveSma200", "aboveSma150", "vcp", "contractions", "volatilityRatio", "pe", "peTrend", "fcf", "fcfTrend", "eps", "epsTrend", "freeFloatPct", "closelyHeldPct", "employees", "rulesPassed", "score"];
         const makeCell = (r, c, ci) => {
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
             const nm = r[idx.name] || "";
             return symCell(sym, nm);
           }
-          if (c === "dayChangePct") { const n = num(r[idx.dayChangePct]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
           if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
-          if (c === "volume") return `<td>${fmtInt(num(r[idx.volume]))}</td>`;
-          if (c === "volRatio") return `<td>${fmtNum(num(r[idx.volRatio]))}×</td>`;
-          if (c === "sma50") return `<td>${fmtNum(num(r[idx.sma50]))}</td>`;
-          if (c === "smaLong") return `<td>${r[idx.smaLong] ? fmtNum(num(r[idx.smaLong])) : "—"}</td>`;
-          if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
-          if (c === "vix") return `<td>${r[idx.vix] || "—"}</td>`;
+          if (c === "marketCap") return `<td>${fmtBn(num(r[idx.marketCap]))}</td>`;
+          if (c === "aboveSma12m") return `<td>${boolPill(r[idx.aboveSma12m])}</td>`;
+          if (c === "aboveSma200") return `<td>${boolPill(r[idx.aboveSma200])}</td>`;
+          if (c === "aboveSma150") return `<td>${boolPill(r[idx.aboveSma150])}</td>`;
+          if (c === "vcp") return `<td>${boolPill(r[idx.vcp])}</td>`;
+          if (c === "contractions") return `<td>${r[idx.contractions] || "—"}</td>`;
+          if (c === "volatilityRatio") return `<td>${r[idx.volatilityRatio] ? fmtNum(num(r[idx.volatilityRatio])) + "×" : "—"}</td>`;
+          if (c === "pe") return `<td>${r[idx.pe] ? fmtNum(num(r[idx.pe])) : "—"}</td>`;
+          if (c === "peTrend") return `<td>${trendPill(r[idx.peTrend])}</td>`;
+          if (c === "fcf") return `<td>${r[idx.fcf] ? fmtM(num(r[idx.fcf])) : "—"}</td>`;
+          if (c === "fcfTrend") return `<td>${trendPill(r[idx.fcfTrend])}</td>`;
+          if (c === "eps") return `<td>${r[idx.eps] ? fmtNum(num(r[idx.eps])) : "—"}</td>`;
+          if (c === "epsTrend") return `<td>${trendPill(r[idx.epsTrend])}</td>`;
+          if (c === "freeFloatPct") return `<td>${r[idx.freeFloatPct] ? fmtNum(num(r[idx.freeFloatPct]), 1) + "%" : "—"}</td>`;
+          if (c === "closelyHeldPct") return `<td>${r[idx.closelyHeldPct] ? fmtNum(num(r[idx.closelyHeldPct]), 1) + "%" : "—"}</td>`;
           if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
+          if (c === "rulesPassed") {
+            const passed = num(r[idx.rulesPassed]);
+            const total = num(r[idx.rulesTotal]);
+            return `<td><b>${passed ?? "?"}/${total ?? "?"}</b></td>`;
+          }
+          if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
           return `<td>${r[idx[c]] ?? ""}</td>`;
         };
         const sortKeyFn = (col, r) => {
           if (col === "symbol") return r[idx.symbol] || "";
+          if (col === "peTrend" || col === "fcfTrend" || col === "epsTrend") {
+            const v = r[idx[col]];
+            if (v === "up") return 2;
+            if (v === "flat") return 1;
+            if (v === "down") return 0;
+            return -1;
+          }
+          if (col === "aboveSma12m" || col === "aboveSma200" || col === "aboveSma150" || col === "vcp") {
+            return r[idx[col]] === "true" ? 1 : 0;
+          }
           return num(r[idx[col]]);
         };
         $("latestWrap").innerHTML = rows.length
           ? makeSortableTable("latestWrap", cols, rows, makeCell, sortKeyFn, idx, { col: "score", dir: "desc" })
-          : '<div class="empty">No entries.</div>';
-      }
-
-      // ---------- render highlight lists ----------
-      async function renderHighlight(name, wrapId, countId) {
-        const { header, rows } = await loadCsv(name);
-        $(countId).textContent = rows.length ? `${rows.length} symbols` : "";
-        const idx = {}; header.forEach((h, i) => idx[h] = i);
-        const cols = ["symbol", "hits", "firstHit", "lastHit", "avgScore", "latestClose", "latestDayChange", "employees"];
-        const makeCell = (r, c) => {
-          if (c === "symbol") {
-            const sym = r[idx.symbol] || "";
-            const ind = r[idx.industry] || "";
-            return symCell(sym, ind);
-          }
-          if (c === "hits") return `<td><b>${r[idx.hits] || ""}</b></td>`;
-          if (c === "latestDayChange") { const n = num(r[idx.latestDayChange]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
-          if (c === "latestClose") return `<td>${fmtNum(num(r[idx.latestClose]))}</td>`;
-          if (c === "avgScore") return `<td>${fmtNum(num(r[idx.avgScore]))}</td>`;
-          if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
-          return `<td>${r[idx[c]] ?? ""}</td>`;
-        };
-        const sortKeyFn = (col, r) => {
-          if (col === "symbol") return r[idx.symbol] || "";
-          if (col === "firstHit" || col === "lastHit") return r[idx[col]] || "";
-          return num(r[idx[col]]);
-        };
-        $(wrapId).innerHTML = rows.length
-          ? makeSortableTable(wrapId, cols, rows, makeCell, sortKeyFn, idx, { col: "hits", dir: "desc" })
-          : '<div class="empty">No entries.</div>';
+          : '<div class="empty">No entries. Run <code>bun run screener2</code> to generate results.</div>';
       }
 
       // ---------- render hits_log ----------
@@ -382,23 +388,40 @@
         const { header, rows } = await loadCsv("hits_log.csv");
         $("logCount").textContent = rows.length ? `${rows.length} rows` : "";
         const idx = {}; header.forEach((h, i) => idx[h] = i);
-        const cols = ["date", "symbol", "score", "dayChangePct", "close", "volume", "volRatio", "industry", "employees"];
+        const cols = ["date", "symbol", "close", "marketCap", "vcp", "contractions", "volatilityRatio", "pe", "peTrend", "fcfTrend", "epsTrend", "freeFloatPct", "closelyHeldPct", "employees", "rulesPassed", "score"];
         const makeCell = (r, c) => {
           if (c === "symbol") {
             const sym = r[idx.symbol] || "";
-            return symCell(sym);
+            const ind = r[idx.industry] || "";
+            return symCell(sym, ind);
           }
-          if (c === "dayChangePct") { const n = num(r[idx.dayChangePct]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
           if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
-          if (c === "volume") return `<td>${r[idx.volume] ? fmtInt(num(r[idx.volume])) : "—"}</td>`;
-          if (c === "volRatio") return `<td>${r[idx.volRatio] ? fmtNum(num(r[idx.volRatio])) + "×" : "—"}</td>`;
-          if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
+          if (c === "marketCap") return `<td>${fmtBn(num(r[idx.marketCap]))}</td>`;
+          if (c === "vcp") return `<td>${boolPill(r[idx.vcp])}</td>`;
+          if (c === "contractions") return `<td>${r[idx.contractions] || "—"}</td>`;
+          if (c === "volatilityRatio") return `<td>${r[idx.volatilityRatio] ? fmtNum(num(r[idx.volatilityRatio])) + "×" : "—"}</td>`;
+          if (c === "pe") return `<td>${r[idx.pe] ? fmtNum(num(r[idx.pe])) : "—"}</td>`;
+          if (c === "peTrend") return `<td>${trendPill(r[idx.peTrend])}</td>`;
+          if (c === "fcfTrend") return `<td>${trendPill(r[idx.fcfTrend])}</td>`;
+          if (c === "epsTrend") return `<td>${trendPill(r[idx.epsTrend])}</td>`;
+          if (c === "freeFloatPct") return `<td>${r[idx.freeFloatPct] ? fmtNum(num(r[idx.freeFloatPct]), 1) + "%" : "—"}</td>`;
+          if (c === "closelyHeldPct") return `<td>${r[idx.closelyHeldPct] ? fmtNum(num(r[idx.closelyHeldPct]), 1) + "%" : "—"}</td>`;
           if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
+          if (c === "rulesPassed") return `<td><b>${r[idx.rulesPassed] || "?"}</b></td>`;
+          if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
           return `<td>${r[idx[c]] ?? ""}</td>`;
         };
         const sortKeyFn = (col, r) => {
           if (col === "symbol" || col === "industry") return r[idx[col]] || "";
           if (col === "date") return r[idx.date] || "";
+          if (col === "peTrend" || col === "fcfTrend" || col === "epsTrend") {
+            const v = r[idx[col]];
+            if (v === "up") return 2;
+            if (v === "flat") return 1;
+            if (v === "down") return 0;
+            return -1;
+          }
+          if (col === "vcp") return r[idx[col]] === "true" ? 1 : 0;
           return num(r[idx[col]]);
         };
         $("logWrap").innerHTML = rows.length
@@ -406,24 +429,19 @@
           : '<div class="empty">No entries.</div>';
       }
 
-      // ---------- meta (run date + VIX gate) from LATEST ----------
+      // ---------- meta ----------
       async function renderMeta() {
         const { header, rows } = await loadCsv("LATEST.csv");
-        const vixI = header.indexOf("vix");
-        let vix = null;
-        if (rows.length && vixI >= 0) vix = num(rows[0][vixI]);
         const today = new Date().toISOString().slice(0, 10);
-        const gateOpen = rows.length > 0; // hits recorded ⟹ gate was open
+        const vcpCount = rows.filter(r => r[header.indexOf("vcp")] === "true").length;
         $("meta").innerHTML =
           `<span class="badge neutral">run: ${today}</span>` +
-          (vix !== null ? `<span class="badge ${gateOpen ? "up" : "warn"}">VIX ${vix.toFixed(2)} — gate ${gateOpen ? "open" : "closed"}</span>` : "") +
-          (rows.length ? `<span class="badge up">${rows.length} hits</span>` : `<span class="badge warn">no hits</span>`);
+          (rows.length ? `<span class="badge accent">${rows.length} results</span>` : `<span class="badge warn">no results</span>`) +
+          (vcpCount ? `<span class="badge up">${vcpCount} VCP matches</span>` : "");
       }
 
       (async function init() {
         await renderLatest();
-        await renderHighlight("conviction_30.csv", "convWrap", "convCount");
-        await renderHighlight("watchlist_15.csv", "watchWrap", "watchCount");
         await renderLog();
         renderMeta();
       })();
