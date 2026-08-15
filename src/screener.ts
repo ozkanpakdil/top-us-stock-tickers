@@ -32,6 +32,7 @@ import {
   ensureDir,
   parseArgs,
 } from "./lib.ts";
+import { generateRssFromLog } from "./rss.ts";
 
 // --- Tunable criteria (edit here, no logic changes needed) -----------------
 
@@ -540,6 +541,17 @@ async function main() {
   const convict = highlightFromLog(fullLog, today, CONVICTION_DAYS, CONVICTION_MIN_HITS);
   await Bun.write(`${OUT_DIR}/watchlist_15.csv`, toCsv(HIGHLIGHT_COLUMNS, watch.map((w) => [w.symbol, w.industry, w.hits, w.firstHit, w.lastHit, w.avgScore, w.latestClose, w.latestDayChange, w.employees ?? ""])));
   await Bun.write(`${OUT_DIR}/conviction_30.csv`, toCsv(HIGHLIGHT_COLUMNS, convict.map((w) => [w.symbol, w.industry, w.hits, w.firstHit, w.lastHit, w.avgScore, w.latestClose, w.latestDayChange, w.employees ?? ""])));
+
+  // RSS feed — one item per day with that day's top hits.
+  const rssDays = await generateRssFromLog({
+    title: "US Stock Breakout Screener",
+    description: "Daily breakout screener scanning every US stock for institutional volume, new highs, and uptrend signals.",
+    outPath: `${OUT_DIR}/rss.xml`,
+    siteUrl: "https://ozkanpakdil.github.io/top-us-stock-tickers",
+    pagePath: "index.html",
+    dataDir: "data/screener",
+  });
+  console.log(`  RSS feed: ${rssDays} days → ${OUT_DIR}/rss.xml`);
 
   // Summary.
   console.log("---");

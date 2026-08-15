@@ -37,6 +37,7 @@ import {
   ensureDir,
   parseArgs,
 } from "./lib.ts";
+import { generateRssFromLog } from "./rss.ts";
 import {
   buildHistory,
   sma,
@@ -742,6 +743,17 @@ async function main() {
     r.rulesPassed, r.score,
   ]);
   await Bun.write(logPath, toCsv(HITS_LOG_COLUMNS, [...allLog, ...newLogRows]));
+
+  // RSS feed — one item per day with that day's top results.
+  const rssDays = await generateRssFromLog({
+    title: "VCP Screener-2 — Volatility Contraction Pattern",
+    description: "Daily VCP screener scanning US stocks for Minervini-style volatility contraction patterns with fundamental confirmation.",
+    outPath: `${OUT_DIR}/rss.xml`,
+    siteUrl: "https://ozkanpakdil.github.io/top-us-stock-tickers",
+    pagePath: "screener2.html",
+    dataDir: "data/screener2",
+  });
+  console.log(`  RSS feed: ${rssDays} days → ${OUT_DIR}/rss.xml`);
 
   // Summary
   console.log("---");
