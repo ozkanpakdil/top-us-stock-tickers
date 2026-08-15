@@ -64,32 +64,144 @@ function rfc822Date(dateStr: string): string {
   return `${days[d.getUTCDay()]}, ${d.getUTCDate().toString().padStart(2, "0")} ${months[d.getUTCMonth()]} ${d.getUTCFullYear()} 00:00:00 GMT`;
 }
 
-/** Build an HTML table for the hits in a day (for the RSS <description>). */
+/** Format a market cap value for display. */
+function fmtMarketCap(mc: number | null | undefined): string {
+  if (mc === null || mc === undefined) return "—";
+  if (mc >= 1e12) return `$${(mc / 1e12).toFixed(2)}T`;
+  if (mc >= 1e9) return `$${(mc / 1e9).toFixed(1)}B`;
+  if (mc >= 1e6) return `$${(mc / 1e6).toFixed(0)}M`;
+  return `$${mc.toFixed(0)}`;
+}
+
+/** Format an employee count with k suffix. */
+function fmtEmployees(emp: number | null | undefined): string {
+  if (emp === null || emp === undefined) return "—";
+  if (emp >= 1000) return `${(emp / 1000).toFixed(0)}k`;
+  return String(emp);
+}
+
+/** Format a trend value as an arrow symbol. */
+function fmtTrend(t: string | null | undefined): string {
+  if (t === "up") return "↑";
+  if (t === "down") return "↓";
+  if (t === "flat") return "→";
+  return "?";
+}
+
+/** Build an HTML table for the hits in a day (for the RSS <description>).
+ *
+ *  The table adapts to the available data: if the hits have VCP / rules /
+ *  fundamentals in extraFields (screener-2 style), a rich multi-column table
+ *  is produced. Otherwise it falls back to the basic 4-column format. */
 function hitsToHtmlTable(hits: RssHit[], maxHits: number): string {
   const rows = hits.slice(0, maxHits);
   if (rows.length === 0) return "<p>No hits.</p>";
 
-  let html = '<table style="border-collapse:collapse;font-size:13px;font-family:monospace;">';
-  html += "<thead><tr>";
-  html += '<th style="text-align:left;padding:3px 8px;border-bottom:1px solid #ccc;">Symbol</th>';
-  html += '<th style="text-align:right;padding:3px 8px;border-bottom:1px solid #ccc;">Score</th>';
-  html += '<th style="text-align:right;padding:3px 8px;border-bottom:1px solid #ccc;">Close</th>';
-  html += '<th style="text-align:left;padding:3px 8px;border-bottom:1px solid #ccc;">Industry</th>';
-  html += "</tr></thead><tbody>";
-  for (const h of rows) {
-    const sym = xmlEscape(h.symbol);
-    const name = h.name ? xmlEscape(h.name) : "";
-    const ind = h.industry ? xmlEscape(h.industry) : "";
-    html += "<tr>";
-    html += `<td style="padding:3px 8px;border-bottom:1px solid #eee;"><b>${sym}</b>${name ? `<br><span style="font-size:11px;color:#666;">${name}</span>` : ""}</td>`;
-    html += `<td style="text-align:right;padding:3px 8px;border-bottom:1px solid #eee;">${h.score.toFixed(2)}</td>`;
-    html += `<td style="text-align:right;padding:3px 8px;border-bottom:1px solid #eee;">$${h.close.toFixed(2)}</td>`;
-    html += `<td style="padding:3px 8px;border-bottom:1px solid #eee;">${ind}</td>`;
-    html += "</tr>";
+  // Detect if we have rich VCP/screener-2 data
+  const hasVcp = rows.some((h) => h.extraFields && "vcp" in h.extraFields);
+  const hasRules = rows.some((h) => h.extraFields && "rulesPassed" in h.extraFields);
+
+  const thStyle = "text-align:left;padding:3px 6px;border-bottom:2px solid #ccc;font-size:11px;text-transform:uppercase;letter-spacing:0.3px;color:#888;";
+  const thR = "text-align:right;padding:3px 6px;border-bottom:2px solid #ccc;font-size:11px;text-transform:uppercase;letter-spacing:0.3px;color:#888;";
+  const tdStyle = "padding:3px 6px;border-bottom:1px solid #eee;";
+  const tdR = "text-align:right;padding:3px 6px;border-bottom:1px solid #eee;";
+  const upColor = "color:#16a06a;font-weight:bold;";
+  const downColor = "color:#e23b3b;";
+  const mutedColor = "color:#999;";
+
+  let html = '<table style="border-collapse:collapse;font-size:12px;font-family:monospace;">';
+
+  if (hasVcp || hasRules) {
+    // Rich table for screener-2 (VCP) data
+    html += "<thead><tr>";
+    html += `<th style="${thStyle}">Symbol</th>`;
+    html += `<th style="${thR}">Score</th>`;
+    html += `<th style="${thR}">Rules</th>`;
+    html += `<th style="${thR}">Close</th>`;
+    html += `<th style="${thR}">Mkt Cap</th>`;
+    html += `<th style="${thR}">VCP</th>`;
+    html += `<th style="${thR}">Contr.</th>`;
+    html += `<th style="${thR}">Vol Ratio</th>`;
+    html += `<th style="${thR}">P/E</th>`;
+    html += `<th style="${thR}">P/E↑</th>`;
+    html += `<th style="${thR}">FCF↑</th>`;
+    html += `<th style="${thR}">EPS↑</th>`;
+    html += `<th style="${thR}">Emp</th>`;
+    html += `<th style="${thStyle}">Industry</th>`;
+    html += "</tr></thead><tbody>";
+
+    for (const h of rows) {
+      const sym = xmlEscape(h.symbol);
+      const name = h.name ? xmlEscape(h.name) : "";
+      const ind = h.industry ? xmlEscape(h.industry) : "";
+      const ef = h.extraFields ?? {};
+      const vcp = ef.vcp === true;
+      const rulesPassed = typeof ef.rulesPassed === "number" ? ef.rulesPassed : null;
+      const rulesTotal = typeof ef.rulesTotal === "number" ? ef.rulesTotal : null;
+      const contractions = typeof ef.contractions === "number" ? ef.contractions : null;
+      const volRatio = typeof ef.volatilityRatio === "number" ? ef.volatilityRatio : null;
+      const pe = typeof ef.pe === "number" ? ef.pe : null;
+      const peTrend = typeof ef.peTrend === "string" ? ef.peTrend : null;
+      const fcfTrend = typeof ef.fcfTrend === "string" ? ef.fcfTrend : null;
+      const epsTrend = typeof ef.epsTrend === "string" ? ef.epsTrend : null;
+      const employees = typeof ef.employees === "number" ? ef.employees : null;
+      const marketCap = typeof ef.marketCap === "number" ? ef.marketCap : null;
+
+      const trendColor = (t: string | null) => t === "up" ? upColor : t === "down" ? downColor : mutedColor;
+
+      html += "<tr>";
+      html += `<td style="${tdStyle}"><b>${sym}</b>${name ? `<br><span style="font-size:10px;color:#999;">${name}</span>` : ""}</td>`;
+      html += `<td style="${tdR}"><b>${h.score.toFixed(2)}</b></td>`;
+      html += `<td style="${tdR}">${rulesPassed !== null ? `${rulesPassed}/${rulesTotal ?? "?"}` : "—"}</td>`;
+      html += `<td style="${tdR}">$${h.close.toFixed(2)}</td>`;
+      html += `<td style="${tdR}">${fmtMarketCap(marketCap)}</td>`;
+      html += `<td style="${tdR}${vcp ? upColor : mutedColor}">${vcp ? "✓" : "—"}</td>`;
+      html += `<td style="${tdR}">${contractions !== null ? contractions : "—"}</td>`;
+      html += `<td style="${tdR}">${volRatio !== null ? volRatio.toFixed(2) + "×" : "—"}</td>`;
+      html += `<td style="${tdR}">${pe !== null ? pe.toFixed(1) : "—"}</td>`;
+      html += `<td style="${tdR}${trendColor(peTrend)}">${fmtTrend(peTrend)}</td>`;
+      html += `<td style="${tdR}${trendColor(fcfTrend)}">${fmtTrend(fcfTrend)}</td>`;
+      html += `<td style="${tdR}${trendColor(epsTrend)}">${fmtTrend(epsTrend)}</td>`;
+      html += `<td style="${tdR}">${fmtEmployees(employees)}</td>`;
+      html += `<td style="${tdStyle}">${ind}</td>`;
+      html += "</tr>";
+    }
+  } else {
+    // Basic table for screener-1 (breakout) data
+    html += "<thead><tr>";
+    html += `<th style="${thStyle}">Symbol</th>`;
+    html += `<th style="${thR}">Score</th>`;
+    html += `<th style="${thR}">Close</th>`;
+    html += `<th style="${thR}">Day%</th>`;
+    html += `<th style="${thR}">Vol Ratio</th>`;
+    html += `<th style="${thR}">Emp</th>`;
+    html += `<th style="${thStyle}">Industry</th>`;
+    html += "</tr></thead><tbody>";
+
+    for (const h of rows) {
+      const sym = xmlEscape(h.symbol);
+      const name = h.name ? xmlEscape(h.name) : "";
+      const ind = h.industry ? xmlEscape(h.industry) : "";
+      const ef = h.extraFields ?? {};
+      const dayChange = typeof ef.dayChangePct === "number" ? ef.dayChangePct : null;
+      const volRatio = typeof ef.volRatio === "number" ? ef.volRatio : null;
+      const employees = typeof ef.employees === "number" ? ef.employees : null;
+
+      html += "<tr>";
+      html += `<td style="${tdStyle}"><b>${sym}</b>${name ? `<br><span style="font-size:10px;color:#999;">${name}</span>` : ""}</td>`;
+      html += `<td style="${tdR}"><b>${h.score.toFixed(2)}</b></td>`;
+      html += `<td style="${tdR}">$${h.close.toFixed(2)}</td>`;
+      html += `<td style="${tdR}${dayChange !== null && dayChange >= 0 ? upColor : downColor}">${dayChange !== null ? (dayChange >= 0 ? "+" : "") + dayChange.toFixed(2) + "%" : "—"}</td>`;
+      html += `<td style="${tdR}">${volRatio !== null ? volRatio.toFixed(1) + "×" : "—"}</td>`;
+      html += `<td style="${tdR}">${fmtEmployees(employees)}</td>`;
+      html += `<td style="${tdStyle}">${ind}</td>`;
+      html += "</tr>";
+    }
   }
+
   html += "</tbody></table>";
   if (hits.length > maxHits) {
-    html += `<p style="font-size:11px;color:#666;">...and ${hits.length - maxHits} more.</p>`;
+    html += `<p style="font-size:11px;color:#999;">...and ${hits.length - maxHits} more — see full table at the link.</p>`;
   }
   return html;
 }
@@ -111,9 +223,21 @@ export function generateRssXml(config: RssConfig, days: RssDay[]): string {
   for (const day of sortedDays) {
     const pubDate = rfc822Date(day.date);
     const topHit = day.hits[0];
-    const titleSuffix = day.hits.length === 1 ? "1 hit" : `${day.hits.length} hits`;
+    const hitCount = day.hits.length;
+    const titleSuffix = hitCount === 1 ? "1 hit" : `${hitCount} hits`;
+
+    // Count VCP matches and strong candidates (rules >= 7) for the title
+    const vcpCount = day.hits.filter((h) => h.extraFields?.vcp === true).length;
+    const strongCount = day.hits.filter((h) => {
+      const rp = h.extraFields?.rulesPassed;
+      const rt = h.extraFields?.rulesTotal;
+      return typeof rp === "number" && typeof rt === "number" && rp >= rt - 2;
+    }).length;
+
     const topSym = topHit ? ` — top: ${topHit.symbol} (${topHit.score.toFixed(2)})` : "";
-    const title = `${config.title} — ${day.date} — ${titleSuffix}${topSym}`;
+    const vcpStr = vcpCount > 0 ? ` — ${vcpCount} VCP` : "";
+    const strongStr = strongCount > 0 && strongCount !== hitCount ? ` — ${strongCount} strong` : "";
+    const title = `${config.title} — ${day.date} — ${titleSuffix}${vcpStr}${strongStr}${topSym}`;
     const guid = `${siteUrl}/${config.dataDir}?date=${day.date}`;
 
     const description = hitsToHtmlTable(day.hits, maxHits);

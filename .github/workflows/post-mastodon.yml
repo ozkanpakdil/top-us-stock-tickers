@@ -24,41 +24,61 @@ jobs:
           SITE="https://ozkanpakdil.github.io/top-us-stock-tickers"
 
           # --- Breakout Screener (screener 1) ---
+          # Columns: symbol,name,industry,close,dayChangePct,volume,volRatio,
+          #   sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
           SCREENER_LATEST="docs/data/screener/LATEST.csv"
 
           SCREENER_COUNT=0
           SCREENER_TABLE=""
           if [ -f "$SCREENER_LATEST" ]; then
-            # Count hits (lines minus header)
             SCREENER_COUNT=$(($(wc -l < "$SCREENER_LATEST") - 1))
             if [ "$SCREENER_COUNT" -gt 0 ]; then
-              # Top 5 by score (LATEST.csv is already sorted)
-              # Columns: symbol,name,industry,close,dayChangePct,volume,volRatio,
-              #   sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
+              # Top 5 by score with day change, vol ratio, employees
               SCREENER_TABLE=$(tail -n +2 "$SCREENER_LATEST" | head -5 | awk -F, '
-                { sym=$1; ind=substr($3,1,12); cls=$4; score=$13
-                  printf "%-5s %5s $%-7s %s\n", sym, score, cls, ind }
+                function fmtEmp(e) { if (e+0 >= 1000) return sprintf("%dk", e/1000); return e }
+                { sym=$1; ind=substr($3,1,14); cls=$4; chg=$5; vr=$7; score=$13; emp=$15
+                  chgS = (chg+0 >= 0) ? sprintf("+%.1f%%", chg) : sprintf("%.1f%%", chg)
+                  printf "  %-5s %-6s %5s  vol%.1fx  %s emp\n", sym, chgS, score, vr, fmtEmp(emp)
+                }
               ')
             fi
           fi
 
           # --- VCP Screener (screener 2) ---
+          # Columns: symbol,name,industry,close,marketCap,aboveSma12m,
+          #   aboveSma200,aboveSma150,vcp,contractions,volatilityRatio,pe,
+          #   peTrend,fcf,fcfTrend,eps,epsTrend,freeFloatPct,closelyHeldPct,
+          #   employees,rulesPassed,rulesTotal,score
           SCREENER2_LATEST="docs/data/screener2/LATEST.csv"
 
           SCREENER2_COUNT=0
+          SCREENER2_VCP_COUNT=0
+          SCREENER2_STRONG_COUNT=0
           SCREENER2_TABLE=""
           if [ -f "$SCREENER2_LATEST" ]; then
             SCREENER2_COUNT=$(($(wc -l < "$SCREENER2_LATEST") - 1))
             if [ "$SCREENER2_COUNT" -gt 0 ]; then
-              # Top 5 by score (LATEST.csv is already sorted)
-              # Columns: symbol,name,industry,close,marketCap,aboveSma12m,
-              #   aboveSma200,aboveSma150,vcp,contractions,volatilityRatio,pe,
-              #   peTrend,fcf,fcfTrend,eps,epsTrend,freeFloatPct,closelyHeldPct,
-              #   employees,rulesPassed,rulesTotal,score
-              SCREENER2_TABLE=$(tail -n +2 "$SCREENER2_LATEST" | head -5 | awk -F, '
-                { sym=$1; ind=substr($3,1,12); cls=$4; rules=$21; score=$23
-                  printf "%-5s R%2s/12 %5s $%-7s %s\n", sym, rules, score, cls, ind }
-              ')
+              # Count VCP matches (col 9 = vcp == "true")
+              SCREENER2_VCP_COUNT=$(tail -n +2 "$SCREENER2_LATEST" | awk -F, '$9=="true"{c++} END{print c+0}')
+              # Count strong candidates (rulesPassed >= 7, col 21)
+              SCREENER2_STRONG_COUNT=$(tail -n +2 "$SCREENER2_LATEST" | awk -F, '$21+0>=7{c++} END{print c+0}')
+
+              # Show top 5 strong candidates: VCP first, then by score
+              # Include VCP flag, rules, score, market cap, employees, key trends
+              SCREENER2_TABLE=$(tail -n +2 "$SCREENER2_LATEST" | awk -F, '
+                function fmtMc(mc) {
+                  if (mc+0 >= 1e12) return sprintf("$%.1fT", mc/1e12)
+                  if (mc+0 >= 1e9)  return sprintf("$%.0fB", mc/1e9)
+                  if (mc+0 >= 1e6)  return sprintf("$%.0fM", mc/1e6)
+                  return sprintf("$%.0f", mc)
+                }
+                function fmtEmp(e) { if (e+0 >= 1000) return sprintf("%dk", e/1000); return e }
+                function trend(t) { if (t=="up") return "↑"; if (t=="down") return "↓"; if (t=="flat") return "→"; return "?" }
+                { vcp = ($9=="true") ? "VCP" : "   "
+                  printf "  %-5s %s R%2s/12 %5s  %s  %s emp  PE%s FCF%s EPS%s\n", \
+                    $1, vcp, $21, $23, fmtMc($5), fmtEmp($20), trend($12), trend($15), trend($18)
+                }
+              ' | head -5)
             fi
           fi
 
@@ -69,7 +89,14 @@ jobs:
           if [ "$SCREENER_COUNT" -gt 0 ]; then
             TOOT+="${SCREENER_TABLE}\n"
           fi
-          TOOT+="📉 VCP-2: ${SCREENER2_COUNT} results\n"
+          TOOT+="📉 VCP-2: ${SCREENER2_COUNT} results"
+          if [ "$SCREENER2_VCP_COUNT" -gt 0 ]; then
+            TOOT+=" · ${SCREENER2_VCP_COUNT} VCP matches"
+          fi
+          if [ "$SCREENER2_STRONG_COUNT" -gt 0 ]; then
+            TOOT+=" · ${SCREENER2_STRONG_COUNT} strong (7+ rules)"
+          fi
+          TOOT+="\n"
           if [ "$SCREENER2_COUNT" -gt 0 ]; then
             TOOT+="${SCREENER2_TABLE}\n"
           fi

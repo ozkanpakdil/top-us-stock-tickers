@@ -117,6 +117,49 @@
       .footer { padding: 18px; text-align: center; color: var(--muted); font-size: 0.76rem; }
       .footer a { color: var(--accent); text-decoration: none; }
       .footer a:hover { text-decoration: underline; }
+
+      /* ---- filter bar ---- */
+      .filter-bar {
+        display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px;
+        padding: 14px 18px; border-bottom: 1px solid var(--border);
+      }
+      .filter-bar .fgrp { display: flex; flex-direction: column; gap: 4px; }
+      .filter-bar .fgrp > label {
+        font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.5px; color: var(--muted); white-space: nowrap;
+      }
+      .filter-bar input[type="number"],
+      .filter-bar input[type="text"] {
+        background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+        font-family: var(--mono); font-size: 0.82rem; padding: 6px 8px; border-radius: 8px;
+        width: 90px; transition: border-color 0.15s;
+      }
+      .filter-bar input[type="text"] { width: 160px; }
+      .filter-bar input:focus { outline: none; border-color: var(--accent); }
+      .filter-bar .fgrp-check { flex-direction: row; align-items: center; gap: 6px; }
+      .filter-bar .fgrp-check label {
+        font-size: 0.8rem; font-weight: 600; color: var(--text-dim);
+        text-transform: none; letter-spacing: 0; white-space: nowrap; cursor: pointer;
+      }
+      .filter-bar input[type="checkbox"] {
+        width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer;
+      }
+      .filter-bar .fgrp select {
+        background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+        font-family: var(--mono); font-size: 0.82rem; padding: 6px 8px; border-radius: 8px;
+        cursor: pointer;
+      }
+      .filter-bar .btn-reset {
+        border: 1px solid var(--border); background: var(--panel-2); color: var(--text-dim);
+        font-size: 0.8rem; font-weight: 600; padding: 7px 14px; border-radius: 8px;
+        cursor: pointer; transition: border-color 0.15s, color 0.15s;
+      }
+      .filter-bar .btn-reset:hover { border-color: var(--border-strong); color: var(--text); }
+      .filter-bar .filter-count {
+        font-size: 0.8rem; color: var(--accent); font-weight: 700; font-family: var(--mono);
+        white-space: nowrap;
+      }
+      .filter-bar .spacer { flex: 1; }
     </style>
   </head>
   <body>
@@ -155,6 +198,51 @@
 
       <section class="panel">
         <div class="sect-head"><h2>Today's results</h2><span class="count" id="latestCount"></span></div>
+        <div class="filter-bar" id="filterBar">
+          <div class="fgrp">
+            <label for="fSearch">Search</label>
+            <input type="text" id="fSearch" placeholder="Symbol or name…" />
+          </div>
+          <div class="fgrp">
+            <label for="fEmp">Min employees</label>
+            <input type="number" id="fEmp" value="1000" min="0" step="100" />
+          </div>
+          <div class="fgrp">
+            <label for="fScore">Min score</label>
+            <input type="number" id="fScore" value="0" min="0" step="0.5" />
+          </div>
+          <div class="fgrp">
+            <label for="fRules">Min rules passed</label>
+            <input type="number" id="fRules" value="0" min="0" max="12" step="1" />
+          </div>
+          <div class="fgrp">
+            <label for="fIndustry">Industry</label>
+            <select id="fIndustry"><option value="">All</option></select>
+          </div>
+          <div class="fgrp fgrp-check">
+            <input type="checkbox" id="fVcpOnly" />
+            <label for="fVcpOnly">VCP pattern only</label>
+          </div>
+          <div class="fgrp fgrp-check">
+            <input type="checkbox" id="fAllSma" checked />
+            <label for="fAllSma">Above all SMAs</label>
+          </div>
+          <div class="fgrp fgrp-check">
+            <input type="checkbox" id="fEpsUp" />
+            <label for="fEpsUp">EPS trending up</label>
+          </div>
+          <div class="fgrp fgrp-check">
+            <input type="checkbox" id="fFcfUp" />
+            <label for="fFcfUp">FCF trending up</label>
+          </div>
+          <div class="fgrp fgrp-check">
+            <input type="checkbox" id="fPeUp" />
+            <label for="fPeUp">P/E trending up</label>
+          </div>
+          <div class="spacer"></div>
+          <span class="filter-count" id="filterCount"></span>
+          <button class="btn-reset" id="fReset" title="Reset filters">Reset</button>
+        </div>
         <div class="scroll" id="latestWrap"></div>
       </section>
 
@@ -329,11 +417,64 @@
         return '<span class="dash">—</span>';
       }
 
-      // ---------- render LATEST ----------
-      async function renderLatest() {
-        const { header, rows } = await loadCsv("LATEST.csv");
-        $("latestCount").textContent = rows.length ? `${rows.length} symbols` : "";
-        const idx = {}; header.forEach((h, i) => idx[h] = i);
+      // ---------- filter state ----------
+      const filterState = {
+        search: "",
+        minEmp: 1000,
+        minScore: 0,
+        minRules: 0,
+        industry: "",
+        vcpOnly: false,
+        allSma: true,
+        epsUp: false,
+        fcfUp: false,
+        peUp: false,
+      };
+      let latestRaw = { header: [], rows: [] };
+      let latestIdx = {};
+
+      function applyFilters(rows) {
+        const idx = latestIdx;
+        return rows.filter((r) => {
+          // text search
+          if (filterState.search) {
+            const q = filterState.search.toLowerCase();
+            const sym = (r[idx.symbol] || "").toLowerCase();
+            const nm = (r[idx.name] || "").toLowerCase();
+            if (!sym.includes(q) && !nm.includes(q)) return false;
+          }
+          // min employees
+          const emp = num(r[idx.employees]);
+          if (filterState.minEmp > 0 && (emp === null || emp < filterState.minEmp)) return false;
+          // min score
+          const sc = num(r[idx.score]);
+          if (filterState.minScore > 0 && (sc === null || sc < filterState.minScore)) return false;
+          // min rules passed
+          const rp = num(r[idx.rulesPassed]);
+          if (filterState.minRules > 0 && (rp === null || rp < filterState.minRules)) return false;
+          // industry
+          if (filterState.industry && (r[idx.industry] || "") !== filterState.industry) return false;
+          // VCP only
+          if (filterState.vcpOnly && r[idx.vcp] !== "true") return false;
+          // above all SMAs
+          if (filterState.allSma) {
+            if (r[idx.aboveSma12m] !== "true" || r[idx.aboveSma200] !== "true" || r[idx.aboveSma150] !== "true") return false;
+          }
+          // EPS trending up
+          if (filterState.epsUp && r[idx.epsTrend] !== "up") return false;
+          // FCF trending up
+          if (filterState.fcfUp && r[idx.fcfTrend] !== "up") return false;
+          // P/E trending up
+          if (filterState.peUp && r[idx.peTrend] !== "up") return false;
+          return true;
+        });
+      }
+
+      function renderFilteredTable() {
+        const idx = latestIdx;
+        const filtered = applyFilters(latestRaw.rows);
+        $("filterCount").textContent = `${filtered.length} / ${latestRaw.rows.length} shown`;
+        $("latestCount").textContent = filtered.length ? `${filtered.length} symbols` : "";
         const cols = ["symbol", "close", "marketCap", "aboveSma12m", "aboveSma200", "aboveSma150", "vcp", "contractions", "volatilityRatio", "pe", "peTrend", "fcf", "fcfTrend", "eps", "epsTrend", "freeFloatPct", "closelyHeldPct", "employees", "rulesPassed", "score"];
         const makeCell = (r, c, ci) => {
           if (c === "symbol") {
@@ -380,9 +521,87 @@
           }
           return num(r[idx[col]]);
         };
-        $("latestWrap").innerHTML = rows.length
-          ? makeSortableTable("latestWrap", cols, rows, makeCell, sortKeyFn, idx, { col: "score", dir: "desc" })
-          : '<div class="empty">No entries. Run <code>bun run screener2</code> to generate results.</div>';
+        $("latestWrap").innerHTML = filtered.length
+          ? makeSortableTable("latestWrap", cols, filtered, makeCell, sortKeyFn, idx, { col: "score", dir: "desc" })
+          : '<div class="empty">No symbols match the current filters.</div>';
+      }
+
+      function populateIndustryDropdown(rows, idx) {
+        const industries = [...new Set(rows.map((r) => r[idx.industry] || "").filter(Boolean))].sort();
+        const sel = $("fIndustry");
+        industries.forEach((ind) => {
+          const opt = document.createElement("option");
+          opt.value = ind; opt.textContent = ind;
+          sel.appendChild(opt);
+        });
+      }
+
+      function initFilterListeners() {
+        const debounced = (() => {
+          let t; return (fn) => { clearTimeout(t); t = setTimeout(fn, 150); };
+        })();
+
+        $("fSearch").addEventListener("input", (e) => {
+          filterState.search = e.target.value.trim();
+          debounced(renderFilteredTable);
+        });
+        $("fEmp").addEventListener("input", (e) => {
+          filterState.minEmp = num(e.target.value) ?? 0;
+          debounced(renderFilteredTable);
+        });
+        $("fScore").addEventListener("input", (e) => {
+          filterState.minScore = num(e.target.value) ?? 0;
+          debounced(renderFilteredTable);
+        });
+        $("fRules").addEventListener("input", (e) => {
+          filterState.minRules = num(e.target.value) ?? 0;
+          debounced(renderFilteredTable);
+        });
+        $("fIndustry").addEventListener("change", (e) => {
+          filterState.industry = e.target.value;
+          renderFilteredTable();
+        });
+        $("fVcpOnly").addEventListener("change", (e) => {
+          filterState.vcpOnly = e.target.checked;
+          renderFilteredTable();
+        });
+        $("fAllSma").addEventListener("change", (e) => {
+          filterState.allSma = e.target.checked;
+          renderFilteredTable();
+        });
+        $("fEpsUp").addEventListener("change", (e) => {
+          filterState.epsUp = e.target.checked;
+          renderFilteredTable();
+        });
+        $("fFcfUp").addEventListener("change", (e) => {
+          filterState.fcfUp = e.target.checked;
+          renderFilteredTable();
+        });
+        $("fPeUp").addEventListener("change", (e) => {
+          filterState.peUp = e.target.checked;
+          renderFilteredTable();
+        });
+        $("fReset").addEventListener("click", () => {
+          filterState.search = ""; filterState.minEmp = 1000; filterState.minScore = 0;
+          filterState.minRules = 0; filterState.industry = "";
+          filterState.vcpOnly = false; filterState.allSma = true;
+          filterState.epsUp = false; filterState.fcfUp = false; filterState.peUp = false;
+          $("fSearch").value = ""; $("fEmp").value = "1000"; $("fScore").value = "0";
+          $("fRules").value = "0"; $("fIndustry").value = "";
+          $("fVcpOnly").checked = false; $("fAllSma").checked = true;
+          $("fEpsUp").checked = false; $("fFcfUp").checked = false; $("fPeUp").checked = false;
+          renderFilteredTable();
+        });
+      }
+
+      // ---------- render LATEST ----------
+      async function renderLatest() {
+        latestRaw = await loadCsv("LATEST.csv");
+        const { header, rows } = latestRaw;
+        latestIdx = {}; header.forEach((h, i) => latestIdx[h] = i);
+        populateIndustryDropdown(rows, latestIdx);
+        initFilterListeners();
+        renderFilteredTable();
       }
 
       // ---------- render hits_log ----------
