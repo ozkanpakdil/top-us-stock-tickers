@@ -75,13 +75,15 @@ jobs:
           fi
           TOOT+="\n🔗 ${SITE}"
 
-          # Write to env file (handle multi-line)
+          # Write to env file (multi-line heredoc syntax).
+          # printf '%b\n' expands \n and adds a trailing newline so the
+          # EOF delimiter is on its own line (required by GitHub Actions).
           echo "TOOT<<EOF" >> $GITHUB_ENV
-          printf '%b' "$TOOT" >> $GITHUB_ENV
+          printf '%b\n' "$TOOT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
           # Also save to a file for debugging
-          printf '%b' "$TOOT" > toot.txt
+          printf '%b\n' "$TOOT" > toot.txt
           echo "Toot length: $(wc -c < toot.txt) chars"
           cat toot.txt
 
