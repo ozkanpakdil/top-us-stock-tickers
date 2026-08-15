@@ -1,0 +1,93 @@
+name: Post Screener Results to Mastodon
+
+on:
+  workflow_call:
+    secrets:
+      MASTODON_ACCESS_TOKEN:
+        required: true
+      MASTODON_URL:
+        required: true
+
+jobs:
+  post_mastodon:
+    if: ${{ success() }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build toot from screener results
+        id: build
+        run: |
+          DATE=$(date -u +"%Y-%m-%d")
+          SITE="https://ozkanpakdil.github.io/top-us-stock-tickers"
+
+          # --- Breakout Screener (screener 1) ---
+          SCREENER_LATEST="docs/data/screener/LATEST.csv"
+
+          SCREENER_COUNT=0
+          SCREENER_TABLE=""
+          if [ -f "$SCREENER_LATEST" ]; then
+            # Count hits (lines minus header)
+            SCREENER_COUNT=$(($(wc -l < "$SCREENER_LATEST") - 1))
+            if [ "$SCREENER_COUNT" -gt 0 ]; then
+              # Top 5 by score (LATEST.csv is already sorted)
+              # Columns: symbol,name,industry,close,dayChangePct,volume,volRatio,
+              #   sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
+              SCREENER_TABLE=$(tail -n +2 "$SCREENER_LATEST" | head -5 | awk -F, '
+                { sym=$1; ind=substr($3,1,12); cls=$4; score=$13
+                  printf "%-5s %5s $%-7s %s\n", sym, score, cls, ind }
+              ')
+            fi
+          fi
+
+          # --- VCP Screener (screener 2) ---
+          SCREENER2_LATEST="docs/data/screener2/LATEST.csv"
+
+          SCREENER2_COUNT=0
+          SCREENER2_TABLE=""
+          if [ -f "$SCREENER2_LATEST" ]; then
+            SCREENER2_COUNT=$(($(wc -l < "$SCREENER2_LATEST") - 1))
+            if [ "$SCREENER2_COUNT" -gt 0 ]; then
+              # Top 5 by score (LATEST.csv is already sorted)
+              # Columns: symbol,name,industry,close,marketCap,aboveSma12m,
+              #   aboveSma200,aboveSma150,vcp,contractions,volatilityRatio,pe,
+              #   peTrend,fcf,fcfTrend,eps,epsTrend,freeFloatPct,closelyHeldPct,
+              #   employees,rulesPassed,rulesTotal,score
+              SCREENER2_TABLE=$(tail -n +2 "$SCREENER2_LATEST" | head -5 | awk -F, '
+                { sym=$1; ind=substr($3,1,12); cls=$4; rules=$21; score=$23
+                  printf "%-5s R%2s/12 %5s $%-7s %s\n", sym, rules, score, cls, ind }
+              ')
+            fi
+          fi
+
+          # --- Build the toot (Mastodon limit: 500 chars) ---
+          TOOT=""
+          TOOT+="📊 Stock Screeners — ${DATE}\n\n"
+          TOOT+="🔥 Breakout: ${SCREENER_COUNT} hits\n"
+          if [ "$SCREENER_COUNT" -gt 0 ]; then
+            TOOT+="${SCREENER_TABLE}\n"
+          fi
+          TOOT+="📉 VCP-2: ${SCREENER2_COUNT} results\n"
+          if [ "$SCREENER2_COUNT" -gt 0 ]; then
+            TOOT+="${SCREENER2_TABLE}\n"
+          fi
+          TOOT+="\n🔗 ${SITE}"
+
+          # Write to env file (handle multi-line)
+          echo "TOOT<<EOF" >> $GITHUB_ENV
+          printf '%b' "$TOOT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+          # Also save to a file for debugging
+          printf '%b' "$TOOT" > toot.txt
+          echo "Toot length: $(wc -c < toot.txt) chars"
+          cat toot.txt
+
+      - name: Send toot to Mastodon
+        uses: cbrgm/mastodon-github-action@v2
+        with:
+          access-token: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          url: ${{ secrets.MASTODON_URL }}
+          message: ${{ env.TOOT }}
