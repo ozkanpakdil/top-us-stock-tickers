@@ -1,27 +1,27 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-PFSA,Profusa Inc. Common Stock,Health Care,27.48,506.62,53547788,10.89,1.28,0.88,true,true,false,528.4,15.57,15
-XOS,Xos Inc. Common Stock,Consumer Discretionary,4.44,112.44,110132849,18.29,2.98,2.35,true,true,false,149.03,15.57,101
-IPST,Heritage Distilling Holding Company Inc. Common Stock,Consumer Staples,15.76,113.26,32320859,11.5,3.41,2.39,true,true,false,136.25,15.57,21
-GNLN,Greenlane Holdings Inc. Class A Common Stock,Consumer Discretionary,3.05,51.74,747622,23.16,2.61,2.25,true,true,false,98.07,15.57,11
-AMLX,Amylyx Pharmaceuticals Inc. Common Stock,Health Care,35.11,63.84,23981885,11.89,17.52,15.58,true,true,false,87.62,15.57,136
-RCEL,Avita Medical Inc. Common Stock,Health Care,9.85,24.68,1426931,2.91,4.97,4.49,true,true,false,30.5,15.57,226
-DUOT,Duos Technologies Group Inc. Common Stock,Technology,11.59,12.74,5691187,5.57,11.18,9.56,true,true,false,23.88,15.57,39
-HAE,Haemonetics Corporation Common Stock,Health Care,104.65,15.93,2306131,2.51,76.84,67.83,true,true,false,20.95,15.57,3009
-MSS,Maison Solutions Inc. Class A Common Stock,Consumer Staples,1.57,7.53,10490408,6.35,0.95,0.59,true,true,false,20.24,15.57,329
-XNCR,Xencor Inc. Common Stock,Health Care,25.41,9.9,1604757,1.83,15.4,13.47,true,true,false,13.57,15.57,260
-KURA,Kura Oncology Inc. Common Stock,Health Care,12.33,9.31,4087002,2.07,10.27,9.32,true,true,false,13.45,15.57,260
-BFRI,Biofrontera Inc. Common Stock,Health Care,1.44,6.67,1058348,2.88,1.05,0.96,true,true,false,12.44,15.57,94
-HBIO,Harvard Bioscience Inc. Common Stock,Industrials,6.97,7.23,51077,2.47,6.19,4.03,true,true,false,12.18,15.57,339
-BBNX,Beta Bionics Inc. Common Stock,Health Care,19.02,8.31,1976034,1.93,15.06,14.35,true,true,false,12.17,15.57,423
-HTFL,Heartflow Inc. Common Stock,Health Care,45.23,7.84,4170078,1.87,31.33,29.11,true,true,false,11.59,15.57,843
-CARL,Carlsmed Inc. Common Stock,Health Care,14.88,7.98,290073,1.73,11.87,11.57,true,true,false,11.44,15.57,127
-TRGP,Targa Resources Inc. Common Stock,Utilities,297.77,7.13,2488005,2.01,268.17,240.44,true,true,false,11.15,15.57,3570
-TISI,Team Inc. Common Stock,Consumer Discretionary,23.32,4.29,26968,2.44,17.55,15.96,true,true,false,9.18,15.57,5300
-LBRX,LB Pharmaceuticals Inc Common Stock,Health Care,48.77,5.49,540399,1.79,33.93,28.1,true,true,false,9.08,15.57,49
-ANGX,Angel Studios Inc. Class A Common Stock,Consumer Discretionary,4.85,2.97,4073431,2.91,3.47,,true,true,true,8.8,15.57,311
-OABI,OmniAb Inc. Common Stock,Health Care,3.92,2.62,3247937,2.99,2.57,2.02,true,true,false,8.59,15.57,89
-BETA,Beta Technologies Inc. Class A Common Stock,Industrials,26.76,4.53,3019653,1.77,18.68,,true,true,true,8.06,15.57,1008
-BDL,Flanigan's Enterprises Inc. Common Stock,Consumer Discretionary,49.47,3.3,33666,1.59,41.07,34.96,true,true,false,6.48,15.57,2033
-SELF,Global Self Storage Inc. Common Stock,Real Estate,5.44,3.23,32460,1.62,5.17,5.17,true,true,false,6.46,15.57,36
-CZFS,Citizens Financial Services Inc. Common Stock,Finance,83.67,2.17,37018,2.03,71.53,65.67,true,true,false,6.24,15.57,405
-ETON,Eton Pharmaceuticals Inc. Common Stock,Health Care,63.43,2.75,872617,1.55,37.46,26.33,true,true,false,5.85,15.57,44
+PFSA,Profusa Inc. Common Stock,Health Care,27.48,506.62,53547788,10.89,1.28,0.88,true,true,false,528.4,15.39,15
+XOS,Xos Inc. Common Stock,Consumer Discretionary,4.44,112.44,110132849,18.29,2.98,2.35,true,true,false,149.03,15.39,101
+IPST,Heritage Distilling Holding Company Inc. Common Stock,Consumer Staples,15.76,113.26,32320859,11.5,3.41,2.39,true,true,false,136.25,15.39,21
+GNLN,Greenlane Holdings Inc. Class A Common Stock,Consumer Discretionary,3.05,51.74,747622,23.16,2.61,2.25,true,true,false,98.07,15.39,11
+AMLX,Amylyx Pharmaceuticals Inc. Common Stock,Health Care,35.11,63.84,23981885,11.89,17.52,15.58,true,true,false,87.62,15.39,136
+RCEL,Avita Medical Inc. Common Stock,Health Care,9.85,24.68,1426931,2.91,4.97,4.49,true,true,false,30.5,15.39,226
+DUOT,Duos Technologies Group Inc. Common Stock,Technology,11.59,12.74,5691187,5.57,11.18,9.56,true,true,false,23.88,15.39,39
+HAE,Haemonetics Corporation Common Stock,Health Care,104.65,15.93,2306131,2.51,76.84,67.83,true,true,false,20.95,15.39,3009
+MSS,Maison Solutions Inc. Class A Common Stock,Consumer Staples,1.57,7.53,10490408,6.35,0.95,0.59,true,true,false,20.24,15.39,329
+XNCR,Xencor Inc. Common Stock,Health Care,25.41,9.9,1604757,1.83,15.4,13.47,true,true,false,13.57,15.39,260
+KURA,Kura Oncology Inc. Common Stock,Health Care,12.33,9.31,4087002,2.07,10.27,9.32,true,true,false,13.45,15.39,260
+BFRI,Biofrontera Inc. Common Stock,Health Care,1.44,6.67,1058348,2.88,1.05,0.96,true,true,false,12.44,15.39,94
+HBIO,Harvard Bioscience Inc. Common Stock,Industrials,6.97,7.23,51077,2.47,6.19,4.03,true,true,false,12.18,15.39,339
+BBNX,Beta Bionics Inc. Common Stock,Health Care,19.02,8.31,1976034,1.93,15.06,14.35,true,true,false,12.17,15.39,423
+HTFL,Heartflow Inc. Common Stock,Health Care,45.23,7.84,4170078,1.87,31.33,29.11,true,true,false,11.59,15.39,843
+CARL,Carlsmed Inc. Common Stock,Health Care,14.88,7.98,290073,1.73,11.87,11.57,true,true,false,11.44,15.39,127
+TRGP,Targa Resources Inc. Common Stock,Utilities,297.77,7.13,2488005,2.01,268.17,240.44,true,true,false,11.15,15.39,3570
+TISI,Team Inc. Common Stock,Consumer Discretionary,23.32,4.29,26968,2.44,17.55,15.96,true,true,false,9.18,15.39,5300
+LBRX,LB Pharmaceuticals Inc Common Stock,Health Care,48.77,5.49,540399,1.79,33.93,28.1,true,true,false,9.08,15.39,49
+ANGX,Angel Studios Inc. Class A Common Stock,Consumer Discretionary,4.85,2.97,4073431,2.91,3.47,,true,true,true,8.8,15.39,311
+OABI,OmniAb Inc. Common Stock,Health Care,3.92,2.62,3247937,2.99,2.57,2.02,true,true,false,8.59,15.39,89
+BETA,Beta Technologies Inc. Class A Common Stock,Industrials,26.76,4.53,3019653,1.77,18.68,,true,true,true,8.06,15.39,1008
+BDL,Flanigan's Enterprises Inc. Common Stock,Consumer Discretionary,49.47,3.3,33666,1.59,41.07,34.96,true,true,false,6.48,15.39,2033
+SELF,Global Self Storage Inc. Common Stock,Real Estate,5.44,3.23,32460,1.62,5.17,5.17,true,true,false,6.46,15.39,36
+CZFS,Citizens Financial Services Inc. Common Stock,Finance,83.67,2.17,37018,2.03,71.53,65.67,true,true,false,6.24,15.39,405
+ETON,Eton Pharmaceuticals Inc. Common Stock,Health Care,63.43,2.75,872617,1.55,37.46,26.33,true,true,false,5.85,15.39,44
