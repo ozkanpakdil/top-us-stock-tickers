@@ -477,7 +477,7 @@ async function main() {
   const symbols = await buildHistory(allCsv, today);
 
   // Screen.
-  const hits: HitRow[] = [];
+  let hits: HitRow[] = [];
   let screened = 0;
   for (const [sym, s] of symbols) {
     screened++;
@@ -498,6 +498,14 @@ async function main() {
     console.log(`  Employee counts: ${found}/${hits.length} found.`);
   }
 
+  // Drop hits with no employee data — if we can't verify the company size,
+  // we don't save or show it.
+  const droppedNoEmp = hits.filter((h) => h.employees === null);
+  if (droppedNoEmp.length > 0) {
+    console.log(`  Dropping ${droppedNoEmp.length} hits with no employee data: ${droppedNoEmp.map((h) => h.symbol).join(", ")}`);
+  }
+  hits = hits.filter((h) => h.employees !== null);
+
   // Write LATEST.csv.
   const latestRows = hits.map((h) => [
     h.symbol, h.name, h.industry, h.close, h.dayChangePct, h.volume, h.volRatio,
@@ -508,7 +516,7 @@ async function main() {
 
   // Append today's hits to hits_log.csv (idempotent: drop today's rows first).
   const logPath = `${OUT_DIR}/hits_log.csv`;
-  const existingLog = readHitsLog(logPath).filter((r) => r.date !== today);
+  let existingLog = readHitsLog(logPath).filter((r) => r.date !== today);
 
   // Backfill employee counts for historical log rows that are missing them.
   // This happens when the employee feature was added after hits were already
@@ -531,14 +539,21 @@ async function main() {
     console.log(`  Backfilled employee counts: ${found}/${needsBackfill.length} rows updated.`);
   }
 
+  // Drop historical log rows that still have no employee data after backfill.
+  const droppedHist = existingLog.filter((r) => r.employees === null);
+  if (droppedHist.length > 0) {
+    console.log(`  Dropping ${droppedHist.length} historical log rows with no employee data.`);
+  }
+  existingLog = existingLog.filter((r) => r.employees !== null);
+
   const newLogRows = hits.map((h) => [today, h.symbol, h.score, h.dayChangePct, h.close, h.volume, h.volRatio, h.industry, h.employees ?? ""]);
   const allLog = existingLog.map((r) => [r.date, r.symbol, r.score, r.dayChangePct, r.close, r.volume, r.volRatio, r.industry, r.employees ?? ""]);
   await Bun.write(logPath, toCsv(HITS_LOG_COLUMNS, [...allLog, ...newLogRows]));
 
   // Highlight lists.
   const fullLog = readHitsLog(logPath);
-  const watch = highlightFromLog(fullLog, today, WATCH_DAYS, WATCH_MIN_HITS);
-  const convict = highlightFromLog(fullLog, today, CONVICTION_DAYS, CONVICTION_MIN_HITS);
+  const watch = highlightFromLog(fullLog, today, WATCH_DAYS, WATCH_MIN_HITS).filter((w) => w.employees !== null);
+  const convict = highlightFromLog(fullLog, today, CONVICTION_DAYS, CONVICTION_MIN_HITS).filter((w) => w.employees !== null);
   await Bun.write(`${OUT_DIR}/watchlist_15.csv`, toCsv(HIGHLIGHT_COLUMNS, watch.map((w) => [w.symbol, w.industry, w.hits, w.firstHit, w.lastHit, w.avgScore, w.latestClose, w.latestDayChange, w.employees ?? ""])));
   await Bun.write(`${OUT_DIR}/conviction_30.csv`, toCsv(HIGHLIGHT_COLUMNS, convict.map((w) => [w.symbol, w.industry, w.hits, w.firstHit, w.lastHit, w.avgScore, w.latestClose, w.latestDayChange, w.employees ?? ""])));
 
