@@ -33,8 +33,8 @@ jobs:
           if [ -f "$SCREENER_LATEST" ]; then
             SCREENER_COUNT=$(($(wc -l < "$SCREENER_LATEST") - 1))
             if [ "$SCREENER_COUNT" -gt 0 ]; then
-              # Top 5 by score with day change, vol ratio, employees
-              SCREENER_TABLE=$(tail -n +2 "$SCREENER_LATEST" | head -5 | awk -F, '
+              # Top 3 by score with day change, vol ratio, employees
+              SCREENER_TABLE=$(tail -n +2 "$SCREENER_LATEST" | head -3 | awk -F, '
                 function fmtEmp(e) { if (e+0 >= 1000) return sprintf("%dk", e/1000); return e }
                 { sym=$1; ind=substr($3,1,14); cls=$4; chg=$5; vr=$7; score=$13; emp=$15
                   chgS = (chg+0 >= 0) ? sprintf("+%.1f%%", chg) : sprintf("%.1f%%", chg)
@@ -63,8 +63,11 @@ jobs:
               # Count strong candidates (rulesPassed >= 7, col 21)
               SCREENER2_STRONG_COUNT=$(tail -n +2 "$SCREENER2_LATEST" | awk -F, '$21+0>=7{c++} END{print c+0}')
 
-              # Show top 5 strong candidates: VCP first, then by score
-              # Include VCP flag, rules, score, market cap, employees, key trends
+              # Show top 3 strong candidates: VCP first, then by score
+              # Include VCP flag, rules, score, market cap, employees.
+              # Trend columns (peTrend/fcfTrend/epsTrend) are omitted because
+              # they are "unknown" for most rows and would push the toot past
+              # Mastodon's 500-char limit.
               SCREENER2_TABLE=$(tail -n +2 "$SCREENER2_LATEST" | awk -F, '
                 function fmtMc(mc) {
                   if (mc+0 >= 1e12) return sprintf("$%.1fT", mc/1e12)
@@ -73,12 +76,11 @@ jobs:
                   return sprintf("$%.0f", mc)
                 }
                 function fmtEmp(e) { if (e+0 >= 1000) return sprintf("%dk", e/1000); return e }
-                function trend(t) { if (t=="up") return "↑"; if (t=="down") return "↓"; if (t=="flat") return "→"; return "?" }
                 { vcp = ($9=="true") ? "VCP" : "   "
-                  printf "  %-5s %s R%2s/12 %5s  %s  %s emp  PE%s FCF%s EPS%s\n", \
-                    $1, vcp, $21, $23, fmtMc($5), fmtEmp($20), trend($12), trend($15), trend($18)
+                  printf "  %-5s %s R%2s/12 %5s  %s  %s emp\n", \
+                    $1, vcp, $21, $23, fmtMc($5), fmtEmp($20)
                 }
-              ' | head -5)
+              ' | head -3)
             fi
           fi
 
