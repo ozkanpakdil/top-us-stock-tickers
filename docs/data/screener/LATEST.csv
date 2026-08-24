@@ -1,27 +1,26 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-OABIW,OmniAb Inc. Warrant,Health Care,0.2845,49.74,39459,2.82,0.11,,true,true,true,55.37,15.74,89
-GNLN,Greenlane Holdings Inc. Class A Common Stock,Consumer Discretionary,3.46,15.72,175278,4.54,2.62,2.26,true,true,false,24.79,15.74,11
-PRLD,Prelude Therapeutics Incorporated Common Stock,Health Care,6.5,12.46,2433533,4.99,4.64,3.73,true,true,false,22.44,15.74,79
-MRVI,Maravai LifeSciences Holdings Inc. Class A Common Stock,Health Care,8.29,14.82,13115583,3.74,5.67,4.22,true,true,false,22.29,15.74,415
-HFBL,Home Federal Bancorp Inc. of Louisiana Common Stock,Finance,26.825,11.4,7793,3.58,21.4,19.38,true,true,false,18.56,15.74,76
-IOVA,Iovance Biotherapeutics Inc. Common Stock,Health Care,8.99,12.52,43708930,2.52,4.83,3.81,true,true,false,17.56,15.74,975
-PSNL,Personalis Inc. Common Stock,Health Care,16.88,6.77,14204132,3.8,12.49,9.26,true,true,false,14.37,15.74,260
-ASST,Strive Inc. Class A Common Stock,Technology,16.13,9.5,9843456,2.19,13.86,10.48,true,true,false,13.87,15.74,28
-NDSN,Nordson Corporation Common Stock,Industrials,334.7,8,1255902,2.81,295.65,281.97,true,true,false,13.62,15.74,8000
-FBLG,FibroBiologics Inc. Common Stock,Health Care,1.29,8.4,413712,2.28,0.95,0.78,true,true,false,12.96,15.74,15
-CARL,Carlsmed Inc. Common Stock,Health Care,16.5,6.31,418905,2.65,12.02,11.63,true,true,false,11.61,15.74,127
-HBIO,Harvard Bioscience Inc. Common Stock,Industrials,7.55,6.64,52282,2.47,6.26,4.08,true,true,false,11.59,15.74,339
-BULL,Webull Corporation Class A Ordinary Shares,Finance,8.85,2.43,50678406,4.07,7.01,6.71,true,true,false,10.58,15.74,1396
-CLIR,ClearSign Technologies Corporation Common Stock (DE),Industrials,4.685,6.48,31796,1.87,4.08,3.1,true,true,false,10.22,15.74,15
-AMLX,Amylyx Pharmaceuticals Inc. Common Stock,Health Care,39.66,2.75,8539910,3.69,18.53,15.89,true,true,false,10.12,15.74,136
-XGN,Exagen Inc. Common Stock,Health Care,7.78,4.71,576060,1.74,5.14,4.18,true,true,false,8.2,15.74,220
-ARE,Alexandria Real Estate Equities Inc. Common Stock,Real Estate,52.94,4.73,2964810,1.52,50.46,50.13,true,true,false,7.77,15.74,514
-SELF,Global Self Storage Inc. Common Stock,Real Estate,5.55,2.59,53016,2.54,5.18,5.17,true,true,false,7.66,15.74,36
-ILMN,Illumina Inc. Common Stock,Health Care,213.24,4.02,3284366,1.63,177.95,147.34,true,true,false,7.28,15.74,10080
-RVTY,Revvity Inc. Common Stock,Industrials,124.13,3.92,2344654,1.63,108.29,100.42,true,true,false,7.17,15.74,11000
-GEO,Geo Group Inc (The) REIT,Consumer Discretionary,31.72,3.39,3763771,1.73,28.71,21.03,true,true,false,6.85,15.74,18000
-OABI,OmniAb Inc. Common Stock,Health Care,4.3,2.63,2252223,1.94,2.64,2.05,true,true,false,6.5,15.74,89
-DJCO,Daily Journal Corp. (S.C.) Common Stock,Consumer Discretionary,614.7,2.77,78122,1.64,560.7,541.76,true,true,false,6.04,15.74,424
-MANH,Manhattan Associates Inc. Common Stock,Technology,211.21,2.53,1221615,1.69,158.88,150.04,true,true,false,5.92,15.74,4370
-FLXS,Flexsteel Industries Inc. Common Stock,Consumer Discretionary,80.03,2.38,102495,1.65,68.02,54.51,true,true,false,5.68,15.74,1200
-RGEN,Repligen Corporation Common Stock,Health Care,180.29,2.23,1591889,1.61,141.98,136.18,true,true,false,5.46,15.74,2000
+JUNS,Jupiter Neurosciences Inc. Common Stock,Health Care,6.2,19.92,52336973,14.32,1.43,0.83,true,true,false,48.57,15.93,5
+ELMT,The Elmet Group Co. Common Stock,Uncategorized,19.885,19.29,1742605,2.53,17.87,,true,true,true,24.34,15.93,534
+GENK,GEN Restaurant Group Inc. Class A Common Stock,Consumer Discretionary,2.08,19.54,371077,1.94,1.99,1.97,true,true,false,23.43,15.93,2700
+SLS,SELLAS Life Sciences Group Inc. Common Stock,Health Care,15.46,15.37,15208199,1.62,11.09,6.84,true,true,false,18.61,15.93,13
+FBLG,FibroBiologics Inc. Common Stock,Health Care,1.44,11.63,570426,2.97,0.96,0.78,true,true,false,17.57,15.93,15
+AIFC,AI Financial Corporation Common Stock,Uncategorized,0.6759,13.65,2240809,1.8,0.6,,true,true,true,17.25,15.93,16
+RUMBW,Rumble Inc. Warrant,Technology,2,12.36,37460,2.32,1.97,1.66,true,true,false,17.01,15.93,156
+DK,Delek US Holdings Inc. Common Stock,Energy,71.47,11.6,3416117,2.65,53.26,43.09,true,true,false,16.9,15.93,1902
+BDSX,Biodesix Inc. Common Stock,Health Care,26.63,10.82,274028,2.92,19.97,14.93,true,true,false,16.66,15.93,334
+BULLW,Webull Corporation Warrants,Finance,3.27,3.48,79380,6.13,2.29,2.18,true,true,false,15.74,15.93,1396
+VIRT,Virtu Financial Inc. Class A Common Stock,Finance,67.93,11.01,3022248,2.01,58.67,48.02,true,true,false,15.03,15.93,1027
+TITN,Titan Machinery Inc. Common Stock,Consumer Discretionary,20.18,11.55,367067,1.71,19.91,18.77,true,true,false,14.98,15.93,3359
+CVI,CVR Energy Inc. Common Stock,Energy,39.51,10.27,1771195,1.88,31.67,29.31,true,true,false,14.03,15.93,1532
+CCEL,Cryo-Cell International Inc. Common Stock,Health Care,4.56,9.09,51359,2.01,3.63,3.49,true,true,false,13.12,15.93,76
+PSNL,Personalis Inc. Common Stock,Health Care,18.38,8.89,7997524,2.08,12.68,9.32,true,true,false,13.04,15.93,260
+FCX,Freeport-McMoRan Inc. Common Stock,Basic Materials,76.66,7.64,28495481,2.02,65.69,62.57,true,true,false,11.67,15.93,29000
+CKX,CKX Lands Inc. Common Stock,Energy,11.25,6.13,22426,2.74,10.87,10.63,true,true,false,11.6,15.93,2
+XBIO,Xenetic Biosciences Inc. Common Stock,Health Care,3.59,5.9,83598,2.38,3.06,2.8,true,true,false,10.67,15.93,2
+MRVI,Maravai LifeSciences Holdings Inc. Class A Common Stock,Health Care,8.64,4.22,9391233,2.61,5.75,4.24,true,true,false,9.44,15.93,415
+RDI,Reading International Inc Class A Common Stock,Consumer Discretionary,1.85,4.52,117999,2.27,1.35,1.17,true,true,false,9.07,15.93,2025
+USIO,Usio Inc. Common Stock,Finance,2.81,5.64,403799,1.57,2.12,1.57,true,true,false,8.78,15.93,110
+VLGEA,Village Super Market Inc. Class A Common Stock,Consumer Staples,44.1,2.23,201393,3.11,42.32,40.87,true,true,false,8.44,15.93,7200
+DE,Deere & Company Common Stock,Industrials,647.47,4.27,2392537,1.8,595.53,574.73,true,true,false,7.87,15.93,73100
+SIBN,SI-BONE Inc. Common Stock,Health Care,19.96,2.46,1290358,2.41,16.79,15.64,true,true,false,7.27,15.93,376
+PFX,PhenixFIN Corporation Common Stock,Finance,51.22,2.19,10860,1.94,44.51,42.98,true,true,false,6.08,15.93,11
