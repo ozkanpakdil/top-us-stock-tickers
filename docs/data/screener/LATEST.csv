@@ -1,23 +1,31 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-XPON,Expion360 Inc. Common Stock,Miscellaneous,6.2,80.49,85894070,37.38,1.47,0.96,true,true,false,155.25,15.87,22
-GENB,Generate Biomedicines Inc. Common Stock,Health Care,17.72,9.93,2499355,2.58,14.92,,true,true,true,15.08,15.87,312
-PFX,PhenixFIN Corporation Common Stock,Finance,54.41,6.23,26851,4.38,44.72,43.06,true,true,false,15,15.87,11
-ASST,Strive Inc. Class A Common Stock,Technology,19.73,8.29,14600681,3,13.9,10.59,true,true,false,14.28,15.87,28
-LIFE,Ethos Technologies Inc. Class A Common Stock,Finance,36.72,7.49,2615297,3.19,22.5,17.84,true,true,false,13.88,15.87,614
-EZPW,EZCORP Inc. Class A Non Voting Common Stock,Consumer Discretionary,35.05,8.78,2693779,2.33,31.62,28.19,true,true,false,13.45,15.87,8500
-VHI,Valhi Inc. Common Stock,Basic Materials,18.1,7.8,39279,2.63,14.8,14.26,true,true,false,13.07,15.87,2826
-OABI,OmniAb Inc. Common Stock,Health Care,4.71,8.78,1939834,1.6,2.72,2.08,true,true,false,11.98,15.87,89
-CLIR,ClearSign Technologies Corporation Common Stock (DE),Industrials,4.84,8.07,30222,1.81,4.09,3.12,true,true,false,11.68,15.87,15
-XBIO,Xenetic Biosciences Inc. Common Stock,Health Care,3.81,6.13,102674,2.77,3.07,2.81,true,true,false,11.67,15.87,2
-FCFS,FirstCash Holdings Inc. Common Stock,Consumer Discretionary,236.43,4.95,1047509,2.35,218.07,200.87,true,true,false,9.64,15.87,20000
-BDL,Flanigan's Enterprises Inc. Common Stock,Consumer Discretionary,50.39,4.72,44146,1.9,42.3,35.29,true,true,false,8.52,15.87,2033
-STTK,Shattuck Labs Inc. Common Stock,Health Care,7.9,4.91,2055015,1.51,6.21,5.72,true,true,false,7.94,15.87,40
-RUMBW,Rumble Inc. Warrant,Technology,2.07,3.5,34784,2.15,1.97,1.66,true,true,false,7.81,15.87,156
-AVAH,Aveanna Healthcare Holdings Inc. Common Stock,Health Care,13.7,4.1,5371762,1.81,9.12,7.98,true,true,false,7.72,15.87,35500
-EOLS,Evolus Inc. Common Stock,Health Care,8.78,4.65,1320341,1.52,7.07,5.76,true,true,false,7.68,15.87,353
-RUM,Rumble Inc. Class A Common Stock,Technology,9.36,3.43,8274896,2.1,7.25,6.53,true,true,false,7.62,15.87,156
-SKYA,SkyAI Inc. Common Stock,Health Care,1.34,3.08,747404,2.13,1.2,,true,true,true,7.34,15.87,55
-SELF,Global Self Storage Inc. Common Stock,Real Estate,5.67,2.16,57205,2.54,5.2,5.18,true,true,false,7.24,15.87,36
-AII,American Integrity Insurance Group Inc. Common Stock,Finance,26.15,3.16,288181,1.77,19.54,19.14,true,true,false,6.7,15.87,313
-RMBI,Richmond Mutual Bancorporation Inc. Common Stock,Finance,16.15,2.02,104879,2,15.26,14.5,true,true,false,6.03,15.87,180
-MASS,908 Devices Inc. Common Stock,Industrials,10.92,2.25,723891,1.88,8.88,7.3,true,true,false,6.01,15.87,172
+NCPL,Netcapital Inc. Common Stock,Finance,0.58,126.83,495692426,46.34,0.57,0.56,true,true,false,219.51,15.72,23
+DAIC,CID HoldCo Inc. Common Stock,Technology,3.88,124.28,142027591,23.62,1.63,0.71,true,true,false,171.51,15.72,68
+RUMBW,Rumble Inc. Warrant,Technology,2.7199,31.4,88138,5.04,1.97,1.67,true,true,false,41.48,15.72,156
+OESX,Orion Energy Systems Inc. Common Stock,Consumer Discretionary,25.02,19.2,229686,2.9,13.15,12.27,true,true,false,25,15.72,174
+GENB,Generate Biomedicines Inc. Common Stock,Health Care,20.38,15.01,4687502,4.44,15.07,,true,true,true,23.9,15.72,312
+CFFI,C&F Financial Corporation Common Stock,Finance,89.44,2.82,182532,9.33,81.05,76.22,true,true,false,21.47,15.72,575
+RNXT,RenovoRx Inc. Common Stock,Health Care,1.42,13.6,1321931,3.45,1.02,0.97,true,true,false,20.5,15.72,17
+INBX,Inhibrx Biosciences Inc. Common Stock,Health Care,122.72,16.94,510753,1.57,94.83,88.51,true,true,false,20.07,15.72,110
+CHCI,Comstock Holding Companies Inc. Class A Common Stock,Finance,19.52,10.53,89723,2.69,16.09,14.78,true,true,false,15.91,15.72,524
+KURA,Kura Oncology Inc. Common Stock,Health Care,13.59,9.6,5345502,2.64,10.45,9.42,true,true,false,14.88,15.72,260
+BDSX,Biodesix Inc. Common Stock,Health Care,28.075,10.58,198031,1.99,20.42,15.08,true,true,false,14.56,15.72,334
+CPIX,Cumberland Pharmaceuticals Inc. Common Stock,Health Care,8.7,10.97,112163,1.64,6.63,4.84,true,true,false,14.25,15.72,88
+RUM,Rumble Inc. Class A Common Stock,Technology,10.23,9.29,8940235,2.2,7.26,6.56,true,true,false,13.7,15.72,156
+ASST,Strive Inc. Class A Common Stock,Technology,21.39,8.41,12872075,2.57,13.97,10.66,true,true,false,13.55,15.72,28
+RDI,Reading International Inc Class A Common Stock,Consumer Discretionary,1.93,6.04,156328,2.84,1.38,1.18,true,true,false,11.72,15.72,2025
+CDNA,CareDx Inc. Common Stock,Health Care,50.8,6.95,1784709,1.85,32.6,23.67,true,true,false,10.64,15.72,765
+TISI,Team Inc. Common Stock,Consumer Discretionary,24.09,4.88,34627,2.77,18.22,16.18,true,true,false,10.42,15.72,5300
+IMMX,Immix Biopharma Inc. Common Stock,Health Care,14.47,6.32,3651602,1.89,10.18,8.73,true,true,false,10.11,15.72,21
+MRVI,Maravai LifeSciences Holdings Inc. Class A Common Stock,Health Care,9,6.76,5696161,1.51,5.92,4.3,true,true,false,9.78,15.72,415
+LIFE,Ethos Technologies Inc. Class A Common Stock,Finance,38.56,5.01,2015146,2.38,22.88,18,true,true,false,9.78,15.72,614
+NVAX,Novavax Inc. Common Stock,Health Care,9.44,6.55,7096624,1.54,8.96,8.89,true,true,false,9.63,15.72,749
+DHX,DHI Group Inc. Common Stock,Real Estate,4.38,3.79,556520,2.85,3.84,2.95,true,true,false,9.48,15.72,270
+BULL,Webull Corporation Class A Ordinary Shares,Finance,8.94,4.81,24091509,1.83,7.16,6.75,true,true,false,8.47,15.72,1396
+MWYN,Marwynn Holdings Inc. Common stock,Consumer Discretionary,1.1,4.76,402337,1.77,1,0.86,true,true,false,8.3,15.72,2
+JAKK,JAKKS Pacific Inc. Common Stock,Consumer Discretionary,26.15,2.51,208586,2.85,23.44,21.31,true,true,false,8.22,15.72,652
+KFFB,Kentucky First Federal Bancorp Common Stock,Finance,5.83,4.2,7702,1.85,5.09,4.71,true,true,false,7.89,15.72,56
+FGNX,FG Nexus Inc. Common Stock ,Finance,7.865,4.31,195019,1.76,6.34,5.7,true,true,false,7.84,15.72,15
+USIO,Usio Inc. Common Stock,Finance,2.94,2.8,629938,2.26,2.17,1.58,true,true,false,7.32,15.72,110
+ACRS,Aclaris Therapeutics Inc. Common Stock,Health Care,6.535,3.57,3353283,1.71,5.28,4.23,true,true,false,6.98,15.72,73
+EOLS,Evolus Inc. Common Stock,Health Care,8.975,2.22,1796163,2.03,7.12,5.78,true,true,false,6.27,15.72,353
