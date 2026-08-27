@@ -1,31 +1,22 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-NCPL,Netcapital Inc. Common Stock,Finance,0.58,126.83,495692426,46.34,0.57,0.56,true,true,false,219.51,15.72,23
-DAIC,CID HoldCo Inc. Common Stock,Technology,3.88,124.28,142027591,23.62,1.63,0.71,true,true,false,171.51,15.72,68
-RUMBW,Rumble Inc. Warrant,Technology,2.7199,31.4,88138,5.04,1.97,1.67,true,true,false,41.48,15.72,156
-OESX,Orion Energy Systems Inc. Common Stock,Consumer Discretionary,25.02,19.2,229686,2.9,13.15,12.27,true,true,false,25,15.72,174
-GENB,Generate Biomedicines Inc. Common Stock,Health Care,20.38,15.01,4687502,4.44,15.07,,true,true,true,23.9,15.72,312
-CFFI,C&F Financial Corporation Common Stock,Finance,89.44,2.82,182532,9.33,81.05,76.22,true,true,false,21.47,15.72,575
-RNXT,RenovoRx Inc. Common Stock,Health Care,1.42,13.6,1321931,3.45,1.02,0.97,true,true,false,20.5,15.72,17
-INBX,Inhibrx Biosciences Inc. Common Stock,Health Care,122.72,16.94,510753,1.57,94.83,88.51,true,true,false,20.07,15.72,110
-CHCI,Comstock Holding Companies Inc. Class A Common Stock,Finance,19.52,10.53,89723,2.69,16.09,14.78,true,true,false,15.91,15.72,524
-KURA,Kura Oncology Inc. Common Stock,Health Care,13.59,9.6,5345502,2.64,10.45,9.42,true,true,false,14.88,15.72,260
-BDSX,Biodesix Inc. Common Stock,Health Care,28.075,10.58,198031,1.99,20.42,15.08,true,true,false,14.56,15.72,334
-CPIX,Cumberland Pharmaceuticals Inc. Common Stock,Health Care,8.7,10.97,112163,1.64,6.63,4.84,true,true,false,14.25,15.72,88
-RUM,Rumble Inc. Class A Common Stock,Technology,10.23,9.29,8940235,2.2,7.26,6.56,true,true,false,13.7,15.72,156
-ASST,Strive Inc. Class A Common Stock,Technology,21.39,8.41,12872075,2.57,13.97,10.66,true,true,false,13.55,15.72,28
-RDI,Reading International Inc Class A Common Stock,Consumer Discretionary,1.93,6.04,156328,2.84,1.38,1.18,true,true,false,11.72,15.72,2025
-CDNA,CareDx Inc. Common Stock,Health Care,50.8,6.95,1784709,1.85,32.6,23.67,true,true,false,10.64,15.72,765
-TISI,Team Inc. Common Stock,Consumer Discretionary,24.09,4.88,34627,2.77,18.22,16.18,true,true,false,10.42,15.72,5300
-IMMX,Immix Biopharma Inc. Common Stock,Health Care,14.47,6.32,3651602,1.89,10.18,8.73,true,true,false,10.11,15.72,21
-MRVI,Maravai LifeSciences Holdings Inc. Class A Common Stock,Health Care,9,6.76,5696161,1.51,5.92,4.3,true,true,false,9.78,15.72,415
-LIFE,Ethos Technologies Inc. Class A Common Stock,Finance,38.56,5.01,2015146,2.38,22.88,18,true,true,false,9.78,15.72,614
-NVAX,Novavax Inc. Common Stock,Health Care,9.44,6.55,7096624,1.54,8.96,8.89,true,true,false,9.63,15.72,749
-DHX,DHI Group Inc. Common Stock,Real Estate,4.38,3.79,556520,2.85,3.84,2.95,true,true,false,9.48,15.72,270
-BULL,Webull Corporation Class A Ordinary Shares,Finance,8.94,4.81,24091509,1.83,7.16,6.75,true,true,false,8.47,15.72,1396
-MWYN,Marwynn Holdings Inc. Common stock,Consumer Discretionary,1.1,4.76,402337,1.77,1,0.86,true,true,false,8.3,15.72,2
-JAKK,JAKKS Pacific Inc. Common Stock,Consumer Discretionary,26.15,2.51,208586,2.85,23.44,21.31,true,true,false,8.22,15.72,652
-KFFB,Kentucky First Federal Bancorp Common Stock,Finance,5.83,4.2,7702,1.85,5.09,4.71,true,true,false,7.89,15.72,56
-FGNX,FG Nexus Inc. Common Stock ,Finance,7.865,4.31,195019,1.76,6.34,5.7,true,true,false,7.84,15.72,15
-USIO,Usio Inc. Common Stock,Finance,2.94,2.8,629938,2.26,2.17,1.58,true,true,false,7.32,15.72,110
-ACRS,Aclaris Therapeutics Inc. Common Stock,Health Care,6.535,3.57,3353283,1.71,5.28,4.23,true,true,false,6.98,15.72,73
-EOLS,Evolus Inc. Common Stock,Health Care,8.975,2.22,1796163,2.03,7.12,5.78,true,true,false,6.27,15.72,353
+DAIC,CID HoldCo Inc. Common Stock,Technology,5.65,45.62,14510513,2.31,1.74,0.74,true,true,false,50.24,14.46,68
+OKTA,Okta Inc. Class A Common Stock,Technology,173.96,33.19,14403329,3.87,134.83,98.84,true,true,false,40.94,14.46,6366
+ANF,Abercrombie & Fitch Company Common Stock,Consumer Discretionary,146.05,34.11,3511484,2.85,95.39,94.22,true,true,false,39.81,14.46,43200
+VNCE,Vince Holding Corp. Common Stock,Consumer Discretionary,7.62,24.31,614588,2.92,6.19,4.2,true,true,false,30.15,14.46,558
+VEEV,Veeva Systems Inc. Class A Common Stock,Technology,285.325,15.62,4322657,1.79,198.06,189.3,true,true,false,19.2,14.46,7928
+SKYA,SkyAI Inc. Common Stock,Health Care,1.46,9.77,1752907,4.5,1.18,,true,true,true,18.76,14.46,55
+RDI,Reading International Inc Class A Common Stock,Consumer Discretionary,2.09,8.29,255305,4.29,1.4,1.19,true,true,false,16.87,14.46,2025
+OOMA,Ooma Inc. Common Stock,Technology,22.7,10.25,930725,2.6,19.31,15.8,true,true,false,15.45,14.46,1420
+PRTS,CarParts.com Inc. Common Stock,Consumer Discretionary,7.095,11.21,58764,1.87,6.25,2.6,true,true,false,14.95,14.46,1186
+NEO,NeoGenomics Inc. Common Stock,Health Care,18.695,11.35,4102100,1.58,13.92,11.17,true,true,false,14.5,14.46,2500
+RVMDW,Revolution Medicines Inc. Warrant,Health Care,13.1,9.35,150132,2.53,9.03,4.9,true,true,false,14.41,14.46,883
+ASST,Strive Inc. Class A Common Stock,Technology,22.94,7.25,12109849,2.36,14.07,10.74,true,true,false,11.96,14.46,28
+KFFB,Kentucky First Federal Bancorp Common Stock,Finance,6.15,5.49,13284,3.1,5.12,4.72,true,true,false,11.69,14.46,56
+BULLW,Webull Corporation Warrants,Finance,3.48,7.41,27887,2.03,2.37,2.2,true,true,false,11.46,14.46,1396
+TH,Target Hospitality Corp. Common Stock,Consumer Discretionary,18.715,7.62,2096118,1.61,17.98,13.19,true,true,false,10.83,14.46,902
+NVDA,NVIDIA Corporation Common Stock,Technology,228.2388,7.13,251837678,1.79,210.45,197.85,true,true,false,10.71,14.46,42000
+NTNX,Nutanix Inc. Class A Common Stock,Technology,70.79,6.55,6141637,1.72,56.14,47,true,true,false,10,14.46,7800
+BULL,Webull Corporation Class A Ordinary Shares,Finance,9.475,5.98,22183802,1.67,7.22,6.77,true,true,false,9.33,14.46,1396
+VHI,Valhi Inc. Common Stock,Basic Materials,18.87,4.89,33899,2.19,14.96,14.32,true,true,false,9.28,14.46,2826
+BOX,Box Inc. Class A Common Stock,Technology,34.53,4.64,3955793,1.66,28.96,26.31,true,true,false,7.95,14.46,2912
+OESX,Orion Energy Systems Inc. Common Stock,Consumer Discretionary,26.025,4.02,154318,1.88,13.48,12.36,true,true,false,7.79,14.46,174
