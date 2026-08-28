@@ -1,22 +1,9 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-DAIC,CID HoldCo Inc. Common Stock,Technology,5.65,45.62,14510513,2.31,1.74,0.74,true,true,false,50.24,14.46,68
-OKTA,Okta Inc. Class A Common Stock,Technology,173.96,33.19,14403329,3.87,134.83,98.84,true,true,false,40.94,14.46,6366
-ANF,Abercrombie & Fitch Company Common Stock,Consumer Discretionary,146.05,34.11,3511484,2.85,95.39,94.22,true,true,false,39.81,14.46,43200
-VNCE,Vince Holding Corp. Common Stock,Consumer Discretionary,7.62,24.31,614588,2.92,6.19,4.2,true,true,false,30.15,14.46,558
-VEEV,Veeva Systems Inc. Class A Common Stock,Technology,285.325,15.62,4322657,1.79,198.06,189.3,true,true,false,19.2,14.46,7928
-SKYA,SkyAI Inc. Common Stock,Health Care,1.46,9.77,1752907,4.5,1.18,,true,true,true,18.76,14.46,55
-RDI,Reading International Inc Class A Common Stock,Consumer Discretionary,2.09,8.29,255305,4.29,1.4,1.19,true,true,false,16.87,14.46,2025
-OOMA,Ooma Inc. Common Stock,Technology,22.7,10.25,930725,2.6,19.31,15.8,true,true,false,15.45,14.46,1420
-PRTS,CarParts.com Inc. Common Stock,Consumer Discretionary,7.095,11.21,58764,1.87,6.25,2.6,true,true,false,14.95,14.46,1186
-NEO,NeoGenomics Inc. Common Stock,Health Care,18.695,11.35,4102100,1.58,13.92,11.17,true,true,false,14.5,14.46,2500
-RVMDW,Revolution Medicines Inc. Warrant,Health Care,13.1,9.35,150132,2.53,9.03,4.9,true,true,false,14.41,14.46,883
-ASST,Strive Inc. Class A Common Stock,Technology,22.94,7.25,12109849,2.36,14.07,10.74,true,true,false,11.96,14.46,28
-KFFB,Kentucky First Federal Bancorp Common Stock,Finance,6.15,5.49,13284,3.1,5.12,4.72,true,true,false,11.69,14.46,56
-BULLW,Webull Corporation Warrants,Finance,3.48,7.41,27887,2.03,2.37,2.2,true,true,false,11.46,14.46,1396
-TH,Target Hospitality Corp. Common Stock,Consumer Discretionary,18.715,7.62,2096118,1.61,17.98,13.19,true,true,false,10.83,14.46,902
-NVDA,NVIDIA Corporation Common Stock,Technology,228.2388,7.13,251837678,1.79,210.45,197.85,true,true,false,10.71,14.46,42000
-NTNX,Nutanix Inc. Class A Common Stock,Technology,70.79,6.55,6141637,1.72,56.14,47,true,true,false,10,14.46,7800
-BULL,Webull Corporation Class A Ordinary Shares,Finance,9.475,5.98,22183802,1.67,7.22,6.77,true,true,false,9.33,14.46,1396
-VHI,Valhi Inc. Common Stock,Basic Materials,18.87,4.89,33899,2.19,14.96,14.32,true,true,false,9.28,14.46,2826
-BOX,Box Inc. Class A Common Stock,Technology,34.53,4.64,3955793,1.66,28.96,26.31,true,true,false,7.95,14.46,2912
-OESX,Orion Energy Systems Inc. Common Stock,Consumer Discretionary,26.025,4.02,154318,1.88,13.48,12.36,true,true,false,7.79,14.46,174
+ESTC,Elastic N.V. Ordinary Shares,Technology,99.91,16.96,10103762,4.28,68.3,61.16,true,true,false,25.52,14.43,4019
+RNXT,RenovoRx Inc. Common Stock,Health Care,1.67,14.38,983414,2.5,1.05,0.97,true,true,false,19.38,14.43,17
+PD,PagerDuty Inc. Common Stock,Technology,13.83,8.47,3674663,2.05,10.37,8.86,true,true,false,12.57,14.43,1155
+BFRI,Biofrontera Inc. Common Stock,Health Care,1.59,7.07,802860,1.84,1.14,0.98,true,true,false,10.75,14.43,94
+FNKO,Funko Inc. Class A Common Stock,Consumer Discretionary,7.1,6.45,1442925,1.62,5.73,4.66,true,true,false,9.69,14.43,1104
+RMNI,Rimini Street Inc. (DE) Common Stock,Real Estate,5.65,5.02,1006585,2.19,4.6,3.88,true,true,false,9.41,14.43,1980
+FENC,Fennec Pharmaceuticals Inc. Common Stock,Health Care,12.27,3.81,421174,1.79,10.5,8.54,true,true,false,7.38,14.43,35
+PRTS,CarParts.com Inc. Common Stock,Consumer Discretionary,7.27,2.47,50902,1.62,6.27,2.63,true,true,false,5.72,14.43,1186
