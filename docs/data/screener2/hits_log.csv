@@ -16306,3 +16306,1473 @@ date,symbol,industry,close,marketCap,vcp,contractions,volatilityRatio,pe,peTrend
 2026-08-28,FRVO,Utilities,14.77,4353652449,false,9,0.27,,unknown,unknown,unknown,,,261,3,2
 2026-08-28,CBRS,Technology,179.08,42542968462,false,10,18.15,,unknown,unknown,unknown,,,784,3,2
 2026-08-28,VSXY,Consumer Discretionary,87.85,6983347602,false,6,1.47,,unknown,unknown,unknown,,,33000,3,2
+2026-08-31,SLAB,Technology,219.01,7307654327,true,12,0.43,,unknown,unknown,unknown,,,1930,7,31.71
+2026-08-31,HCXY,Finance,25.04,4549159102,true,11,0.44,,unknown,unknown,unknown,,,100,4,26.69
+2026-08-31,RAMP,Technology,37.76,2295618520,true,8,0.2,,unknown,unknown,unknown,,,1300,7,24.4
+2026-08-31,KKR,Finance,110.465,99157316664,false,13,0.25,,unknown,unknown,unknown,,,5043,6,5
+2026-08-31,HOOD,Finance,104.25,93729326960,false,13,1.96,,unknown,unknown,unknown,,,2900,6,5
+2026-08-31,ICE,Finance,159.29,89424527834,false,12,0.59,,unknown,unknown,unknown,,,12844,6,5
+2026-08-31,MCO,Finance,503.395,87188014000,false,10,1.49,,unknown,unknown,unknown,,,16076,6,5
+2026-08-31,CDNS,Technology,339.96,93622604280,false,12,9.91,,unknown,unknown,unknown,,,13800,6,5
+2026-08-31,APO,Finance,137.02,80916223646,false,13,0.75,,unknown,unknown,unknown,,,2540,6,5
+2026-08-31,MMM,Health Care,172.59,89008531950,false,12,0.46,,unknown,unknown,unknown,,,60500,6,5
+2026-08-31,USB,Finance,61.65,96053871646,false,11,2.11,,unknown,unknown,unknown,,,68520,6,5
+2026-08-31,PNC,Finance,239.84,95682649093,false,10,5.99,,unknown,unknown,unknown,,,55333,6,5
+2026-08-31,REGN,Health Care,798.36,82195144220,false,14,7.73,,unknown,unknown,unknown,,,15410,6,5
+2026-08-31,SHW,Consumer Discretionary,338.61,82200337510,false,9,0.56,,unknown,unknown,unknown,,,64249,6,5
+2026-08-31,ELV,Health Care,392.95,85218787506,false,11,0.45,,unknown,unknown,unknown,,,97100,6,5
+2026-08-31,GM,Industrials,86.47,75873234750,false,10,0.08,,unknown,unknown,unknown,,,156000,6,5
+2026-08-31,CTAS,Industrials,202.1,80874268278,false,10,0.05,,unknown,unknown,unknown,,,48100,6,5
+2026-08-31,EMR,Technology,153.06,85376868000,false,9,1.11,,unknown,unknown,unknown,,,71000,6,5
+2026-08-31,SE,Consumer Discretionary,115.005,70438782453,false,15,0.23,,unknown,unknown,unknown,,,102700,6,5
+2026-08-31,ECL,Consumer Discretionary,282.66,79237682924,false,13,0.05,,unknown,unknown,unknown,,,48000,6,5
+2026-08-31,ITW,Industrials,276.185,78657488000,false,11,0.12,,unknown,unknown,unknown,,,43000,6,5
+2026-08-31,WMB,Utilities,74.74,91419536857,false,10,0.18,,unknown,unknown,unknown,,,5987,6,5
+2026-08-31,WBD,Consumer Discretionary,28.535,71642919065,false,9,2.26,,unknown,unknown,unknown,,,35500,6,5
+2026-08-31,MDLZ,Consumer Staples,62.08,79233204179,false,11,28.01,,unknown,unknown,unknown,,,91000,6,5
+2026-08-31,EPD,Utilities,38.8241,83839757557,false,17,8.35,,unknown,unknown,unknown,,,8000,6,5
+2026-08-31,CSX,Industrials,50.485,93522196185,false,13,0.57,,unknown,unknown,unknown,,,23000,6,5
+2026-08-31,AJG,Finance,262.57,67296691000,false,12,0.66,,unknown,unknown,unknown,,,72000,6,5
+2026-08-31,COR,Health Care,323.15,61665798370,false,13,0.48,,unknown,unknown,unknown,,,51000,6,5
+2026-08-31,RSG,Utilities,222.28,68065020750,false,10,0.98,,unknown,unknown,unknown,,,42000,6,5
+2026-08-31,NSC,Industrials,344.64,77409029671,false,14,0.15,,unknown,unknown,unknown,,,19300,6,5
+2026-08-31,TRV,Finance,367.235,76596048204,false,13,0.68,,unknown,unknown,unknown,,,34000,6,5
+2026-08-31,TFC,Finance,49.755,60782010984,false,11,0.26,,unknown,unknown,unknown,,,38711,6,5
+2026-08-31,CL,Consumer Discretionary,90.1,71825271893,false,11,1.65,,unknown,unknown,unknown,,,33600,6,5
+2026-08-31,COIN,Finance,185.5,48941749217,false,14,1.03,,unknown,unknown,unknown,,,4951,6,5
+2026-08-31,ADSK,Technology,259.36,54724960000,false,12,6.37,,unknown,unknown,unknown,,,14300,6,5
+2026-08-31,MSI,Technology,484.22,80135402025,false,13,1.79,,unknown,unknown,unknown,,,23000,6,5
+2026-08-31,SPG,Real Estate,210.75,68188481786,false,9,0.51,,unknown,unknown,unknown,,,3600,6,5
+2026-08-31,KMI,Utilities,32.15,71591687161,false,9,0.15,,unknown,unknown,unknown,,,11028,6,5
+2026-08-31,TRI,Consumer Discretionary,106.32,46057824000,false,10,1.33,,unknown,unknown,unknown,,,25200,6,5
+2026-08-31,PCAR,Consumer Discretionary,123.905,65219249501,false,11,1.08,,unknown,unknown,unknown,,,25900,6,5
+2026-08-31,ROST,Consumer Discretionary,227.22,72887876089,false,8,1.75,,unknown,unknown,unknown,,,111000,6,5
+2026-08-31,WDAY,Technology,198.735,47895135000,false,14,1.68,,unknown,unknown,unknown,,,21000,6,5
+2026-08-31,AFL,Finance,116.2,58256091228,false,13,0.17,,unknown,unknown,unknown,,,12716,6,5
+2026-08-31,NDAQ,Finance,98.03,54796551777,false,10,13.84,,unknown,unknown,unknown,,,9525,6,5
+2026-08-31,BRKRP,Industrials,421.93,64284966200,false,9,1.12,,unknown,unknown,unknown,,,11085,6,5
+2026-08-31,EOG,Energy,144.375,75728899785,false,11,0.77,,unknown,unknown,unknown,,,3400,6,5
+2026-08-31,PYPL,Industrials,53.29,45587509975,false,11,0.97,,unknown,unknown,unknown,,,23800,6,5
+2026-08-31,BDX,Health Care,187.885,51177393918,false,10,0.26,,unknown,unknown,unknown,,,72000,6,5
+2026-08-31,ET,Utilities,21.45,73858776441,false,13,0.19,,unknown,unknown,unknown,,,22311,6,5
+2026-08-31,ARES,Finance,142.655,47115698103,false,10,0.1,,unknown,unknown,unknown,,,4250,6,5
+2026-08-31,APD,Basic Materials,306.95,68353323434,false,10,1.79,,unknown,unknown,unknown,,,21300,6,5
+2026-08-31,MPLX,Energy,59.33,60152210032,false,15,0.15,,unknown,unknown,unknown,,,5762,6,5
+2026-08-31,ALL,Finance,258.44,65348608598,false,14,1.12,,unknown,unknown,unknown,,,53300,6,5
+2026-08-31,F,Industrials,13.9646,54695757551,false,9,1.83,,unknown,unknown,unknown,,,169000,6,5
+2026-08-31,MET,Finance,95.44,60649917913,false,11,1.89,,unknown,unknown,unknown,,,46000,6,5
+2026-08-31,URI,Consumer Discretionary,1026.34,63881956160,false,10,0.15,,unknown,unknown,unknown,,,28500,6,5
+2026-08-31,PSX,Energy,244.37,97508741243,false,12,2.06,,unknown,unknown,unknown,,,12600,6,5
+2026-08-31,D,Utilities,65.62,57714492773,false,11,4.16,,unknown,unknown,unknown,,,15200,6,5
+2026-08-31,EW,Health Care,91.01,52458164000,false,10,0.62,,unknown,unknown,unknown,,,16000,6,5
+2026-08-31,CMG,Consumer Discretionary,38.075,48180790350,false,10,0.15,,unknown,unknown,unknown,,,130301,6,5
+2026-08-31,CAH,Health Care,235.57,54787864245,false,9,0.34,,unknown,unknown,unknown,,,63900,6,5
+2026-08-31,CBRE,Finance,147.9,42828186574,false,14,0.75,,unknown,unknown,unknown,,,155000,6,5
+2026-08-31,GWW,Industrials,1302.66,61356513106,false,12,0.85,,unknown,unknown,unknown,,,25000,6,5
+2026-08-31,ROP,Technology,426.38,42169354656,false,10,0.08,,unknown,unknown,unknown,,,19400,6,5
+2026-08-31,DDOG,Technology,234.4,84167185626,false,13,1.75,,unknown,unknown,unknown,,,8100,6,5
+2026-08-31,AME,Industrials,234.81,53832832704,false,16,2.68,,unknown,unknown,unknown,,,22500,6,5
+2026-08-31,FAST,Consumer Discretionary,49.405,56692117594,false,11,0.92,,unknown,unknown,unknown,,,24489,6,5
+2026-08-31,HEI,Industrials,331.035,46264592564,false,12,0.1,,unknown,unknown,unknown,,,11100,6,5
+2026-08-31,AMP,Finance,555.93,49976485908,false,12,0.73,,unknown,unknown,unknown,,,13600,6,5
+2026-08-31,DAL,Consumer Discretionary,78.085,51350494298,false,7,0.28,,unknown,unknown,unknown,,,103000,6,5
+2026-08-31,AXON,Industrials,574.9121,46704372856,false,9,0.55,,unknown,unknown,unknown,,,5100,6,5
+2026-08-31,OKE,Utilities,94.7053,59699348424,false,8,0.66,,unknown,unknown,unknown,,,6326,6,5
+2026-08-31,PSA,Real Estate,306.23,53780459865,false,10,0.11,,unknown,unknown,unknown,,,5770,6,5
+2026-08-31,CTVA,Consumer Staples,84.32,56257966720,false,9,0.02,,unknown,unknown,unknown,,,21500,6,5
+2026-08-31,TGT,Consumer Discretionary,161.42,73315529299,false,14,0.22,,unknown,unknown,unknown,,,415000,6,5
+2026-08-31,ROK,Industrials,424.88,47278077151,false,10,0.4,,unknown,unknown,unknown,,,26000,6,5
+2026-08-31,BKR,Consumer Discretionary,62.925,62464015918,false,14,66.46,,unknown,unknown,unknown,,,56000,6,5
+2026-08-31,PRU,Finance,117.695,40604775000,false,9,0.08,,unknown,unknown,unknown,,,36824,6,5
+2026-08-31,FANG,Energy,199.15,55766849900,false,13,3.73,,unknown,unknown,unknown,,,1762,6,5
+2026-08-31,CTSH,Technology,64.09,28868969355,false,10,0,,unknown,unknown,unknown,,,351600,6,5
+2026-08-31,PAYX,Industrials,126.88,45129041277,false,14,2.03,,unknown,unknown,unknown,,,17600,6,5
+2026-08-31,LNG,Utilities,287.69,59417811915,false,12,0.6,,unknown,unknown,unknown,,,1717,6,5
+2026-08-31,XYZ,Technology,81.31,48850641450,false,15,4.97,,unknown,unknown,unknown,,,10205,6,5
+2026-08-31,TRGP,Utilities,289.3706,62050033205,false,11,0.81,,unknown,unknown,unknown,,,3570,6,5
+2026-08-31,OXY,Energy,59.615,59593381872,false,12,0.23,,unknown,unknown,unknown,,,10412,6,5
+2026-08-31,A,Industrials,152.83,43164074002,false,9,0.73,,unknown,unknown,unknown,,,18100,6,5
+2026-08-31,EL,Consumer Discretionary,102.21,36979431533,false,9,5.55,,unknown,unknown,unknown,,,55000,6,5
+2026-08-31,IQV,Health Care,258.82,42601772000,false,11,3.93,,unknown,unknown,unknown,,,93000,6,5
+2026-08-31,HIG,Finance,137.99,37377627556,false,11,0.65,,unknown,unknown,unknown,,,19200,6,5
+2026-08-31,EBAY,Real Estate,103.88,46226600000,false,13,0.74,,unknown,unknown,unknown,,,12300,6,5
+2026-08-31,KDP,Consumer Staples,31.755,43213030837,false,9,0.52,,unknown,unknown,unknown,,,30600,6,5
+2026-08-31,NUE,Industrials,250.19,56762025378,false,9,0.38,,unknown,unknown,unknown,,,33000,6,5
+2026-08-31,WAB,Industrials,287.64,48585517182,false,10,0.66,,unknown,unknown,unknown,,,31000,6,5
+2026-08-31,VTR,Real Estate,90.45,46395998172,false,8,0.62,,unknown,unknown,unknown,,,542,6,5
+2026-08-31,STT,Finance,192.04,52753726951,false,11,39,,unknown,unknown,unknown,,,52000,6,5
+2026-08-31,VEEV,Technology,288.495,46709893681,false,14,0.19,,unknown,unknown,unknown,,,7928,6,5
+2026-08-31,UAL,Consumer Discretionary,108.16,35106980780,false,10,0.44,,unknown,unknown,unknown,,,113200,6,5
+2026-08-31,ZS,Technology,188.75,30522672844,false,11,0.14,,unknown,unknown,unknown,,,7923,6,5
+2026-08-31,RMD,Health Care,240.845,34742446639,false,12,0.14,,unknown,unknown,unknown,,,11370,6,5
+2026-08-31,SYY,Consumer Discretionary,80.7556,38689686230,false,8,0.81,,unknown,unknown,unknown,,,75000,6,5
+2026-08-31,MDB,Technology,448.29,36056828555,false,12,2.62,,unknown,unknown,unknown,,,5636,6,5
+2026-08-31,KEYS,Industrials,319.62,54621577520,false,13,0.33,,unknown,unknown,unknown,,,16800,6,5
+2026-08-31,EXPE,Consumer Discretionary,319.25,36552813202,false,11,0.59,,unknown,unknown,unknown,,,16000,6,5
+2026-08-31,LYV,Consumer Discretionary,178.95,42166679247,false,6,0.24,,unknown,unknown,unknown,,,34700,6,5
+2026-08-31,KMB,Consumer Discretionary,108.08,35945142427,false,10,2.28,,unknown,unknown,unknown,,,36000,6,5
+2026-08-31,FOXA,Industrials,67.67,28397725583,false,9,0.37,,unknown,unknown,unknown,,,10550,6,5
+2026-08-31,KVUE,Consumer Discretionary,18.895,36293014659,false,10,0.06,,unknown,unknown,unknown,,,22000,6,5
+2026-08-31,HPE,Technology,52.8577,69994352452,false,8,1.03,,unknown,unknown,unknown,,,67000,6,5
+2026-08-31,RJF,Finance,178.95,34423128183,false,11,2.39,,unknown,unknown,unknown,,,19500,6,5
+2026-08-31,VIK,Consumer Discretionary,86.64,38622902419,false,11,0.58,,unknown,unknown,unknown,,,13000,6,5
+2026-08-31,NTRA,Health Care,319.91,46113161425,false,13,2.38,,unknown,unknown,unknown,,,6140,6,5
+2026-08-31,FITB,Finance,53.86,48845233497,false,10,9.46,,unknown,unknown,unknown,,,18676,6,5
+2026-08-31,MTB,Finance,234.335,33841784756,false,8,7.11,,unknown,unknown,unknown,,,22278,6,5
+2026-08-31,TER,Industrials,350.74,54834954655,false,13,0.11,,unknown,unknown,unknown,,,6600,6,5
+2026-08-31,HUM,Health Care,384.71,46196095291,false,8,8.84,,unknown,unknown,unknown,,,67060,6,5
+2026-08-31,SYF,Finance,77.04,28663313498,false,8,3.96,,unknown,unknown,unknown,,,20000,6,5
+2026-08-31,VRSK,Industrials,194.79,25353089577,false,16,0.51,,unknown,unknown,unknown,,,8000,6,5
+2026-08-31,STRF,Technology,102.175,39258266108,false,11,0.56,,unknown,unknown,unknown,,,1539,6,5
+2026-08-31,LPLA,Finance,371.72,29270084039,false,12,0.36,,unknown,unknown,unknown,,,10099,6,5
+2026-08-31,IBKR,Finance,96.02,43504565979,false,14,0.43,,unknown,unknown,unknown,,,3182,6,5
+2026-08-31,FOX,Industrials,60.42,25355262003,false,9,0.39,,unknown,unknown,unknown,,,10550,6,5
+2026-08-31,KHC,Consumer Staples,25.685,30457883224,false,7,1.08,,unknown,unknown,unknown,,,35000,6,5
+2026-08-31,ALAB,Technology,293.9,50987272066,false,12,0.4,,unknown,unknown,unknown,,,756,6,5
+2026-08-31,ADM,Consumer Staples,79.995,38554356842,false,12,1,,unknown,unknown,unknown,,,41496,6,5
+2026-08-31,LITE,Telecommunications,906.33,81297801000,false,13,0.41,,unknown,unknown,unknown,,,13757,6,5
+2026-08-31,BRO,Finance,72.17,24148829465,false,11,0.6,,unknown,unknown,unknown,,,22888,6,5
+2026-08-31,AGNCN,Real Estate,25.8833,30684171937,false,8,0.56,,unknown,unknown,unknown,,,54,6,5
+2026-08-31,AGNCO,Real Estate,25.63,30383889487,false,13,0.4,,unknown,unknown,unknown,,,54,6,5
+2026-08-31,EFX,Finance,189.605,22275723706,false,13,0.93,,unknown,unknown,unknown,,,15000,6,5
+2026-08-31,FCNCA,Finance,2161.44,24409401293,false,9,1.44,,unknown,unknown,unknown,,,17876,6,5
+2026-08-31,AGNCM,Real Estate,25.09,29743729505,false,13,2.36,,unknown,unknown,unknown,,,54,6,5
+2026-08-31,AGNCP,Real Estate,25.45,30170502826,false,14,0.67,,unknown,unknown,unknown,,,54,6,5
+2026-08-31,BR,Real Estate,182.53,20812398789,false,13,0.17,,unknown,unknown,unknown,,,16000,6,5
+2026-08-31,NTRS,Finance,186.16,34059024362,false,13,0.96,,unknown,unknown,unknown,,,23800,6,5
+2026-08-31,DXCM,Health Care,90.34,34090771510,false,8,0.54,,unknown,unknown,unknown,,,11100,6,5
+2026-08-31,CRDO,Technology,227.58,42770171288,false,11,0.3,,unknown,unknown,unknown,,,807,6,5
+2026-08-31,ZM,Technology,96.945,28286971863,false,10,0.98,,unknown,unknown,unknown,,,7438,6,5
+2026-08-31,BIIB,Health Care,218.74,32319709523,false,15,0.39,,unknown,unknown,unknown,,,7500,6,5
+2026-08-31,CQP,Utilities,69.36,33574242349,false,12,0.75,,unknown,unknown,unknown,,,1717,6,5
+2026-08-31,CINF,Finance,170.46,26161867551,false,7,1.25,,unknown,unknown,unknown,,,5705,6,5
+2026-08-31,CFG,Finance,68.76,28960115943,false,13,1.21,,unknown,unknown,unknown,,,17398,6,5
+2026-08-31,STLD,Industrials,233.81,33511540255,false,9,0.52,,unknown,unknown,unknown,,,14400,6,5
+2026-08-31,RIVN,Industrials,16.085,23288838234,false,9,3.31,,unknown,unknown,unknown,,,15232,6,5
+2026-08-31,AWK,Utilities,137.74,27372930945,false,12,0.49,,unknown,unknown,unknown,,,7000,6,5
+2026-08-31,VLTO,Industrials,98.89,24108723788,false,12,1.95,,unknown,unknown,unknown,,,17000,6,5
+2026-08-31,GIS,Consumer Staples,41.605,22243259183,false,11,0.84,,unknown,unknown,unknown,,,30000,6,5
+2026-08-31,STE,Health Care,232.015,22621488022,false,11,0.13,,unknown,unknown,unknown,,,17937,6,5
+2026-08-31,AFRM,Finance,73.56,24820707591,false,14,0.95,,unknown,unknown,unknown,,,2358,6,5
+2026-08-31,TPG,Finance,53.67,20282900171,false,11,1.54,,unknown,unknown,unknown,,,1900,6,5
+2026-08-31,DLTR,Consumer Discretionary,125.286,23507449641,false,14,0.01,,unknown,unknown,unknown,,,153032,6,5
+2026-08-31,RF,Finance,29.9599,25523722807,false,10,0.11,,unknown,unknown,unknown,,,19969,6,5
+2026-08-31,HAL,Energy,36.74,30609209684,false,9,1.78,,unknown,unknown,unknown,,,46000,6,5
+2026-08-31,OWL,Finance,12.165,18966356893,false,16,0.08,,unknown,unknown,unknown,,,1365,6,5
+2026-08-31,PHM,Consumer Discretionary,127.2,23843963088,false,14,0.39,,unknown,unknown,unknown,,,6506,6,5
+2026-08-31,KEY,Finance,21.695,23151353979,false,8,3.43,,unknown,unknown,unknown,,,17883,6,5
+2026-08-31,WAT,Industrials,411.66,40444817374,false,12,1.55,,unknown,unknown,unknown,,,7900,6,5
+2026-08-31,TROW,Finance,110.66,23605531961,false,13,1.9,,unknown,unknown,unknown,,,7773,6,5
+2026-08-31,VRSN,Technology,289.17,26112051000,false,14,5.79,,unknown,unknown,unknown,,,928,6,5
+2026-08-31,RPRX,Health Care,61.28,35236073781,false,10,0.8,,unknown,unknown,unknown,,,100,6,5
+2026-08-31,WSM,Consumer Discretionary,227.265,26759683549,false,8,1.65,,unknown,unknown,unknown,,,19800,6,5
+2026-08-31,DVN,Energy,47.75,52525000000,false,11,0.44,,unknown,unknown,unknown,,,2200,6,5
+2026-08-31,FWONA,Industrials,92.29,23137886081,false,11,6.48,,unknown,unknown,unknown,,,1674,6,5
+2026-08-31,DRI,Consumer Discretionary,215.065,24534178403,false,11,0.32,,unknown,unknown,unknown,,,209931,6,5
+2026-08-31,NTAP,Technology,186.64,36625163220,false,11,0.14,,unknown,unknown,unknown,,,11700,6,5
+2026-08-31,SSNC,Technology,83.145,19510389642,false,16,0.79,,unknown,unknown,unknown,,,28800,6,5
+2026-08-31,CPAY,Real Estate,403.1,26467384357,false,15,0.32,,unknown,unknown,unknown,,,11800,6,5
+2026-08-31,TOST,Technology,34.045,19678010000,false,11,2.83,,unknown,unknown,unknown,,,6500,6,5
+2026-08-31,HPQ,Technology,30.39,27405427548,false,14,4.75,,unknown,unknown,unknown,,,55000,6,5
+2026-08-31,TWLO,Technology,237.28,36440328202,false,10,6.75,,unknown,unknown,unknown,,,5587,6,5
+2026-08-31,PTC,Technology,157.48,17087565982,false,11,0.13,,unknown,unknown,unknown,,,7642,6,5
+2026-08-31,CASY,Consumer Discretionary,755.82,27969054099,false,15,3.71,,unknown,unknown,unknown,,,49848,6,5
+2026-08-31,IP,Basic Materials,38.33,20298414075,false,8,1.64,,unknown,unknown,unknown,,,62602,6,5
+2026-08-31,IOT,Technology,41.06,23926075967,false,11,2.4,,unknown,unknown,unknown,,,4100,6,5
+2026-08-31,LH,Health Care,332.815,26991296500,false,7,0.16,,unknown,unknown,unknown,,,71000,6,5
+2026-08-31,HUBS,Technology,262.06,13067936634,false,13,1.48,,unknown,unknown,unknown,,,8882,6,5
+2026-08-31,ILMN,Health Care,214.61,32406110000,false,10,8.37,,unknown,unknown,unknown,,,10080,6,5
+2026-08-31,CHD,Consumer Discretionary,99.78,23668205840,false,9,3.05,,unknown,unknown,unknown,,,5550,6,5
+2026-08-31,EXPD,Industrials,190.5,24763213491,false,13,114.27,,unknown,unknown,unknown,,,19800,6,5
+2026-08-31,CNC,Health Care,63.75,31492181250,false,14,1.08,,unknown,unknown,unknown,,,61100,6,5
+2026-08-31,TYL,Technology,381.05,15604864008,false,16,0.15,,unknown,unknown,unknown,,,7800,6,5
+2026-08-31,WST,Health Care,341.685,24046342239,false,13,66,,unknown,unknown,unknown,,,10800,6,5
+2026-08-31,RGLD,Industrials,260.92,22107192448,false,9,6.34,,unknown,unknown,unknown,,,39,6,5
+2026-08-31,INCY,Health Care,123.485,25030131165,false,7,2.02,,unknown,unknown,unknown,,,2844,6,5
+2026-08-31,PFG,Finance,110.61,23682114341,false,14,3.01,,unknown,unknown,unknown,,,19700,6,5
+2026-08-31,DGX,Health Care,240.985,26598324160,false,8,1.23,,unknown,unknown,unknown,,,57000,6,5
+2026-08-31,U,Technology,41.97,18470532518,false,9,0.69,,unknown,unknown,unknown,,,4412,6,5
+2026-08-31,CRCL,Finance,92.97,23602840657,false,13,1.02,,unknown,unknown,unknown,,,1100,6,5
+2026-08-31,FIG,Technology,27.805,14820339352,false,10,21.96,,unknown,unknown,unknown,,,1886,6,5
+2026-08-31,GPN,Real Estate,90.07,23834178387,false,8,0.92,,unknown,unknown,unknown,,,26000,6,5
+2026-08-31,JBHT,Industrials,262.37,24640462545,false,12,0.6,,unknown,unknown,unknown,,,31750,6,5
+2026-08-31,PKG,Consumer Discretionary,237.04,21119860795,false,11,0.98,,unknown,unknown,unknown,,,16800,6,5
+2026-08-31,SNA,Consumer Discretionary,387.12,20024604243,false,12,0.21,,unknown,unknown,unknown,,,13000,6,5
+2026-08-31,SMCI,Technology,37.345,24155955119,false,11,0.38,,unknown,unknown,unknown,,,6238,6,5
+2026-08-31,IT,Consumer Discretionary,198.12,12511075125,false,11,0.39,,unknown,unknown,unknown,,,20244,6,5
+2026-08-31,CDW,Technology,150.44,18807621567,false,10,0.04,,unknown,unknown,unknown,,,14800,6,5
+2026-08-31,ZBH,Health Care,99.945,19063278327,false,12,0.46,,unknown,unknown,unknown,,,17000,6,5
+2026-08-31,FTV,Industrials,59.265,17899040587,false,12,0.71,,unknown,unknown,unknown,,,10000,6,5
+2026-08-31,PINS,Technology,21.615,12240856079,false,11,0.43,,unknown,unknown,unknown,,,5265,6,5
+2026-08-31,THC,Health Care,265.2,21353638800,false,10,7.29,,unknown,unknown,unknown,,,99000,6,5
+2026-08-31,GPC,Consumer Discretionary,136.51,18819235565,false,12,3.23,,unknown,unknown,unknown,,,65000,6,5
+2026-08-31,GWRE,Technology,206.77,17214918384,false,9,0.16,,unknown,unknown,unknown,,,3772,6,5
+2026-08-31,DD,Industrials,134.945,18223374261,false,9,0.79,,unknown,unknown,unknown,,,15000,6,5
+2026-08-31,IFF,Industrials,86.17,21986272312,false,8,3.44,,unknown,unknown,unknown,,,21500,6,5
+2026-08-31,GDDY,Technology,97.14,12302557967,false,13,0.19,,unknown,unknown,unknown,,,5845,6,5
+2026-08-31,GEN,Technology,30.835,18457431132,false,13,34.93,,unknown,unknown,unknown,,,3900,6,5
+2026-08-31,USFD,Consumer Discretionary,105.95,22920240102,false,8,0.79,,unknown,unknown,unknown,,,30000,6,5
+2026-08-31,VG,Utilities,14.6899,36726113972,false,16,0.74,,unknown,unknown,unknown,,,2000,6,5
+2026-08-31,TRU,Finance,84.845,16256302000,false,13,2.68,,unknown,unknown,unknown,,,13500,6,5
+2026-08-31,ESS,Real Estate,281.77,18108918057,false,7,0.19,,unknown,unknown,unknown,,,1689,6,5
+2026-08-31,INVH,Finance,29.05,17157604715,false,9,2.2,,unknown,unknown,unknown,,,1725,6,5
+2026-08-31,NWS,Consumer Discretionary,34.445,18636558116,false,12,1.98,,unknown,unknown,unknown,,,21700,6,5
+2026-08-31,CRS,Industrials,468.78,23232064569,false,11,0.79,,unknown,unknown,unknown,,,4500,6,5
+2026-08-31,ROKU,Telecommunications,157.14,23322556789,false,9,0.32,,unknown,unknown,unknown,,,3600,6,5
+2026-08-31,JLL,Finance,368.67,16961659865,false,13,34.89,,unknown,unknown,unknown,,,113200,6,5
+2026-08-31,J,Industrials,150.855,17655859662,false,8,1.22,,unknown,unknown,unknown,,,43000,6,5
+2026-08-31,SN,Consumer Discretionary,191.375,26959293264,false,10,0.17,,unknown,unknown,unknown,,,4143,6,5
+2026-08-31,MEDP,Health Care,593.68,16570591340,false,11,4.52,,unknown,unknown,unknown,,,6200,6,5
+2026-08-31,WES,Utilities,47.79,19745613799,false,11,0.62,,unknown,unknown,unknown,,,1704,6,5
+2026-08-31,EWBC,Finance,126.925,17390229823,false,8,0.65,,unknown,unknown,unknown,,,3350,6,5
+2026-08-31,CRBG,Finance,32.735,14592363508,false,12,0.86,,unknown,unknown,unknown,,,4800,6,5
+2026-08-31,ATI,Industrials,203.495,27709992089,false,9,0.37,,unknown,unknown,unknown,,,7600,6,5
+2026-08-31,NLY,Real Estate,22.935,17286440727,false,14,0.16,,unknown,unknown,unknown,,,212,6,5
+2026-08-31,RBRK,Technology,91.395,18811701790,false,14,2.08,,unknown,unknown,unknown,,,3797,6,5
+2026-08-31,OKTA,Technology,170.08,29733543434,false,11,0.13,,unknown,unknown,unknown,,,6366,6,5
+2026-08-31,RVMD,Health Care,203.6,43638894705,false,13,45.79,,unknown,unknown,unknown,,,883,6,5
+2026-08-31,RS,Industrials,385.675,19690465500,false,10,1.45,,unknown,unknown,unknown,,,15700,6,5
+2026-08-31,LOGI,Technology,98.73,14136984018,false,12,0.31,,unknown,unknown,unknown,,,7300,6,5
+2026-08-31,OMC,Consumer Discretionary,87.775,24080717253,false,14,0.11,,unknown,unknown,unknown,,,120000,6,5
+2026-08-31,FFIV,Telecommunications,403.86,22869453723,false,12,0.48,,unknown,unknown,unknown,,,6578,6,5
+2026-08-31,ITT,Industrials,201.7,18031980000,false,14,0.21,,unknown,unknown,unknown,,,11600,6,5
+2026-08-31,PSKY,Industrials,10.985,12324574382,false,9,0.14,,unknown,unknown,unknown,,,17600,6,5
+2026-08-31,SLMBP,Finance,75.045,14104479463,false,8,0.69,,unknown,unknown,unknown,,,1788,6,5
+2026-08-31,NWSA,Consumer Discretionary,30.785,16656305461,false,11,2.32,,unknown,unknown,unknown,,,21700,6,5
+2026-08-31,BBIO,Health Care,75.96,14849228525,false,9,1.31,,unknown,unknown,unknown,,,1003,6,5
+2026-08-31,BBY,Consumer Discretionary,79.74,16806570627,false,9,0.52,,unknown,unknown,unknown,,,82000,6,5
+2026-08-31,NBIX,Health Care,154,15653973874,false,11,1.16,,unknown,unknown,unknown,,,2000,6,5
+2026-08-31,ARCC,Finance,20.135,14457389984,false,10,0.68,,unknown,unknown,unknown,,,4250,6,5
+2026-08-31,PFGC,Consumer Discretionary,98.955,15588681182,false,6,0.26,,unknown,unknown,unknown,,,44000,6,5
+2026-08-31,NTNX,Technology,68.225,18442616727,false,13,3.69,,unknown,unknown,unknown,,,7800,6,5
+2026-08-31,VTRS,Health Care,16.385,18819661307,false,12,0.69,,unknown,unknown,unknown,,,30000,6,5
+2026-08-31,BALL,Industrials,62.88,16644547088,false,11,0.27,,unknown,unknown,unknown,,,16000,6,5
+2026-08-31,AVY,Consumer Discretionary,176.11,13347049688,false,9,2.15,,unknown,unknown,unknown,,,35000,6,5
+2026-08-31,DOCU,Technology,65.46,12499234040,false,13,3.57,,unknown,unknown,unknown,,,7044,6,5
+2026-08-31,VLYPP,Finance,25.2,13925651695,false,9,0.5,,unknown,unknown,unknown,,,3675,6,5
+2026-08-31,SOLV,Health Care,91.01,15492061576,false,8,1.07,,unknown,unknown,unknown,,,20584,6,5
+2026-08-31,EQH,Finance,50.38,13755511210,false,11,0.43,,unknown,unknown,unknown,,,8000,6,5
+2026-08-31,ALLE,Consumer Discretionary,156.4189,13301360526,false,14,0.88,,unknown,unknown,unknown,,,13300,6,5
+2026-08-31,KIM,Real Estate,23.655,15867522618,false,6,0.67,,unknown,unknown,unknown,,,710,6,5
+2026-08-31,COKE,Consumer Staples,193.5,12880190889,false,13,1.97,,unknown,unknown,unknown,,,17000,6,5
+2026-08-31,RYAN,Finance,42.35,10833756145,false,13,0.59,,unknown,unknown,unknown,,,6110,6,5
+2026-08-31,NDSN,Industrials,322.35,17954690630,false,11,0.69,,unknown,unknown,unknown,,,8000,6,5
+2026-08-31,MDGL,Health Care,533.47,12325358097,false,13,1.17,,unknown,unknown,unknown,,,915,6,5
+2026-08-31,LECO,Industrials,282.395,15392153248,false,8,4.67,,unknown,unknown,unknown,,,12000,6,5
+2026-08-31,HL,Industrials,19.825,13317809145,false,14,2.26,,unknown,unknown,unknown,,,1865,6,5
+2026-08-31,RGA,Finance,244.77,15983888542,false,12,1.59,,unknown,unknown,unknown,,,4300,6,5
+2026-08-31,IEX,Industrials,228.895,16874115595,false,14,0.94,,unknown,unknown,unknown,,,8700,6,5
+2026-08-31,JKHY,Technology,167.705,11915571060,false,6,0.04,,unknown,unknown,unknown,,,7240,6,5
+2026-08-31,MAS,Industrials,72.2,14236932446,false,8,0.15,,unknown,unknown,unknown,,,18000,6,5
+2026-08-31,DT,Technology,54.005,15607559923,false,12,0.02,,unknown,unknown,unknown,,,5600,6,5
+2026-08-31,W,Consumer Discretionary,98.19,13448894793,false,16,0.63,,unknown,unknown,unknown,,,12800,6,5
+2026-08-31,UNM,Finance,93.18,14751027438,false,8,0.48,,unknown,unknown,unknown,,,10910,6,5
+2026-08-31,ERIE,Finance,256.39,11842415145,false,9,0.27,,unknown,unknown,unknown,,,6667,6,5
+2026-08-31,GH,Health Care,159.85,21451257775,false,11,0.87,,unknown,unknown,unknown,,,2506,6,5
+2026-08-31,CNA,Finance,48.73,13186383221,false,11,0.62,,unknown,unknown,unknown,,,6600,6,5
+2026-08-31,CLH,Industrials,313.745,16561735124,false,12,0.45,,unknown,unknown,unknown,,,22591,6,5
+2026-08-31,LAMR,Real Estate,148.71,15101453508,false,9,0.03,,unknown,unknown,unknown,,,3500,6,5
+2026-08-31,HST,Real Estate,21.805,14939137520,false,11,2.01,,unknown,unknown,unknown,,,162,6,5
+2026-08-31,SNX,Technology,251.2201,20087245673,false,10,0.87,,unknown,unknown,unknown,,,30000,6,5
+2026-08-31,BEN,Finance,34.135,17343205323,false,11,4.85,,unknown,unknown,unknown,,,9800,6,5
+2026-08-31,ZBRA,Industrials,352.615,16682448376,false,9,0.59,,unknown,unknown,unknown,,,10700,6,5
+2026-08-31,PAA,Energy,25.44,17949610742,false,13,3.26,,unknown,unknown,unknown,,,3900,6,5
+2026-08-31,EXEL,Health Care,54.43,13486757496,false,10,4.39,,unknown,unknown,unknown,,,1077,6,5
+2026-08-31,WCC,Consumer Discretionary,338.84,16512640249,false,10,1.01,,unknown,unknown,unknown,,,21000,6,5
+2026-08-31,CDE,Basic Materials,20.765,21345070233,false,12,5.67,,unknown,unknown,unknown,,,2620,6,5
+2026-08-31,MRNA,Health Care,143.39,57246434124,false,14,0.91,,unknown,unknown,unknown,,,4700,6,5
+2026-08-31,CF,Industrials,128.17,19397008122,false,12,0.38,,unknown,unknown,unknown,,,2900,6,5
+2026-08-31,FHN,Finance,24.44,11579113742,false,13,0.3,,unknown,unknown,unknown,,,7404,6,5
+2026-08-31,CART,Real Estate,50.555,11703485887,false,15,0.62,,unknown,unknown,unknown,,,3600,6,5
+2026-08-31,AIZ,Finance,281.62,13890559263,false,11,0.19,,unknown,unknown,unknown,,,14800,6,5
+2026-08-31,IVZ,Finance,32.715,14443665303,false,9,1.68,,unknown,unknown,unknown,,,7499,6,5
+2026-08-31,CACI,Technology,627.255,13862046335,false,11,0.59,,unknown,unknown,unknown,,,27000,6,5
+2026-08-31,SAIL,Technology,20.34,11536502159,false,12,0.24,,unknown,unknown,unknown,,,3229,6,5
+2026-08-31,CCK,Industrials,116.51,12671687137,false,9,0.25,,unknown,unknown,unknown,,,23000,6,5
+2026-08-31,BSY,Technology,37.21,11240876400,false,10,0.81,,unknown,unknown,unknown,,,5800,6,5
+2026-08-31,AMH,Real Estate,33.205,11926570041,false,12,23.01,,unknown,unknown,unknown,,,1598,6,5
+2026-08-31,SWK,Consumer Discretionary,96.12,14515719533,false,14,0.62,,unknown,unknown,unknown,,,43500,6,5
+2026-08-31,PCOR,Technology,62.845,9549633217,false,11,1.29,,unknown,unknown,unknown,,,4421,6,5
+2026-08-31,HAS,Consumer Discretionary,93.56,13196120333,false,7,160.03,,unknown,unknown,unknown,,,4520,6,5
+2026-08-31,ORI,Finance,41.83,10099139127,false,11,0.64,,unknown,unknown,unknown,,,9500,6,5
+2026-08-31,AFG,Finance,142.7,11832893198,false,12,0.64,,unknown,unknown,unknown,,,8500,6,5
+2026-08-31,BMRN,Health Care,65.71,12719731704,false,11,1.36,,unknown,unknown,unknown,,,3221,6,5
+2026-08-31,AYI,Consumer Discretionary,332.0625,9940472576,false,9,0.88,,unknown,unknown,unknown,,,13800,6,5
+2026-08-31,PR,Energy,23.095,19343379585,false,10,0.37,,unknown,unknown,unknown,,,515,6,5
+2026-08-31,GL,Finance,173.42,13327231099,false,7,0.81,,unknown,unknown,unknown,,,3695,6,5
+2026-08-31,TXRH,Consumer Discretionary,195.92,12860370222,false,11,0.58,,unknown,unknown,unknown,,,101000,6,5
+2026-08-31,ELAN,Health Care,23.98,11980931483,false,10,1.69,,unknown,unknown,unknown,,,9900,6,5
+2026-08-31,DOC,Real Estate,20.685,14262871373,false,10,3.36,,unknown,unknown,unknown,,,411,6,5
+2026-08-31,TEM,Technology,64.38,11616389591,false,12,1.37,,unknown,unknown,unknown,,,3800,6,5
+2026-08-31,BXP,Real Estate,68.105,10873750271,false,14,40.61,,unknown,unknown,unknown,,,826,6,5
+2026-08-31,RVTY,Industrials,127.57,14235077176,false,10,3.4,,unknown,unknown,unknown,,,11000,6,5
+2026-08-31,FDS,Technology,310.75,11051992487,false,12,1.68,,unknown,unknown,unknown,,,12800,6,5
+2026-08-31,SCI,Consumer Discretionary,82.7,11298430500,false,15,14.51,,unknown,unknown,unknown,,,25187,6,5
+2026-08-31,WTRG,Utilities,41.01,11637760591,false,11,0.69,,unknown,unknown,unknown,,,3303,6,5
+2026-08-31,PAG,Consumer Discretionary,217.555,14285286336,false,11,0.84,,unknown,unknown,unknown,,,27700,6,5
+2026-08-31,SUN,Energy,74.66,15292206801,false,12,0.93,,unknown,unknown,unknown,,,8910,6,5
+2026-08-31,EHC,Health Care,121.37,11973561216,false,11,1.62,,unknown,unknown,unknown,,,42300,6,5
+2026-08-31,CR,Industrials,204.25,11805722713,false,12,1.17,,unknown,unknown,unknown,,,7100,6,5
+2026-08-31,SJM,Consumer Staples,132.39,14142321197,false,12,0.18,,unknown,unknown,unknown,,,9000,6,5
+2026-08-31,MANH,Technology,223.04,13004340955,false,12,7.12,,unknown,unknown,unknown,,,4370,6,5
+2026-08-31,AR,Energy,38.57,11857922230,false,13,0.22,,unknown,unknown,unknown,,,632,6,5
+2026-08-31,FIVE,Consumer Discretionary,248.14,13720988397,false,11,0.71,,unknown,unknown,unknown,,,24600,6,5
+2026-08-31,LSCC,Technology,114.875,16315727496,false,13,0.91,,unknown,unknown,unknown,,,1174,6,5
+2026-08-31,SEIC,Finance,111.09,13332930928,false,6,6.79,,unknown,unknown,unknown,,,5029,6,5
+2026-08-31,MGM,Consumer Discretionary,41.6562,10760760509,false,7,0.44,,unknown,unknown,unknown,,,78000,6,5
+2026-08-31,TTAN,Technology,99,9444360321,false,13,2.4,,unknown,unknown,unknown,,,3414,6,5
+2026-08-31,UHAL,Consumer Discretionary,67.99,13216813725,false,9,0.01,,unknown,unknown,unknown,,,34700,6,5
+2026-08-31,ARWR,Health Care,81.21,11471275265,false,10,0.83,,unknown,unknown,unknown,,,711,6,5
+2026-08-31,CRL,Health Care,287.545,13727073949,false,11,0.03,,unknown,unknown,unknown,,,19700,6,5
+2026-08-31,AES,Utilities,14.73,10508951020,false,9,1.5,,unknown,unknown,unknown,,,8336,6,5
+2026-08-31,AIT,Consumer Discretionary,321.2101,11788043206,false,11,0.4,,unknown,unknown,unknown,,,6900,6,5
+2026-08-31,BAX,Health Care,26.0603,13473070833,false,12,0.39,,unknown,unknown,unknown,,,37500,6,5
+2026-08-31,CHYM,Finance,32.48,12296444405,false,13,12.36,,unknown,unknown,unknown,,,1519,6,5
+2026-08-31,SITM,Technology,555.13,16693334215,false,12,0.51,,unknown,unknown,unknown,,,441,6,5
+2026-08-31,KVYO,Technology,20.51,5839759733,false,13,3.28,,unknown,unknown,unknown,,,2368,6,5
+2026-08-31,ARMK,Consumer Discretionary,56.335,14851316854,false,7,0.16,,unknown,unknown,unknown,,,278390,6,5
+2026-08-31,DDS,Consumer Discretionary,633.56,9895872047,false,8,0.47,,unknown,unknown,unknown,,,29100,6,5
+2026-08-31,BWA,Consumer Discretionary,64.39,13114076534,false,13,1.35,,unknown,unknown,unknown,,,37500,6,5
+2026-08-31,SWKS,Technology,65.25,9818349026,false,11,0.34,,unknown,unknown,unknown,,,10000,6,5
+2026-08-31,SSB,Finance,104.87,10169719381,false,10,0.17,,unknown,unknown,unknown,,,6190,6,5
+2026-08-31,WTFC,Finance,150.91,10181289080,false,10,1.19,,unknown,unknown,unknown,,,5902,6,5
+2026-08-31,WTS,Industrials,365.69,12207847555,false,14,0.22,,unknown,unknown,unknown,,,5700,6,5
+2026-08-31,RGEN,Health Care,178.18,10055698950,false,7,0.34,,unknown,unknown,unknown,,,2000,6,5
+2026-08-31,OC,Industrials,140.31,11091320712,false,11,0.23,,unknown,unknown,unknown,,,25000,6,5
+2026-08-31,TECH,Health Care,72.33,11342663155,false,16,2.34,,unknown,unknown,unknown,,,3000,6,5
+2026-08-31,REXR,Real Estate,37.0355,8258476666,false,11,1.23,,unknown,unknown,unknown,,,256,6,5
+2026-08-31,KNSL,Finance,373.92,8517308676,false,11,3.74,,unknown,unknown,unknown,,,720,6,5
+2026-08-31,UMBF,Finance,142.001,10784980210,false,9,0.84,,unknown,unknown,unknown,,,5222,6,5
+2026-08-31,FLS,Industrials,79.36,10087670221,false,10,1.36,,unknown,unknown,unknown,,,16000,6,5
+2026-08-31,AHR,Real Estate,54.99,12822854148,false,11,10.16,,unknown,unknown,unknown,,,121,6,5
+2026-08-31,PAYC,Technology,238.41,10745524686,false,13,2.69,,unknown,unknown,unknown,,,5770,6,5
+2026-08-31,MORN,Finance,216.74,8130691379,false,11,1.73,,unknown,unknown,unknown,,,10937,6,5
+2026-08-31,PATH,Technology,18.64,9657761758,false,9,0.05,,unknown,unknown,unknown,,,3981,6,5
+2026-08-31,ONB,Finance,25.59,9789966300,false,9,0.42,,unknown,unknown,unknown,,,4971,6,5
+2026-08-31,HSIC,Health Care,89.07,9926543496,false,8,2.13,,unknown,unknown,unknown,,,25000,6,5
+2026-08-31,TTEK,Consumer Discretionary,36.33,9302094069,false,11,14.35,,unknown,unknown,unknown,,,25000,6,5
+2026-08-31,FRT,Real Estate,115.99,10078270537,false,7,1.24,,unknown,unknown,unknown,,,320,6,5
+2026-08-31,ZION,Finance,66.9,9764279450,false,10,0.7,,unknown,unknown,unknown,,,9195,6,5
+2026-08-31,CORT,Health Care,112.775,12190796722,false,8,3.63,,unknown,unknown,unknown,,,730,6,5
+2026-08-31,LNC,Finance,42.85,8203518348,false,9,0.51,,unknown,unknown,unknown,,,9423,6,5
+2026-08-31,KNX,Industrials,67.735,11024277660,false,12,4.68,,unknown,unknown,unknown,,,37100,6,5
+2026-08-31,APA,Energy,42.72,14967016507,false,12,0.62,,unknown,unknown,unknown,,,1791,6,5
+2026-08-31,APPF,Technology,233.195,8259065449,false,9,5.63,,unknown,unknown,unknown,,,1702,6,5
+2026-08-31,IDCC,Miscellaneous,334.76,8638818903,false,12,0.08,,unknown,unknown,unknown,,,460,6,5
+2026-08-31,MOH,Health Care,198.59,10366398000,false,12,0.85,,unknown,unknown,unknown,,,19000,6,5
+2026-08-31,AM,Utilities,22.27,10570989980,false,13,0.87,,unknown,unknown,unknown,,,632,6,5
+2026-08-31,DINO,Energy,99.61,17709049199,false,11,1.66,,unknown,unknown,unknown,,,5165,6,5
+2026-08-31,SANM,Technology,194.46,10422541848,false,9,0.47,,unknown,unknown,unknown,,,35000,6,5
+2026-08-31,BPOP,Finance,168.51,10747315204,false,10,2.07,,unknown,unknown,unknown,,,9238,6,5
+2026-08-31,ALSN,Consumer Discretionary,126.2,10421348396,false,13,0.13,,unknown,unknown,unknown,,,4000,6,5
+2026-08-31,ARE,Real Estate,50.77,8846549129,false,12,3.36,,unknown,unknown,unknown,,,514,6,5
+2026-08-31,DUOL,Technology,148.16,6931853615,false,14,4.31,,unknown,unknown,unknown,,,900,6,5
+2026-08-31,CPB,Consumer Staples,23.615,7042140428,false,12,2.11,,unknown,unknown,unknown,,,13700,6,5
+2026-08-31,RRC,Energy,41.28,9646290379,false,12,3.06,,unknown,unknown,unknown,,,564,6,5
+2026-08-31,PCTY,Technology,159.07,8439771104,false,13,0.02,,unknown,unknown,unknown,,,6900,6,5
+2026-08-31,LAD,Consumer Discretionary,370.165,8137380134,false,8,1.54,,unknown,unknown,unknown,,,30000,6,5
+2026-08-31,AMG,Finance,370,9568175210,false,7,1.13,,unknown,unknown,unknown,,,5600,6,5
+2026-08-31,PRI,Finance,289.51,8910350599,false,12,0.29,,unknown,unknown,unknown,,,2833,6,5
+2026-08-31,OSK,Industrials,153.855,9498969082,false,10,0.68,,unknown,unknown,unknown,,,18400,6,5
+2026-08-31,CAG,Consumer Staples,15.975,7669080245,false,10,0.06,,unknown,unknown,unknown,,,17400,6,5
+2026-08-31,DOCS,Technology,26.695,4758276436,false,14,1.74,,unknown,unknown,unknown,,,880,6,5
+2026-08-31,CFR,Finance,160.71,9987931237,false,12,0.04,,unknown,unknown,unknown,,,6008,6,5
+2026-08-31,BIO,Industrials,386.4,10331630820,false,10,4.54,,unknown,unknown,unknown,,,7450,6,5
+2026-08-31,UGI,Utilities,37.96,8142228947,false,10,0.94,,unknown,unknown,unknown,,,9400,6,5
+2026-08-31,OMF,Finance,62.48,7187790983,false,10,3.28,,unknown,unknown,unknown,,,9300,6,5
+2026-08-31,ESTC,Technology,97.24,10108256793,false,11,3.76,,unknown,unknown,unknown,,,4019,6,5
+2026-08-31,HALO,Health Care,106.29,12063702420,false,7,1.2,,unknown,unknown,unknown,,,423,6,5
+2026-08-31,ATR,Industrials,131.28,8346930615,false,9,0.63,,unknown,unknown,unknown,,,14000,6,5
+2026-08-31,DVA,Health Care,175.84,11218592000,false,6,1.72,,unknown,unknown,unknown,,,78000,6,5
+2026-08-31,HQY,Real Estate,95.87,7929915428,false,13,0.24,,unknown,unknown,unknown,,,2814,6,5
+2026-08-31,GSAT,Consumer Discretionary,81.805,10598933119,false,7,1.88,,unknown,unknown,unknown,,,477,6,5
+2026-08-31,CAI,Health Care,24.95,7050749891,false,9,13.5,,unknown,unknown,unknown,,,1846,6,5
+2026-08-31,QRVO,Technology,94.56,8342237616,false,10,0.47,,unknown,unknown,unknown,,,5200,6,5
+2026-08-31,R,Consumer Discretionary,244,9356635792,false,13,0.67,,unknown,unknown,unknown,,,51600,6,5
+2026-08-31,FROG,Technology,99.17,12227791012,false,17,0.3,,unknown,unknown,unknown,,,1800,6,5
+2026-08-31,AGCO,Industrials,117.94,8259542118,false,9,0.01,,unknown,unknown,unknown,,,22000,6,5
+2026-08-31,ONTO,Industrials,268.66,13184287199,false,12,0.16,,unknown,unknown,unknown,,,1615,6,5
+2026-08-31,LYFT,Real Estate,16.96,6420042623,false,16,1.08,,unknown,unknown,unknown,,,3913,6,5
+2026-08-31,PNFP,Finance,99.71,15067441334,false,14,0.31,,unknown,unknown,unknown,,,3566,6,5
+2026-08-31,HIMS,Health Care,29.48,6878079415,false,9,4.25,,unknown,unknown,unknown,,,2442,6,5
+2026-08-31,AVTR,Industrials,14.415,9749712679,false,11,1.65,,unknown,unknown,unknown,,,13500,6,5
+2026-08-31,TTC,Consumer Discretionary,98.4,9370586146,false,8,1.11,,unknown,unknown,unknown,,,9791,6,5
+2026-08-31,SFM,Consumer Staples,81.7,7618330963,false,10,0.55,,unknown,unknown,unknown,,,36000,6,5
+2026-08-31,HLNE,Finance,107.93,5948091159,false,17,0.53,,unknown,unknown,unknown,,,785,6,5
+2026-08-31,FR,Real Estate,61.51,8154561908,false,10,6.23,,unknown,unknown,unknown,,,152,6,5
+2026-08-31,AN,Consumer Discretionary,202.1675,6683820497,false,9,1.46,,unknown,unknown,unknown,,,24800,6,5
+2026-08-31,BOKF,Finance,136.205,8276751120,false,10,0.48,,unknown,unknown,unknown,,,5034,6,5
+2026-08-31,MTCH,Technology,40.64,9328952030,false,13,0.42,,unknown,unknown,unknown,,,2510,6,5
+2026-08-31,MUSA,Consumer Discretionary,511.82,9407429202,false,9,34.07,,unknown,unknown,unknown,,,16900,6,5
+2026-08-31,NNN,Real Estate,45.13,8661864082,false,14,0.33,,unknown,unknown,unknown,,,85,6,5
+2026-08-31,CBSH,Finance,57.74,8281773958,false,10,0.25,,unknown,unknown,unknown,,,4577,6,5
+2026-08-31,JXN,Finance,133.755,9059058154,false,11,3.69,,unknown,unknown,unknown,,,3890,6,5
+2026-08-31,RYTM,Health Care,104.45,7191599965,false,9,0.69,,unknown,unknown,unknown,,,414,6,5
+2026-08-31,KRYS,Health Care,354.81,10501963001,false,12,0.37,,unknown,unknown,unknown,,,295,6,5
+2026-08-31,BRKR,Industrials,57.09,8698193350,false,10,0.87,,unknown,unknown,unknown,,,11085,6,5
+2026-08-31,DBX,Technology,35.46,8003651246,false,13,10.88,,unknown,unknown,unknown,,,2113,6,5
+2026-08-31,NTSK,Technology,15.35,6200228012,false,16,0.17,,unknown,unknown,unknown,,,3281,6,5
+2026-08-31,VOYA,Finance,101.63,9207306949,false,10,1.95,,unknown,unknown,unknown,,,11000,6,5
+2026-08-31,FCFS,Consumer Discretionary,213.67,9267252506,false,10,3.1,,unknown,unknown,unknown,,,20000,6,5
+2026-08-31,SMTC,Technology,131.34,12257387719,false,11,0.39,,unknown,unknown,unknown,,,1920,6,5
+2026-08-31,SIRI,Consumer Discretionary,28.065,9459782296,false,12,1.18,,unknown,unknown,unknown,,,5119,6,5
+2026-08-31,AXTA,Consumer Discretionary,36.66,7845973090,false,12,6.88,,unknown,unknown,unknown,,,12300,6,5
+2026-08-31,URBN,Consumer Discretionary,80.55,6897905936,false,10,19.74,,unknown,unknown,unknown,,,31000,6,5
+2026-08-31,FSS,Industrials,116.72,7124776836,false,15,0.33,,unknown,unknown,unknown,,,5800,6,5
+2026-08-31,EXLS,Real Estate,38.355,5815097399,false,16,4.55,,unknown,unknown,unknown,,,65000,6,5
+2026-08-31,CLF,Basic Materials,11.585,6609706444,false,7,0.76,,unknown,unknown,unknown,,,25000,6,5
+2026-08-31,MHK,Consumer Discretionary,128.97,8736188561,false,11,1.57,,unknown,unknown,unknown,,,40500,6,5
+2026-08-31,BTSG,Health Care,58.13,11501848329,false,9,2,,unknown,unknown,unknown,,,23500,6,5
+2026-08-31,MKTX,Finance,162.77,5728346868,false,13,82.99,,unknown,unknown,unknown,,,868,6,5
+2026-08-31,PRAX,Health Care,344.99,9632116660,false,13,14.46,,unknown,unknown,unknown,,,168,6,5
+2026-08-31,PB,Finance,71.79,8627490390,false,11,0.71,,unknown,unknown,unknown,,,3941,6,5
+2026-08-31,GKOS,Health Care,178.87,10550456811,false,9,0.02,,unknown,unknown,unknown,,,1094,6,5
+2026-08-31,MTG,Finance,30.775,6312716951,false,11,1.31,,unknown,unknown,unknown,,,542,6,5
+2026-08-31,NEU,Industrials,898.1,8259292229,false,7,2.62,,unknown,unknown,unknown,,,2050,6,5
+2026-08-31,VLY,Finance,13.7,7570691596,false,8,0.02,,unknown,unknown,unknown,,,3675,6,5
+2026-08-31,EAT,Consumer Discretionary,227.52,9502375075,false,7,2.51,,unknown,unknown,unknown,,,85003,6,5
+2026-08-31,FLR,Industrials,54.53,7292900384,false,13,0.29,,unknown,unknown,unknown,,,22995,6,5
+2026-08-31,THG,Finance,226.01,7869718148,false,10,1.57,,unknown,unknown,unknown,,,4900,6,5
+2026-08-31,LFUS,Energy,408.76,10381991824,false,11,0.84,,unknown,unknown,unknown,,,17000,6,5
+2026-08-31,LOAR,Industrials,69.51,6512285619,false,13,0.18,,unknown,unknown,unknown,,,1700,6,5
+2026-08-31,VNO,Real Estate,37.23,6951605369,false,11,2.7,,unknown,unknown,unknown,,,3145,6,5
+2026-08-31,CWST,Utilities,92.44,5882885852,false,13,0.37,,unknown,unknown,unknown,,,5600,6,5
+2026-08-31,MSA,Health Care,187.03,7215297392,false,8,2.35,,unknown,unknown,unknown,,,5300,6,5
+2026-08-31,KYMR,Health Care,117.4,9761882553,false,10,0.97,,unknown,unknown,unknown,,,273,6,5
+2026-08-31,GTLB,Technology,45.785,7733086500,false,14,1.02,,unknown,unknown,unknown,,,2580,6,5
+2026-08-31,FAF,Finance,73.8825,7543403250,false,14,3.06,,unknown,unknown,unknown,,,19102,6,5
+2026-08-31,WAY,Technology,26.4,5062158182,false,11,1.06,,unknown,unknown,unknown,,,1700,6,5
+2026-08-31,FNB,Finance,18.23,6435207720,false,8,0.58,,unknown,unknown,unknown,,,4282,6,5
+2026-08-31,DLB,Miscellaneous,62.04,5811212042,false,12,0.85,,unknown,unknown,unknown,,,2051,6,5
+2026-08-31,MSGS,Consumer Discretionary,384.2701,9253201336,false,13,1.23,,unknown,unknown,unknown,,,1017,6,5
+2026-08-31,TRNO,Finance,65.9949,7191484711,false,10,1.77,,unknown,unknown,unknown,,,47,6,5
+2026-08-31,RITM,Real Estate,10.02,5595238451,false,13,0.13,,unknown,unknown,unknown,,,7240,6,5
+2026-08-31,PCVX,Health Care,60.29,8971470211,false,15,4.46,,unknown,unknown,unknown,,,507,6,5
+2026-08-31,RHP,Real Estate,126.015,8692937480,false,10,31.82,,unknown,unknown,unknown,,,1819,6,5
+2026-08-31,CGNX,Industrials,60.195,10126234169,false,8,2.25,,unknown,unknown,unknown,,,2745,6,5
+2026-08-31,CHE,Health Care,520.605,6804287046,false,9,0.03,,unknown,unknown,unknown,,,15811,6,5
+2026-08-31,PRMB,Consumer Staples,22.72,8232683902,false,10,0.58,,unknown,unknown,unknown,,,12000,6,5
+2026-08-31,HXL,Industrials,93.09,7039787147,false,13,254.22,,unknown,unknown,unknown,,,5563,6,5
+2026-08-31,TKR,Industrials,119.33,8269191798,false,11,0.6,,unknown,unknown,unknown,,,19000,6,5
+2026-08-31,KEX,Consumer Discretionary,139.34,7357152000,false,12,0.46,,unknown,unknown,unknown,,,5233,6,5
+2026-08-31,M,Consumer Discretionary,21.94,5771052711,false,15,0.76,,unknown,unknown,unknown,,,90134,6,5
+2026-08-31,PACS,Health Care,42.1975,6681366987,false,11,0.67,,unknown,unknown,unknown,,,47455,6,5
+2026-08-31,COMP,Technology,10.585,8018372455,false,10,0.22,,unknown,unknown,unknown,,,3200,6,5
+2026-08-31,HR,Real Estate,18.915,6482544260,false,8,0.78,,unknown,unknown,unknown,,,539,6,5
+2026-08-31,RLI,Finance,63.535,5830795649,false,11,0.09,,unknown,unknown,unknown,,,1193,6,5
+2026-08-31,LTH,Consumer Discretionary,42.665,9534004011,false,14,0.03,,unknown,unknown,unknown,,,52000,6,5
+2026-08-31,LW,Consumer Staples,54.49,7491340289,false,13,4.88,,unknown,unknown,unknown,,,10000,6,5
+2026-08-31,ARW,Technology,203.545,10361544325,false,11,0.66,,unknown,unknown,unknown,,,22230,6,5
+2026-08-31,SWX,Utilities,88.68,6424498244,false,10,0.55,,unknown,unknown,unknown,,,2453,6,5
+2026-08-31,ANF,Consumer Discretionary,143.74,6386613995,false,10,11.78,,unknown,unknown,unknown,,,43200,6,5
+2026-08-31,RAL,Industrials,61.21,6772274890,false,5,1.73,,unknown,unknown,unknown,,,7000,6,5
+2026-08-31,ACT,Finance,48.62,6684456084,false,11,0.66,,unknown,unknown,unknown,,,419,6,5
+2026-08-31,KNTK,Utilities,53.69,8718135436,false,14,0.78,,unknown,unknown,unknown,,,500,6,5
+2026-08-31,NOV,Consumer Discretionary,21.13,7532382781,false,12,0.05,,unknown,unknown,unknown,,,31605,6,5
+2026-08-31,DAR,Consumer Staples,62.52,9865838308,false,10,3.04,,unknown,unknown,unknown,,,15000,6,5
+2026-08-31,CVLT,Technology,136.76,5667958573,false,10,0.45,,unknown,unknown,unknown,,,3300,6,5
+2026-08-31,CBC,Uncategorized,32.175,7706077654,false,14,0.33,,unknown,unknown,unknown,,,2971,6,5
+2026-08-31,RDNT,Health Care,75.6,5949512629,false,11,1.01,,unknown,unknown,unknown,,,9276,6,5
+2026-08-31,MC,Finance,67.84,5309773573,false,14,1.81,,unknown,unknown,unknown,,,1416,6,5
+2026-08-31,SLM,Finance,26.27,4937366587,false,9,3.47,,unknown,unknown,unknown,,,1788,6,5
+2026-08-31,HOMB,Finance,29.55,5911466567,false,9,0.18,,unknown,unknown,unknown,,,2543,6,5
+2026-08-31,KMX,Consumer Discretionary,61.845,8776491732,false,8,2.69,,unknown,unknown,unknown,,,27796,6,5
+2026-08-31,PTGX,Health Care,145.21,9396290065,false,8,2.51,,unknown,unknown,unknown,,,141,6,5
+2026-08-31,UBSI,Finance,47.12,6418336346,false,10,0.48,,unknown,unknown,unknown,,,2694,6,5
+2026-08-31,HRB,Consumer Discretionary,52.2,6434481128,false,11,0.06,,unknown,unknown,unknown,,,4600,6,5
+2026-08-31,BILL,Technology,49.07,4184531693,false,12,5.83,,unknown,unknown,unknown,,,1683,6,5
+2026-08-31,ETSY,Real Estate,81.445,7475164466,false,15,0.1,,unknown,unknown,unknown,,,2375,6,5
+2026-08-31,HWC,Finance,74.625,5986645703,false,8,2.51,,unknown,unknown,unknown,,,3674,6,5
+2026-08-31,MAIN,Finance,58.995,5516531657,false,12,0.9,,unknown,unknown,unknown,,,110,6,5
+2026-08-31,TFX,Health Care,140.03,5933406752,false,12,1.27,,unknown,unknown,unknown,,,15500,6,5
+2026-08-31,ACA,Industrials,145.34,7137183620,false,16,0.78,,unknown,unknown,unknown,,,6390,6,5
+2026-08-31,OZK,Finance,49.045,5548761594,false,8,1,,unknown,unknown,unknown,,,3286,6,5
+2026-08-31,IMVT,Health Care,40.075,8277598731,false,16,0.35,,unknown,unknown,unknown,,,315,6,5
+2026-08-31,APGE,Health Care,135.03,10220114857,false,11,0.14,,unknown,unknown,unknown,,,261,6,5
+2026-08-31,WEX,Real Estate,193.16,6583203981,false,11,1.49,,unknown,unknown,unknown,,,6600,6,5
+2026-08-31,PI,Technology,168.545,5149793539,false,16,6.36,,unknown,unknown,unknown,,,457,6,5
+2026-08-31,VIRT,Finance,66.06,10252526996,false,9,0.54,,unknown,unknown,unknown,,,1027,6,5
+2026-08-31,HRI,Industrials,149.71,5005021481,false,9,0.12,,unknown,unknown,unknown,,,9600,6,5
+2026-08-31,MCY,Finance,101.97,5647978295,false,16,0.14,,unknown,unknown,unknown,,,4380,6,5
+2026-08-31,INGM,Technology,28.585,6593470526,false,5,2.3,,unknown,unknown,unknown,,,22200,6,5
+2026-08-31,ABCB,Finance,84.48,5669219551,false,9,0.27,,unknown,unknown,unknown,,,2673,6,5
+2026-08-31,AUB,Finance,40.34,5761152905,false,11,0.5,,unknown,unknown,unknown,,,3064,6,5
+2026-08-31,MMSI,Health Care,90.445,5400508937,false,10,0.65,,unknown,unknown,unknown,,,7500,6,5
+2026-08-31,MTDR,Energy,57.4754,7112823066,false,15,0.26,,unknown,unknown,unknown,,,483,6,5
+2026-08-31,CSW,Industrials,310.8,5064015760,false,9,0.92,,unknown,unknown,unknown,,,2700,6,5
+2026-08-31,CHRD,Energy,146.46,8011050333,false,11,0.51,,unknown,unknown,unknown,,,676,6,5
+2026-08-31,S,Technology,21.815,7478263217,false,14,0.45,,unknown,unknown,unknown,,,2900,6,5
+2026-08-31,BCPC,Industrials,175.51,5594911466,false,10,0.54,,unknown,unknown,unknown,,,1352,6,5
+2026-08-31,SIGI,Finance,91.32,5439851947,false,8,0.75,,unknown,unknown,unknown,,,2800,6,5
+2026-08-31,LAUR,Real Estate,37.97,5230343199,false,11,1.78,,unknown,unknown,unknown,,,33900,6,5
+2026-08-31,CZR,Consumer Discretionary,29.705,6051513650,false,13,0.76,,unknown,unknown,unknown,,,50000,6,5
+2026-08-31,CACC,Finance,593.415,6159991881,false,7,3.69,,unknown,unknown,unknown,,,2314,6,5
+2026-08-31,SHC,Health Care,18.86,5382168634,false,11,0.88,,unknown,unknown,unknown,,,3000,6,5
+2026-08-31,ACIW,Technology,53.26,5376876136,false,8,171.03,,unknown,unknown,unknown,,,2930,6,5
+2026-08-31,MTN,Consumer Discretionary,138.46,4933818010,false,13,0.93,,unknown,unknown,unknown,,,47030,6,5
+2026-08-31,LSTR,Industrials,181.095,6145807433,false,12,0.55,,unknown,unknown,unknown,,,1378,6,5
+2026-08-31,AX,Finance,96.465,5472926534,false,10,0.24,,unknown,unknown,unknown,,,2191,6,5
+2026-08-31,QLYS,Technology,186.08,6437437786,false,7,1.24,,unknown,unknown,unknown,,,2718,6,5
+2026-08-31,RDN,Finance,36.265,4797907297,false,10,3.44,,unknown,unknown,unknown,,,900,6,5
+2026-08-31,ZETA,Technology,30.93,7763850803,false,11,0.93,,unknown,unknown,unknown,,,3300,6,5
+2026-08-31,WK,Technology,80.23,4365834832,false,14,11.59,,unknown,unknown,unknown,,,2887,6,5
+2026-08-31,TGTX,Health Care,53.56,8198378479,false,10,0.2,,unknown,unknown,unknown,,,399,6,5
+2026-08-31,MSM,Industrials,118.415,6613039378,false,12,2.65,,unknown,unknown,unknown,,,7284,6,5
+2026-08-31,MAC,Real Estate,23.32,6612604625,false,7,6.71,,unknown,unknown,unknown,,,598,6,5
+2026-08-31,GHC,Real Estate,1145.36,4850517134,false,14,0.37,,unknown,unknown,unknown,,,19920,6,5
+2026-08-31,ELF,Consumer Discretionary,108.6275,6409891085,false,9,0.23,,unknown,unknown,unknown,,,849,6,5
+2026-08-31,SNDR,Industrials,34.315,6015450349,false,13,0.37,,unknown,unknown,unknown,,,19000,6,5
+2026-08-31,SKY,Consumer Discretionary,89.5,4858071993,false,14,0.7,,unknown,unknown,unknown,,,9300,6,5
+2026-08-31,CROX,Consumer Discretionary,119,5705463925,false,13,0.21,,unknown,unknown,unknown,,,8010,6,5
+2026-08-31,HGTY,Finance,13.11,4504893322,false,11,0.96,,unknown,unknown,unknown,,,1891,6,5
+2026-08-31,NPO,Industrials,294.91,6242560804,false,15,0.16,,unknown,unknown,unknown,,,4000,6,5
+2026-08-31,VSAT,Technology,67.39,9283364036,false,10,3.51,,unknown,unknown,unknown,,,7000,6,5
+2026-08-31,ABG,Consumer Discretionary,211.74,3801138906,false,9,1.23,,unknown,unknown,unknown,,,15000,6,5
+2026-08-31,HCC,Energy,108.87,5748563212,false,13,0.52,,unknown,unknown,unknown,,,1485,6,5
+2026-08-31,CVCO,Consumer Discretionary,559.077,4298967802,false,16,522.01,,unknown,unknown,unknown,,,7700,6,5
+2026-08-31,SBRA,Real Estate,20.34,5196112457,false,11,2.89,,unknown,unknown,unknown,,,58,6,5
+2026-08-31,ACAD,Health Care,28.83,4967568084,false,10,1.36,,unknown,unknown,unknown,,,798,6,5
+2026-08-31,QTWO,Technology,64.97,4051184534,false,14,6.67,,unknown,unknown,unknown,,,2549,6,5
+2026-08-31,SRRK,Health Care,56.78,6914968312,false,12,3.24,,unknown,unknown,unknown,,,289,6,5
+2026-08-31,SAIC,Technology,131.24,5548409726,false,10,1.41,,unknown,unknown,unknown,,,23000,6,5
+2026-08-31,CRNX,Health Care,84.985,9013953487,false,10,0.11,,unknown,unknown,unknown,,,594,6,5
+2026-08-31,CNR,Energy,101.745,5050240968,false,12,0.05,,unknown,unknown,unknown,,,4850,6,5
+2026-08-31,DOCN,Technology,109.87,12918465159,false,11,2.42,,unknown,unknown,unknown,,,1462,6,5
+2026-08-31,AUGO,Uncategorized,81.585,6835943758,false,12,6.37,,unknown,unknown,unknown,,,1337,6,5
+2026-08-31,KRC,Real Estate,35.86,4170840310,false,9,0.65,,unknown,unknown,unknown,,,241,6,5
+2026-08-31,RSI,Consumer Discretionary,25.965,6017995240,false,9,0.99,,unknown,unknown,unknown,,,912,6,5
+2026-08-31,NE,Energy,45.68,7292456518,false,9,0.62,,unknown,unknown,unknown,,,4500,6,5
+2026-08-31,HESM,Energy,39.87,5117349625,false,14,0.33,,unknown,unknown,unknown,,,195,6,5
+2026-08-31,RUSHB,Consumer Discretionary,77.3099,6016277833,false,11,1.39,,unknown,unknown,unknown,,,7937,6,5
+2026-08-31,LNTH,Health Care,100.96,6589898374,false,10,0.24,,unknown,unknown,unknown,,,1193,6,5
+2026-08-31,ITRI,Industrials,96.325,4217758983,false,15,0.25,,unknown,unknown,unknown,,,4987,6,5
+2026-08-31,FFIN,Finance,33.22,4761339783,false,9,0.16,,unknown,unknown,unknown,,,1600,6,5
+2026-08-31,NOVT,Miscellaneous,144.04,5447271591,false,9,0.4,,unknown,unknown,unknown,,,3000,6,5
+2026-08-31,ASB,Finance,30.625,5783520807,false,9,1.23,,unknown,unknown,unknown,,,4129,6,5
+2026-08-31,CUZ,Real Estate,29.02,4776751723,false,11,1.32,,unknown,unknown,unknown,,,351,6,5
+2026-08-31,BOX,Technology,36.065,4948145878,false,12,0.81,,unknown,unknown,unknown,,,2912,6,5
+2026-08-31,SON,Consumer Discretionary,55.45,5482618916,false,10,0.2,,unknown,unknown,unknown,,,22000,6,5
+2026-08-31,RUSHA,Consumer Discretionary,76.57,5958698610,false,10,1.47,,unknown,unknown,unknown,,,7937,6,5
+2026-08-31,BGC,Finance,11.845,5631900953,false,9,2.16,,unknown,unknown,unknown,,,4560,6,5
+2026-08-31,REGCP,Real Estate,23.42,4288683211,false,9,0.64,,unknown,unknown,unknown,,,505,6,5
+2026-08-31,FTDR,Consumer Discretionary,80.58,5551423403,false,12,3.59,,unknown,unknown,unknown,,,2034,6,5
+2026-08-31,FHI,Finance,64.135,4788337122,false,12,2.69,,unknown,unknown,unknown,,,2091,6,5
+2026-08-31,PJT,Finance,180.36,7396853799,false,15,4.6,,unknown,unknown,unknown,,,1224,6,5
+2026-08-31,VCTR,Finance,118.75,7304261675,false,14,0.42,,unknown,unknown,unknown,,,699,6,5
+2026-08-31,HASI,Finance,39.44,5067873958,false,11,0.33,,unknown,unknown,unknown,,,170,6,5
+2026-08-31,PLXS,Technology,236.84,6312283127,false,12,0.23,,unknown,unknown,unknown,,,20000,6,5
+2026-08-31,CNO,Finance,54.91,5080348482,false,8,26.02,,unknown,unknown,unknown,,,3300,6,5
+2026-08-31,SKYW,Consumer Discretionary,96.1,3731402033,false,9,0.39,,unknown,unknown,unknown,,,15775,6,5
+2026-08-31,ENVA,Finance,227.66,5668363142,false,8,1.09,,unknown,unknown,unknown,,,1836,6,5
+2026-08-31,BLLN,Health Care,91.39,4312423403,false,10,21.07,,unknown,unknown,unknown,,,713,6,5
+2026-08-31,SXT,Industrials,135.675,5774709382,false,12,0.56,,unknown,unknown,unknown,,,4070,6,5
+2026-08-31,AMRX,Health Care,17.475,6086472897,false,13,1.78,,unknown,unknown,unknown,,,8700,6,5
+2026-08-31,OUT,Real Estate,29.425,5182779761,false,10,1.63,,unknown,unknown,unknown,,,1986,6,5
+2026-08-31,AVT,Technology,88.7,7279873237,false,10,0.51,,unknown,unknown,unknown,,,15040,6,5
+2026-08-31,BRZE,Technology,34.11,4181196944,false,10,5.95,,unknown,unknown,unknown,,,1988,6,5
+2026-08-31,EBC,Finance,21.935,5012400893,false,9,0.02,,unknown,unknown,unknown,,,2450,6,5
+2026-08-31,VRNS,Technology,43.875,5039503779,false,12,10.32,,unknown,unknown,unknown,,,2658,6,5
+2026-08-31,PAY,Real Estate,35.3726,4454812757,false,16,0.13,,unknown,unknown,unknown,,,1340,6,5
+2026-08-31,OSCR,Health Care,29.75,9182188750,false,13,0.09,,unknown,unknown,unknown,,,2305,6,5
+2026-08-31,TFSL,Finance,17.48,4902139357,false,7,2.72,,unknown,unknown,unknown,,,958,6,5
+2026-08-31,UCB,Finance,34.9,4208085055,false,8,0.17,,unknown,unknown,unknown,,,3141,6,5
+2026-08-31,SKT,Real Estate,37.49,4306813298,false,7,2.05,,unknown,unknown,unknown,,,477,6,5
+2026-08-31,INTA,Technology,43.195,3304899038,false,12,4.38,,unknown,unknown,unknown,,,1340,6,5
+2026-08-31,MATX,Consumer Discretionary,223.02,6669069203,false,12,2.81,,unknown,unknown,unknown,,,4170,6,5
+2026-08-31,DORM,Consumer Discretionary,128.135,3802485312,false,13,0.4,,unknown,unknown,unknown,,,3871,6,5
+2026-08-31,WGS,Technology,83.755,2497786921,false,8,2.46,,unknown,unknown,unknown,,,1300,6,5
+2026-08-31,NAVN,Technology,29.22,7431559476,false,14,1.48,,unknown,unknown,unknown,,,3700,6,5
+2026-08-31,PSMT,Consumer Discretionary,171.63,5296591734,false,9,0.97,,unknown,unknown,unknown,,,13000,6,5
+2026-08-31,LGND,Health Care,280.22,5586356354,false,7,0.6,,unknown,unknown,unknown,,,47,6,5
+2026-08-31,TREX,Basic Materials,45.1,4594120069,false,9,0.31,,unknown,unknown,unknown,,,1839,6,5
+2026-08-31,EPR,Real Estate,58.72,4498475900,false,11,0.09,,unknown,unknown,unknown,,,54,6,5
+2026-08-31,BRC,Consumer Discretionary,91.125,4293152989,false,11,0.03,,unknown,unknown,unknown,,,6400,6,5
+2026-08-31,HAE,Health Care,102.5,4663447728,false,7,3.06,,unknown,unknown,unknown,,,3009,6,5
+2026-08-31,INDB,Finance,81.39,3855370968,false,10,0.15,,unknown,unknown,unknown,,,2294,6,5
+2026-08-31,HNGE,Technology,90.81,7327860008,false,8,1.76,,unknown,unknown,unknown,,,1437,6,5
+2026-08-31,VSEC,Consumer Discretionary,206.45,5794013469,false,12,2.51,,unknown,unknown,unknown,,,1600,6,5
+2026-08-31,FIBK,Finance,36.745,3501967784,false,8,0.91,,unknown,unknown,unknown,,,3376,6,5
+2026-08-31,CARG,Technology,35.35,3148747447,false,10,0.15,,unknown,unknown,unknown,,,1218,6,5
+2026-08-31,WHD,Consumer Discretionary,69.49,5571667687,false,12,1.13,,unknown,unknown,unknown,,,1500,6,5
+2026-08-31,ICUI,Health Care,173.41,4336470460,false,12,0.07,,unknown,unknown,unknown,,,13000,6,5
+2026-08-31,COLD,Real Estate,14.775,4217975141,false,14,2.74,,unknown,unknown,unknown,,,12690,6,5
+2026-08-31,TPC,Consumer Discretionary,89.86,4723860854,false,13,0.65,,unknown,unknown,unknown,,,7400,6,5
+2026-08-31,USLM,Industrials,119.12,3417357801,false,8,0.52,,unknown,unknown,unknown,,,346,6,5
+2026-08-31,NVST,Health Care,27.145,4359967711,false,10,0.62,,unknown,unknown,unknown,,,12000,6,5
+2026-08-31,FULT,Finance,23.49,4484583085,false,8,3.71,,unknown,unknown,unknown,,,3400,6,5
+2026-08-31,UNF,Consumer Discretionary,277.705,5022065263,false,12,4.44,,unknown,unknown,unknown,,,16000,6,5
+2026-08-31,PLMR,Finance,131.66,3464986144,false,13,0.65,,unknown,unknown,unknown,,,439,6,5
+2026-08-31,GRAL,Health Care,79.02,3529525811,false,9,2.2,,unknown,unknown,unknown,,,910,6,5
+2026-08-31,GBDC,Finance,13.175,3420909685,false,10,4,,unknown,unknown,unknown,,,875,6,5
+2026-08-31,EXPO,Consumer Discretionary,70.96,3373870121,false,14,2.16,,unknown,unknown,unknown,,,1012,6,5
+2026-08-31,TVTX,Health Care,65.6,6183526979,false,14,4.83,,unknown,unknown,unknown,,,497,6,5
+2026-08-31,CRVL,Finance,69.1899,3495236496,false,15,0.02,,unknown,unknown,unknown,,,5239,6,5
+2026-08-31,CBT,Industrials,82.325,4250522651,false,13,0.46,,unknown,unknown,unknown,,,4100,6,5
+2026-08-31,KFY,Consumer Discretionary,85.46,4388895126,false,9,2.87,,unknown,unknown,unknown,,,8965,6,5
+2026-08-31,BFH,Real Estate,104.44,4012508350,false,8,3.54,,unknown,unknown,unknown,,,6000,6,5
+2026-08-31,KTB,Industrials,75.2501,4112690370,false,9,0.05,,unknown,unknown,unknown,,,10600,6,5
+2026-08-31,FRSH,Technology,13.885,3622884919,false,14,1.55,,unknown,unknown,unknown,,,4500,6,5
+2026-08-31,GFF,Industrials,97.4,4411705338,false,12,1.64,,unknown,unknown,unknown,,,5100,6,5
+2026-08-31,TARS,Health Care,74.035,3248877609,false,12,0.25,,unknown,unknown,unknown,,,370,6,5
+2026-08-31,SPSC,Technology,85.005,3060194791,false,13,0.4,,unknown,unknown,unknown,,,2948,6,5
+2026-08-31,OTTR,Utilities,90.75,3810191385,false,15,0.81,,unknown,unknown,unknown,,,2198,6,5
+2026-08-31,VAL,Energy,86.2165,5986512254,false,12,0.21,,unknown,unknown,unknown,,,3800,6,5
+2026-08-31,RNST,Finance,40.76,3725645993,false,7,0.06,,unknown,unknown,unknown,,,3000,6,5
+2026-08-31,AGYS,Technology,115.95,3270461119,false,12,1.89,,unknown,unknown,unknown,,,2413,6,5
+2026-08-31,CATY,Finance,61.255,4086555044,false,10,0.43,,unknown,unknown,unknown,,,1268,6,5
+2026-08-31,JOE,Real Estate,66.3854,3779350762,false,10,1.11,,unknown,unknown,unknown,,,1131,6,5
+2026-08-31,HTGC,Finance,17.75,3322161000,false,12,0.1,,unknown,unknown,unknown,,,100,6,5
+2026-08-31,APAM,Finance,43.19,3501528574,false,12,0.15,,unknown,unknown,unknown,,,567,6,5
+2026-08-31,MHO,Consumer Discretionary,149.93,3790684838,false,14,6.59,,unknown,unknown,unknown,,,1801,6,5
+2026-08-31,VCYT,Health Care,42.97,3454389711,false,10,4.43,,unknown,unknown,unknown,,,755,6,5
+2026-08-31,GEF,Uncategorized,82.63,3814888364,false,9,1.3,,unknown,unknown,unknown,,,12000,6,5
+2026-08-31,AZZ,Industrials,137.775,4140345550,false,11,0.31,,unknown,unknown,unknown,,,3767,6,5
+2026-08-31,BNL,Real Estate,20.865,4003846840,false,9,4.8,,unknown,unknown,unknown,,,62,6,5
+2026-08-31,SPHR,Consumer Discretionary,136.055,4886225800,false,11,2.44,,unknown,unknown,unknown,,,3300,6,5
+2026-08-31,RARE,Health Care,25.1,2474580712,false,11,6.76,,unknown,unknown,unknown,,,1371,6,5
+2026-08-31,OPLN,Consumer Discretionary,35.4001,4321285428,false,14,0.11,,unknown,unknown,unknown,,,4800,6,5
+2026-08-31,WSBC,Finance,40.03,3839112737,false,10,2.22,,unknown,unknown,unknown,,,2969,6,5
+2026-08-31,CNS,Finance,81.46,4188798078,false,13,0.52,,unknown,unknown,unknown,,,424,6,5
+2026-08-31,ASAN,Technology,10.225,2356962981,false,15,0.04,,unknown,unknown,unknown,,,1767,6,5
+2026-08-31,SLG,Real Estate,56.02,3969011790,false,12,3.7,,unknown,unknown,unknown,,,1289,6,5
+2026-08-31,MCHB,Finance,15.795,3479829003,false,9,0.04,,unknown,unknown,unknown,,,1756,6,5
+2026-08-31,VERX,Technology,14.285,2317283844,false,15,0.12,,unknown,unknown,unknown,,,2000,6,5
+2026-08-31,DYN,Health Care,24.915,4652787328,false,12,3.2,,unknown,unknown,unknown,,,289,6,5
+2026-08-31,XMTR,Real Estate,92.85,5322493753,false,9,5.73,,unknown,unknown,unknown,,,1174,6,5
+2026-08-31,CGON,Health Care,74.2,6577115825,false,15,0.5,,unknown,unknown,unknown,,,142,6,5
+2026-08-31,CDP,Real Estate,36.03,4086178802,false,13,18.27,,unknown,unknown,unknown,,,430,6,5
+2026-08-31,KNSA,Health Care,78.08,6092114935,false,14,0.77,,unknown,unknown,unknown,,,366,6,5
+2026-08-31,NMIH,Finance,44.58,3353211798,false,11,0.63,,unknown,unknown,unknown,,,225,6,5
+2026-08-31,EE,Utilities,39.18,4443094474,false,9,2.63,,unknown,unknown,unknown,,,1046,6,5
+2026-08-31,SBCF,Finance,33.845,3276967632,false,9,0.79,,unknown,unknown,unknown,,,1962,6,5
+2026-08-31,FRPT,Consumer Staples,69.88,3358298211,false,12,2.46,,unknown,unknown,unknown,,,1288,6,5
+2026-08-31,SHOO,Consumer Discretionary,42.97,3144419772,false,10,0.24,,unknown,unknown,unknown,,,6300,6,5
+2026-08-31,HURN,Consumer Discretionary,159.08,2530974254,false,13,0.33,,unknown,unknown,unknown,,,9248,6,5
+2026-08-31,WSFS,Finance,77.65,3967185478,false,11,0.02,,unknown,unknown,unknown,,,2335,6,5
+2026-08-31,DAVE,Finance,362.2,4620044635,false,12,5.55,,unknown,unknown,unknown,,,280,6,5
+2026-08-31,IDYA,Health Care,39.72,3832562304,false,9,0.45,,unknown,unknown,unknown,,,145,6,5
+2026-08-31,AMBA,Technology,70.03,3072088996,false,12,0.29,,unknown,unknown,unknown,,,959,6,5
+2026-08-31,AIR,Industrials,128.88,5188559299,false,11,7.34,,unknown,unknown,unknown,,,7100,6,5
+2026-08-31,BLKB,Technology,48.1225,2184284943,false,11,1.9,,unknown,unknown,unknown,,,2800,6,5
+2026-08-31,TBBK,Finance,65.24,2660931419,false,12,0.46,,unknown,unknown,unknown,,,733,6,5
+2026-08-31,VRDN,Health Care,22.9,2594392960,false,14,0.21,,unknown,unknown,unknown,,,252,6,5
+2026-08-31,BWIN,Finance,30.77,4292363737,false,11,1.03,,unknown,unknown,unknown,,,5000,6,5
+2026-08-31,FBK,Finance,57.13,2855251024,false,15,0.43,,unknown,unknown,unknown,,,1594,6,5
+2026-08-31,IRON,Health Care,78.19,3001936472,false,12,2.57,,unknown,unknown,unknown,,,165,6,5
+2026-08-31,PBF,Energy,71.19,8438637497,false,13,0.75,,unknown,unknown,unknown,,,3678,6,5
+2026-08-31,ARLP,Energy,26.535,3413961285,false,12,0.35,,unknown,unknown,unknown,,,3575,6,5
+2026-08-31,NCNO,Technology,22.82,2412899491,false,9,17.55,,unknown,unknown,unknown,,,1684,6,5
+2026-08-31,LXP,Real Estate,60.715,3579590284,false,11,6.99,,unknown,unknown,unknown,,,58,6,5
+2026-08-31,LQDA,Health Care,66.91,5989039897,false,10,0.31,,unknown,unknown,unknown,,,216,6,5
+2026-08-31,CPK,Utilities,133.03,3206881709,false,12,2.25,,unknown,unknown,unknown,,,1300,6,5
+2026-08-31,RELY,Real Estate,26.175,5540830113,false,10,0.87,,unknown,unknown,unknown,,,3200,6,5
+2026-08-31,AVPT,Technology,13.94,2949222038,false,7,4.42,,unknown,unknown,unknown,,,3443,6,5
+2026-08-31,AVNT,Industrials,43.845,4021443670,false,11,1.14,,unknown,unknown,unknown,,,9000,6,5
+2026-08-31,NATL,Miscellaneous,46.01,3399997933,false,13,0.54,,unknown,unknown,unknown,,,20000,6,5
+2026-08-31,CBZ,Real Estate,54.515,2958195364,false,14,1.6,,unknown,unknown,unknown,,,9500,6,5
+2026-08-31,TENB,Technology,37.59,4140161961,false,8,3.46,,unknown,unknown,unknown,,,1995,6,5
+2026-08-31,APLE,Real Estate,15.945,3764338620,false,11,0.19,,unknown,unknown,unknown,,,64,6,5
+2026-08-31,BEAM,Health Care,29.345,3030976529,false,12,0.58,,unknown,unknown,unknown,,,540,6,5
+2026-08-31,AWR,Utilities,88.89,3523210795,false,12,0.48,,unknown,unknown,unknown,,,900,6,5
+2026-08-31,TNET,Real Estate,69.245,3178673583,false,13,0.77,,unknown,unknown,unknown,,,302955,6,5
+2026-08-31,HIW,Real Estate,30.59,3374266994,false,9,7.3,,unknown,unknown,unknown,,,315,6,5
+2026-08-31,RHI,Consumer Discretionary,45.21,4627778244,false,10,1.74,,unknown,unknown,unknown,,,14500,6,5
+2026-08-31,EWTX,Health Care,40.76,4426704298,false,11,0.49,,unknown,unknown,unknown,,,127,6,5
+2026-08-31,SFNC,Finance,22.555,3259508511,false,9,0.06,,unknown,unknown,unknown,,,2917,6,5
+2026-08-31,SXI,Industrials,290.01,3514766045,false,12,0.24,,unknown,unknown,unknown,,,4100,6,5
+2026-08-31,GRBK,Consumer Discretionary,72.54,3119995888,false,12,0.6,,unknown,unknown,unknown,,,620,6,5
+2026-08-31,CXT,Industrials,48.73,2804962344,false,11,0.93,,unknown,unknown,unknown,,,4800,6,5
+2026-08-31,GSHD,Finance,69.215,2458233365,false,10,0.36,,unknown,unknown,unknown,,,1600,6,5
+2026-08-31,LFST,Health Care,12.285,4693553157,false,10,0.26,,unknown,unknown,unknown,,,8542,6,5
+2026-08-31,ITGR,Health Care,125.34,4260563296,false,11,0.19,,unknown,unknown,unknown,,,11000,6,5
+2026-08-31,IPAR,Consumer Discretionary,116.095,3718033045,false,11,5.09,,unknown,unknown,unknown,,,662,6,5
+2026-08-31,HP,Energy,43.52,4349342886,false,14,0.45,,unknown,unknown,unknown,,,15700,6,5
+2026-08-31,TR,Consumer Staples,41.14,3088447599,false,15,0.65,,unknown,unknown,unknown,,,2100,6,5
+2026-08-31,ASH,Consumer Discretionary,73.72,3375887236,false,10,10.71,,unknown,unknown,unknown,,,2900,6,5
+2026-08-31,FA,Technology,20.79,3570759236,false,11,0.83,,unknown,unknown,unknown,,,9500,6,5
+2026-08-31,BATRA,Consumer Discretionary,55.47,3559393247,false,9,1.98,,unknown,unknown,unknown,,,1450,6,5
+2026-08-31,CNK,Consumer Discretionary,35.805,4150223968,false,10,2.55,,unknown,unknown,unknown,,,27900,6,5
+2026-08-31,CVBF,Finance,22.05,3880743442,false,6,0.15,,unknown,unknown,unknown,,,1079,6,5
+2026-08-31,OCUL,Health Care,10.225,2245572250,false,10,0.11,,unknown,unknown,unknown,,,325,6,5
+2026-08-31,PFS,Finance,23.345,3044716017,false,12,0.26,,unknown,unknown,unknown,,,1866,6,5
+2026-08-31,APPN,Technology,43.125,3088940121,false,10,0.09,,unknown,unknown,unknown,,,2149,6,5
+2026-08-31,AMR,Energy,234.71,2975898652,false,14,0.08,,unknown,unknown,unknown,,,3950,6,5
+2026-08-31,ACMR,Technology,72.3,5035636871,false,14,1.21,,unknown,unknown,unknown,,,2513,6,5
+2026-08-31,DNLI,Health Care,23.64,3778792607,false,13,0.52,,unknown,unknown,unknown,,,507,6,5
+2026-08-31,WOR,Industrials,57.265,2801792286,false,13,16.38,,unknown,unknown,unknown,,,3800,6,5
+2026-08-31,CAKE,Consumer Discretionary,108.065,5377382913,false,11,0.17,,unknown,unknown,unknown,,,48400,6,5
+2026-08-31,CVI,Energy,41.015,4123262518,false,13,2.49,,unknown,unknown,unknown,,,1532,6,5
+2026-08-31,CWT,Utilities,49.88,3084534358,false,17,0.53,,unknown,unknown,unknown,,,1336,6,5
+2026-08-31,NSIT,Consumer Discretionary,156.405,4590306884,false,7,0.02,,unknown,unknown,unknown,,,14505,6,5
+2026-08-31,CUBI,Finance,78.52,2652703897,false,9,0.72,,unknown,unknown,unknown,,,869,6,5
+2026-08-31,CHEF,Consumer Discretionary,112.565,4592211083,false,14,1.93,,unknown,unknown,unknown,,,5156,6,5
+2026-08-31,ALRM,Technology,57.4,2817779087,false,12,0.93,,unknown,unknown,unknown,,,2051,6,5
+2026-08-31,ABM,Consumer Discretionary,46.39,2717569018,false,13,2.27,,unknown,unknown,unknown,,,113000,6,5
+2026-08-31,CON,Health Care,33.74,4302448413,false,7,0.31,,unknown,unknown,unknown,,,9999,6,5
+2026-08-31,RNG,Technology,69.03,5764430363,false,14,2.62,,unknown,unknown,unknown,,,7378,6,5
+2026-08-31,SYRE,Health Care,88.49,7802496199,false,13,0.37,,unknown,unknown,unknown,,,125,6,5
+2026-08-31,MSGE,Consumer Discretionary,78.11,3695011828,false,9,3.48,,unknown,unknown,unknown,,,6260,6,5
+2026-08-31,ADPT,Health Care,24.68,3938825381,false,12,2.64,,unknown,unknown,unknown,,,624,6,5
+2026-08-31,DBRG,Real Estate,15.925,2985862350,false,8,7,,unknown,unknown,unknown,,,303,6,5
+2026-08-31,HTFL,Health Care,49.42,4297248246,false,8,0.24,,unknown,unknown,unknown,,,843,6,5
+2026-08-31,WAFD,Finance,35.75,2645329759,false,9,0.66,,unknown,unknown,unknown,,,1979,6,5
+2026-08-31,FFBC,Finance,32.725,3435108562,false,10,0.44,,unknown,unknown,unknown,,,2199,6,5
+2026-08-31,PRK,Finance,196.4,3547801220,false,8,133.01,,unknown,unknown,unknown,,,1797,6,5
+2026-08-31,TOWN,Finance,37.135,2770914550,false,14,0.05,,unknown,unknown,unknown,,,2932,6,5
+2026-08-31,KWR,Industrials,164.15,2824644283,false,12,2.58,,unknown,unknown,unknown,,,4700,6,5
+2026-08-31,TDW,Consumer Discretionary,91.86,4570607380,false,10,0.35,,unknown,unknown,unknown,,,7300,6,5
+2026-08-31,RCUS,Health Care,28.68,3651921224,false,11,6.64,,unknown,unknown,unknown,,,601,6,5
+2026-08-31,HCI,Finance,185.57,2308280549,false,9,1.75,,unknown,unknown,unknown,,,594,6,5
+2026-08-31,BATRK,Consumer Discretionary,49.86,3199411344,false,10,0.66,,unknown,unknown,unknown,,,1450,6,5
+2026-08-31,HOG,Consumer Discretionary,27.42,2853668142,false,17,0.78,,unknown,unknown,unknown,,,5500,6,5
+2026-08-31,CURB,Finance,29.715,3418354913,false,13,0.14,,unknown,unknown,unknown,,,39,6,5
+2026-08-31,ALKT,Technology,20.32,2173061034,false,9,0.66,,unknown,unknown,unknown,,,1225,6,5
+2026-08-31,KSS,Consumer Discretionary,17.71,2008313876,false,18,1.53,,unknown,unknown,unknown,,,84000,6,5
+2026-08-31,OII,Energy,51.205,5096415472,false,13,0.51,,unknown,unknown,unknown,,,11100,6,5
+2026-08-31,SEZL,Real Estate,121.55,4093197952,false,12,6.08,,unknown,unknown,unknown,,,201,6,5
+2026-08-31,TRMK,Finance,45.9,2665439484,false,10,0.34,,unknown,unknown,unknown,,,2583,6,5
+2026-08-31,INSW,Consumer Discretionary,97.775,4842923933,false,12,0.99,,unknown,unknown,unknown,,,2837,6,5
+2026-08-31,IMNM,Health Care,27.25,3094990390,false,11,2.75,,unknown,unknown,unknown,,,247,6,5
+2026-08-31,SLDE,Finance,23.26,2717040584,false,11,0.74,,unknown,unknown,unknown,,,627,6,5
+2026-08-31,PLUS,Technology,87.23,2275867162,false,10,0.28,,unknown,unknown,unknown,,,2148,6,5
+2026-08-31,MGNI,Technology,23.35,3348954066,false,16,0.59,,unknown,unknown,unknown,,,971,6,5
+2026-08-31,DIOD,Technology,89.985,4143962674,false,12,1.49,,unknown,unknown,unknown,,,7989,6,5
+2026-08-31,SRPT,Health Care,20.93,2210773550,false,8,0.26,,unknown,unknown,unknown,,,835,6,5
+2026-08-31,ZBIO,Health Care,31.46,2050459706,false,13,1.11,,unknown,unknown,unknown,,,167,6,5
+2026-08-31,GEO,Consumer Discretionary,31.925,4201955219,false,12,0.78,,unknown,unknown,unknown,,,18000,6,5
+2026-08-31,EXTR,Telecommunications,22.36,2917771001,false,11,1.22,,unknown,unknown,unknown,,,2894,6,5
+2026-08-31,BBT,Finance,31.14,2610032918,false,9,0.81,,unknown,unknown,unknown,,,2050,6,5
+2026-08-31,NBTB,Finance,51.35,2668149132,false,7,0.23,,unknown,unknown,unknown,,,2303,6,5
+2026-08-31,GCMG,Finance,13.685,2775209889,false,13,0.97,,unknown,unknown,unknown,,,553,6,5
+2026-08-31,PTEN,Energy,12.485,4761590152,false,9,2.86,,unknown,unknown,unknown,,,7900,6,5
+2026-08-31,IVT,Real Estate,32.21,2511685263,false,9,0.05,,unknown,unknown,unknown,,,103,6,5
+2026-08-31,FRME,Finance,41.61,2613167211,false,12,0.8,,unknown,unknown,unknown,,,2086,6,5
+2026-08-31,BANR,Finance,69.875,2374695516,false,11,0.26,,unknown,unknown,unknown,,,1943,6,5
+2026-08-31,SAH,Consumer Discretionary,79.915,2526496902,false,10,2.24,,unknown,unknown,unknown,,,11000,6,5
+2026-08-31,HRMY,Health Care,39.68,2310820074,false,10,0.33,,unknown,unknown,unknown,,,293,6,5
+2026-08-31,ATKR,Miscellaneous,93.675,3163643621,false,12,0.4,,unknown,unknown,unknown,,,5076,6,5
+2026-08-31,MTRN,Industrials,234.78,4891341956,false,13,0.37,,unknown,unknown,unknown,,,2880,6,5
+2026-08-31,PK,Consumer Discretionary,15.415,3103630357,false,9,0.12,,unknown,unknown,unknown,,,90,6,5
+2026-08-31,FBNC,Finance,63.26,2617333220,false,11,0.21,,unknown,unknown,unknown,,,1374,6,5
+2026-08-31,BUSE,Finance,30.2,2493824071,false,8,0.98,,unknown,unknown,unknown,,,1833,6,5
+2026-08-31,NHC,Health Care,217.38,3404474045,false,10,20.86,,unknown,unknown,unknown,,,15278,6,5
+2026-08-31,STC,Finance,69.13,2109999617,false,11,1.14,,unknown,unknown,unknown,,,8100,6,5
+2026-08-31,HTH,Finance,38.03,2178602439,false,12,0.22,,unknown,unknown,unknown,,,3550,6,5
+2026-08-31,SM,Energy,37.175,8842224978,false,12,0.08,,unknown,unknown,unknown,,,1241,6,5
+2026-08-31,CRGY,Energy,13.6988,4526134151,false,12,0.6,,unknown,unknown,unknown,,,1066,6,5
+2026-08-31,SKWD,Finance,57.62,2558125927,false,8,1.73,,unknown,unknown,unknown,,,611,6,5
+2026-08-31,NOG,Energy,25.96,2766015363,false,12,0.77,,unknown,unknown,unknown,,,64,6,5
+2026-08-31,TXG,Industrials,60.78,7919097191,false,10,0.71,,unknown,unknown,unknown,,,1178,6,5
+2026-08-31,RXO,Consumer Discretionary,21.4,3529419139,false,9,0.84,,unknown,unknown,unknown,,,6906,6,5
+2026-08-31,EFSC,Finance,63.39,2294243843,false,10,0.34,,unknown,unknown,unknown,,,1418,6,5
+2026-08-31,CENT,Consumer Discretionary,43.265,2708068752,false,14,0.18,,unknown,unknown,unknown,,,6000,6,5
+2026-08-31,ADUS,Health Care,116.125,2168553088,false,10,0.85,,unknown,unknown,unknown,,,50659,6,5
+2026-08-31,VAC,Finance,105.85,3640744622,false,13,1.24,,unknown,unknown,unknown,,,21100,6,5
+2026-08-31,TWST,Health Care,139.02,9217189209,false,11,2.83,,unknown,unknown,unknown,,,979,6,5
+2026-08-31,PENN,Consumer Discretionary,16.905,2266395721,false,11,1.72,,unknown,unknown,unknown,,,23441,6,5
+2026-08-31,ZYME,Health Care,28.875,2048948084,false,13,0.48,,unknown,unknown,unknown,,,231,6,5
+2026-08-31,NTCT,Technology,39.185,2849036021,false,9,0.23,,unknown,unknown,unknown,,,2073,6,5
+2026-08-31,CXW,Real Estate,33.275,3290680846,false,7,0.79,,unknown,unknown,unknown,,,13651,6,5
+2026-08-31,ATRC,Health Care,47.99,2441073449,false,11,0.51,,unknown,unknown,unknown,,,1350,6,5
+2026-08-31,SYBT,Finance,79.5,2469798119,false,9,0.04,,unknown,unknown,unknown,,,1270,6,5
+2026-08-31,GRDN,Consumer Staples,37.135,2352216459,false,11,1.89,,unknown,unknown,unknown,,,3600,6,5
+2026-08-31,FIGS,Consumer Discretionary,15.495,2574343050,false,12,0.63,,unknown,unknown,unknown,,,388,6,5
+2026-08-31,IOSP,Industrials,93.79,2310145898,false,8,3.54,,unknown,unknown,unknown,,,2450,6,5
+2026-08-31,HNI,Consumer Discretionary,47.67,3440906406,false,9,4.5,,unknown,unknown,unknown,,,18500,6,5
+2026-08-31,AGM,Finance,219.76,2385101430,false,8,0.43,,unknown,unknown,unknown,,,212,6,5
+2026-08-31,KALU,Industrials,157.105,2568524099,false,10,0.29,,unknown,unknown,unknown,,,3800,6,5
+2026-08-31,VCEL,Health Care,39.45,2020100922,false,14,2.44,,unknown,unknown,unknown,,,398,6,5
+2026-08-31,PRGO,Health Care,14.61,2027418669,false,9,0.21,,unknown,unknown,unknown,,,8100,6,5
+2026-08-31,HMN,Finance,51.005,2065756259,false,15,1.53,,unknown,unknown,unknown,,,1800,6,5
+2026-08-31,MD,Health Care,26.245,2132492097,false,11,1.58,,unknown,unknown,unknown,,,4280,6,5
+2026-08-31,DRH,Real Estate,12.275,2511534734,false,6,1.64,,unknown,unknown,unknown,,,35,6,5
+2026-08-31,OGN,Health Care,13.755,3612192751,false,9,4.22,,unknown,unknown,unknown,,,10000,6,5
+2026-08-31,KN,Consumer Staples,34.33,2932136492,false,17,0.22,,unknown,unknown,unknown,,,5200,6,5
+2026-08-31,TALO,Energy,17.09,2853439848,false,18,0.32,,unknown,unknown,unknown,,,700,6,5
+2026-08-31,DV,Technology,13.365,2071399210,false,11,2.67,,unknown,unknown,unknown,,,1231,6,5
+2026-08-31,NIC,Finance,169.22,3546430350,false,9,0.3,,unknown,unknown,unknown,,,1429,6,5
+2026-08-31,CENTA,Consumer Discretionary,37.23,2330322424,false,13,0.11,,unknown,unknown,unknown,,,6000,6,5
+2026-08-31,UFPT,Health Care,295.31,2287409245,false,8,0.99,,unknown,unknown,unknown,,,4846,6,5
+2026-08-31,PTRN,Consumer Discretionary,20.74,3679257106,false,11,7.53,,unknown,unknown,unknown,,,2300,6,5
+2026-08-31,WERN,Industrials,38.83,2328912967,false,14,0.13,,unknown,unknown,unknown,,,12031,6,5
+2026-08-31,DXPE,Industrials,185.51,2878586125,false,10,2.06,,unknown,unknown,unknown,,,3286,6,5
+2026-08-31,IRDM,Telecommunications,46.88,4967422755,false,11,2.98,,unknown,unknown,unknown,,,975,6,5
+2026-08-31,AVAH,Health Care,13.255,2892502070,false,11,3.16,,unknown,unknown,unknown,,,35500,6,5
+2026-08-31,MCRI,Consumer Discretionary,121.19,2172030320,false,9,0.03,,unknown,unknown,unknown,,,2740,6,5
+2026-08-31,DNTH,Health Care,104.15,5825565469,false,15,2,,unknown,unknown,unknown,,,92,6,5
+2026-08-31,KOD,Health Care,37.12,2332971844,false,9,0.5,,unknown,unknown,unknown,,,141,6,5
+2026-08-31,NWBI,Finance,15.315,2243021453,false,9,0.36,,unknown,unknown,unknown,,,2233,6,5
+2026-08-31,CHCO,Finance,142.97,2008036525,false,10,0.27,,unknown,unknown,unknown,,,934,6,5
+2026-08-31,DK,Energy,70.14,4294824684,false,11,1.27,,unknown,unknown,unknown,,,1902,6,5
+2026-08-31,FCF,Finance,20.68,2089836529,false,8,0.24,,unknown,unknown,unknown,,,1589,6,5
+2026-08-31,PARR,Energy,77.53,3884224081,false,11,1.03,,unknown,unknown,unknown,,,1758,6,5
+2026-08-31,VVX,Consumer Discretionary,77.15,2418294370,false,12,0.43,,unknown,unknown,unknown,,,16200,6,5
+2026-08-31,RVT,Finance,18.535,2000977713,false,15,1.85,,unknown,unknown,unknown,,,50,6,5
+2026-08-31,CLDX,Health Care,39.025,3064614986,false,9,0.3,,unknown,unknown,unknown,,,198,6,5
+2026-08-31,HTO,Utilities,63.215,2645977865,false,14,0.38,,unknown,unknown,unknown,,,837,6,5
+2026-08-31,WT,Finance,24.24,3672653571,false,8,5.36,,unknown,unknown,unknown,,,414,6,5
+2026-08-31,ARCB,Industrials,137.06,3063476579,false,8,0.48,,unknown,unknown,unknown,,,14000,6,5
+2026-08-31,FLYW,Real Estate,18.76,2282485564,false,10,0.05,,unknown,unknown,unknown,,,1500,6,5
+2026-08-31,WLYB,Consumer Discretionary,54.18,2750371306,false,4,0.38,,unknown,unknown,unknown,,,4500,6,5
+2026-08-31,SHO,Consumer Discretionary,11.15,2073274942,false,8,0.82,,unknown,unknown,unknown,,,37,6,5
+2026-08-31,PBI,Miscellaneous,17.08,2341500821,false,11,15.95,,unknown,unknown,unknown,,,6600,6,5
+2026-08-31,CLMT,Energy,46.9,4122427175,false,10,0.6,,unknown,unknown,unknown,,,1540,6,5
+2026-08-31,ROG,Industrials,125.15,2236222125,false,12,1.65,,unknown,unknown,unknown,,,3000,6,5
+2026-08-31,TILE,Consumer Discretionary,37.55,2170407273,false,12,0.64,,unknown,unknown,unknown,,,3570,6,5
+2026-08-31,DGII,Telecommunications,74.91,2842693894,false,11,3.56,,unknown,unknown,unknown,,,913,6,5
+2026-08-31,TRVI,Health Care,16.28,2319506691,false,10,0.66,,unknown,unknown,unknown,,,34,6,5
+2026-08-31,WLY,Consumer Discretionary,52.325,2656204847,false,9,5.09,,unknown,unknown,unknown,,,4500,6,5
+2026-08-31,LTC,Real Estate,40.26,2170237966,false,12,0.92,,unknown,unknown,unknown,,,25,6,5
+2026-08-31,VOYG,Industrials,33.715,2089242961,false,10,0.06,,unknown,unknown,unknown,,,800,6,5
+2026-08-31,BHE,Technology,70.61,2536306469,false,11,0.15,,unknown,unknown,unknown,,,11840,6,5
+2026-08-31,NEO,Health Care,17.78,2284293323,false,6,4.15,,unknown,unknown,unknown,,,2500,6,5
+2026-08-31,FIVN,Technology,33.94,2536116642,false,14,4.14,,unknown,unknown,unknown,,,2910,6,5
+2026-08-31,SRCE,Finance,85.945,2069712536,false,12,44.01,,unknown,unknown,unknown,,,1190,6,5
+2026-08-31,NEOG,Health Care,11.535,2515852768,false,14,0.28,,unknown,unknown,unknown,,,2636,6,5
+2026-08-31,MXL,Technology,60.095,5450207313,false,11,0.99,,unknown,unknown,unknown,,,1115,6,5
+2026-08-31,MBIN,Finance,53.03,2436096117,false,11,0.67,,unknown,unknown,unknown,,,735,6,5
+2026-08-31,ORKA,Health Care,91.11,6032365676,false,13,0.41,,unknown,unknown,unknown,,,68,6,5
+2026-08-31,FSLY,Technology,22.84,3638412000,false,11,1.01,,unknown,unknown,unknown,,,1140,6,5
+2026-08-31,INVX,Consumer Discretionary,30.615,2141085344,false,7,0.2,,unknown,unknown,unknown,,,2160,6,5
+2026-08-31,AXGN,Health Care,50.025,2689419688,false,9,2.37,,unknown,unknown,unknown,,,622,6,5
+2026-08-31,CNXN,Consumer Discretionary,79.305,2001507441,false,9,3.06,,unknown,unknown,unknown,,,2525,6,5
+2026-08-31,UTZ,Consumer Staples,14.2,2044263425,false,10,1.76,,unknown,unknown,unknown,,,3300,6,5
+2026-08-31,NRIX,Health Care,25.32,2627752214,false,6,0.53,,unknown,unknown,unknown,,,317,6,5
+2026-08-31,RLAY,Health Care,18.44,4040971676,false,8,0.93,,unknown,unknown,unknown,,,202,6,5
+2026-08-31,NTST,Real Estate,20.33,2064064199,false,9,1.75,,unknown,unknown,unknown,,,29,6,5
+2026-08-31,NSP,Consumer Discretionary,52.95,2022439547,false,15,6.88,,unknown,unknown,unknown,,,4200,6,5
+2026-08-31,NESR,Energy,34.68,3497538829,false,9,0.21,,unknown,unknown,unknown,,,7352,6,5
+2026-08-31,DNOW,Consumer Discretionary,15.92,2878111385,false,12,4.01,,unknown,unknown,unknown,,,5100,6,5
+2026-08-31,DCO,Industrials,171.73,2593085048,false,13,0.29,,unknown,unknown,unknown,,,2130,6,5
+2026-08-31,RAPP,Health Care,48.14,2309674688,false,11,2.85,,unknown,unknown,unknown,,,84,6,5
+2026-08-31,MBX,Health Care,60.205,2899478580,false,4,1.14,,unknown,unknown,unknown,,,63,6,5
+2026-08-31,MAN,Consumer Discretionary,62.3875,2901366248,false,9,16.68,,unknown,unknown,unknown,,,25400,6,5
+2026-08-31,ACHC,Health Care,27.8,2588187645,false,9,2.34,,unknown,unknown,unknown,,,25000,6,5
+2026-08-31,AMLX,Health Care,33.45,4196579566,false,9,10.01,,unknown,unknown,unknown,,,136,6,5
+2026-08-31,OUST,Industrials,34.17,2464078419,false,11,0.31,,unknown,unknown,unknown,,,320,6,5
+2026-08-31,PEB,Real Estate,18.155,2048659509,false,8,3.56,,unknown,unknown,unknown,,,52,6,5
+2026-08-31,WTTR,Energy,19.33,2676834502,false,12,0.59,,unknown,unknown,unknown,,,3300,6,5
+2026-08-31,ECPG,Finance,97.725,2072685292,false,8,0.97,,unknown,unknown,unknown,,,7350,6,5
+2026-08-31,PVLA,Health Care,146.82,2115442316,false,10,0.75,,unknown,unknown,unknown,,,29,6,5
+2026-08-31,NGL,Utilities,18.51,2310312489,false,19,0.07,,unknown,unknown,unknown,,,449,6,5
+2026-08-31,BHVN,Health Care,15.31,2312480287,false,15,14.23,,unknown,unknown,unknown,,,274,6,5
+2026-08-31,TNGX,Health Care,22.72,3830827538,false,15,0.99,,unknown,unknown,unknown,,,137,6,5
+2026-08-31,PRCH,Technology,16.95,2234553146,false,11,13.02,,unknown,unknown,unknown,,,803,6,5
+2026-08-31,COHU,Industrials,46.59,2205497593,false,13,0.35,,unknown,unknown,unknown,,,2777,6,5
+2026-08-31,PENG,Technology,48.77,2499106430,false,11,0.91,,unknown,unknown,unknown,,,2900,6,5
+2026-08-31,LPG,Consumer Discretionary,49.81,2131005341,false,7,0.2,,unknown,unknown,unknown,,,602,6,5
+2026-08-31,CDNA,Health Care,49.9,2581537728,false,11,0.47,,unknown,unknown,unknown,,,765,6,5
+2026-08-31,ERAS,Health Care,17.22,6022902243,false,13,60.44,,unknown,unknown,unknown,,,103,6,5
+2026-08-31,PLSE,Health Care,48.775,3478760156,false,14,14.27,,unknown,unknown,unknown,,,116,6,5
+2026-08-31,ELVN,Health Care,56.71,4155184856,false,9,1.98,,unknown,unknown,unknown,,,67,6,5
+2026-08-31,SLNHP,Technology,12,2960424564,false,8,1.22,,unknown,unknown,unknown,,,52,6,5
+2026-08-31,NKTR,Health Care,70.46,2405715357,false,10,0.55,,unknown,unknown,unknown,,,63,6,5
+2026-08-31,ASST,Technology,23.67,2122806622,false,8,0.07,,unknown,unknown,unknown,,,28,6,5
+2026-08-31,AEHR,Industrials,78.945,2575221425,false,6,3.93,,unknown,unknown,unknown,,,138,6,5
+2026-08-31,RVMDW,Health Care,11.25,2411284703,false,11,22.49,,unknown,unknown,unknown,,,883,6,5
+2026-08-31,VSNT,Industrials,41.105,5705057615,false,12,0.11,,unknown,unknown,unknown,,,4400,6,5
+2026-08-31,MRSH,Finance,190.79,91047137822,false,11,0.65,,unknown,unknown,unknown,,,95000,6,5
+2026-08-31,DFTX,Health Care,40.165,5396848547,false,10,0.56,,unknown,unknown,unknown,,,106,6,5
+2026-08-31,CALY,Consumer Discretionary,15.56,2777623707,false,7,0.54,,unknown,unknown,unknown,,,28000,6,5
+2026-08-31,LIFE,Finance,36.7,2339971962,false,9,3.14,,unknown,unknown,unknown,,,614,6,5
+2026-08-31,DLR,Real Estate,182.9,67679616590,false,10,0.68,,unknown,unknown,unknown,,,4282,5,4
+2026-08-31,IRM,Real Estate,113.95,33923235427,false,11,1.03,,unknown,unknown,unknown,,,29400,5,4
+2026-08-31,L,Finance,108.785,22238669520,false,13,0.02,,unknown,unknown,unknown,,,13100,5,4
+2026-08-31,ENTG,Industrials,135.625,20723500000,false,15,1.55,,unknown,unknown,unknown,,,7700,5,4
+2026-08-31,AXSM,Health Care,199.715,10461235067,false,14,9.09,,unknown,unknown,unknown,,,1346,5,4
+2026-08-31,EMN,Industrials,72.185,8256334135,false,11,0.5,,unknown,unknown,unknown,,,13000,5,4
+2026-08-31,WFRD,Consumer Discretionary,96.04,6884669946,false,13,19.29,,unknown,unknown,unknown,,,16700,5,4
+2026-08-31,MUR,Energy,35.86,5141647143,false,11,0.27,,unknown,unknown,unknown,,,813,5,4
+2026-08-31,TEX,Industrials,63.19,7222617000,false,12,5.74,,unknown,unknown,unknown,,,10700,5,4
+2026-08-31,LRN,Real Estate,86.408,3591103087,false,8,27.73,,unknown,unknown,unknown,,,9200,5,4
+2026-08-31,USAC,Utilities,26.86,3893178247,false,12,4.47,,unknown,unknown,unknown,,,885,5,4
+2026-08-31,VC,Consumer Discretionary,102.465,2735347132,false,12,1.26,,unknown,unknown,unknown,,,10500,5,4
+2026-08-31,BELFB,Uncategorized,245.48,3544596186,false,11,0.19,,unknown,unknown,unknown,,,4964,5,4
+2026-08-31,GTY,Finance,32.6,2019005987,false,13,1.63,,unknown,unknown,unknown,,,31,5,4
+2026-08-31,AIG,Finance,76.535,40019628689,false,11,0.56,,unknown,unknown,unknown,,,22100,4,3
+2026-08-31,DG,Consumer Discretionary,126.67,27945528789,false,10,0.89,,unknown,unknown,unknown,,,194000,4,3
+2026-08-31,STRC,Technology,96.93,37243002044,false,14,15.68,,unknown,unknown,unknown,,,1539,4,3
+2026-08-31,JEF,Finance,52.2,10113368418,false,12,2.93,,unknown,unknown,unknown,,,7787,4,3
+2026-08-31,AWI,Industrials,172.785,7302382390,false,16,5.39,,unknown,unknown,unknown,,,4000,4,3
+2026-08-31,KBR,Industrials,37.87,4774185882,false,12,9.73,,unknown,unknown,unknown,,,36000,4,3
+2026-08-31,INTU,Technology,357.46,97778536020,false,11,0.49,,unknown,unknown,unknown,,,18200,3,2
+2026-08-31,BSX,Health Care,48.265,69947063072,false,11,3.56,,unknown,unknown,unknown,,,59000,3,2
+2026-08-31,HON,Industrials,213.56,67685708536,false,8,0.19,,unknown,unknown,unknown,,,101000,3,2
+2026-08-31,CEG,Utilities,277.8639,98449230128,false,12,0.54,,unknown,unknown,unknown,,,15339,3,2
+2026-08-31,HCA,Health Care,417.84,90462986760,false,8,0.47,,unknown,unknown,unknown,,,320000,3,2
+2026-08-31,CMCSA,Telecommunications,26.7,94748596499,false,12,0.95,,unknown,unknown,unknown,,,179000,3,2
+2026-08-31,CVNA,Consumer Discretionary,73.375,80746529124,false,11,3.72,,unknown,unknown,unknown,,,23100,3,2
+2026-08-31,SNPS,Technology,444.27,85138412718,false,12,0.25,,unknown,unknown,unknown,,,28000,3,2
+2026-08-31,DUK,Utilities,119.72,93345946546,false,14,0.53,,unknown,unknown,unknown,,,26441,3,2
+2026-08-31,NKE,Consumer Discretionary,39.16,58093809209,false,12,0.55,,unknown,unknown,unknown,,,73000,3,2
+2026-08-31,WM,Utilities,220.09,87973314847,false,13,3.43,,unknown,unknown,unknown,,,60500,3,2
+2026-08-31,UPS,Industrials,104.05,88523823607,false,9,4.47,,unknown,unknown,unknown,,,460000,3,2
+2026-08-31,HWM,Industrials,242,96509938558,false,13,0.11,,unknown,unknown,unknown,,,25430,3,2
+2026-08-31,MAR,Consumer Discretionary,342.2,89234223754,false,11,1.08,,unknown,unknown,unknown,,,414000,3,2
+2026-08-31,AMT,Real Estate,175.15,81612902407,false,10,0.4,,unknown,unknown,unknown,,,4866,3,2
+2026-08-31,NOC,Industrials,538.645,76521538640,false,11,0.07,,unknown,unknown,unknown,,,95000,3,2
+2026-08-31,RCL,Consumer Discretionary,270.59,72369859410,false,11,0.43,,unknown,unknown,unknown,,,108000,3,2
+2026-08-31,ORLY,Consumer Discretionary,89.01,72005600096,false,13,1.63,,unknown,unknown,unknown,,,92923,3,2
+2026-08-31,AON,Finance,329.1,69810480329,false,12,0.65,,unknown,unknown,unknown,,,60000,3,2
+2026-08-31,CI,Health Care,276.34,73020215901,false,8,0.18,,unknown,unknown,unknown,,,67700,3,2
+2026-08-31,TDG,Industrials,1170.29,64689564442,false,8,0.55,,unknown,unknown,unknown,,,16500,3,2
+2026-08-31,CMI,Industrials,560.88,77213257469,false,13,0.02,,unknown,unknown,unknown,,,67400,3,2
+2026-08-31,FDX,Consumer Discretionary,326.73,77327331228,false,12,0.66,,unknown,unknown,unknown,,,530000,3,2
+2026-08-31,HLT,Consumer Discretionary,315.48,71003477807,false,15,0.44,,unknown,unknown,unknown,,,182000,3,2
+2026-08-31,PWR,Industrials,604.83,89109470233,false,11,1.02,,unknown,unknown,unknown,,,69500,3,2
+2026-08-31,VRT,Technology,257.04,98957359988,false,8,1.36,,unknown,unknown,unknown,,,34000,3,2
+2026-08-31,AEP,Utilities,121.98,66405588997,false,9,0.35,,unknown,unknown,unknown,,,17581,3,2
+2026-08-31,MDLN,Health Care,35.435,46586659979,false,9,0.28,,unknown,unknown,unknown,,,45000,3,2
+2026-08-31,SRE,Utilities,81.47,53273261352,false,11,1.52,,unknown,unknown,unknown,,,28451,3,2
+2026-08-31,RBLX,Technology,40.45,28896506813,false,10,1.06,,unknown,unknown,unknown,,,3065,3,2
+2026-08-31,AZO,Consumer Discretionary,2979.42,48640089194,false,11,1.26,,unknown,unknown,unknown,,,130000,3,2
+2026-08-31,ZTS,Health Care,77,31818217354,false,16,1.05,,unknown,unknown,unknown,,,14500,3,2
+2026-08-31,LHX,Industrials,267.45,49803099049,false,15,14.91,,unknown,unknown,unknown,,,45000,3,2
+2026-08-31,IDXX,Health Care,558.59,44006343586,false,13,0.94,,unknown,unknown,unknown,,,11000,3,2
+2026-08-31,VST,Utilities,136.9299,45958493688,false,9,0.6,,unknown,unknown,unknown,,,6390,3,2
+2026-08-31,SOMN,Basic Materials,47.7,54872313478,false,12,0.31,,unknown,unknown,unknown,,,29800,3,2
+2026-08-31,RKT,Finance,13.345,37788268108,false,9,0.56,,unknown,unknown,unknown,,,23500,3,2
+2026-08-31,ALNY,Health Care,240.38,32165035785,false,11,0.72,,unknown,unknown,unknown,,,2500,3,2
+2026-08-31,O,Real Estate,61.225,57932199070,false,11,0.1,,unknown,unknown,unknown,,,544,3,2
+2026-08-31,TTWO,Consumer Discretionary,219.91,41118869220,false,15,0.35,,unknown,unknown,unknown,,,12909,3,2
+2026-08-31,MSTR,Technology,130.43,50114564703,false,10,0.15,,unknown,unknown,unknown,,,1539,3,2
+2026-08-31,MPWR,Technology,1258.26,61834671180,false,11,2.42,,unknown,unknown,unknown,,,4501,3,2
+2026-08-31,CARR,Industrials,58.13,47918015563,false,11,0.32,,unknown,unknown,unknown,,,47000,3,2
+2026-08-31,LVS,Consumer Discretionary,43.94,28459990025,false,11,0.31,,unknown,unknown,unknown,,,41500,3,2
+2026-08-31,CPNG,Consumer Discretionary,16.12,28975888636,false,15,0.56,,unknown,unknown,unknown,,,108000,3,2
+2026-08-31,XEL,Utilities,75.46,47134904731,false,12,0.32,,unknown,unknown,unknown,,,11534,3,2
+2026-08-31,EXC,Utilities,43.535,44939176453,false,13,0.53,,unknown,unknown,unknown,,,20571,3,2
+2026-08-31,MSCI,Real Estate,570.05,41442635000,false,11,0.93,,unknown,unknown,unknown,,,6286,3,2
+2026-08-31,RDDT,Technology,148.1,28493923131,false,14,16.59,,unknown,unknown,unknown,,,2555,3,2
+2026-08-31,DHI,Consumer Discretionary,145.39,40665767209,false,15,0.35,,unknown,unknown,unknown,,,14341,3,2
+2026-08-31,YUM,Consumer Discretionary,153.53,41898503580,false,10,0.51,,unknown,unknown,unknown,,,49000,3,2
+2026-08-31,TKO,Consumer Discretionary,183.64,34757490095,false,11,0.03,,unknown,unknown,unknown,,,4000,3,2
+2026-08-31,PCG,Utilities,13.435,36007284514,false,14,2.15,,unknown,unknown,unknown,,,29010,3,2
+2026-08-31,CCL,Consumer Discretionary,24.04,32926364821,false,12,21.52,,unknown,unknown,unknown,,,101000,3,2
+2026-08-31,FICO,Real Estate,1150.73,24853046524,false,14,0.7,,unknown,unknown,unknown,,,3811,3,2
+2026-08-31,ETR,Utilities,105.89,49411609323,false,14,0.41,,unknown,unknown,unknown,,,12233,3,2
+2026-08-31,PEG,Utilities,73.13,36449456794,false,11,0.3,,unknown,unknown,unknown,,,13189,3,2
+2026-08-31,KR,Consumer Staples,57.63,35306862862,false,14,0.29,,unknown,unknown,unknown,,,403000,3,2
+2026-08-31,MLM,Industrials,522.52,31385602194,false,13,0.36,,unknown,unknown,unknown,,,9600,3,2
+2026-08-31,VMC,Industrials,270.585,35062063092,false,12,0.66,,unknown,unknown,unknown,,,11548,3,2
+2026-08-31,CCI,Real Estate,75.74,32223994950,false,13,0.81,,unknown,unknown,unknown,,,4000,3,2
+2026-08-31,GEHC,Health Care,71.23,32173611730,false,8,1.37,,unknown,unknown,unknown,,,54000,3,2
+2026-08-31,CRWV,Technology,84.01,46334589934,false,9,0.11,,unknown,unknown,unknown,,,2189,3,2
+2026-08-31,CPRT,Consumer Discretionary,33.22,30755457432,false,12,9.19,,unknown,unknown,unknown,,,11600,3,2
+2026-08-31,INSM,Health Care,120.77,26373934117,false,11,10.42,,unknown,unknown,unknown,,,1664,3,2
+2026-08-31,RKLB,Industrials,63.7365,38143729155,false,12,0.01,,unknown,unknown,unknown,,,2600,3,2
+2026-08-31,HSY,Consumer Staples,176.775,35518633016,false,9,1.51,,unknown,unknown,unknown,,,19595,3,2
+2026-08-31,FISV,Real Estate,53.26,28321895560,false,13,0.32,,unknown,unknown,unknown,,,38000,3,2
+2026-08-31,COHR,Technology,275.89,54028158349,false,13,1.31,,unknown,unknown,unknown,,,51478,3,2
+2026-08-31,ED,Utilities,106.78,39490301432,false,14,0.74,,unknown,unknown,unknown,,,15407,3,2
+2026-08-31,MCHP,Technology,73.01,39645064530,false,13,1.39,,unknown,unknown,unknown,,,17900,3,2
+2026-08-31,FIS,Real Estate,40.93,21107843183,false,9,1.07,,unknown,unknown,unknown,,,44000,3,2
+2026-08-31,SYM,Industrials,39.725,24025747850,false,17,0.77,,unknown,unknown,unknown,,,2000,3,2
+2026-08-31,UI,Technology,601.13,36385425671,false,15,4.91,,unknown,unknown,unknown,,,1818,3,2
+2026-08-31,WEC,Utilities,106.28,34631272425,false,11,0.85,,unknown,unknown,unknown,,,7151,3,2
+2026-08-31,OTIS,Technology,71.36,27164564031,false,13,0.39,,unknown,unknown,unknown,,,72000,3,2
+2026-08-31,SOFI,Finance,17.85,23054530283,false,14,1.35,,unknown,unknown,unknown,,,6100,3,2
+2026-08-31,CIEN,Utilities,378.07,53516913221,false,10,1.18,,unknown,unknown,unknown,,,9080,3,2
+2026-08-31,FIX,Industrials,1525.0025,53671439711,false,14,2.04,,unknown,unknown,unknown,,,22700,3,2
+2026-08-31,XYL,Industrials,110.65,25835315748,false,14,0.28,,unknown,unknown,unknown,,,22000,3,2
+2026-08-31,EQT,Energy,54.12,33852925920,false,13,6.9,,unknown,unknown,unknown,,,1523,3,2
+2026-08-31,ODFL,Industrials,199.45,41357278258,false,12,0.79,,unknown,unknown,unknown,,,20591,3,2
+2026-08-31,MCHPP,Technology,63.81,34649384573,false,13,0.56,,unknown,unknown,unknown,,,17900,3,2
+2026-08-31,IR,Industrials,77.75,30166955605,false,13,0.25,,unknown,unknown,unknown,,,21000,3,2
+2026-08-31,NRG,Utilities,109.05,22923453171,false,8,0.35,,unknown,unknown,unknown,,,16702,3,2
+2026-08-31,VICI,Real Estate,25.705,28303198731,false,11,0.07,,unknown,unknown,unknown,,,28,3,2
+2026-08-31,ROL,Consumer Discretionary,36.415,17520909887,false,11,1.27,,unknown,unknown,unknown,,,21946,3,2
+2026-08-31,FSLR,Technology,203.46,21865803066,false,10,0.37,,unknown,unknown,unknown,,,7900,3,2
+2026-08-31,CSGP,Real Estate,32.21,13051414309,false,11,0.53,,unknown,unknown,unknown,,,8441,3,2
+2026-08-31,EME,Industrials,737.07,32512084730,false,16,0.32,,unknown,unknown,unknown,,,44000,3,2
+2026-08-31,HBAN,Finance,16.695,33730825520,false,13,0.04,,unknown,unknown,unknown,,,20424,3,2
+2026-08-31,EXR,Real Estate,139.94,29565061947,false,10,0.41,,unknown,unknown,unknown,,,8393,3,2
+2026-08-31,MKL,Finance,1804.25,22354581722,false,8,1.14,,unknown,unknown,unknown,,,22900,3,2
+2026-08-31,DOV,Industrials,195.24,26294967129,false,14,0.41,,unknown,unknown,unknown,,,24000,3,2
+2026-08-31,ATO,Utilities,165.91,28036890828,false,10,0.22,,unknown,unknown,unknown,,,5487,3,2
+2026-08-31,TSCO,Consumer Discretionary,35.2701,18377137736,false,8,1.39,,unknown,unknown,unknown,,,52000,3,2
+2026-08-31,HBANP,Finance,16.63,33599498556,false,6,0.19,,unknown,unknown,unknown,,,25527,3,2
+2026-08-31,AEE,Utilities,105.73,29270636928,false,12,0.3,,unknown,unknown,unknown,,,8913,3,2
+2026-08-31,ULTA,Consumer Discretionary,534.47,22852585525,false,13,0.86,,unknown,unknown,unknown,,,66820,3,2
+2026-08-31,TPR,Consumer Discretionary,122.14,24353699551,false,12,0.29,,unknown,unknown,unknown,,,20600,3,2
+2026-08-31,WRB,Finance,68.025,25252752660,false,12,0.21,,unknown,unknown,unknown,,,8804,3,2
+2026-08-31,CHTR,Telecommunications,151.01,17302347067,false,13,0.71,,unknown,unknown,unknown,,,91900,3,2
+2026-08-31,DTE,Utilities,135.435,28182407625,false,12,0.21,,unknown,unknown,unknown,,,9650,3,2
+2026-08-31,LEN,Consumer Discretionary,84.96,20466451264,false,13,0.35,,unknown,unknown,unknown,,,12532,3,2
+2026-08-31,ASTS,Consumer Discretionary,58.445,22744894187,false,12,2.8,,unknown,unknown,unknown,,,1126,3,2
+2026-08-31,FTS,Utilities,54.84,28017756000,false,11,1.56,,unknown,unknown,unknown,,,9200,3,2
+2026-08-31,EXE,Energy,98.38,22775342762,false,14,0.76,,unknown,unknown,unknown,,,1600,3,2
+2026-08-31,PPL,Utilities,33.93,25533846455,false,8,1.45,,unknown,unknown,unknown,,,9552,3,2
+2026-08-31,FE,Utilities,45.675,26429378894,false,9,0.47,,unknown,unknown,unknown,,,11186,3,2
+2026-08-31,TW,Finance,107.655,25194312546,false,11,1.74,,unknown,unknown,unknown,,,1569,3,2
+2026-08-31,ES,Utilities,69.72,26261763849,false,13,0.55,,unknown,unknown,unknown,,,10731,3,2
+2026-08-31,JBL,Technology,302.445,31692331133,false,9,1.47,,unknown,unknown,unknown,,,135000,3,2
+2026-08-31,CNP,Utilities,39.545,26049093789,false,13,0.21,,unknown,unknown,unknown,,,14931,3,2
+2026-08-31,STZ,Consumer Staples,130.36,22262676656,false,8,3.09,,unknown,unknown,unknown,,,9400,3,2
+2026-08-31,TDY,Industrials,616.59,28582444415,false,11,0.16,,unknown,unknown,unknown,,,15800,3,2
+2026-08-31,HUBB,Technology,456.58,24122295267,false,12,1.09,,unknown,unknown,unknown,,,18000,3,2
+2026-08-31,SOJC,Utilities,19.525,21478425622,false,10,2.02,,unknown,unknown,unknown,,,29651,3,2
+2026-08-31,LDOS,Technology,142.26,17852521652,false,9,342.45,,unknown,unknown,unknown,,,47000,3,2
+2026-08-31,STRK,Technology,71.78,27579724407,false,10,0.23,,unknown,unknown,unknown,,,1539,3,2
+2026-08-31,PPG,Consumer Discretionary,112.07,24913161000,false,10,2.48,,unknown,unknown,unknown,,,43500,3,2
+2026-08-31,EIX,Utilities,53.19,20468255543,false,10,1.08,,unknown,unknown,unknown,,,13725,3,2
+2026-08-31,SOJD,Utilities,18.195,20015362570,false,10,2.71,,unknown,unknown,unknown,,,29651,3,2
+2026-08-31,ON,Technology,73.73,28704461336,false,14,0.69,,unknown,unknown,unknown,,,22600,3,2
+2026-08-31,CG,Finance,48.515,17287485695,false,12,0.96,,unknown,unknown,unknown,,,2500,3,2
+2026-08-31,STRD,Technology,71.8,27587408922,false,9,16.79,,unknown,unknown,unknown,,,1539,3,2
+2026-08-31,UTHR,Health Care,511.58,21942020213,false,7,1.06,,unknown,unknown,unknown,,,1400,3,2
+2026-08-31,RL,Industrials,344.685,20537104050,false,12,0.15,,unknown,unknown,unknown,,,23600,3,2
+2026-08-31,LUV,Consumer Discretionary,38.685,18925019256,false,9,0.2,,unknown,unknown,unknown,,,72790,3,2
+2026-08-31,BE,Energy,204.455,60217588526,false,12,0.63,,unknown,unknown,unknown,,,2214,3,2
+2026-08-31,CMS,Utilities,67.95,21307566391,false,11,0.16,,unknown,unknown,unknown,,,8350,3,2
+2026-08-31,NVR,Consumer Discretionary,6357.25,16941181235,false,13,0.35,,unknown,unknown,unknown,,,6300,3,2
+2026-08-31,CW,Technology,579.38,21399078165,false,9,1.03,,unknown,unknown,unknown,,,9100,3,2
+2026-08-31,TSN,Consumer Staples,55.29,19451105598,false,10,0.53,,unknown,unknown,unknown,,,133000,3,2
+2026-08-31,SBAC,Real Estate,189.96,20152497376,false,16,5.57,,unknown,unknown,unknown,,,1844,3,2
+2026-08-31,PODD,Health Care,148.945,10329961170,false,11,3.93,,unknown,unknown,unknown,,,5400,3,2
+2026-08-31,NI,Utilities,40.81,19570847681,false,13,1.23,,unknown,unknown,unknown,,,7668,3,2
+2026-08-31,TPL,Energy,367.44,25344057522,false,10,1.32,,unknown,unknown,unknown,,,99,3,2
+2026-08-31,GFS,Technology,44.725,24885761775,false,12,0.19,,unknown,unknown,unknown,,,14000,3,2
+2026-08-31,CHRW,Industrials,150.52,17588451354,false,13,0.08,,unknown,unknown,unknown,,,11855,3,2
+2026-08-31,SOJE,Basic Materials,15.76,17250356015,false,12,0.92,,unknown,unknown,unknown,,,29651,3,2
+2026-08-31,SGI,Consumer Discretionary,64.045,13472857871,false,14,0.9,,unknown,unknown,unknown,,,19000,3,2
+2026-08-31,TRMB,Industrials,61.02,14228634325,false,10,0.26,,unknown,unknown,unknown,,,11500,3,2
+2026-08-31,DKS,Consumer Discretionary,136.71,12235891833,false,10,14.82,,unknown,unknown,unknown,,,105200,3,2
+2026-08-31,WWD,Energy,337.04,19900803173,false,10,1.35,,unknown,unknown,unknown,,,10200,3,2
+2026-08-31,TTD,Technology,13.725,6449105663,false,14,0.22,,unknown,unknown,unknown,,,3843,3,2
+2026-08-31,MKC,Consumer Staples,53.74,14448082404,false,13,0.51,,unknown,unknown,unknown,,,14100,3,2
+2026-08-31,BURL,Consumer Discretionary,257.05,16146645875,false,12,0.39,,unknown,unknown,unknown,,,83309,3,2
+2026-08-31,FTAI,Industrials,187.31,19238065215,false,12,0.19,,unknown,unknown,unknown,,,985,3,2
+2026-08-31,YUMC,Consumer Discretionary,44.86,15362671981,false,10,0.05,,unknown,unknown,unknown,,,290000,3,2
+2026-08-31,MTZ,Industrials,238.33,19139078257,false,11,0.07,,unknown,unknown,unknown,,,36000,3,2
+2026-08-31,ALB,Industrials,135.37,15974344566,false,13,0.45,,unknown,unknown,unknown,,,7800,3,2
+2026-08-31,Q,Technology,119.315,24961717308,false,15,0.06,,unknown,unknown,unknown,,,10000,3,2
+2026-08-31,TLN,Utilities,294.225,14097572854,false,12,0.13,,unknown,unknown,unknown,,,1880,3,2
+2026-08-31,LII,Industrials,387.35,13387077461,false,13,0.15,,unknown,unknown,unknown,,,12900,3,2
+2026-08-31,DKNG,Consumer Discretionary,24.205,12016670232,false,13,0.54,,unknown,unknown,unknown,,,5100,3,2
+2026-08-31,BG,Consumer Staples,113.52,21809362843,false,12,0.88,,unknown,unknown,unknown,,,22000,3,2
+2026-08-31,WY,Real Estate,23.275,16775130400,false,11,0.03,,unknown,unknown,unknown,,,9517,3,2
+2026-08-31,Z,Real Estate,34.91,7850384644,false,13,0.16,,unknown,unknown,unknown,,,7068,3,2
+2026-08-31,ZG,Real Estate,35.875,8067388975,false,13,0.15,,unknown,unknown,unknown,,,7068,3,2
+2026-08-31,LNT,Utilities,67.82,17584688286,false,12,0.25,,unknown,unknown,unknown,,,4943,3,2
+2026-08-31,EVRG,Utilities,80.85,18641355856,false,10,1.37,,unknown,unknown,unknown,,,4691,3,2
+2026-08-31,XPO,Consumer Discretionary,192.87,22582466505,false,10,10.15,,unknown,unknown,unknown,,,37000,3,2
+2026-08-31,DOW,Industrials,30.385,21948322504,false,12,0.14,,unknown,unknown,unknown,,,34600,3,2
+2026-08-31,APG,Consumer Discretionary,39.44,17044402114,false,12,0.21,,unknown,unknown,unknown,,,29000,3,2
+2026-08-31,IONQ,Technology,40.285,15348678219,false,14,2.33,,unknown,unknown,unknown,,,1132,3,2
+2026-08-31,COO,Health Care,69.99,13650193794,false,12,0.06,,unknown,unknown,unknown,,,15000,3,2
+2026-08-31,MAA,Real Estate,128.27,14882136424,false,14,0.12,,unknown,unknown,unknown,,,2507,3,2
+2026-08-31,BWXT,Industrials,151.92,13919211202,false,13,0.9,,unknown,unknown,unknown,,,10400,3,2
+2026-08-31,ULS,Health Care,74.38,15017186108,false,10,0.85,,unknown,unknown,unknown,,,14851,3,2
+2026-08-31,TXT,Industrials,81.145,13955878380,false,11,0.98,,unknown,unknown,unknown,,,34000,3,2
+2026-08-31,H,Consumer Discretionary,166.63,15702667320,false,12,0.34,,unknown,unknown,unknown,,,50000,3,2
+2026-08-31,WMG,Consumer Discretionary,28.105,14702000058,false,14,0.13,,unknown,unknown,unknown,,,5500,3,2
+2026-08-31,SUI,Real Estate,121.5287,14802311963,false,14,6.83,,unknown,unknown,unknown,,,3614,3,2
+2026-08-31,DECK,Consumer Discretionary,87.67,11959435281,false,9,0.27,,unknown,unknown,unknown,,,6000,3,2
+2026-08-31,FNF,Finance,46.84,12562152017,false,9,3.4,,unknown,unknown,unknown,,,24535,3,2
+2026-08-31,APOS,Finance,25.5127,14530356996,false,8,2.44,,unknown,unknown,unknown,,,6140,3,2
+2026-08-31,BEPC,Utilities,31.77,11973675654,false,14,0.45,,unknown,unknown,unknown,,,2411,3,2
+2026-08-31,RBC,Industrials,495.74,15694754116,false,10,1.16,,unknown,unknown,unknown,,,5816,3,2
+2026-08-31,DPZ,Consumer Discretionary,346.75,11471091611,false,10,1.06,,unknown,unknown,unknown,,,10200,3,2
+2026-08-31,QXO,Consumer Discretionary,13.505,14011312025,false,9,1.32,,unknown,unknown,unknown,,,7794,3,2
+2026-08-31,ALLY,Finance,41.96,12764219118,false,13,0.88,,unknown,unknown,unknown,,,10300,3,2
+2026-08-31,UHS,Health Care,172.35,10157708360,false,9,1.1,,unknown,unknown,unknown,,,101500,3,2
+2026-08-31,WPC,Real Estate,69.846,15912097731,false,14,0.01,,unknown,unknown,unknown,,,199,3,2
+2026-08-31,SREA,Utilities,20.1,12726232088,false,7,3.15,,unknown,unknown,unknown,,,15938,3,2
+2026-08-31,WSO,Consumer Discretionary,310,12788180140,false,10,0.57,,unknown,unknown,unknown,,,6950,3,2
+2026-08-31,AA,Industrials,49.895,13167761758,false,13,0.89,,unknown,unknown,unknown,,,14900,3,2
+2026-08-31,GGG,Industrials,78.38,12693940725,false,10,0.23,,unknown,unknown,unknown,,,4400,3,2
+2026-08-31,CSL,Industrials,352.245,13989104779,false,10,0.15,,unknown,unknown,unknown,,,5900,3,2
+2026-08-31,HII,Industrials,291.91,11502596202,false,14,1.43,,unknown,unknown,unknown,,,44000,3,2
+2026-08-31,EVR,Finance,287.935,11073340308,false,11,0.56,,unknown,unknown,unknown,,,2570,3,2
+2026-08-31,RPM,Consumer Discretionary,104.81,13388577392,false,12,0.89,,unknown,unknown,unknown,,,17546,3,2
+2026-08-31,NXT,Industrials,82.772,12558955829,false,14,0.73,,unknown,unknown,unknown,,,1993,3,2
+2026-08-31,SMMT,Health Care,13.62,10865349579,false,12,3.79,,unknown,unknown,unknown,,,265,3,2
+2026-08-31,CHWY,Consumer Discretionary,23.385,9574385081,false,10,2.26,,unknown,unknown,unknown,,,18000,3,2
+2026-08-31,HRL,Consumer Staples,21.62,11898584296,false,9,12.58,,unknown,unknown,unknown,,,20000,3,2
+2026-08-31,TOL,Consumer Discretionary,144.38,13495342980,false,14,0.15,,unknown,unknown,unknown,,,4900,3,2
+2026-08-31,OHI,Real Estate,45.345,13740124485,false,10,1.1,,unknown,unknown,unknown,,,69,3,2
+2026-08-31,KTOS,Industrials,51.06,9585050957,false,9,0.3,,unknown,unknown,unknown,,,4300,3,2
+2026-08-31,MLI,Industrials,62.41,13803930425,false,10,1.42,,unknown,unknown,unknown,,,4832,3,2
+2026-08-31,MTSI,Technology,263.215,20101974603,false,13,1.91,,unknown,unknown,unknown,,,2000,3,2
+2026-08-31,SF,Finance,80.8,12200940107,false,11,1.26,,unknown,unknown,unknown,,,9000,3,2
+2026-08-31,IONS,Health Care,60.275,10016760009,false,7,2.44,,unknown,unknown,unknown,,,1480,3,2
+2026-08-31,WYNN,Consumer Discretionary,91.835,9456607280,false,12,0.23,,unknown,unknown,unknown,,,28500,3,2
+2026-08-31,ACM,Consumer Discretionary,69.36,8926384038,false,15,11.02,,unknown,unknown,unknown,,,51000,3,2
+2026-08-31,AVAV,Industrials,147.645,7503704992,false,9,0.49,,unknown,unknown,unknown,,,4091,3,2
+2026-08-31,REG,Real Estate,74.89,13713897765,false,9,1.48,,unknown,unknown,unknown,,,507,3,2
+2026-08-31,AKAM,Real Estate,107.93,15511333609,false,9,0.62,,unknown,unknown,unknown,,,11000,3,2
+2026-08-31,HLI,Finance,133.2351,9311334816,false,12,0.1,,unknown,unknown,unknown,,,2800,3,2
+2026-08-31,PEN,Health Care,323.22,12731448979,false,14,4.33,,unknown,unknown,unknown,,,4700,3,2
+2026-08-31,BJ,Consumer Discretionary,90.66,11451689977,false,11,1.02,,unknown,unknown,unknown,,,35000,3,2
+2026-08-31,DTM,Utilities,130.07,13269129551,false,12,0.35,,unknown,unknown,unknown,,,588,3,2
+2026-08-31,UDR,Real Estate,36.81,11825736012,false,5,1.22,,unknown,unknown,unknown,,,1426,3,2
+2026-08-31,CLX,Consumer Discretionary,98.125,11866354866,false,14,0.62,,unknown,unknown,unknown,,,9200,3,2
+2026-08-31,OKLO,Utilities,40.665,7564407737,false,16,0.81,,unknown,unknown,unknown,,,215,3,2
+2026-08-31,ELS,Real Estate,63.45,12313400076,false,13,1.04,,unknown,unknown,unknown,,,3700,3,2
+2026-08-31,GMED,Health Care,81.47,10938318134,false,10,0.02,,unknown,unknown,unknown,,,6000,3,2
+2026-08-31,CELH,Consumer Staples,31.75,8033862742,false,12,121.07,,unknown,unknown,unknown,,,1497,3,2
+2026-08-31,EPAM,Technology,117.93,6083652669,false,17,0.06,,unknown,unknown,unknown,,,62850,3,2
+2026-08-31,AGNC,Real Estate,10.71,12696506297,false,12,0.22,,unknown,unknown,unknown,,,54,3,2
+2026-08-31,WMS,Consumer Discretionary,135.255,10198949532,false,11,0.31,,unknown,unknown,unknown,,,6425,3,2
+2026-08-31,CPT,Real Estate,105.82,10639074017,false,10,0.12,,unknown,unknown,unknown,,,1640,3,2
+2026-08-31,BLDR,Consumer Discretionary,66.73,7179911576,false,10,0.14,,unknown,unknown,unknown,,,28000,3,2
+2026-08-31,NYT,Consumer Discretionary,67.79,10880489015,false,14,0.21,,unknown,unknown,unknown,,,6000,3,2
+2026-08-31,ALGN,Health Care,158.045,11227493409,false,13,12.26,,unknown,unknown,unknown,,,20290,3,2
+2026-08-31,MKSI,Industrials,257.175,17389545479,false,15,10.31,,unknown,unknown,unknown,,,10200,3,2
+2026-08-31,PEGA,Technology,36.61,6018865036,false,14,0.38,,unknown,unknown,unknown,,,5598,3,2
+2026-08-31,PNW,Utilities,97.3,11792490868,false,7,4.88,,unknown,unknown,unknown,,,6610,3,2
+2026-08-31,CNM,Consumer Discretionary,43.01,8323296705,false,10,0.43,,unknown,unknown,unknown,,,5600,3,2
+2026-08-31,BROS,Consumer Discretionary,48.8399,8531437541,false,10,0.04,,unknown,unknown,unknown,,,32000,3,2
+2026-08-31,DCI,Industrials,90.495,10489371013,false,9,1.02,,unknown,unknown,unknown,,,15000,3,2
+2026-08-31,SPXC,Industrials,197.36,9884945330,false,15,0.73,,unknown,unknown,unknown,,,4700,3,2
+2026-08-31,NCLH,Consumer Discretionary,16.18,7429659348,false,11,2,,unknown,unknown,unknown,,,44500,3,2
+2026-08-31,BAH,Consumer Discretionary,75.98,9139252249,false,14,4.62,,unknown,unknown,unknown,,,31500,3,2
+2026-08-31,KRMN,Industrials,42.37,5615453208,false,6,0.08,,unknown,unknown,unknown,,,1400,3,2
+2026-08-31,ENSG,Health Care,172.05,10027492770,false,8,0.5,,unknown,unknown,unknown,,,46000,3,2
+2026-08-31,AAL,Consumer Discretionary,13.415,8880326893,false,9,1.71,,unknown,unknown,unknown,,,139100,3,2
+2026-08-31,RMBS,Technology,86.18,9347220947,false,9,1.37,,unknown,unknown,unknown,,,791,3,2
+2026-08-31,DY,Industrials,290.32,8756329036,false,9,13.32,,unknown,unknown,unknown,,,19556,3,2
+2026-08-31,AMKR,Technology,47.705,11852425177,false,10,0.32,,unknown,unknown,unknown,,,30800,3,2
+2026-08-31,ONBPP,Finance,24.87,9514515900,false,11,2.72,,unknown,unknown,unknown,,,4914,3,2
+2026-08-31,SARO,Industrials,24.41,8077743311,false,7,0.14,,unknown,unknown,unknown,,,8000,3,2
+2026-08-31,GAP,Consumer Discretionary,22.625,8144523359,false,7,16.02,,unknown,unknown,unknown,,,79000,3,2
+2026-08-31,STRL,Industrials,465.135,14227790320,false,14,0.19,,unknown,unknown,unknown,,,4400,3,2
+2026-08-31,RRX,Consumer Discretionary,158.08,10526842335,false,10,3.28,,unknown,unknown,unknown,,,29200,3,2
+2026-08-31,ACI,Consumer Staples,12.515,6073850923,false,8,0.78,,unknown,unknown,unknown,,,280000,3,2
+2026-08-31,WAL,Finance,78.56,8570963876,false,13,0.87,,unknown,unknown,unknown,,,3769,3,2
+2026-08-31,MP,Basic Materials,55.185,9828536134,false,10,1.09,,unknown,unknown,unknown,,,998,3,2
+2026-08-31,WLK,Industrials,74.6,9533622481,false,9,0.34,,unknown,unknown,unknown,,,14600,3,2
+2026-08-31,PPC,Consumer Staples,31.72,7552802381,false,17,1.94,,unknown,unknown,unknown,,,63000,3,2
+2026-08-31,GME,Consumer Discretionary,18.455,8280597148,false,7,1.87,,unknown,unknown,unknown,,,4000,3,2
+2026-08-31,AOS,Consumer Discretionary,59.65,8106946379,false,13,0.48,,unknown,unknown,unknown,,,11500,3,2
+2026-08-31,EMP,Utilities,19.88,9276634180,false,9,8.81,,unknown,unknown,unknown,,,793,3,2
+2026-08-31,EAI,Utilities,19.5827,9137904636,false,11,2.1,,unknown,unknown,unknown,,,1347,3,2
+2026-08-31,ENJ,Utilities,19.29,9001321596,false,6,0.21,,unknown,unknown,unknown,,,216,3,2
+2026-08-31,GLXY,Finance,23.64,9240618088,false,11,0.76,,unknown,unknown,unknown,,,700,3,2
+2026-08-31,PLNT,Consumer Discretionary,51.855,3900375720,false,11,0.59,,unknown,unknown,unknown,,,4020,3,2
+2026-08-31,SFD,Consumer Staples,21.89,8619569065,false,14,0.2,,unknown,unknown,unknown,,,34000,3,2
+2026-08-31,SAIA,Industrials,353.02,9416684943,false,13,0.19,,unknown,unknown,unknown,,,14500,3,2
+2026-08-31,PRH,Finance,21.6027,7604150400,false,8,2.74,,unknown,unknown,unknown,,,36607,3,2
+2026-08-31,POOL,Consumer Discretionary,186.375,6773006722,false,13,0.92,,unknown,unknown,unknown,,,6000,3,2
+2026-08-31,OGE,Utilities,45.535,9406678904,false,10,6.5,,unknown,unknown,unknown,,,2248,3,2
+2026-08-31,COLB,Finance,29.7,8402197360,false,6,0.15,,unknown,unknown,unknown,,,6005,3,2
+2026-08-31,PRS,Finance,20.425,7189600000,false,7,1.57,,unknown,unknown,unknown,,,36607,3,2
+2026-08-31,ADC,Real Estate,72.5,9017499975,false,11,1.24,,unknown,unknown,unknown,,,90,3,2
+2026-08-31,LEVI,Consumer Discretionary,20.8,8004891690,false,9,0.37,,unknown,unknown,unknown,,,19000,3,2
+2026-08-31,GNRC,Consumer Discretionary,185.22,10929158184,false,10,7.99,,unknown,unknown,unknown,,,9400,3,2
+2026-08-31,AEIS,Technology,274.835,11007263227,false,16,1.14,,unknown,unknown,unknown,,,13000,3,2
+2026-08-31,CTRE,Real Estate,38.56,9111465753,false,7,1.34,,unknown,unknown,unknown,,,43,3,2
+2026-08-31,CUBE,Real Estate,39.32,8853379788,false,12,0.04,,unknown,unknown,unknown,,,3121,3,2
+2026-08-31,VMI,Industrials,469.08,9055522791,false,14,0.6,,unknown,unknown,unknown,,,10791,3,2
+2026-08-31,JBTM,Industrials,116.055,6020563997,false,7,1.83,,unknown,unknown,unknown,,,11500,3,2
+2026-08-31,BRX,Real Estate,28.815,8842525786,false,9,0.02,,unknown,unknown,unknown,,,464,3,2
+2026-08-31,ZWS,Industrials,47.63,7900106940,false,11,0.25,,unknown,unknown,unknown,,,2600,3,2
+2026-08-31,IESC,Industrials,301.7,6011178205,false,12,0.1,,unknown,unknown,unknown,,,10283,3,2
+2026-08-31,CHDN,Consumer Discretionary,88.72,6183805559,false,9,0.53,,unknown,unknown,unknown,,,9000,3,2
+2026-08-31,LINE,Real Estate,38.59,8787329363,false,12,0.55,,unknown,unknown,unknown,,,24000,3,2
+2026-08-31,CMC,Industrials,67.44,7460505152,false,11,2.73,,unknown,unknown,unknown,,,12690,3,2
+2026-08-31,SOLS,Industrials,62.675,9955758852,false,7,4.23,,unknown,unknown,unknown,,,4100,3,2
+2026-08-31,LKQ,Consumer Discretionary,25.22,6380712609,false,13,0.27,,unknown,unknown,unknown,,,44000,3,2
+2026-08-31,STEP,Finance,51.2,6178645402,false,13,0.09,,unknown,unknown,unknown,,,1310,3,2
+2026-08-31,MOS,Industrials,24.02,7635853417,false,7,2.45,,unknown,unknown,unknown,,,13249,3,2
+2026-08-31,CYTK,Health Care,69.7,9689932235,false,10,1.8,,unknown,unknown,unknown,,,673,3,2
+2026-08-31,MIDD,Industrials,110.93,5016515175,false,11,0.03,,unknown,unknown,unknown,,,8826,3,2
+2026-08-31,RTO,Consumer Discretionary,23.755,11982022000,false,13,6.24,,unknown,unknown,unknown,,,63388,3,2
+2026-08-31,TTMI,Technology,117.77,12406935713,false,11,0.61,,unknown,unknown,unknown,,,18200,3,2
+2026-08-31,RGTI,Technology,15.705,5241838172,false,13,2.29,,unknown,unknown,unknown,,,164,3,2
+2026-08-31,NFG,Utilities,82.9975,7888505604,false,14,0.13,,unknown,unknown,unknown,,,2311,3,2
+2026-08-31,IBP,Consumer Discretionary,244.57,6500469319,false,14,0.71,,unknown,unknown,unknown,,,10400,3,2
+2026-08-31,MOD,Consumer Discretionary,177.8,9443439482,false,11,2.79,,unknown,unknown,unknown,,,13200,3,2
+2026-08-31,AMTM,Real Estate,20.1423,4924921523,false,12,0.39,,unknown,unknown,unknown,,,50000,3,2
+2026-08-31,VFC,Industrials,13.365,5254243528,false,11,0.07,,unknown,unknown,unknown,,,26000,3,2
+2026-08-31,WING,Consumer Discretionary,111.37,3034002348,false,7,0.56,,unknown,unknown,unknown,,,1367,3,2
+2026-08-31,INGR,Consumer Staples,103.9,6552347418,false,13,0.19,,unknown,unknown,unknown,,,11200,3,2
+2026-08-31,PRIM,Industrials,72.43,3899075445,false,14,0.35,,unknown,unknown,unknown,,,18526,3,2
+2026-08-31,CAVA,Consumer Discretionary,66.18,7730234184,false,5,5.87,,unknown,unknown,unknown,,,12900,3,2
+2026-08-31,PFSI,Finance,73.28,3807011196,false,10,0.05,,unknown,unknown,unknown,,,5543,3,2
+2026-08-31,STAG,Real Estate,37.23,7178254089,false,7,2.39,,unknown,unknown,unknown,,,93,3,2
+2026-08-31,ESAB,Industrials,75.8,4712319998,false,10,0.58,,unknown,unknown,unknown,,,10300,3,2
+2026-08-31,SSD,Consumer Discretionary,181.28,7429703153,false,12,0.17,,unknown,unknown,unknown,,,5545,3,2
+2026-08-31,CMSD,Utilities,21.0084,6288559099,false,8,0.2,,unknown,unknown,unknown,,,8350,3,2
+2026-08-31,CMSC,Utilities,21.12,6321964936,false,12,0.23,,unknown,unknown,unknown,,,8350,3,2
+2026-08-31,CRK,Energy,14.5,4257497946,false,15,0.71,,unknown,unknown,unknown,,,252,3,2
+2026-08-31,EXP,Industrials,194.5,5966350713,false,12,1.21,,unknown,unknown,unknown,,,2800,3,2
+2026-08-31,OLLI,Consumer Discretionary,75.245,4548807957,false,13,2.87,,unknown,unknown,unknown,,,13000,3,2
+2026-08-31,STWD,Real Estate,15.7577,5833011263,false,9,1.03,,unknown,unknown,unknown,,,324,3,2
+2026-08-31,ORA,Utilities,102.28,6289907125,false,12,0.29,,unknown,unknown,unknown,,,1648,3,2
+2026-08-31,IDA,Utilities,135.79,7854371019,false,10,2.36,,unknown,unknown,unknown,,,2174,3,2
+2026-08-31,BYD,Consumer Discretionary,78.07,5672208171,false,9,0.18,,unknown,unknown,unknown,,,16009,3,2
+2026-08-31,CWEN,Utilities,31.84,5219012526,false,10,3.45,,unknown,unknown,unknown,,,60,3,2
+2026-08-31,FND,Consumer Discretionary,50.93,5423533917,false,11,0.2,,unknown,unknown,unknown,,,13723,3,2
+2026-08-31,APLD,Finance,25.1131,7319692957,false,11,1.19,,unknown,unknown,unknown,,,256,3,2
+2026-08-31,PSN,Technology,48.79,5211035173,false,11,1.29,,unknown,unknown,unknown,,,21000,3,2
+2026-08-31,RRR,Consumer Discretionary,55.53,5831548975,false,8,0.55,,unknown,unknown,unknown,,,9500,3,2
+2026-08-31,CMSA,Utilities,19.91,5959769029,false,14,0.14,,unknown,unknown,unknown,,,8350,3,2
+2026-08-31,TXNM,Utilities,57.66,5941638760,false,8,4.72,,unknown,unknown,unknown,,,1755,3,2
+2026-08-31,ROAD,Industrials,106.02,6082850321,false,11,0.94,,unknown,unknown,unknown,,,1639,3,2
+2026-08-31,PTCT,Health Care,69.055,5763385682,false,10,1,,unknown,unknown,unknown,,,991,3,2
+2026-08-31,MAT,Consumer Discretionary,14.865,4246930500,false,13,0.54,,unknown,unknown,unknown,,,31000,3,2
+2026-08-31,ESI,Industrials,34.92,8509686717,false,10,0.39,,unknown,unknown,unknown,,,5200,3,2
+2026-08-31,KD,Technology,13.4238,2923948799,false,11,1.39,,unknown,unknown,unknown,,,72000,3,2
+2026-08-31,NXST,Industrials,180.77,5569216572,false,13,0.3,,unknown,unknown,unknown,,,13005,3,2
+2026-08-31,PIPR,Finance,75.37,5326419833,false,11,3.12,,unknown,unknown,unknown,,,1858,3,2
+2026-08-31,AAON,Industrials,76,6266476564,false,10,1.08,,unknown,unknown,unknown,,,5897,3,2
+2026-08-31,GATX,Consumer Discretionary,175.08,6180324000,false,13,28.6,,unknown,unknown,unknown,,,2371,3,2
+2026-08-31,FBIN,Basic Materials,44.345,5293528148,false,15,0.38,,unknown,unknown,unknown,,,10000,3,2
+2026-08-31,CRUS,Technology,108.655,5445523590,false,9,7.98,,unknown,unknown,unknown,,,1668,3,2
+2026-08-31,PFH,Finance,15.26,5447820000,false,10,0.35,,unknown,unknown,unknown,,,36607,3,2
+2026-08-31,GXO,Consumer Discretionary,47.6,5458985960,false,10,2.25,,unknown,unknown,unknown,,,154000,3,2
+2026-08-31,PL,Technology,19.83,7067462091,false,8,0.05,,unknown,unknown,unknown,,,1000,3,2
+2026-08-31,LEA,Consumer Discretionary,125.105,6170774600,false,11,0.62,,unknown,unknown,unknown,,,164300,3,2
+2026-08-31,MIR,Industrials,14.78,3680776423,false,13,2.33,,unknown,unknown,unknown,,,3281,3,2
+2026-08-31,CIFR,Finance,15.13,6279414824,false,6,0.81,,unknown,unknown,unknown,,,66,3,2
+2026-08-31,ALK,Consumer Discretionary,41.35,4614789012,false,9,0.51,,unknown,unknown,unknown,,,31596,3,2
+2026-08-31,GBCI,Finance,46.67,6076991847,false,6,0.16,,unknown,unknown,unknown,,,4125,3,2
+2026-08-31,EPRT,Real Estate,30.03,6494678310,false,15,0.43,,unknown,unknown,unknown,,,56,3,2
+2026-08-31,BLTE,Health Care,153.67,6188620368,false,12,3.48,,unknown,unknown,unknown,,,41,3,2
+2026-08-31,WH,Consumer Discretionary,73.0409,5420447141,false,11,1.72,,unknown,unknown,unknown,,,2000,3,2
+2026-08-31,FOUR,Real Estate,42.27,3337644272,false,9,0.02,,unknown,unknown,unknown,,,6300,3,2
+2026-08-31,LPX,Basic Materials,69.9,4887646359,false,9,0.1,,unknown,unknown,unknown,,,4300,3,2
+2026-08-31,BFAM,Consumer Discretionary,74.36,3616521354,false,12,4.85,,unknown,unknown,unknown,,,32200,3,2
+2026-08-31,IRTC,Health Care,118.4,3902819555,false,12,0.3,,unknown,unknown,unknown,,,2400,3,2
+2026-08-31,OLED,Technology,82.95,3812948963,false,12,2.61,,unknown,unknown,unknown,,,469,3,2
+2026-08-31,BOOT,Consumer Discretionary,152.4,4615410226,false,9,0.63,,unknown,unknown,unknown,,,12700,3,2
+2026-08-31,SITE,Consumer Discretionary,97.13,4240248031,false,10,2.36,,unknown,unknown,unknown,,,8200,3,2
+2026-08-31,THO,Industrials,75.605,3935797686,false,13,0.12,,unknown,unknown,unknown,,,20900,3,2
+2026-08-31,LMND,Finance,52.27,4045521066,false,9,6.94,,unknown,unknown,unknown,,,1282,3,2
+2026-08-31,ENS,Technology,182.825,6593624578,false,10,1.28,,unknown,unknown,unknown,,,9682,3,2
+2026-08-31,COGT,Health Care,34.54,5993552878,false,9,1.93,,unknown,unknown,unknown,,,258,3,2
+2026-08-31,VNT,Industrials,32.525,4397380000,false,11,3.64,,unknown,unknown,unknown,,,7800,3,2
+2026-08-31,FCN,Consumer Discretionary,151.7975,4191368056,false,13,0.52,,unknown,unknown,unknown,,,8118,3,2
+2026-08-31,UFPI,Basic Materials,84.67,4670523443,false,13,0.02,,unknown,unknown,unknown,,,13800,3,2
+2026-08-31,REZI,Industrials,19.48,2957986923,false,11,0.69,,unknown,unknown,unknown,,,14800,3,2
+2026-08-31,HUT,Finance,77.075,9500223496,false,7,0.87,,unknown,unknown,unknown,,,248,3,2
+2026-08-31,POR,Utilities,48.975,5759839067,false,12,0.47,,unknown,unknown,unknown,,,2877,3,2
+2026-08-31,BMI,Industrials,132.93,3853221572,false,11,3.55,,unknown,unknown,unknown,,,2477,3,2
+2026-08-31,FLG,Finance,13.355,5543564825,false,10,0.06,,unknown,unknown,unknown,,,5631,3,2
+2026-08-31,POST,Consumer Staples,84.35,3707756502,false,13,3.3,,unknown,unknown,unknown,,,13180,3,2
+2026-08-31,WTM,Finance,2106.45,5027508450,false,13,0.32,,unknown,unknown,unknown,,,1648,3,2
+2026-08-31,SNEX,Finance,67.86,8185051637,false,12,0.32,,unknown,unknown,unknown,,,5251,3,2
+2026-08-31,BKH,Utilities,71.6,5459724896,false,11,1.04,,unknown,unknown,unknown,,,2795,3,2
+2026-08-31,KRG,Real Estate,25.775,5163942198,false,7,0.89,,unknown,unknown,unknown,,,228,3,2
+2026-08-31,GVA,Industrials,120,5251741200,false,12,1.43,,unknown,unknown,unknown,,,2500,3,2
+2026-08-31,LIF,Technology,43.055,3508137287,false,13,0.17,,unknown,unknown,unknown,,,547,3,2
+2026-08-31,ESE,Telecommunications,271.65,7037790576,false,14,0.53,,unknown,unknown,unknown,,,3425,3,2
+2026-08-31,OPCH,Health Care,23.51,3521451063,false,15,0.17,,unknown,unknown,unknown,,,8266,3,2
+2026-08-31,GPI,Consumer Discretionary,270.84,3229015419,false,11,0.56,,unknown,unknown,unknown,,,20452,3,2
+2026-08-31,GNTX,Consumer Discretionary,22.53,4746695447,false,12,1.2,,unknown,unknown,unknown,,,6398,3,2
+2026-08-31,RIOT,Finance,18.515,6947919182,false,8,1.35,,unknown,unknown,unknown,,,816,3,2
+2026-08-31,ALGM,Technology,35.75,6663873145,false,11,1.79,,unknown,unknown,unknown,,,4250,3,2
+2026-08-31,BCO,Industrials,109.13,4495024758,false,11,0.5,,unknown,unknown,unknown,,,65400,3,2
+2026-08-31,VICR,Technology,185.32,8544499574,false,13,0.26,,unknown,unknown,unknown,,,1092,3,2
+2026-08-31,BC,Industrials,75.18,4871470637,false,11,0.54,,unknown,unknown,unknown,,,14000,3,2
+2026-08-31,CNX,Energy,36.535,5405120778,false,7,3.99,,unknown,unknown,unknown,,,390,3,2
+2026-08-31,WULF,Technology,15.035,7501994059,false,10,1.02,,unknown,unknown,unknown,,,141,3,2
+2026-08-31,REYN,Consumer Discretionary,23.155,4880865188,false,10,0.59,,unknown,unknown,unknown,,,6000,3,2
+2026-08-31,SR,Utilities,82.05,4850205814,false,13,0.02,,unknown,unknown,unknown,,,3497,3,2
+2026-08-31,NNI,Finance,126.03,4509282571,false,10,0.37,,unknown,unknown,unknown,,,5744,3,2
+2026-08-31,GOLF,Consumer Discretionary,86.595,5057584785,false,6,0.42,,unknown,unknown,unknown,,,7300,3,2
+2026-08-31,YOU,Technology,43.41,5872855640,false,7,1.09,,unknown,unknown,unknown,,,3301,3,2
+2026-08-31,CORZ,Finance,16.245,5220175464,false,8,0.69,,unknown,unknown,unknown,,,325,3,2
+2026-08-31,CELC,Health Care,88.44,4327537944,false,16,0.93,,unknown,unknown,unknown,,,155,3,2
+2026-08-31,MMS,Real Estate,58.16,3045127496,false,12,3.14,,unknown,unknown,unknown,,,37200,3,2
+2026-08-31,GPCR,Health Care,45.86,3270270042,false,12,0.2,,unknown,unknown,unknown,,,281,3,2
+2026-08-31,LOPE,Real Estate,149.79,3904281892,false,8,7.6,,unknown,unknown,unknown,,,5830,3,2
+2026-08-31,MTH,Consumer Discretionary,69.91,4556320842,false,14,0.09,,unknown,unknown,unknown,,,1860,3,2
+2026-08-31,LGN,Consumer Discretionary,53.68,5801491766,false,12,0.13,,unknown,unknown,unknown,,,7000,3,2
+2026-08-31,CE,Industrials,45.12,4951871541,false,10,1,,unknown,unknown,unknown,,,11434,3,2
+2026-08-31,HHH,Real Estate,64.16,3831701670,false,12,0.3,,unknown,unknown,unknown,,,500,3,2
+2026-08-31,TNL,Consumer Discretionary,68.81,4211463204,false,10,1.34,,unknown,unknown,unknown,,,19300,3,2
+2026-08-31,OGS,Utilities,79.34,4987016462,false,9,1.58,,unknown,unknown,unknown,,,4000,3,2
+2026-08-31,BDC,Industrials,114.34,4468200359,false,9,0.18,,unknown,unknown,unknown,,,8000,3,2
+2026-08-31,TDS,Telecommunications,33.74,3883474000,false,13,0.98,,unknown,unknown,unknown,,,4000,3,2
+2026-08-31,CAR,Consumer Discretionary,142.8,5044517671,false,12,0.89,,unknown,unknown,unknown,,,25000,3,2
+2026-08-31,NJR,Utilities,53.37,5415344278,false,12,0.2,,unknown,unknown,unknown,,,1376,3,2
+2026-08-31,LEU,Industrials,174.51,3481973250,false,14,2.04,,unknown,unknown,unknown,,,467,3,2
+2026-08-31,AD,Telecommunications,36.395,3148167500,false,13,1.43,,unknown,unknown,unknown,,,60,3,2
+2026-08-31,UPST,Finance,28.8,2802615725,false,14,1.71,,unknown,unknown,unknown,,,1405,3,2
+2026-08-31,ECG,Consumer Discretionary,114.465,5845021988,false,12,0.4,,unknown,unknown,unknown,,,9400,3,2
+2026-08-31,OSIS,Technology,209,3331871312,false,11,0.55,,unknown,unknown,unknown,,,7806,3,2
+2026-08-31,MZTI,Consumer Staples,113.86,3107353260,false,14,0.48,,unknown,unknown,unknown,,,3500,3,2
+2026-08-31,AGX,Consumer Discretionary,422.59,5924393590,false,8,7.61,,unknown,unknown,unknown,,,1409,3,2
+2026-08-31,AROC,Utilities,31.39,5503865627,false,11,0.57,,unknown,unknown,unknown,,,1350,3,2
+2026-08-31,FORM,Technology,101.18,7904254956,false,13,0.24,,unknown,unknown,unknown,,,2153,3,2
+2026-08-31,PECO,Real Estate,38.61,4969107000,false,9,1.07,,unknown,unknown,unknown,,,320,3,2
+2026-08-31,GPK,Consumer Discretionary,11.23,3324883765,false,10,0.36,,unknown,unknown,unknown,,,23000,3,2
+2026-08-31,AEO,Consumer Discretionary,16.58,2778365861,false,9,1.01,,unknown,unknown,unknown,,,45000,3,2
+2026-08-31,MRCY,Technology,87.12,5239059907,false,8,0.14,,unknown,unknown,unknown,,,2102,3,2
+2026-08-31,CHH,Consumer Discretionary,103.78,4688722283,false,11,0.16,,unknown,unknown,unknown,,,1754,3,2
+2026-08-31,FELE,Consumer Discretionary,99.83,4413630451,false,17,0.03,,unknown,unknown,unknown,,,6500,3,2
+2026-08-31,ELC,Utilities,19.54,4166661766,false,10,2.45,,unknown,unknown,unknown,,,1615,3,2
+2026-08-31,DTW,Utilities,19.475,4052515144,false,12,1.08,,unknown,unknown,unknown,,,9592,3,2
+2026-08-31,ATMU,Consumer Discretionary,46.73,3812958977,false,10,0.94,,unknown,unknown,unknown,,,4500,3,2
+2026-08-31,FG,Finance,23.93,3133279551,false,13,11.92,,unknown,unknown,unknown,,,1173,3,2
+2026-08-31,SLGN,Industrials,41.39,4374178808,false,12,0.15,,unknown,unknown,unknown,,,17320,3,2
+2026-08-31,ENPH,Technology,36.34,4802136508,false,10,1.47,,unknown,unknown,unknown,,,2872,3,2
+2026-08-31,TCBI,Finance,97.45,4236577259,false,11,1.15,,unknown,unknown,unknown,,,1785,3,2
+2026-08-31,IBOC,Finance,70.39,4377660670,false,13,0.32,,unknown,unknown,unknown,,,2319,3,2
+2026-08-31,TMDX,Health Care,83.32,2889133081,false,10,1.3,,unknown,unknown,unknown,,,898,3,2
+2026-08-31,VKTX,Health Care,32.27,3764390277,false,10,2.08,,unknown,unknown,unknown,,,65,3,2
+2026-08-31,IRT,Real Estate,16.09,3793130083,false,7,7.27,,unknown,unknown,unknown,,,904,3,2
+2026-08-31,SEB,Industrials,3929.0097,3763181917,false,7,1.82,,unknown,unknown,unknown,,,14000,3,2
+2026-08-31,KNF,Industrials,62.905,3570702935,false,12,1.49,,unknown,unknown,unknown,,,5298,3,2
+2026-08-31,LEGN,Health Care,20.43,3973398278,false,11,3.88,,unknown,unknown,unknown,,,2965,3,2
+2026-08-31,POWL,Energy,180.52,6576806453,false,10,0.41,,unknown,unknown,unknown,,,3143,3,2
+2026-08-31,MGY,Energy,26.7,6327061406,false,12,1.64,,unknown,unknown,unknown,,,262,3,2
+2026-08-31,MIRM,Health Care,97.33,6319851318,false,11,0.59,,unknown,unknown,unknown,,,433,3,2
+2026-08-31,VIAV,Technology,36.07,8900266296,false,13,0.68,,unknown,unknown,unknown,,,4100,3,2
+2026-08-31,GPOR,Energy,178.67,3159576338,false,8,1.45,,unknown,unknown,unknown,,,245,3,2
+2026-08-31,BBWI,Consumer Discretionary,19.27,3885705182,false,9,1.88,,unknown,unknown,unknown,,,60735,3,2
+2026-08-31,WHR,Consumer Discretionary,40.725,2655244669,false,11,1.54,,unknown,unknown,unknown,,,41000,3,2
+2026-08-31,MDU,Industrials,19.95,4196471647,false,12,2.27,,unknown,unknown,unknown,,,2096,3,2
+2026-08-31,SFBS,Finance,42.97,2349277755,false,11,0.11,,unknown,unknown,unknown,,,684,3,2
+2026-08-31,CALM,Consumer Staples,79.77,3742480944,false,15,0.03,,unknown,unknown,unknown,,,4909,3,2
+2026-08-31,NWE,Utilities,69.155,4254266917,false,10,1.07,,unknown,unknown,unknown,,,1667,3,2
+2026-08-31,UNMA,Finance,21.55,3670250322,false,7,3.45,,unknown,unknown,unknown,,,10797,3,2
+2026-08-31,MWA,Industrials,24.15,3770435148,false,12,0.61,,unknown,unknown,unknown,,,3500,3,2
+2026-08-31,HGV,Consumer Discretionary,42.145,3275684091,false,9,0.04,,unknown,unknown,unknown,,,22300,3,2
+2026-08-31,VVV,Industrials,32.095,4094886086,false,11,0.02,,unknown,unknown,unknown,,,11400,3,2
+2026-08-31,ALHC,Health Care,13.375,2774445118,false,6,1.05,,unknown,unknown,unknown,,,1849,3,2
+2026-08-31,ASBA,Finance,24.4,3681979886,false,4,1.01,,unknown,unknown,unknown,,,4129,3,2
+2026-08-31,VERA,Health Care,33.6,2421328056,false,13,4.07,,unknown,unknown,unknown,,,361,3,2
+2026-08-31,CENX,Industrials,45.58,4512114386,false,11,11.34,,unknown,unknown,unknown,,,2906,3,2
+2026-08-31,PATK,Consumer Discretionary,81.84,2628558726,false,11,0.13,,unknown,unknown,unknown,,,10000,3,2
+2026-08-31,PII,Consumer Discretionary,63.47,3611666668,false,8,0.21,,unknown,unknown,unknown,,,14500,3,2
+2026-08-31,FLY,Industrials,21.17,3543956335,false,10,0.27,,unknown,unknown,unknown,,,1418,3,2
+2026-08-31,KBH,Consumer Discretionary,53.84,3300915756,false,13,0.07,,unknown,unknown,unknown,,,2118,3,2
+2026-08-31,BHF,Finance,53.535,3078881525,false,12,0.51,,unknown,unknown,unknown,,,1400,3,2
+2026-08-31,FLNC,Miscellaneous,10.845,2001947622,false,12,0.49,,unknown,unknown,unknown,,,1670,3,2
+2026-08-31,BTU,Energy,29.53,3599707000,false,14,0.19,,unknown,unknown,unknown,,,5400,3,2
+2026-08-31,CRC,Energy,52.51,4663932581,false,16,0.61,,unknown,unknown,unknown,,,2500,3,2
+2026-08-31,NHI,Real Estate,71.25,3499118423,false,13,0.28,,unknown,unknown,unknown,,,32,3,2
+2026-08-31,BANF,Finance,109.27,3671334866,false,9,0.02,,unknown,unknown,unknown,,,2260,3,2
+2026-08-31,MARA,Technology,10.55,4075457583,false,9,8.32,,unknown,unknown,unknown,,,266,3,2
+2026-08-31,DTB,Utilities,15.76,3279467967,false,9,1.13,,unknown,unknown,unknown,,,9592,3,2
+2026-08-31,CALX,Consumer Discretionary,38.145,2401761360,false,11,47.14,,unknown,unknown,unknown,,,1921,3,2
+2026-08-31,WSC,Industrials,20.55,3723474187,false,8,0.13,,unknown,unknown,unknown,,,4700,3,2
+2026-08-31,DTG,Utilities,15.8337,3294804058,false,8,0.72,,unknown,unknown,unknown,,,9592,3,2
+2026-08-31,SHAK,Consumer Discretionary,69.865,2990147803,false,10,1.24,,unknown,unknown,unknown,,,13873,3,2
+2026-08-31,YETI,Consumer Discretionary,41.06,2996919964,false,8,0.14,,unknown,unknown,unknown,,,1390,3,2
+2026-08-31,AB,Finance,36.79,3424237307,false,8,4.12,,unknown,unknown,unknown,,,4468,3,2
+2026-08-31,ARQT,Health Care,23.63,2970101038,false,9,0.1,,unknown,unknown,unknown,,,354,3,2
+2026-08-31,RYN,Real Estate,20.405,6071860573,false,15,17.36,,unknown,unknown,unknown,,,285,3,2
+2026-08-31,MYRG,Industrials,290.0516,4515885873,false,11,0.48,,unknown,unknown,unknown,,,9000,3,2
+2026-08-31,RH,Consumer Discretionary,148.035,2798004946,false,10,0.69,,unknown,unknown,unknown,,,7230,3,2
+2026-08-31,FULTP,Finance,17.65,3369642037,false,7,2.2,,unknown,unknown,unknown,,,3400,3,2
+2026-08-31,KAI,Industrials,298.57,3525848063,false,14,0.1,,unknown,unknown,unknown,,,3900,3,2
+2026-08-31,HAYW,Industrials,14.085,2987704312,false,11,0.44,,unknown,unknown,unknown,,,1960,3,2
+2026-08-31,BKU,Finance,45.68,3253889134,false,6,5.21,,unknown,unknown,unknown,,,1803,3,2
+2026-08-31,ASO,Consumer Discretionary,43.625,2705551435,false,10,6.98,,unknown,unknown,unknown,,,22000,3,2
+2026-08-31,SMG,Industrials,59.25,3449551235,false,12,0.59,,unknown,unknown,unknown,,,5200,3,2
+2026-08-31,BXMT,Real Estate,13.845,2333486017,false,14,2.56,,unknown,unknown,unknown,,,29,3,2
+2026-08-31,FUL,Industrials,55.22,2970140835,false,13,0.06,,unknown,unknown,unknown,,,7100,3,2
+2026-08-31,FHB,Finance,25.58,3112590618,false,9,0.02,,unknown,unknown,unknown,,,2000,3,2
+2026-08-31,RWTO,Real Estate,24.45,3159513695,false,11,1.01,,unknown,unknown,unknown,,,351,3,2
+2026-08-31,EEFT,Finance,68.15,2549054999,false,11,0.5,,unknown,unknown,unknown,,,10800,3,2
+2026-08-31,FGN,Finance,24.63,3105807237,false,10,0.72,,unknown,unknown,unknown,,,1173,3,2
+2026-08-31,RWTN,Real Estate,24.9,3217664254,false,6,0.63,,unknown,unknown,unknown,,,351,3,2
+2026-08-31,NMRK,Finance,15.35,2781859424,false,14,0.45,,unknown,unknown,unknown,,,8800,3,2
+2026-08-31,BRSL,Consumer Discretionary,11.43,2108835000,false,11,0.31,,unknown,unknown,unknown,,,5746,3,2
+2026-08-31,IPGP,Technology,76.7,3262399141,false,13,0.02,,unknown,unknown,unknown,,,4840,3,2
+2026-08-31,KGS,Utilities,58.44,5908519572,false,14,1.81,,unknown,unknown,unknown,,,1300,3,2
+2026-08-31,PVH,Industrials,73.71,3398627461,false,11,0.42,,unknown,unknown,unknown,,,26000,3,2
+2026-08-31,AVA,Utilities,37.21,3116442804,false,15,0.28,,unknown,unknown,unknown,,,1920,3,2
+2026-08-31,CBU,Finance,62.65,3296386448,false,7,0.37,,unknown,unknown,unknown,,,3001,3,2
+2026-08-31,HWKN,Consumer Discretionary,118.7686,2479308421,false,9,0.21,,unknown,unknown,unknown,,,1200,3,2
+2026-08-31,SEI,Consumer Discretionary,50.76,3886510058,false,14,10.03,,unknown,unknown,unknown,,,468,3,2
+2026-08-31,COCO,Consumer Staples,59.12,3470000986,false,14,0.02,,unknown,unknown,unknown,,,336,3,2
+2026-08-31,FIZZ,Consumer Staples,32.01,2996523385,false,13,7.84,,unknown,unknown,unknown,,,1677,3,2
+2026-08-31,PBH,Health Care,52.17,2471528813,false,10,1.74,,unknown,unknown,unknown,,,890,3,2
+2026-08-31,COLM,Consumer Discretionary,57.27,2931834220,false,13,0.45,,unknown,unknown,unknown,,,9620,3,2
+2026-08-31,LCII,Consumer Discretionary,100.75,2449384330,false,13,0.24,,unknown,unknown,unknown,,,12300,3,2
+2026-08-31,BANC,Finance,18.52,2925243797,false,10,2.93,,unknown,unknown,unknown,,,1904,3,2
+2026-08-31,PRVA,Health Care,20.44,2610887191,false,10,0.37,,unknown,unknown,unknown,,,1226,3,2
+2026-08-31,LBRT,Energy,19.1,3116956046,false,14,0.31,,unknown,unknown,unknown,,,5800,3,2
+2026-08-31,SUPN,Health Care,43.88,2550613330,false,14,6.48,,unknown,unknown,unknown,,,778,3,2
+2026-08-31,WRBY,Health Care,24.41,3017272598,false,6,0.85,,unknown,unknown,unknown,,,4036,3,2
+2026-08-31,ZIONP,Finance,18.1628,2650921596,false,7,2.77,,unknown,unknown,unknown,,,9195,3,2
+2026-08-31,MLYS,Health Care,25.23,2230505709,false,7,0.68,,unknown,unknown,unknown,,,76,3,2
+2026-08-31,SYNA,Technology,96.8,3785556245,false,13,0.55,,unknown,unknown,unknown,,,1700,3,2
+2026-08-31,MGEE,Energy,77.64,2933550692,false,15,0.26,,unknown,unknown,unknown,,,726,3,2
+2026-08-31,TDC,Technology,29.145,2710485000,false,10,2.66,,unknown,unknown,unknown,,,5100,3,2
+2026-08-31,POWWP,Industrials,23.9,2772767032,false,14,4.35,,unknown,unknown,unknown,,,63,3,2
+2026-08-31,DAN,Consumer Discretionary,30.24,3253118773,false,13,1.57,,unknown,unknown,unknown,,,27300,3,2
+2026-08-31,CLSK,Finance,11.435,2936703230,false,8,1.44,,unknown,unknown,unknown,,,314,3,2
+2026-08-31,BOH,Finance,75.9,2994285056,false,9,1.99,,unknown,unknown,unknown,,,1877,3,2
+2026-08-31,BCC,Consumer Discretionary,77.19,2693263384,false,11,0.52,,unknown,unknown,unknown,,,7740,3,2
+2026-08-31,BKE,Consumer Discretionary,42.93,2211671432,false,13,0.41,,unknown,unknown,unknown,,,8000,3,2
+2026-08-31,WDFC,Industrials,213.765,2868960586,false,13,2.18,,unknown,unknown,unknown,,,714,3,2
+2026-08-31,AKR,Real Estate,20.48,2812574147,false,9,2.08,,unknown,unknown,unknown,,,138,3,2
+2026-08-31,LUNR,Industrials,15.355,3515129064,false,8,0.18,,unknown,unknown,unknown,,,525,3,2
+2026-08-31,HUBG,Industrials,39.905,2440330817,false,14,0.44,,unknown,unknown,unknown,,,6604,3,2
+2026-08-31,MGRC,Consumer Discretionary,111.56,2724926964,false,8,0.6,,unknown,unknown,unknown,,,1306,3,2
+2026-08-31,BKV,Energy,24.205,2648942675,false,12,2.31,,unknown,unknown,unknown,,,452,3,2
+2026-08-31,MFAO,Real Estate,25.26,2593411413,false,9,3.23,,unknown,unknown,unknown,,,307,3,2
+2026-08-31,MFAN,Real Estate,25.175,2584684573,false,9,2.4,,unknown,unknown,unknown,,,307,3,2
+2026-08-31,BKD,Health Care,11.945,2852672075,false,7,1.16,,unknown,unknown,unknown,,,33000,3,2
+2026-08-31,ACLS,Technology,114.55,3537474565,false,11,0.55,,unknown,unknown,unknown,,,1465,3,2
+2026-08-31,AAOI,Technology,106.85,9072236980,false,13,1.19,,unknown,unknown,unknown,,,4691,3,2
+2026-08-31,FCPT,Real Estate,24.73,2714275920,false,13,1.81,,unknown,unknown,unknown,,,496,3,2
+2026-08-31,DBD,Miscellaneous,67.05,2276118725,false,8,0.76,,unknown,unknown,unknown,,,20000,3,2
+2026-08-31,AAP,Consumer Discretionary,42.76,2582704000,false,9,0.12,,unknown,unknown,unknown,,,54007,3,2
+2026-08-31,DRVN,Consumer Discretionary,12.27,2024302342,false,14,0.94,,unknown,unknown,unknown,,,7100,3,2
+2026-08-31,UE,Finance,21.145,2669439234,false,9,0.03,,unknown,unknown,unknown,,,104,3,2
+2026-08-31,PHIN,Consumer Discretionary,68.36,2504579696,false,14,0.12,,unknown,unknown,unknown,,,12500,3,2
+2026-08-31,NN,Industrials,15.3,2582791623,false,13,0.02,,unknown,unknown,unknown,,,103,3,2
+2026-08-31,CTRI,Utilities,20.175,2036929594,false,8,1.11,,unknown,unknown,unknown,,,9687,3,2
+2026-08-31,XRAY,Health Care,11.115,2215818332,false,8,7.69,,unknown,unknown,unknown,,,14000,3,2
+2026-08-31,BUSEP,Finance,25.8226,2132351704,false,7,1.76,,unknown,unknown,unknown,,,1833,3,2
+2026-08-31,KMT,Industrials,29.26,2230168584,false,9,1.59,,unknown,unknown,unknown,,,8073,3,2
+2026-08-31,TRN,Industrials,28.829,2296791612,false,10,0.69,,unknown,unknown,unknown,,,6110,3,2
+2026-08-31,CECO,Industrials,70.4601,4126836079,false,12,1.23,,unknown,unknown,unknown,,,1540,3,2
+2026-08-31,NGVT,Industrials,68.585,2357809780,false,11,0.63,,unknown,unknown,unknown,,,1500,3,2
+2026-08-31,SFB,Finance,19.69,2011794364,false,11,4,,unknown,unknown,unknown,,,8900,3,2
+2026-08-31,ALG,Industrials,164.4,2000906646,false,11,1.03,,unknown,unknown,unknown,,,3800,3,2
+2026-08-31,POWI,Technology,51.135,2857081093,false,14,1.12,,unknown,unknown,unknown,,,877,3,2
+2026-08-31,CIMN,Real Estate,25.1199,2022923030,false,7,0.8,,unknown,unknown,unknown,,,423,3,2
+2026-08-31,DX,Real Estate,12.89,3198871560,false,10,0.07,,unknown,unknown,unknown,,,28,3,2
+2026-08-31,UNFI,Consumer Discretionary,44.3,2680997902,false,10,1.02,,unknown,unknown,unknown,,,25600,3,2
+2026-08-31,VSH,Technology,30.35,4655057718,false,9,0.23,,unknown,unknown,unknown,,,22600,3,2
+2026-08-31,HYMC,Basic Materials,23.635,2202349030,false,12,1.38,,unknown,unknown,unknown,,,51,3,2
+2026-08-31,BELFA,Uncategorized,206.17,2976981407,false,15,0.17,,unknown,unknown,unknown,,,4964,3,2
+2026-08-31,LASR,Technology,41.79,2410873333,false,10,0.41,,unknown,unknown,unknown,,,800,3,2
+2026-08-31,ATRO,Industrials,73.54,3162886567,false,11,1.11,,unknown,unknown,unknown,,,2700,3,2
+2026-08-31,NWN,Utilities,49.32,2076053294,false,13,0.52,,unknown,unknown,unknown,,,1619,3,2
+2026-08-31,MTX,Basic Materials,70.625,2198468816,false,11,3.7,,unknown,unknown,unknown,,,3782,3,2
+2026-08-31,PRDO,Real Estate,33.11,2071926291,false,10,94.03,,unknown,unknown,unknown,,,6000,3,2
+2026-08-31,MNR,Energy,12.47,2081842732,false,15,0.16,,unknown,unknown,unknown,,,840,3,2
+2026-08-31,ADEA,Technology,25.235,2782919585,false,9,0.49,,unknown,unknown,unknown,,,150,3,2
+2026-08-31,HLIO,Industrials,72.915,2402591322,false,11,0.36,,unknown,unknown,unknown,,,2300,3,2
+2026-08-31,STOK,Health Care,31.23,2015154538,false,9,1.33,,unknown,unknown,unknown,,,170,3,2
+2026-08-31,CC,Industrials,15.55,2340259372,false,14,0.86,,unknown,unknown,unknown,,,5700,3,2
+2026-08-31,ANDE,Industrials,64.06,2176475014,false,9,0.16,,unknown,unknown,unknown,,,2028,3,2
+2026-08-31,USAR,Basic Materials,17.96,4395172978,false,9,1.22,,unknown,unknown,unknown,,,132,3,2
+2026-08-31,VECO,Technology,44.005,2690009808,false,10,0.77,,unknown,unknown,unknown,,,1265,3,2
+2026-08-31,NVTS,Technology,11.485,2998658710,false,8,0.17,,unknown,unknown,unknown,,,190,3,2
+2026-08-31,ALGT,Consumer Discretionary,76.62,2094618788,false,9,3.14,,unknown,unknown,unknown,,,8484,3,2
+2026-08-31,UCTT,Technology,67.39,3051218984,false,13,0.37,,unknown,unknown,unknown,,,6948,3,2
+2026-08-31,RDW,Industrials,10.6086,2652071592,false,14,0.17,,unknown,unknown,unknown,,,1410,3,2
+2026-08-31,ALMS,Health Care,21.96,2842397848,false,11,0.86,,unknown,unknown,unknown,,,239,3,2
+2026-08-31,AXTI,Technology,61.14,4009146182,false,12,4.17,,unknown,unknown,unknown,,,1541,3,2
+2026-08-31,GPGI,Finance,13.175,3819301830,false,10,0.85,,unknown,unknown,unknown,,,977,3,2
+2026-08-31,EQPT,Consumer Discretionary,17.38,4403674237,false,11,0.37,,unknown,unknown,unknown,,,9203,3,2
+2026-08-31,ALH,Industrials,22.85,4542330844,false,9,0.17,,unknown,unknown,unknown,,,3973,3,2
+2026-08-31,MWH,Industrials,25.56,5173004614,false,13,0.08,,unknown,unknown,unknown,,,2600,3,2
+2026-08-31,CVSA,Real Estate,133.725,4551841205,false,12,3.4,,unknown,unknown,unknown,,,4771,3,2
+2026-08-31,PPLC,Utilities,45.7,34391299234,false,11,0.61,,unknown,unknown,unknown,,,6546,3,2
+2026-08-31,MMED,Health Care,19.915,5603083876,false,10,0.83,,unknown,unknown,unknown,,,8000,3,2
+2026-08-31,QBTS,Technology,17.265,6375340146,false,16,3.4,,unknown,unknown,unknown,,,388,3,2
+2026-08-31,MIAX,Finance,42.525,4219793937,false,7,1.23,,unknown,unknown,unknown,,,439,3,2
+2026-08-31,BETA,Industrials,19.985,4675312084,false,11,30.28,,unknown,unknown,unknown,,,1008,3,2
+2026-08-31,NIQ,Technology,19.07,5624808326,false,9,6.87,,unknown,unknown,unknown,,,38760,3,2
+2026-08-31,CWK,Finance,13.705,3216751368,false,12,1.18,,unknown,unknown,unknown,,,53000,3,2
+2026-08-31,VIA,Technology,27.84,2269116266,false,7,2.79,,unknown,unknown,unknown,,,1040,3,2
+2026-08-31,ARXS,Uncategorized,51.775,21614735507,false,12,0.29,,unknown,unknown,unknown,,,5753,3,2
+2026-08-31,P,Uncategorized,92.83,30857149838,false,9,0.17,,unknown,unknown,unknown,,,6400,3,2
+2026-08-31,KLRA,Health Care,15.645,2028275311,false,9,1.18,,unknown,unknown,unknown,,,145,3,2
+2026-08-31,ALMR,Uncategorized,30.17,2093579750,false,9,0.21,,unknown,unknown,unknown,,,286,3,2
+2026-08-31,CHRN,Uncategorized,17.895,2606182204,false,10,3.3,,unknown,unknown,unknown,,,88,3,2
+2026-08-31,FRVO,Utilities,15.33,4518719841,false,8,1.61,,unknown,unknown,unknown,,,261,3,2
+2026-08-31,CBRS,Technology,184.1,43735539948,false,9,1.14,,unknown,unknown,unknown,,,708,3,2
+2026-08-31,VSXY,Consumer Discretionary,85.12,6766335206,false,6,1.47,,unknown,unknown,unknown,,,33000,3,2
