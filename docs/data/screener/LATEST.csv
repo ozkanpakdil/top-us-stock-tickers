@@ -1,21 +1,3 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-AOUT,American Outdoor Brands Inc. Common Stock ,Consumer Discretionary,14.48,4.59,4409744,21.02,11.9,9.95,true,true,false,46.63,15.29,267
-BIAF,bioAffinity Technologies Inc. Common Stock,Health Care,15.27,27.36,19830201,3.68,2.25,2.01,true,true,false,34.72,15.29,57
-CHPT,ChargePoint Holdings Inc. Common Stock,Consumer Discretionary,9.89,3.07,13393405,13.47,6.37,6.32,true,true,false,30.02,15.29,1440
-TITN,Titan Machinery Inc. Common Stock,Consumer Discretionary,26.22,13.58,873348,4.11,19.58,18.91,true,true,false,21.81,15.29,3359
-MSGM,Motorsport Games Inc. Class A Common Stock,Technology,4.58,11.44,312204,5.18,4.17,4.03,true,true,false,21.8,15.29,26
-GRMLW,Greenland Mines Ltd Warrant,Health Care,0.1999,17.94,28160,1.7,0.18,,true,true,true,21.33,15.29,5
-PRTS,CarParts.com Inc. Common Stock,Consumer Discretionary,9.3,11.24,140542,4.97,6.5,2.83,true,true,false,21.19,15.29,1186
-RDI,Reading International Inc Class A Common Stock,Consumer Discretionary,2.34,9.09,268208,4.15,1.53,1.23,true,true,false,17.39,15.29,2025
-CYPH,Cypherpunk Technologies Inc. Common Stock,Health Care,2.42,7.08,16927042,3.73,0.95,0.9,true,true,false,14.54,15.29,6
-TISI,Team Inc. Common Stock,Consumer Discretionary,27.91,2.46,59146,5.09,19.66,16.65,true,true,false,12.63,15.29,5300
-BSVN,Bank7 Corp. Common stock,Finance,57.43,4.12,117055,4.02,50.17,44.98,true,true,false,12.17,15.29,125
-BBCP,Concrete Pumping Holdings Inc. Common Stock,Consumer Discretionary,10.5,2.94,869408,3.72,10.3,8.11,true,true,false,10.39,15.29,1530
-DLTH,Duluth Holdings Inc. Class B Common Stock,Consumer Discretionary,4.52,4.63,419875,2.65,4.14,3.21,true,true,false,9.93,15.29,2057
-DOCU,DocuSign Inc. Common Stock,Technology,68.41,5.12,7993718,2.28,53.67,51.39,true,true,false,9.69,15.29,7044
-PYXS,Pyxis Oncology Inc. Common Stock,Health Care,3.89,4.29,2230605,2.22,2.8,1.99,true,true,false,8.73,15.29,56
-ONEW,OneWater Marine Inc. Class A Common Stock,Consumer Discretionary,12.7,5.31,152517,1.71,11.58,11.32,true,true,false,8.72,15.29,2231
-INBK,First Internet Bancorp Common Stock,Finance,29.75,4.68,65953,1.84,27.65,23.76,true,true,false,8.36,15.29,355
-QUAD,Quad Graphics Inc Class A Common Stock,Consumer Discretionary,10.7,3.88,611589,2.11,9.04,7.53,true,true,false,8.11,15.29,10100
-PDEX,Pro-Dex Inc. Common Stock,Health Care,73.41,2.48,150366,2.07,63.8,53.29,true,true,false,6.63,15.29,181
-REPX,Riley Exploration Permian Inc. Common Stock,Energy,41.93,2.06,343965,1.66,35.35,33.27,true,true,false,5.37,15.29,122
+ATER,Aterian Inc. Common Stock,Consumer Discretionary,0.9411,50.36,20101837,12.89,0.88,0.82,true,true,false,76.15,15.49,74
+MSGM,Motorsport Games Inc. Class A Common Stock,Technology,4.755,3.82,121034,1.94,4.18,4.04,true,true,false,7.7,15.49,26
