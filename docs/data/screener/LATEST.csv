@@ -1,3 +1,4 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-ATER,Aterian Inc. Common Stock,Consumer Discretionary,0.9411,50.36,20101837,12.89,0.88,0.82,true,true,false,76.15,15.49,74
-MSGM,Motorsport Games Inc. Class A Common Stock,Technology,4.755,3.82,121034,1.94,4.18,4.04,true,true,false,7.7,15.49,26
+IRD,Opus Genetics Inc. Common Stock,Health Care,6.82,53.09,16400367,13.47,4,3.99,true,true,false,80.02,16.12,28
+SUNE,SUNation Energy Inc. Common Stock,Utilities,3.145,36.86,22246457,7.14,2.49,1.8,true,true,false,51.15,16.12,164
+JILL,J. Jill Inc. Common Stock,Consumer Discretionary,22.52,13.28,401335,6.01,17.62,15.39,true,true,false,25.31,16.12,3140
