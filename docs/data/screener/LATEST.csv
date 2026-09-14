@@ -1,3 +1,4 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-ACVA,ACV Auctions Inc. Class A Common Stock,Real Estate,10.435,43.34,43216192,11.51,7.23,6.48,true,true,false,66.36,16.12,3200
-FEIM,Frequency Electronics Inc. Common Stock,Industrials,89.4842,40.17,354510,1.81,66.62,58.74,true,true,false,43.79,16.12,242
+BWIN,The Baldwin Insurance Group Inc. Class A Common Stock,Finance,31.95,8.25,14154972,8.58,28.31,23.61,true,true,false,25.41,16.78,5000
+PED,Pedevco Corp. Common Stock,Energy,16.67,15.12,68350,1.6,12.85,9.92,true,true,false,18.32,16.78,25
+ETS,Elite Express Holding Inc. Class A Common Stock,Industrials,1.6,11.11,236927,2.21,0.94,0.67,true,true,false,15.53,16.78,29
