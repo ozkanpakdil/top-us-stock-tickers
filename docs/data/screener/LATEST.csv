@@ -1,5 +1,8 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-VEEA,Veea Inc. Common Stock,Finance,5.98,222.37,100045046,26.59,0.65,0.58,true,true,false,275.54,17.46,45
-VEEAW,Veea Inc. Warrant,Finance,0.059,134.13,380205,36.12,0.05,,true,true,true,206.36,17.46,45
-VNCE,Vince Holding Corp. Common Stock,Consumer Discretionary,8.39,24.85,282257,1.61,6.61,4.38,true,true,false,28.08,17.46,558
-RLGT,Radiant Logistics Inc. Common Stock,Industrials,9.22,11.22,982005,7.66,8.83,7.95,true,true,false,26.54,17.46,1026
+VEEA,Veea Inc. Common Stock,Finance,5.8091,213.16,141015175,30.77,0.65,0.58,true,true,false,274.7,17.75,45
+VEEAW,Veea Inc. Warrant,Finance,0.0597,136.9,503167,38.75,0.05,,true,true,true,214.4,17.75,45
+VRA,Vera Bradley Inc. Common Stock,Consumer Discretionary,3.8482,30.01,8048515,30.01,3.51,3.29,true,true,false,90.04,17.75,1360
+RLGT,Radiant Logistics Inc. Common Stock,Industrials,9.755,17.67,1629494,11.54,8.84,7.95,true,true,false,40.76,17.75,1026
+VNCE,Vince Holding Corp. Common Stock,Consumer Discretionary,8.11,20.68,605980,3.34,6.6,4.38,true,true,false,27.36,17.75,558
+CRT,Cross Timbers Royalty Trust Common Stock,Energy,12.52,4.73,38389,2.1,9.99,9.78,true,true,false,8.93,17.75,1
+BWIN,The Baldwin Insurance Group Inc. Class A Common Stock,Finance,32.665,2.24,3837516,2.27,28.61,23.66,true,true,false,6.78,17.75,5000
