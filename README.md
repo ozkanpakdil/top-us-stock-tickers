@@ -82,6 +82,69 @@ WHERE date = (SELECT MAX(date) FROM us_tickers);
 SELECT date, close FROM us_tickers WHERE symbol = 'AAPL' ORDER BY date;
 ```
 
+## Premovers — catch tomorrow's mover today
+
+> **Live site:** <https://ozkanpakdil.github.io/top-us-stock-tickers/> — "Premovers" panel.
+
+The breakout screener catches explosions **after** they happen (a hit needs a
+≥ 2% day + volume spike *today*). On **2026-09-15** it caught **VEEA +222%** —
+but the setup was already visible **the day before** in this repo's own data:
+after a ~17× repricing (a hidden 1-for-20 reverse split sat in the data), VEEA
+consolidated two weeks in a tight range on drying volume, and on Sep 14 printed
+a modest +12.8% on a clear volume uptick. The breakout screener missed it — its
+50-day volume average was poisoned by pre-split share units (20×) and the
+Aug-27/28 spikes, so Sep 14's ignition read as a dry-up.
+
+`src/premovers.ts` turns the git history of `tickers/all.csv` into a supervised
+learning problem and answers exactly that question:
+
+1. **Panel** — close/volume/marketCap for every symbol back to Dec 2025, from the
+   git history (same source of truth as everything else here).
+2. **Split-aware cleaning** — implied shares (marketCap / price) detect corporate
+   actions; pre-split volumes are re-scaled into the new share units, and
+   ">100% moves without volume confirmation" are bridged as repricing artifacts.
+   Without this, every volume average for months after a split is garbage.
+3. **Features (18)** — multi-horizon returns, biggest recent jump + days since,
+   10/20-day range tightness, volume ratio vs 20d avg, 5d-vs-50d volume dry-up,
+   volume uptick vs prior 5d, distance from the 20-day high, SMA deviations,
+   run-up from the 60-day low, up-streak, log market cap, log avg volume.
+4. **Label** — next-day (close→close) return ≥ **+20%** (`--ret-target` to change).
+5. **Model** — logistic regression, trained **walk-forward** (train only on days
+   before the test chunk, retrain every 10 trading days — no lookahead).
+6. **Outputs** (committed to `docs/data/screener/`, rendered on the site):
+   `premovers.csv` (today's top candidates for *tomorrow*), `premovers_log.csv`
+   (append-only, for later grading), and `premovers_backtest.csv` (per-day
+   early-pool top-5 with realized outcomes).
+
+```bash
+bun run premovers              # score today, write premovers.csv (+ log)
+bun run premovers:backtest     # full walk-forward evaluation
+bun run premovers -- --ret-target 0.1 --early-min -0.15   # optional knobs
+```
+
+**Walk-forward backtest (100 test days, ~4,000 eligible symbols/day, base rate
+0.31% for a ≥ +20% next day):**
+
+| Metric | Full pool | Early pool (not already exploded today) |
+|---|---|---|
+| Precision@5 | 9.0% (27× lift) | 7.6% (25× lift) |
+| Precision@10 | 7.1% (21× lift) | 5.5% (18× lift) |
+| Explosions ranked in the day's top 1% | 17.5% | 16.2% |
+| Explosions ranked in the day's top 5% | 41.3% | 38.2% |
+| Explosions ranked in the day's top 10% | 53.3% | 51.0% |
+| Avg next-day return, top-10 | −1.0% | −1.0% |
+
+**VEEA check:** scored on 2026-09-14 with a model trained only on data before
+that day, VEEA ranked **#39 of ~3,650 (top 1.2%)** in the early pool — the
++222% came the next day. It was not in the top-10, so a top-40 daily list would
+have caught it, a top-10 would not.
+
+**Honest caveats.** The edge is lottery-shaped: the ranked names bleed slightly
+on average (−1%/day) and win through rare ≥ +20% (sometimes ≥ +100%) hits.
+This is a research screener built on one short, quirky history (close+volume
+only, splits inferred from marketCap, no open/high/low for most of it) —
+position sizing, spreads and slippage are not modeled. Not financial advice.
+
 ## Daily Screener
 
 > **Live site:** <https://ozkanpakdil.github.io/top-us-stock-tickers/> —

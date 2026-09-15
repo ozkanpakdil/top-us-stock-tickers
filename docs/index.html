@@ -142,6 +142,18 @@
       </section>
 
       <section class="panel">
+        <div class="sect-head"><h2>Premovers — catch tomorrow before it happens</h2><span class="count" id="premCount"></span></div>
+        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">
+          A model trained walk-forward on the full git history ranks every eligible stock by its odds of a
+          ≥ +20% <em>next-day</em> move, restricted to names that have <em>not</em> already exploded today
+          (the "catch it early" pool). Backtest: 38% of all next-day ≥ +20% movers ranked in the model's
+          top 5% the day before (base rate ~0.3%); VEEA ranked top 1.2% the day before its +222%.
+          Lottery-shaped: rare big hits, small bleeds on the rest. Not financial advice.
+        </p>
+        <div class="scroll" id="premWrap"></div>
+      </section>
+
+      <section class="panel">
         <div class="sect-head"><h2>Conviction list — 30-day</h2><span class="count" id="convCount"></span></div>
         <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Symbols hitting ≥ 15 of the last 30 calendar days.</p>
         <div class="scroll" id="convWrap"></div>
@@ -408,6 +420,37 @@
           : '<div class="empty">No entries.</div>';
       }
 
+      // ---------- render PREMOVERS (tomorrow's candidates) ----------
+      async function renderPremovers() {
+        const { header, rows } = await loadCsv("premovers.csv");
+        $("premCount").textContent = rows.length ? `${rows.length} candidates` : "";
+        const idx = {}; header.forEach((h, i) => idx[h] = i);
+        const cols = ["symbol", "prob", "todayRet", "close", "r5", "big20", "tight10", "uptick", "runup", "mcap", "industry"];
+        const makeCell = (r, c) => {
+          if (c === "symbol") {
+            const sym = r[idx.symbol] || "";
+            const ind = r[idx.industry] || "";
+            return symCell(sym, ind);
+          }
+          if (c === "prob") { const n = num(r[idx.prob]); return `<td><b>${n === null ? "" : (n * 100).toFixed(1) + "%"}</b></td>`; }
+          if (c === "todayRet" || c === "r5" || c === "big20") { const n = num(r[idx[c]]); return `<td class="${n >= 0 ? "up" : "down"}">${fmtPct(n)}</td>`; }
+          if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
+          if (c === "tight10") return `<td>${fmtNum(num(r[idx.tight10]) * 100, 1)}%</td>`;
+          if (c === "uptick") return `<td>${fmtNum(num(r[idx.uptick]))}×</td>`;
+          if (c === "runup") { const n = num(r[idx.runup]); return `<td class="up">${fmtPct(n)}</td>`; }
+          if (c === "mcap") { const n = num(r[idx.mcap]); return `<td>${n === null ? "—" : "$" + fmtInt(n)}</td>`; }
+          return `<td>${r[idx[c]] ?? ""}</td>`;
+        };
+        const sortKeyFn = (col, r) => {
+          if (col === "symbol" || col === "industry") return r[idx[col]] || "";
+          if (col === "mcap") return num(r[idx.mcap]);
+          return num(r[idx[col]]);
+        };
+        $("premWrap").innerHTML = rows.length
+          ? makeSortableTable("premWrap", cols, rows, makeCell, sortKeyFn, idx, { col: "prob", dir: "desc" })
+          : '<div class="empty">No premovers data yet — run <code>bun run premovers</code>.</div>';
+      }
+
       // ---------- meta (run date + VIX gate) from LATEST ----------
       async function renderMeta() {
         const { header, rows } = await loadCsv("LATEST.csv");
@@ -424,6 +467,7 @@
 
       (async function init() {
         await renderLatest();
+        await renderPremovers();
         await renderHighlight("conviction_30.csv", "convWrap", "convCount");
         await renderHighlight("watchlist_15.csv", "watchWrap", "watchCount");
         await renderLog();

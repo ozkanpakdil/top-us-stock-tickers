@@ -55,6 +55,13 @@ jobs:
         # docs/data/screener2/{LATEST,hits_log}.csv and rss.xml.
         run: bun run src/screener2.ts
 
+      - name: Run premovers predictor
+        # Ranks every eligible stock by its odds of a >= +20% NEXT-day move
+        # (trained walk-forward on the git history; catches names a day before
+        # they explode, VEEA-style). Writes docs/data/screener/premovers.csv
+        # (today's candidates) and premovers_log.csv (append-only record).
+        run: bun run src/premovers.ts
+
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Actions Bot"

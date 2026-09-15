@@ -9,6 +9,8 @@
     "update": "bun run src/update_tickers.ts",
     "history-sql": "bun run src/gen_history_sql.ts",
     "screener": "bun run src/screener.ts",
-    "screener2": "bun run src/screener2.ts"
+    "screener2": "bun run src/screener2.ts",
+    "premovers": "bun run src/premovers.ts",
+    "premovers:backtest": "bun run src/premovers.ts -- --backtest"
   }
 }
