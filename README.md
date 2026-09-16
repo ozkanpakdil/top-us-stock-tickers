@@ -26,7 +26,7 @@ Automatically updated CSV lists of US-listed stocks from NASDAQ (grouped by indu
 
 ## Update Schedule
 
-Data is automatically updated **daily at 10:00 UTC** (before US market open) via GitHub Actions.
+Data is automatically updated **daily at 02:37 UTC** (weekdays) via GitHub Actions — ~11h before the US market opens at 9:30 ET and ~6.5h after the previous close, so daily bars are finalized and quotes are clean regular-session closes. The run is deliberately scheduled off the hour because GitHub's cron scheduler queues runs set exactly at `:00` — observed delays of 1–3+ hours pushed the old 10:00 UTC schedule into market hours.
 
 ## Historical SQL archive
 
@@ -144,6 +144,23 @@ on average (−1%/day) and win through rare ≥ +20% (sometimes ≥ +100%) hits.
 This is a research screener built on one short, quirky history (close+volume
 only, splits inferred from marketCap, no open/high/low for most of it) —
 position sizing, spreads and slippage are not modeled. Not financial advice.
+
+## VCP screener-2
+
+A second daily screener (`bun run screener2`, rendered by `docs/screener2.html`)
+implements the Minervini-style VCP checklist (market cap $2B–$100B, price >
+12M/200/150-day SMAs, P/E/FCF/EPS trending up, insiders holding, etc.). Its VCP
+pattern detector was rebuilt after it started flagging dead-flat charts
+(SLAB/OGN) and bonds (EAI/MFAN):
+
+- **Structure is detected with percent-based zigzag pivots** (`VCP_REV_PCT = 3%`)
+  — a swing is confirmed only after price reverses ≥ 3%. The old 3-bar pivots
+  counted every 1-day wiggle, so a frozen flat chart scored "13 contractions".
+- A valid VCP now needs ≥ 2 **real** contracting pullbacks (first pullback ≥ 4%
+  deep, last ≤ 60% of the first), a flat ceiling of swing highs, rising lows,
+  price within 8% under the ceiling, and a base spanning ≥ 15 bars.
+- **Bonds, preferreds, warrants, units and rights are excluded** from the
+  universe by name matching (`isNonCommonStockName`).
 
 ## Daily Screener
 
