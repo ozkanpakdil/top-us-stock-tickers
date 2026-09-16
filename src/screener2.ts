@@ -60,12 +60,27 @@ export const SMA_LONG_FLOOR = 120; // below this many bars, long SMA rules are s
 export const MIN_BARS = 50; // need at least SMA50 to screen
 export const MAX_AGE_DAYS = 4; // drop stale symbols
 export const VCP_LOOKBACK = 60; // bars to examine for VCP pattern
-export const VCP_MIN_CONTRACTIONS = 2; // at least 2 contraction waves
-export const VCP_MAX_VOLATILITY_RATIO = 0.6; // latest wave ≤ 60% of prior wave
-export const VCP_TOLERANCE_PCT = 2.0; // highs within this % are "flat ceiling"
+export const VCP_REV_PCT = 3.0; // min % reversal to confirm a zigzag pivot (noise floor)
+export const VCP_MIN_CONTRACTIONS = 2; // at least 2 contracting pullback waves
+export const VCP_MAX_VOLATILITY_RATIO = 0.6; // last pullback ≤ 60% of the first
+export const VCP_FIRST_DEPTH_MIN = 4.0; // first pullback must be at least this deep (%)
+export const VCP_CEILING_PCT = 7.0; // swing highs flat within this % (the "ceiling")
+export const VCP_NEAR_CEILING_PCT = 8; // price must sit within this % under the ceiling
+export const VCP_MIN_BASE_BARS = 15; // base must span at least this many bars
 
 // Output dir
 export const OUT_DIR = "docs/data/screener2";
+
+/** Debt instruments, preferred shares, warrants/units/rights are not common
+ *  stocks and must not be screened (bonds like EAI "First Mortgage Bonds" and
+ *  MFAN "Senior Notes" were surfacing as VCP matches). */
+export function isNonCommonStockName(name: string): boolean {
+  const n = name.toLowerCase();
+  if (/\b(bonds?|notes?|debentures?|preferred|preference|warrants?|rights?|units?|depositary shares)\b/.test(n)) return true;
+  if (/\bdue\s+(19|20)\d{2}\b/.test(n)) return true; // "... due 2029"
+  if (/%/.test(n) && /\b(due|series|senior|mortgage)\b/.test(n)) return true; // "4.875% Series ..."
+  return false;
+}
 
 // --- Yahoo fundamental data -------------------------------------------------
 
@@ -240,50 +255,106 @@ async function fetchFundamentalsBatch(
 interface VCPResult {
   isVCP: boolean;
   contractions: number;
-  volatilityRatio: number; // latest wave / prior wave
+  volatilityRatio: number; // last pullback / first pullback
   hasHigherLows: boolean;
   hasFlatHighs: boolean;
   lastLow: number | null;
   lastHigh: number | null;
 }
 
-/** Detect a Volatility Contraction Pattern (VCP) in the price series.
- *
- *  VCP = a series of contraction waves where:
- *  - Each wave has a low and a high
- *  - Lows are getting higher (higher lows)
- *  - Highs are roughly flat (within tolerance — a "ceiling")
- *  - Each successive wave's amplitude is smaller than the prior (volatility contraction)
- *
- *  We look at the last `VCP_LOOKBACK` bars, find swing lows and swing highs,
- *  and check the pattern. */
-function detectVCP(closes: number[]): VCPResult {
-  const n = closes.length;
-  const lookback = Math.min(VCP_LOOKBACK, n);
-  if (lookback < 20) {
-    return { isVCP: false, contractions: 0, volatilityRatio: 0, hasHigherLows: false, hasFlatHighs: false, lastLow: null, lastHigh: null };
-  }
-
-  const series = closes.slice(n - lookback);
-
-  // Find swing highs and lows using a simple pivot detection (3-bar)
+/** Zigzag pivot detection: a swing is only confirmed once price reverses by
+ *  `revPct` from the running extreme. This keeps 1-day market noise from being
+ *  counted as pattern structure — the old 3-bar pivots turned every flat,
+ *  frozen chart into dozens of fake "contractions" (the SLAB/OGN bug). */
+export function zigzag(
+  series: number[],
+  revPct: number,
+): { index: number; price: number; type: "high" | "low" }[] {
   const pivots: { index: number; price: number; type: "high" | "low" }[] = [];
-  for (let i = 1; i < series.length - 1; i++) {
-    if (series[i] > series[i - 1] && series[i] > series[i + 1]) {
-      pivots.push({ index: i, price: series[i], type: "high" });
-    } else if (series[i] < series[i - 1] && series[i] < series[i + 1]) {
-      pivots.push({ index: i, price: series[i], type: "low" });
+  if (series.length < 3) return pivots;
+  let dir: 0 | 1 | -1 = 0;
+  let extIdx = 0;
+  for (let i = 1; i < series.length; i++) {
+    const p = series[i];
+    const ext = series[extIdx];
+    if (dir === 0) {
+      if (p >= ext * (1 + revPct)) {
+        pivots.push({ index: extIdx, price: ext, type: "low" });
+        dir = 1;
+        extIdx = i;
+      } else if (p <= ext * (1 - revPct)) {
+        pivots.push({ index: extIdx, price: ext, type: "high" });
+        dir = -1;
+        extIdx = i;
+      } else if (p > ext) extIdx = i;
+      else if (p < ext) extIdx = i;
+    } else if (dir === 1) {
+      if (p > ext) extIdx = i;
+      else if (p <= ext * (1 - revPct)) {
+        pivots.push({ index: extIdx, price: ext, type: "high" });
+        dir = -1;
+        extIdx = i;
+      }
+    } else {
+      if (p < ext) extIdx = i;
+      else if (p >= ext * (1 + revPct)) {
+        pivots.push({ index: extIdx, price: ext, type: "low" });
+        dir = 1;
+        extIdx = i;
+      }
     }
   }
+  return pivots;
+}
 
+/** Detect a Volatility Contraction Pattern (VCP) in the price series.
+ *
+ *  A real VCP (Minervini) is a base with 2–4 progressively shallower pullbacks:
+ *  - swing highs form a flat "ceiling" (supply absorbed at one level)
+ *  - pullback lows rise toward the ceiling (higher lows)
+ *  - each pullback is shallower than the previous (volatility contraction)
+ *  - price sits just under the ceiling (ready to break out)
+ *
+ *  Structure comes from percent-based zigzag pivots (VCP_REV_PCT), so a
+ *  dead-flat series (SLAB/OGN: ±1.6% over two months) produces no pivots at
+ *  all and cannot fake a VCP, and a 2-month base can no longer score "13
+ *  contractions" — that was noise. */
+export function detectVCP(closes: number[]): VCPResult {
+  const fail = { isVCP: false, contractions: 0, volatilityRatio: 0, hasHigherLows: false, hasFlatHighs: false, lastLow: null, lastHigh: null };
+  const n = closes.length;
+  const lookback = Math.min(VCP_LOOKBACK, n);
+  if (lookback < 20) return fail;
+
+  const series = closes.slice(n - lookback);
+  const pivots = zigzag(series, VCP_REV_PCT / 100);
   const highs = pivots.filter((p) => p.type === "high");
   const lows = pivots.filter((p) => p.type === "low");
+  if (highs.length < 2 || lows.length < 2) return fail; // no real waves in the base
 
-  if (highs.length < 2 || lows.length < 2) {
-    return { isVCP: false, contractions: 0, volatilityRatio: 0, hasHigherLows: false, hasFlatHighs: false, lastLow: null, lastHigh: null };
+  // Pullback depths: each confirmed swing high to the swing low that follows it.
+  const depths: { high: number; low: number; depth: number }[] = [];
+  for (let i = 0; i < pivots.length - 1; i++) {
+    if (pivots[i].type !== "high") continue;
+    const next = pivots[i + 1];
+    if (next.type !== "low") continue;
+    depths.push({ high: pivots[i].price, low: next.price, depth: (pivots[i].price - next.price) / pivots[i].price });
   }
+  if (depths.length < VCP_MIN_CONTRACTIONS + 1) return fail; // first wave + 2 contracting ones
 
-  // Check higher lows: each successive low should be higher than the previous
+  // Contraction count: successive pullbacks strictly shallower.
+  let contractions = 0;
+  for (let i = 1; i < depths.length; i++) {
+    if (depths[i].depth < depths[i - 1].depth) contractions++;
+  }
+  if (contractions < VCP_MIN_CONTRACTIONS) return fail;
+
+  const firstDepth = depths[0].depth;
+  const lastDepth = depths[depths.length - 1].depth;
+  const volatilityRatio = firstDepth > 0 ? lastDepth / firstDepth : 0;
+  if (firstDepth < VCP_FIRST_DEPTH_MIN / 100) return fail; // first wave must be a real swing
+  if (volatilityRatio > VCP_MAX_VOLATILITY_RATIO) return fail;
+
+  // Higher lows: pullback lows rise toward the ceiling (1% tolerance for noise).
   let hasHigherLows = true;
   for (let i = 1; i < lows.length; i++) {
     if (lows[i].price < lows[i - 1].price * 0.99) {
@@ -291,52 +362,32 @@ function detectVCP(closes: number[]): VCPResult {
       break;
     }
   }
+  if (!hasHigherLows) return fail;
 
-  // Check flat highs: highs should be within tolerance of each other (ceiling)
+  // Flat ceiling: swing highs cluster within tolerance of the highest high.
   const highPrices = highs.map((h) => h.price);
   const maxHigh = Math.max(...highPrices);
   const minHigh = Math.min(...highPrices);
-  const hasFlatHighs = (maxHigh - minHigh) / maxHigh * 100 <= VCP_TOLERANCE_PCT + 5; // slightly relaxed
+  const hasFlatHighs = ((maxHigh - minHigh) / maxHigh) * 100 <= VCP_CEILING_PCT;
+  if (!hasFlatHighs) return fail;
 
-  // Calculate contraction waves: pair each high with the adjacent low
-  // A wave = high to next low (or low to next high). We measure amplitude.
-  const waves: { amplitude: number }[] = [];
-  const sortedPivots = [...pivots].sort((a, b) => a.index - b.index);
-  for (let i = 0; i < sortedPivots.length - 1; i++) {
-    const a = sortedPivots[i];
-    const b = sortedPivots[i + 1];
-    if (a.type !== b.type) {
-      waves.push({ amplitude: Math.abs(a.price - b.price) / a.price });
-    }
-  }
+  // Price must sit just under the ceiling — a VCP is a breakout *setup*.
+  const price = series[series.length - 1];
+  if (price < maxHigh * (1 - VCP_NEAR_CEILING_PCT / 100)) return fail;
 
-  // Count contractions: successive waves with decreasing amplitude
-  let contractions = 0;
-  for (let i = 1; i < waves.length; i++) {
-    if (waves[i].amplitude < waves[i - 1].amplitude) {
-      contractions++;
-    }
-  }
+  // The base must span a real stretch of the lookback (not two pivots in a week).
+  const span = pivots[pivots.length - 1].index - pivots[0].index;
+  if (span < VCP_MIN_BASE_BARS) return fail;
 
-  // Volatility ratio: latest wave / prior wave
-  let volatilityRatio = 0;
-  if (waves.length >= 2) {
-    const last = waves[waves.length - 1].amplitude;
-    const prev = waves[waves.length - 2].amplitude;
-    volatilityRatio = prev > 0 ? last / prev : 0;
-  }
-
-  const lastLow = lows.length ? lows[lows.length - 1].price : null;
-  const lastHigh = highs.length ? highs[highs.length - 1].price : null;
-
-  const isVCP =
-    hasHigherLows &&
-    hasFlatHighs &&
-    contractions >= VCP_MIN_CONTRACTIONS &&
-    volatilityRatio > 0 &&
-    volatilityRatio <= VCP_MAX_VOLATILITY_RATIO;
-
-  return { isVCP, contractions, volatilityRatio, hasHigherLows, hasFlatHighs, lastLow, lastHigh };
+  return {
+    isVCP: true,
+    contractions,
+    volatilityRatio: Math.round(volatilityRatio * 100) / 100,
+    hasHigherLows,
+    hasFlatHighs,
+    lastLow: lows[lows.length - 1].price,
+    lastHigh: maxHigh,
+  };
 }
 
 // --- screening --------------------------------------------------------------
@@ -635,9 +686,14 @@ async function main() {
 
   // Pre-filter by market cap and price to reduce Yahoo calls
   const candidates: string[] = [];
+  let skippedNonStock = 0;
   for (const [sym, s] of symbols) {
     const bars = s.bars;
     if (bars.length < MIN_BARS) continue;
+    if (isNonCommonStockName(s.name)) {
+      skippedNonStock++;
+      continue;
+    }
     const last = bars[bars.length - 1];
     const ageDays = Math.round(
       (new Date(today + "T00:00:00Z").getTime() - new Date(last.date + "T00:00:00Z").getTime()) / 86400000,
@@ -651,7 +707,7 @@ async function main() {
 
     candidates.push(sym);
   }
-  console.log(`  After market cap + price filter: ${candidates.length} candidates.`);
+  console.log(`  After market cap + price filter: ${candidates.length} candidates (skipped ${skippedNonStock} bonds/preferred/warrants/units).`);
 
   // Fetch employee counts for candidates
   console.log(`Fetching employee counts for ${candidates.length} candidates...`);
