@@ -1,8 +1,4 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-VEEA,Veea Inc. Common Stock,Finance,5.8091,213.16,141015175,30.77,0.65,0.58,true,true,false,274.7,17.75,45
-VEEAW,Veea Inc. Warrant,Finance,0.0597,136.9,503167,38.75,0.05,,true,true,true,214.4,17.75,45
-VRA,Vera Bradley Inc. Common Stock,Consumer Discretionary,3.8482,30.01,8048515,30.01,3.51,3.29,true,true,false,90.04,17.75,1360
-RLGT,Radiant Logistics Inc. Common Stock,Industrials,9.755,17.67,1629494,11.54,8.84,7.95,true,true,false,40.76,17.75,1026
-VNCE,Vince Holding Corp. Common Stock,Consumer Discretionary,8.11,20.68,605980,3.34,6.6,4.38,true,true,false,27.36,17.75,558
-CRT,Cross Timbers Royalty Trust Common Stock,Energy,12.52,4.73,38389,2.1,9.99,9.78,true,true,false,8.93,17.75,1
-BWIN,The Baldwin Insurance Group Inc. Class A Common Stock,Finance,32.665,2.24,3837516,2.27,28.61,23.66,true,true,false,6.78,17.75,5000
+MNOV,Medicinova Inc Common Stock,Health Care,2.36,14.6,256002,4.84,1.46,1.45,true,true,false,24.29,16.93,6
+BBNX,Beta Bionics Inc. Common Stock,Health Care,20.39,14.17,1963956,2.22,17.45,14.9,true,true,false,18.6,16.93,423
+VRA,Vera Bradley Inc. Common Stock,Consumer Discretionary,4.19,8.88,1114703,3.91,3.52,3.29,true,true,false,16.71,16.93,1360
