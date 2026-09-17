@@ -162,6 +162,51 @@ pattern detector was rebuilt after it started flagging dead-flat charts
 - **Bonds, preferreds, warrants, units and rights are excluded** from the
   universe by name matching (`isNonCommonStockName`).
 
+### Strict hits — a screen logs picks, not candidates
+
+An earlier build logged *every* candidate that cleared the pre-filters
+(~1,400 rows/day) into `hits_log.csv`; after a month the file hit 3.5 MB /
+36k rows and rendering it froze Chrome and Firefox. The funnel now works the
+other way around:
+
+1. **History-only hard screen first** (no network): market cap in range,
+   price > $10, above the 12M/200/150/50-day SMAs, 150-day SMA above the
+   200-day, price within 25% of its 52-week high, ≥ $5M/day average dollar
+   volume, the VCP pattern, and volume drying up into the base (last 10 bars
+   ≤ 90% of the base's average) — only true setups survive (typically 0–5
+   names/day, capped at 15).
+2. **Network last, for survivors only**: employee count (stockanalysis.com,
+   hard weed-out rule) then Yahoo fundamentals (P/E / FCF / EPS / insiders —
+   scored and displayed, not gating).
+
+Only hits are written to `LATEST.csv` and `hits_log.csv`; the log is
+append-only and idempotent per day, prunes rows that were never VCP picks, and
+keeps a rolling 90-day window (the full history stays in the git history of
+the file). Outputs (committed to `docs/data/screener2/`):
+
+```
+docs/data/screener2/
+├── LATEST.csv          # today's VCP hits (small, overwritten daily)
+├── hits_log.csv        # date,symbol,... append-only record of picks
+├── success.csv         # forward returns for every logged pick
+├── success_summary.csv # win rates / avg returns + universe baseline
+└── rss.xml             # daily digest feed
+```
+
+### Success check — did the picks work?
+
+Every logged pick is graded against the same git-history bars (close-to-close
+forward returns, no lookahead): 5 / 10 / 20-day returns, max run-up and
+drawdown within 10 bars. `success_summary.csv` holds the aggregate — pick win
+rates vs the universe baseline (average forward 10-day return of every stock
+in the archive over the same period). First verdict on the legacy picks
+(2026-08-15 → 2026-09-17, 55 picks with a completed 10-day window — still
+containing preferred/notes junk flagged by the old detector): 10-day win rate
+60.0% vs a 49.1% universe baseline, but an average 10-day return of **−0.01%
+vs +4.25% for the universe** — the legacy picks barely moved (avg max run-up
+10d +0.38%): low-volatility junk, no magnitude edge. The strict
+common-stock-only picks going forward are graded by the same table.
+
 ## Daily Screener
 
 > **Live site:** <https://ozkanpakdil.github.io/top-us-stock-tickers/> —

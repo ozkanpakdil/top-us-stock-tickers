@@ -118,6 +118,16 @@
       .footer a { color: var(--accent); text-decoration: none; }
       .footer a:hover { text-decoration: underline; }
 
+      /* ---- lazy hit log ---- */
+      #logDetails summary.log-summary {
+        cursor: pointer; user-select: none; color: var(--text-dim);
+        font-size: 0.8rem; padding: 2px 0 10px; list-style: none;
+      }
+      #logDetails summary.log-summary::-webkit-details-marker { display: none; }
+      #logDetails summary.log-summary::before { content: "▸ "; color: var(--accent); }
+      #logDetails[open] summary.log-summary::before { content: "▾ "; }
+      #logDetails summary.log-summary:hover { color: var(--text); }
+
       /* ---- filter bar ---- */
       .filter-bar {
         display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px;
@@ -229,7 +239,7 @@
     <div class="wrap">
       <section class="panel hero">
         <h1>VCP Screener — <span style="color:var(--accent)">Volatility Contraction Pattern</span></h1>
-        <p>Scans US stocks daily for Minervini-style VCP setups: market cap $2B–$100B, price above 12-month / 200-day / 150-day SMAs, P/E trending up, VCP chart pattern (higher lows + flat ceiling + contracting volatility), insiders holding, free cash flow trending up, and EPS trending up. Inspired by <a href="https://en.wikipedia.org/wiki/Mark_Minervini" target="_blank" rel="noopener" style="color:var(--accent)">Mark Minervini's</a> methodology. Not financial advice.</p>
+        <p>Scans US stocks daily for Minervini-style VCP setups: market cap $2B–$100B, price above 12-month / 200-day / 150-day SMAs, price &gt; $10, employees &gt; 20, and a detected VCP chart pattern (higher lows + flat ceiling + contracting volatility). A stock is only listed when <b>all hard rules pass</b> — expect a handful of names, sometimes zero. Fundamental signals (P/E / FCF / EPS trend, insiders) are scored but not required. Inspired by <a href="https://en.wikipedia.org/wiki/Mark_Minervini" target="_blank" rel="noopener" style="color:var(--accent)">Mark Minervini's</a> methodology. Not financial advice.</p>
         <div class="meta" id="meta"></div>
       </section>
 
@@ -249,7 +259,7 @@
           <dt>FCF trending up</dt><dd>Free cash flow making more and more money every quarter and every year.</dd>
           <dt>EPS trending up</dt><dd>Earnings per share trending upwards — greedy shareholders making more money.</dd>
         </dl>
-        <p class="note">Score = rules passed + VCP quality bonus (contractions × 2 + (1 − volatility ratio) × 3). Sorted by score. Fundamentals from Yahoo Finance. Employee count from stockanalysis.com. Click a symbol to view it on Seeking Alpha. Click any column header to sort. Thresholds are constants in <code>src/screener2.ts</code>.</p>
+        <p class="note">Score = rules passed + VCP quality bonus (contractions × 2 + (1 − volatility ratio) × 3). Sorted by score. Fundamentals from Yahoo Finance. Employee count from stockanalysis.com. Click a symbol to view it on Seeking Alpha. Thresholds are constants in <code>src/screener2.ts</code>. Every logged pick is graded with forward returns in the Success check section below (<code>docs/data/screener2/success.csv</code>).</p>
       </section>
 
       <section class="panel">
@@ -261,15 +271,15 @@
           </div>
           <div class="fgrp">
             <label for="fEmp">Min employees</label>
-            <input type="number" id="fEmp" value="10000" min="0" step="1000" />
+            <input type="number" id="fEmp" value="0" min="0" step="1000" />
           </div>
           <div class="fgrp">
             <label for="fMcap">Min mkt cap ($B)</label>
-            <input type="number" id="fMcap" value="10" min="0" step="1" />
+            <input type="number" id="fMcap" value="0" min="0" step="1" />
           </div>
           <div class="fgrp">
             <label for="fPrice">Min price $</label>
-            <input type="number" id="fPrice" value="20" min="0" step="5" />
+            <input type="number" id="fPrice" value="0" min="0" step="5" />
           </div>
           <div class="fgrp">
             <label for="fScore">Min score</label>
@@ -288,7 +298,7 @@
             <label for="fVcpOnly">VCP pattern only</label>
           </div>
           <div class="fgrp fgrp-check">
-            <input type="checkbox" id="fAllSma" checked />
+            <input type="checkbox" id="fAllSma" />
             <label for="fAllSma">Above all SMAs</label>
           </div>
           <div class="fgrp fgrp-check">
@@ -311,9 +321,19 @@
       </section>
 
       <section class="panel">
+        <div class="sect-head"><h2>Success check</h2><span class="count" id="succCount"></span></div>
+        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Every logged pick graded against the git history: close-to-close forward returns after the pick date (5 / 10 / 20 trading days, no lookahead, no fees). Win10 = share of picks with a positive 10-day return; the universe baseline is the same-period average forward 10-day return of every stock in the archive.</p>
+        <div class="meta" id="succMeta" style="margin:0 0 10px"></div>
+        <div class="scroll" style="max-height:420px" id="succWrap"></div>
+      </section>
+
+      <section class="panel">
         <div class="sect-head"><h2>Full hit log</h2><span class="count" id="logCount"></span></div>
-        <p class="note" style="color:var(--muted);font-size:0.78rem;margin:0 0 10px">Every result, every day (append-only). Scroll to browse.</p>
-        <div class="scroll" style="max-height:520px" id="logWrap"></div>
+        <details id="logDetails">
+          <summary class="log-summary">Every VCP pick of the last 90 days (append-only). Click to expand — rendered in pages of 100, so the browser never chokes.</summary>
+          <div class="scroll" style="max-height:520px" id="logWrap"></div>
+          <div style="text-align:center;padding:10px 0 2px"><button class="btn-reset" id="logMore" hidden>Show 100 more</button></div>
+        </details>
       </section>
     </div>
 
@@ -367,13 +387,24 @@
         if (field.length > 0 || row.length > 0) { row.push(field); rows.push(row); }
         return rows.filter(r => !(r.length === 1 && r[0] === ""));
       }
-      async function loadCsv(name) {
+      // Hard caps: even if a broken build publishes a giant file again, the
+      // page parses at most 2 MB / 5,000 rows and stays responsive.
+      const MAX_PARSE_BYTES = 2_000_000, MAX_PARSE_ROWS = 5000;
+      async function loadCsv(name, maxRows) {
         try {
           const res = await fetch(DIR + "/" + name, { cache: "no-cache" });
-          if (!res.ok) return [];
-          const rows = parseCsv(await res.text());
+          if (!res.ok) return { header: [], rows: [] };
+          let text = await res.text();
+          if (text.length > MAX_PARSE_BYTES) {
+            text = text.slice(0, MAX_PARSE_BYTES);
+            const nl = text.lastIndexOf("\n");
+            if (nl > 0) text = text.slice(0, nl); // never parse a torn row
+            console.warn(name + " truncated to " + MAX_PARSE_BYTES + " bytes");
+          }
+          const rows = parseCsv(text);
           if (!rows.length) return { header: [], rows: [] };
-          return { header: rows[0], rows: rows.slice(1) };
+          const cap = Math.min(maxRows || MAX_PARSE_ROWS, MAX_PARSE_ROWS);
+          return { header: rows[0], rows: rows.slice(1, cap) };
         } catch (e) { return { header: [], rows: [] }; }
       }
       const num = (v) => { const n = parseFloat(v); return Number.isNaN(n) ? null : n; };
@@ -484,14 +515,14 @@
       // ---------- filter state ----------
       const filterState = {
         search: "",
-        minEmp: 10000,
-        minMcap: 10,  // in $B
-        minPrice: 20,
+        minEmp: 0,
+        minMcap: 0,  // in $B
+        minPrice: 0,
         minScore: 0,
         minRules: 0,
         industry: "",
         vcpOnly: false,
-        allSma: true,
+        allSma: false,
         epsUp: false,
         fcfUp: false,
         peUp: false,
@@ -662,15 +693,15 @@
           renderFilteredTable();
         });
         $("fReset").addEventListener("click", () => {
-          filterState.search = ""; filterState.minEmp = 10000; filterState.minMcap = 10;
-          filterState.minPrice = 20; filterState.minScore = 0;
+          filterState.search = ""; filterState.minEmp = 0; filterState.minMcap = 0;
+          filterState.minPrice = 0; filterState.minScore = 0;
           filterState.minRules = 0; filterState.industry = "";
-          filterState.vcpOnly = false; filterState.allSma = true;
+          filterState.vcpOnly = false; filterState.allSma = false;
           filterState.epsUp = false; filterState.fcfUp = false; filterState.peUp = false;
-          $("fSearch").value = ""; $("fEmp").value = "10000"; $("fMcap").value = "10";
-          $("fPrice").value = "20"; $("fScore").value = "0";
+          $("fSearch").value = ""; $("fEmp").value = "0"; $("fMcap").value = "0";
+          $("fPrice").value = "0"; $("fScore").value = "0";
           $("fRules").value = "0"; $("fIndustry").value = "";
-          $("fVcpOnly").checked = false; $("fAllSma").checked = true;
+          $("fVcpOnly").checked = false; $("fAllSma").checked = false;
           $("fEpsUp").checked = false; $("fFcfUp").checked = false; $("fPeUp").checked = false;
           renderFilteredTable();
         });
@@ -686,57 +717,122 @@
         renderFilteredTable();
       }
 
-      // ---------- render hits_log ----------
-      async function renderLog() {
-        const { header, rows } = await loadCsv("hits_log.csv");
-        $("logCount").textContent = rows.length ? `${rows.length} rows` : "";
-        const idx = {}; header.forEach((h, i) => idx[h] = i);
-        const cols = ["date", "symbol", "close", "marketCap", "vcp", "contractions", "volatilityRatio", "pe", "peTrend", "fcfTrend", "epsTrend", "freeFloatPct", "closelyHeldPct", "employees", "rulesPassed", "score"];
-        const makeCell = (r, c) => {
-          if (c === "symbol") {
-            const sym = r[idx.symbol] || "";
-            const ind = r[idx.industry] || "";
-            return symCell(sym, ind);
-          }
-          if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
-          if (c === "marketCap") return `<td>${fmtBn(num(r[idx.marketCap]))}</td>`;
-          if (c === "vcp") return `<td>${boolPill(r[idx.vcp])}</td>`;
-          if (c === "contractions") return `<td>${r[idx.contractions] || "—"}</td>`;
-          if (c === "volatilityRatio") return `<td>${r[idx.volatilityRatio] ? fmtNum(num(r[idx.volatilityRatio])) + "×" : "—"}</td>`;
-          if (c === "pe") return `<td>${r[idx.pe] ? fmtNum(num(r[idx.pe])) : "—"}</td>`;
-          if (c === "peTrend") return `<td>${trendPill(r[idx.peTrend])}</td>`;
-          if (c === "fcfTrend") return `<td>${trendPill(r[idx.fcfTrend])}</td>`;
-          if (c === "epsTrend") return `<td>${trendPill(r[idx.epsTrend])}</td>`;
-          if (c === "freeFloatPct") return `<td>${r[idx.freeFloatPct] ? fmtNum(num(r[idx.freeFloatPct]), 1) + "%" : "—"}</td>`;
-          if (c === "closelyHeldPct") return `<td>${r[idx.closelyHeldPct] ? fmtNum(num(r[idx.closelyHeldPct]), 1) + "%" : "—"}</td>`;
-          if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
-          if (c === "rulesPassed") return `<td><b>${r[idx.rulesPassed] || "?"}</b></td>`;
-          if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
-          return `<td>${r[idx[c]] ?? ""}</td>`;
-        };
-        const sortKeyFn = (col, r) => {
-          if (col === "symbol" || col === "industry") return r[idx[col]] || "";
-          if (col === "date") return r[idx.date] || "";
-          if (col === "peTrend" || col === "fcfTrend" || col === "epsTrend") {
-            const v = r[idx[col]];
-            if (v === "up") return 2;
-            if (v === "flat") return 1;
-            if (v === "down") return 0;
-            return -1;
-          }
-          if (col === "vcp") return r[idx[col]] === "true" ? 1 : 0;
-          return num(r[idx[col]]);
-        };
-        $("logWrap").innerHTML = rows.length
-          ? makeSortableTable("logWrap", cols, rows, makeCell, sortKeyFn, idx, { col: "date", dir: "desc" })
-          : '<div class="empty">No entries.</div>';
+      // ---------- render hits_log (lazy + paged — never render thousands of rows) ----------
+      const LOG_PAGE = 100;
+      let logAll = { header: [], rows: [] };
+      let logShown = 0;
+      let logLoaded = false;
+
+      function logCell(r, c, idx) {
+        if (c === "symbol") return symCell(r[idx.symbol] || "", r[idx.industry] || "");
+        if (c === "date") return `<td>${r[idx.date] || ""}</td>`;
+        if (c === "close") return `<td>${fmtNum(num(r[idx.close]))}</td>`;
+        if (c === "marketCap") return `<td>${fmtBn(num(r[idx.marketCap]))}</td>`;
+        if (c === "vcp") return `<td>${boolPill(r[idx.vcp])}</td>`;
+        if (c === "contractions") return `<td>${r[idx.contractions] || "—"}</td>`;
+        if (c === "volatilityRatio") return `<td>${r[idx.volatilityRatio] ? fmtNum(num(r[idx.volatilityRatio])) + "×" : "—"}</td>`;
+        if (c === "pe") return `<td>${r[idx.pe] ? fmtNum(num(r[idx.pe])) : "—"}</td>`;
+        if (c === "peTrend") return `<td>${trendPill(r[idx.peTrend])}</td>`;
+        if (c === "fcfTrend") return `<td>${trendPill(r[idx.fcfTrend])}</td>`;
+        if (c === "epsTrend") return `<td>${trendPill(r[idx.epsTrend])}</td>`;
+        if (c === "freeFloatPct") return `<td>${r[idx.freeFloatPct] ? fmtNum(num(r[idx.freeFloatPct]), 1) + "%" : "—"}</td>`;
+        if (c === "closelyHeldPct") return `<td>${r[idx.closelyHeldPct] ? fmtNum(num(r[idx.closelyHeldPct]), 1) + "%" : "—"}</td>`;
+        if (c === "employees") return `<td>${r[idx.employees] ? fmtInt(num(r[idx.employees])) : "—"}</td>`;
+        if (c === "rulesPassed") return `<td><b>${r[idx.rulesPassed] || "?"}</b></td>`;
+        if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
+        return `<td>${r[idx[c]] ?? ""}</td>`;
       }
 
-      // ---------- meta ----------
-      async function renderMeta() {
-        const { header, rows } = await loadCsv("LATEST.csv");
+      function appendLogRows() {
+        const { header, rows } = logAll;
+        const idx = {}; header.forEach((h, i) => idx[h] = i);
+        const cols = ["date", "symbol", "close", "marketCap", "vcp", "contractions", "volatilityRatio", "pe", "peTrend", "fcfTrend", "epsTrend", "freeFloatPct", "closelyHeldPct", "employees", "rulesPassed", "score"];
+        const next = rows.slice(logShown, logShown + LOG_PAGE);
+        const h = next.map((r) => "<tr>" + cols.map((c) => logCell(r, c, idx)).join("") + "</tr>").join("");
+        if (logShown === 0) {
+          $("logWrap").innerHTML = next.length
+            ? `<table class="stbl"><thead><tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>${h}</tbody></table>`
+            : '<div class="empty">No entries.</div>';
+        } else {
+          const tb = $("logWrap").querySelector("tbody");
+          if (tb) tb.insertAdjacentHTML("beforeend", h);
+        }
+        logShown += next.length;
+        $("logCount").textContent = rows.length ? `${logShown} / ${rows.length} rows` : "";
+        $("logMore").hidden = logShown >= rows.length;
+      }
+
+      async function renderLog() {
+        const { header, rows } = await loadCsv("hits_log.csv");
+        const idx = {}; header.forEach((h, i) => idx[h] = i);
+        // Newest first; ties broken by score.
+        const sorted = rows.slice().sort((a, b) =>
+          String(b[idx.date] || "").localeCompare(String(a[idx.date] || "")) ||
+          (num(b[idx.score]) ?? 0) - (num(a[idx.score]) ?? 0));
+        logAll = { header, rows: sorted };
+        logShown = 0;
+        appendLogRows();
+      }
+
+      // ---------- render success check ----------
+      function retCell(v) {
+        const n = num(v);
+        if (n === null) return '<td class="dash">—</td>';
+        return `<td class="${n >= 0 ? "up" : "down"}">${(n >= 0 ? "+" : "") + n.toFixed(2)}%</td>`;
+      }
+      async function renderSuccess() {
+        const [sumRaw, rowsRaw] = await Promise.all([loadCsv("success_summary.csv"), loadCsv("success.csv")]);
+        const badge = (label, val, cls) =>
+          `<span class="badge ${cls || "neutral"}">${label}: ${val}</span>`;
+        if (!sumRaw.rows.length) {
+          $("succMeta").innerHTML = '<span class="badge warn">no graded picks yet</span>';
+          $("succWrap").innerHTML = '<div class="empty">No graded picks yet — outcomes appear as logged picks age past their return windows.</div>';
+          return;
+        }
+        const s = {}; sumRaw.header.forEach((h, i) => s[h] = sumRaw.rows[0][i]);
+        const f = (k) => num(s[k]);
+        const pctStr = (v, d = 2) => v === null ? "?" : (v >= 0 ? "+" : "") + v.toFixed(d) + "%";
+        $("succMeta").innerHTML =
+          `<span class="badge accent">${f("gradedPicks") ?? "?"} graded picks</span>` +
+          badge("universe 10d", pctStr(f("universeAvgRet10")) + ` (win ${s["universeWin10"] ?? "?"}%)`, "neutral") +
+          badge("5d win", (s["win5"] ?? "?") + "% · " + pctStr(f("avgRet5")), f("avgRet5") >= 0 ? "up" : "down") +
+          badge("10d win", (s["win10"] ?? "?") + "% · " + pctStr(f("avgRet10")), f("avgRet10") >= 0 ? "up" : "down") +
+          badge("20d win", (s["win20"] ?? "?") + "% · " + pctStr(f("avgRet20")), f("avgRet20") >= 0 ? "up" : "down") +
+          badge("avg run-up 10d", pctStr(f("avgMaxRunup10")), "up") +
+          badge("avg drawdown 10d", pctStr(f("avgMaxDrawdown10")), "down");
+        $("succCount").textContent = rowsRaw.rows.length ? `${rowsRaw.rows.length} picks` : "";
+        const idx = {}; rowsRaw.header.forEach((h, i) => idx[h] = i);
+        const cols = ["date", "symbol", "entry", "rulesPassed", "score", "ret5", "ret10", "ret20", "maxRunup10", "maxDrawdown10", "win10"];
+        const MAX_SUCC_ROWS = 200;
+        const sorted = rowsRaw.rows.slice(0, MAX_SUCC_ROWS).sort((a, b) =>
+          String(b[idx.date] || "").localeCompare(String(a[idx.date] || "")) ||
+          String(b[idx.symbol] || "").localeCompare(String(a[idx.symbol] || "")));
+        const makeCell = (r, c) => {
+          if (c === "symbol") return symCell(r[idx.symbol] || "", r[idx.industry] || "");
+          if (c === "date") return `<td>${r[idx.date] || ""}</td>`;
+          if (c === "entry") return `<td>${fmtNum(num(r[idx.entry]))}</td>`;
+          if (c === "rulesPassed") return `<td><b>${r[idx.rulesPassed] || "?"}</b></td>`;
+          if (c === "score") return `<td><b>${fmtNum(num(r[idx.score]))}</b></td>`;
+          if (c === "ret5") return retCell(r[idx.ret5]);
+          if (c === "ret10") return retCell(r[idx.ret10]);
+          if (c === "ret20") return retCell(r[idx.ret20]);
+          if (c === "maxRunup10") return retCell(r[idx.maxRunup10]);
+          if (c === "maxDrawdown10") return retCell(r[idx.maxDrawdown10]);
+          if (c === "win10") return `<td>${boolPill(r[idx.win10])}</td>`;
+          return `<td>${r[idx[c]] ?? ""}</td>`;
+        };
+        $("succWrap").innerHTML = sorted.length
+          ? `<table class="stbl"><thead><tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>${sorted.map((r) => "<tr>" + cols.map((c) => makeCell(r, c)).join("") + "</tr>").join("")}</tbody></table>`
+          : '<div class="empty">No graded picks yet.</div>';
+      }
+
+      // ---------- meta (reuses the LATEST.csv already loaded) ----------
+      function renderMeta() {
+        const header = latestRaw.header || [];
+        const rows = latestRaw.rows || [];
         const today = new Date().toISOString().slice(0, 10);
-        const vcpRows = rows.filter(r => r[header.indexOf("vcp")] === "true");
+        const vi = header.indexOf("vcp");
+        const vcpRows = vi >= 0 ? rows.filter(r => r[vi] === "true") : [];
         const vcpCount = vcpRows.length;
         const vcpNames = vcpRows.map(r => r[header.indexOf("symbol")] || "").join(", ");
         const vcpBadge = vcpCount
@@ -744,7 +840,7 @@
           : "";
         $("meta").innerHTML =
           `<span class="badge neutral">run: ${today}</span>` +
-          (rows.length ? `<span class="badge accent">${rows.length} results</span>` : `<span class="badge warn">no results</span>`) +
+          (rows.length ? `<span class="badge accent">${rows.length} VCP hits</span>` : `<span class="badge warn">no results</span>`) +
           vcpBadge;
         if (vcpCount) {
           const badge = $("vcpBadge");
@@ -788,10 +884,20 @@
       $("vcpModal").addEventListener("click", (e) => { if (e.target === e.currentTarget) closeVcpModal(); });
       document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeVcpModal(); });
 
+      $("logMore").addEventListener("click", appendLogRows);
+
+      // ---------- lazy hit log: parse + render only on first expand ----------
+      $("logDetails").addEventListener("toggle", () => {
+        if ($("logDetails").open && !logLoaded) {
+          logLoaded = true;
+          renderLog();
+        }
+      });
+
       (async function init() {
         await renderLatest();
-        await renderLog();
         renderMeta();
+        renderSuccess();
       })();
     })();
     </script>

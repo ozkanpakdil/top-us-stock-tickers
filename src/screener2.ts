@@ -16,17 +16,32 @@
 //  11. Free cash flow trending upwards   (making more money each quarter)
 //  12. EPS trending upwards              (shareholders making more money)
 //
+// A symbol is a **hit** only when the hard, computable rules all pass:
+// market cap in range, price > $10, employees > 20, above the 12M/200/150-day
+// SMAs, and the VCP pattern detected. The fundamental rules (FCF / P/E / EPS
+// trends, insiders) are displayed + scored but do not gate — Yahoo data is
+// frequently unavailable and they are confirmation signals, not the pattern.
+//
+// That strictness is the point: a screen that logs ~1,400 partial matches a
+// day is not a screen. Hits are a handful (usually 0–10); only hits are
+// written to LATEST.csv and hits_log.csv, and a MAX_DAILY_HITS cap guarantees
+// the published files (and docs/screener2.html) can never balloon again.
+//
 // History is rebuilt from the git history of tickers/all.csv (same as screener.ts).
 // Yahoo Finance is used for P/E, free cash flow, EPS, and insider holdings data
-// that isn't available in all.csv.
+// that isn't available in all.csv. Legacy hits_log rows that are not VCP picks
+// (the old pre-filter-only behaviour) are pruned on the next run.
 //
 // Outputs (committed to docs/data/screener2/ for GitHub Pages):
-//   docs/data/screener2/LATEST.csv   — today's passing stocks
-//   docs/data/screener2/hits_log.csv — date,symbol,... append-only, idempotent per day
+//   docs/data/screener2/LATEST.csv          — today's VCP hits (small)
+//   docs/data/screener2/hits_log.csv        — date,symbol,... append-only, idempotent per day
+//   docs/data/screener2/success.csv         — forward returns for every logged pick
+//   docs/data/screener2/success_summary.csv — hit-rate / avg-return summary row
 //
 // Run:  bun run screener2          (or: bun run src/screener2.ts)
 // Flags: --all-csv <path>  snapshot CSV walked in git (default: tickers/all.csv)
 //        --no-yahoo        skip Yahoo fundamental fetch (testing — uses history-only rules)
+//        --no-employees    skip stockanalysis.com employee gate (testing/CI fallback)
 
 import { readFileSync } from "node:fs";
 import {
@@ -43,6 +58,7 @@ import {
   sma,
   toCsv,
   fetchEmployeeCounts,
+  type Bar,
   type Sym,
 } from "./screener.ts";
 
@@ -67,6 +83,21 @@ export const VCP_FIRST_DEPTH_MIN = 4.0; // first pullback must be at least this 
 export const VCP_CEILING_PCT = 7.0; // swing highs flat within this % (the "ceiling")
 export const VCP_NEAR_CEILING_PCT = 8; // price must sit within this % under the ceiling
 export const VCP_MIN_BASE_BARS = 15; // base must span at least this many bars
+
+// Extra hard filters (all computable from history — zero network cost)
+export const NEAR_HIGH_WINDOW = 252; // bars for the 52-week-high proximity check
+export const NEAR_HIGH_PCT = 25; // price must sit within 25% of that high (Minervini trend template)
+export const MIN_DOLLAR_VOLUME = 5e6; // avg $ turnover (close × volume) over the last 50 bars
+export const VCP_VOLUME_DRY_RATIO = 0.9; // avg volume of the last 10 bars ≤ 90% of the base's avg (dry-up)
+
+// Hard-gate + output hygiene
+export const MAX_DAILY_HITS = 15; // per-day cap on logged hits (safety valve)
+export const MAX_EMPLOYEE_FETCHES = 100; // never fetch employees for more than this
+export const MAX_LOG_DAYS = 90; // hits_log keeps a rolling window (full history lives in git)
+
+// Success check: forward returns (trading days) after each logged pick.
+export const SUCCESS_HORIZONS = [5, 10, 20] as const;
+export const SUCCESS_RUNUP_WINDOW = 10; // bars for max run-up / drawdown
 
 // Output dir
 export const OUT_DIR = "docs/data/screener2";
@@ -96,8 +127,7 @@ interface Fundamentals {
 }
 
 /** Fetch fundamentals from Yahoo Finance quote summary.
- *  Yahoo's v8 chart endpoint includes some metadata; for deeper fundamentals
- *  we scrape the quoteSummary modules. */
+ *  Only called for the day's few hits — never for the whole universe. */
 async function fetchFundamentals(symbol: string): Promise<Fundamentals> {
   const empty: Fundamentals = {
     pe: null, peTrend: "unknown",
@@ -392,6 +422,100 @@ export function detectVCP(closes: number[]): VCPResult {
 
 // --- screening --------------------------------------------------------------
 
+interface TrendScreen {
+  sym: string;
+  price: number;
+  sma12m: number | null;
+  sma200: number | null;
+  sma150: number | null;
+  sma50: number | null;
+  aboveSma12m: boolean;
+  aboveSma200: boolean;
+  aboveSma150: boolean;
+  vcp: VCPResult;
+}
+
+/** History-only hard screen: trend gates + VCP pattern. No network involved —
+ *  this runs for every symbol so only true setups reach the (slow) fetches.
+ *  Extra quality gates beyond the strategy's 12 rules (all free to compute):
+ *  above the 50-day SMA, 150-day SMA above the 200-day, price within 25% of
+ *  its 52-week high, real dollar liquidity, and volume drying up into the base. */
+function trendScreen(sym: string, s: Sym, today: string): TrendScreen | null {
+  const bars = s.bars;
+  if (bars.length < MIN_BARS) return null;
+
+  // Recency gate
+  const last = bars[bars.length - 1];
+  const ageDays = Math.round(
+    (new Date(today + "T00:00:00Z").getTime() - new Date(last.date + "T00:00:00Z").getTime()) / 86400000,
+  );
+  if (ageDays > MAX_AGE_DAYS) return null;
+
+  const closes = bars.map((b) => b.close);
+  const price = last.close;
+
+  // Long SMAs: target window if history reaches it, else whole-history above the
+  // floor, else skip (null — rule not passed but history simply isn't there yet).
+  const sma50v = sma(closes, SMA_50);
+  const sma150v = bars.length >= SMA_150 ? sma(closes, SMA_150) : (bars.length >= SMA_LONG_FLOOR ? sma(closes, bars.length) : null);
+  const sma200v = bars.length >= SMA_200 ? sma(closes, SMA_200) : (bars.length >= SMA_LONG_FLOOR ? sma(closes, bars.length) : null);
+  const sma12mV = bars.length >= SMA_12M ? sma(closes, SMA_12M) : (bars.length >= SMA_LONG_FLOOR ? sma(closes, bars.length) : null);
+
+  const aboveSma12m = sma12mV !== null && price > sma12mV;
+  const aboveSma200 = sma200v !== null && price > sma200v;
+  const aboveSma150 = sma150v !== null && price > sma150v;
+
+  // The three trend gates are hard rules of the strategy.
+  if (!aboveSma12m || !aboveSma200 || !aboveSma150) return null;
+
+  // Above the 50-day SMA — mid-term momentum must also be intact.
+  const aboveSma50 = sma50v !== null && price > sma50v;
+  if (!aboveSma50) return null;
+
+  // Trend structure: the 150-day SMA must sit above the 200-day (only when
+  // both are real windows, not whole-history fallbacks).
+  if (bars.length >= SMA_200) {
+    const s150 = sma(closes, SMA_150);
+    const s200 = sma(closes, SMA_200);
+    if (s150 === null || s200 === null || s150 <= s200) return null;
+  }
+
+  // Near the 52-week high — VCPs break out into new-high territory, not from
+  // deep in a downtrend (Minervini's "within 25% of the high" template).
+  const highWindow = closes.slice(Math.max(0, closes.length - NEAR_HIGH_WINDOW));
+  const high52 = Math.max(...highWindow);
+  if (price < high52 * (1 - NEAR_HIGH_PCT / 100)) return null;
+
+  // Real dollar liquidity — weed out illiquid slivers that fake every pattern.
+  const recent = bars.slice(-SMA_50);
+  const dollarVol = recent.reduce((a, b) => a + b.close * b.volume, 0) / recent.length;
+  if (dollarVol < MIN_DOLLAR_VOLUME) return null;
+
+  // VCP pattern — the core rule, also hard.
+  const vcp = detectVCP(closes);
+  if (!vcp.isVCP) return null;
+
+  // Volume dry-up: a real VCP contracts on volume too — the last 10 bars must
+  // trade lighter than the base's average (institutions stop selling).
+  const vols = bars.map((b) => b.volume);
+  const volRecent = sma(vols, 10);
+  const volBase = sma(vols.slice(-VCP_LOOKBACK), VCP_LOOKBACK);
+  if (volRecent === null || volBase === null || volBase <= 0 || volRecent > volBase * VCP_VOLUME_DRY_RATIO) return null;
+
+  return {
+    sym,
+    price,
+    sma12m: sma12mV !== null ? Math.round(sma12mV * 100) / 100 : null,
+    sma200: sma200v !== null ? Math.round(sma200v * 100) / 100 : null,
+    sma150: sma150v !== null ? Math.round(sma150v * 100) / 100 : null,
+    sma50: sma50v !== null ? Math.round(sma50v * 100) / 100 : null,
+    aboveSma12m,
+    aboveSma200,
+    aboveSma150,
+    vcp,
+  };
+}
+
 interface HitRow {
   symbol: string;
   name: string;
@@ -422,48 +546,14 @@ interface HitRow {
   rulesTotal: number;
 }
 
-/** Screen one symbol against the VCP strategy rules. */
-function screenSymbol(
-  sym: string,
+/** Build the full hit row (with fundamental columns) for an already-strict setup. */
+function buildHitRow(
+  ts: TrendScreen,
   s: Sym,
-  today: string,
   fundamentals: Fundamentals | null,
   employees: number | null,
-): HitRow | null {
-  const bars = s.bars;
-  if (bars.length < MIN_BARS) return null;
-
-  // Recency gate
-  const last = bars[bars.length - 1];
-  const ageDays = Math.round(
-    (new Date(today + "T00:00:00Z").getTime() - new Date(last.date + "T00:00:00Z").getTime()) / 86400000,
-  );
-  if (ageDays > MAX_AGE_DAYS) return null;
-
-  const closes = bars.map((b) => b.close);
-  const price = last.close;
-
-  // Market cap — we need to get this from the latest snapshot, not from history.
-  // The all.csv working file has marketCap. We'll pass it in via the Sym metadata.
-  // Since Sym doesn't carry marketCap, we read it from the working CSV separately.
-  // For now, we'll use a separate map passed in. See main() for that.
-  // Here we just use the close as a proxy and filter later.
-  // Actually, let's read marketCap from the working file in main() and pass it.
-
-  // SMAs
-  const sma50v = sma(closes, SMA_50);
-  const sma150v = bars.length >= SMA_150 ? sma(closes, SMA_150) : (bars.length >= SMA_LONG_FLOOR ? sma(closes, bars.length) : null);
-  const sma200v = bars.length >= SMA_200 ? sma(closes, SMA_200) : (bars.length >= SMA_LONG_FLOOR ? sma(closes, bars.length) : null);
-  const sma12mV = bars.length >= SMA_12M ? sma(closes, SMA_12M) : (bars.length >= SMA_LONG_FLOOR ? sma(closes, bars.length) : null);
-
-  const aboveSma12m = sma12mV !== null && price > sma12mV;
-  const aboveSma200 = sma200v !== null && price > sma200v;
-  const aboveSma150 = sma150v !== null && price > sma150v;
-
-  // VCP pattern
-  const vcp = detectVCP(closes);
-
-  // Fundamentals
+): HitRow {
+  const { sym, price, vcp } = ts;
   const pe = fundamentals?.pe ?? null;
   const peTrend = fundamentals?.peTrend ?? "unknown";
   const fcf = fundamentals?.freeCashFlow ?? null;
@@ -473,12 +563,11 @@ function screenSymbol(
   const freeFloatPct = fundamentals?.freeFloatPct ?? null;
   const closelyHeldPct = fundamentals?.closelyHeldPct ?? null;
 
-  // Count rules passed (for scoring, not hard filtering — we want to see partial matches)
+  // Count rules passed (for scoring/display — the gates above already passed).
   let rulesPassed = 0;
   let rulesTotal = 0;
 
-  // Rule 1: Market cap in range (checked in main with marketCap map)
-  // We'll count it here based on a passed-in value — for now skip, handle in main
+  // Rule 1: Market cap in range (checked in main with the marketCap map)
   rulesTotal++;
 
   // Rule 2: Cash flow > 0 (proxy: FCF > 0)
@@ -487,7 +576,7 @@ function screenSymbol(
 
   // Rule 3: Price > 12-month SMA
   rulesTotal++;
-  if (aboveSma12m) rulesPassed++;
+  if (ts.aboveSma12m) rulesPassed++;
 
   // Rule 4: Price > $10
   rulesTotal++;
@@ -499,11 +588,11 @@ function screenSymbol(
 
   // Rule 6: Price > 200-day SMA
   rulesTotal++;
-  if (aboveSma200) rulesPassed++;
+  if (ts.aboveSma200) rulesPassed++;
 
   // Rule 7: Price > 150-day SMA
   rulesTotal++;
-  if (aboveSma150) rulesPassed++;
+  if (ts.aboveSma150) rulesPassed++;
 
   // Rule 8: P/E trending up
   rulesTotal++;
@@ -536,13 +625,13 @@ function screenSymbol(
     industry: s.industry,
     close: price,
     marketCap: null, // filled in main
-    sma12m: sma12mV !== null ? Math.round(sma12mV * 100) / 100 : null,
-    sma200: sma200v !== null ? Math.round(sma200v * 100) / 100 : null,
-    sma150: sma150v !== null ? Math.round(sma150v * 100) / 100 : null,
-    sma50: sma50v !== null ? Math.round(sma50v * 100) / 100 : null,
-    aboveSma12m,
-    aboveSma200,
-    aboveSma150,
+    sma12m: ts.sma12m,
+    sma200: ts.sma200,
+    sma150: ts.sma150,
+    sma50: ts.sma50,
+    aboveSma12m: ts.aboveSma12m,
+    aboveSma200: ts.aboveSma200,
+    aboveSma150: ts.aboveSma150,
     vcp: vcp.isVCP,
     contractions: vcp.contractions,
     volatilityRatio: Math.round(vcp.volatilityRatio * 100) / 100,
@@ -605,6 +694,19 @@ const HITS_LOG_COLUMNS = [
   "rulesPassed", "score",
 ];
 
+const SUCCESS_COLUMNS = [
+  "date", "symbol", "industry", "entry", "rulesPassed", "score",
+  "ret5", "ret10", "ret20", "maxRunup10", "maxDrawdown10", "win10",
+];
+
+const SUCCESS_SUMMARY_COLUMNS = [
+  "generatedAt", "gradedPicks", "ungradedPicks",
+  "universeAvgRet10", "universeWin10",
+  "win5", "win10", "win20",
+  "avgRet5", "avgRet10", "avgRet20",
+  "avgMaxRunup10", "avgMaxDrawdown10",
+];
+
 // --- hits log ---------------------------------------------------------------
 
 interface LogRow {
@@ -665,12 +767,162 @@ function readHitsLog(path: string): LogRow[] {
   return out;
 }
 
+// --- success check: forward returns for every logged pick --------------------
+
+interface SuccessRow {
+  date: string;
+  symbol: string;
+  industry: string;
+  entry: number;
+  rulesPassed: number;
+  score: number;
+  ret5: number | null;
+  ret10: number | null;
+  ret20: number | null;
+  maxRunup10: number | null;
+  maxDrawdown10: number | null;
+  win10: boolean | null;
+}
+
+interface SuccessSummary {
+  gradedPicks: number;
+  ungradedPicks: number;
+  universeAvgRet10: number | null;
+  universeWin10: number | null;
+  win5: number | null;
+  win10: number | null;
+  win20: number | null;
+  avgRet5: number | null;
+  avgRet10: number | null;
+  avgRet20: number | null;
+  avgMaxRunup10: number | null;
+  avgMaxDrawdown10: number | null;
+}
+
+const pct = (x: number | null | undefined, d = 2): number | null =>
+  x === null || x === undefined || !Number.isFinite(x) ? null : Math.round(x * 100) / 100;
+
+/** Mean of finite values, or null when empty. */
+function mean(values: (number | null)[]): number | null {
+  const v = values.filter((x): x is number => x !== null && Number.isFinite(x));
+  if (!v.length) return null;
+  return v.reduce((a, b) => a + b, 0) / v.length;
+}
+
+/** Forward-return evaluation for every logged pick, graded against the same
+ *  git-history bars the screener uses (no lookahead: returns start *after*
+ *  the pick date's close). A pick is graded once an entry bar exists; each
+ *  horizon needs its full window (5/10/20 bars) — otherwise it stays null. */
+function evaluateSuccess(
+  log: LogRow[],
+  symbols: Map<string, Sym>,
+  today: string,
+): { rows: SuccessRow[]; summary: SuccessSummary } {
+  const rows: SuccessRow[] = [];
+  let ungraded = 0;
+
+  // date → bar index per symbol (built once).
+  const dateIndex = new Map<string, Map<string, number>>();
+  for (const [sym, s] of symbols) {
+    const m = new Map<string, number>();
+    s.bars.forEach((b, i) => m.set(b.date, i));
+    dateIndex.set(sym, m);
+  }
+
+  // Universe benchmark: average forward 10-bar return over every bar that has
+  // 10 bars ahead of it — the "buy anything" baseline for the same period.
+  let univSum = 0;
+  let univN = 0;
+  let univWin = 0;
+  for (const s of symbols.values()) {
+    const closes = s.bars.map((b) => b.close);
+    for (let i = 0; i + 10 < closes.length; i++) {
+      const base = closes[i];
+      if (!(base > 0)) continue;
+      const r = (closes[i + 10] - base) / base;
+      univSum += r;
+      univN++;
+      if (r > 0) univWin++;
+    }
+  }
+
+  for (const row of log) {
+    if (row.date >= today) continue; // today's picks can't be graded yet
+    const s = symbols.get(row.symbol);
+    const idxMap = dateIndex.get(row.symbol);
+    const entryIdx = idxMap?.get(row.date) ?? -1;
+    const entry = entryIdx >= 0 ? s!.bars[entryIdx].close : row.close;
+    const bars: Bar[] | undefined = s?.bars;
+    const forward = entryIdx >= 0 && bars ? bars.slice(entryIdx + 1) : undefined;
+
+    const fwdRet = (h: number): number | null =>
+      forward && forward.length >= h && entry > 0 ? ((forward[h - 1].close - entry) / entry) * 100 : null;
+
+    const ret5 = fwdRet(5);
+    const ret10 = fwdRet(10);
+    const ret20 = fwdRet(20);
+
+    let maxRunup10: number | null = null;
+    let maxDrawdown10: number | null = null;
+    if (forward && forward.length && entry > 0) {
+      const window = forward.slice(0, Math.min(10, forward.length));
+      maxRunup10 = pct(Math.max(...window.map((b) => ((b.close - entry) / entry) * 100)));
+      maxDrawdown10 = pct(Math.min(...window.map((b) => ((b.close - entry) / entry) * 100)));
+    }
+
+    if (!forward || forward.length === 0) ungraded++;
+
+    rows.push({
+      date: row.date,
+      symbol: row.symbol,
+      industry: row.industry,
+      entry: Math.round(entry * 100) / 100,
+      rulesPassed: row.rulesPassed,
+      score: row.score,
+      ret5: pct(ret5),
+      ret10: pct(ret10),
+      ret20: pct(ret20),
+      maxRunup10,
+      maxDrawdown10,
+      win10: ret10 !== null ? ret10 > 0 : null,
+    });
+  }
+
+  // Per-horizon stats: each horizon is graded only over picks whose window
+  // completed (ret != null) — no silent mixing of partial windows into rates.
+  const winRate = (key: "ret5" | "ret10" | "ret20"): number | null => {
+    const graded = rows.filter((r) => r[key] !== null);
+    if (!graded.length) return null;
+    const wins = graded.filter((r) => (r[key] as number) > 0).length;
+    return Math.round((wins / graded.length) * 10000) / 100;
+  };
+
+  const summary: SuccessSummary = {
+    gradedPicks: rows.filter((r) => r.ret10 !== null).length,
+    ungradedPicks: ungraded,
+    universeAvgRet10: univN ? Math.round((univSum / univN) * 10000) / 100 : null,
+    universeWin10: univN ? Math.round((univWin / univN) * 10000) / 100 : null,
+    win5: winRate("ret5"),
+    win10: winRate("ret10"),
+    win20: winRate("ret20"),
+    avgRet5: pct(mean(rows.map((r) => r.ret5))),
+    avgRet10: pct(mean(rows.map((r) => r.ret10))),
+    avgRet20: pct(mean(rows.map((r) => r.ret20))),
+    avgMaxRunup10: pct(mean(rows.map((r) => r.maxRunup10))),
+    avgMaxDrawdown10: pct(mean(rows.map((r) => r.maxDrawdown10))),
+  };
+
+  rows.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  return { rows, summary };
+}
+
 // --- main -------------------------------------------------------------------
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const allCsv = typeof args["all-csv"] === "string" ? (args["all-csv"] as string) : "tickers/all.csv";
   const noYahoo = args["no-yahoo"] === true;
+  const noEmployees = args["no-employees"] === true;
 
   ensureDir(OUT_DIR);
   const today = new Date().toISOString().slice(0, 10);
@@ -684,83 +936,82 @@ async function main() {
   const marketCaps = readMarketCaps(allCsv);
   console.log(`  Market caps loaded for ${marketCaps.size} symbols.`);
 
-  // Pre-filter by market cap and price to reduce Yahoo calls
-  const candidates: string[] = [];
+  // 1) History-only hard screen — no network. Only true VCP setups survive.
+  const setups: TrendScreen[] = [];
   let skippedNonStock = 0;
   for (const [sym, s] of symbols) {
-    const bars = s.bars;
-    if (bars.length < MIN_BARS) continue;
     if (isNonCommonStockName(s.name)) {
       skippedNonStock++;
       continue;
     }
-    const last = bars[bars.length - 1];
-    const ageDays = Math.round(
-      (new Date(today + "T00:00:00Z").getTime() - new Date(last.date + "T00:00:00Z").getTime()) / 86400000,
-    );
-    if (ageDays > MAX_AGE_DAYS) continue;
-
     const mc = marketCaps.get(sym);
     if (mc === undefined) continue; // no market cap data
     if (mc < MIN_MARKET_CAP || mc > MAX_MARKET_CAP) continue;
-    if (last.close < MIN_PRICE) continue;
-
-    candidates.push(sym);
+    const ts = trendScreen(sym, s, today);
+    if (!ts) continue;
+    if (ts.price < MIN_PRICE) continue;
+    setups.push(ts);
   }
-  console.log(`  After market cap + price filter: ${candidates.length} candidates (skipped ${skippedNonStock} bonds/preferred/warrants/units).`);
+  console.log(`  VCP setups (market cap + price + all SMAs + pattern): ${setups.length} (skipped ${skippedNonStock} bonds/preferred/warrants/units).`);
 
-  // Fetch employee counts for candidates
-  console.log(`Fetching employee counts for ${candidates.length} candidates...`);
-  const empMap = await fetchEmployeeCounts(candidates, 10);
-  let empFound = 0;
-  for (const sym of candidates) {
-    if (empMap.get(sym) !== null) empFound++;
-  }
-  console.log(`  Employee counts: ${empFound}/${candidates.length} found.`);
+  // Safety valve: never process/publish more than MAX_DAILY_HITS per day.
+  // (TrendScreen has no score yet; order by contractions + tightness as a tiebreak.)
+  const capped = [...setups]
+    .sort((a, b) =>
+      (b.vcp.contractions * 2 + (1 - b.vcp.volatilityRatio) * 3) -
+      (a.vcp.contractions * 2 + (1 - a.vcp.volatilityRatio) * 3))
+    .slice(0, MAX_EMPLOYEE_FETCHES);
 
-  // Filter by employees
-  const afterEmployees = candidates.filter((sym) => {
-    const emp = empMap.get(sym);
-    return emp !== null && emp > MIN_EMPLOYEES;
-  });
-  console.log(`  After employee filter (> ${MIN_EMPLOYEES}): ${afterEmployees.length} candidates.`);
-
-  // Fetch fundamentals from Yahoo
-  let fundamentalsMap = new Map<string, Fundamentals>();
-  if (!noYahoo) {
-    console.log(`Fetching Yahoo fundamentals for ${afterEmployees.length} symbols...`);
-    fundamentalsMap = await fetchFundamentalsBatch(afterEmployees, 8);
-    let fcfFound = 0;
-    for (const [, f] of fundamentalsMap) {
-      if (f.freeCashFlow !== null) fcfFound++;
+  // 2) Employees for the survivors only (weed-out rule).
+  const symbolsMap = symbols;
+  const empMap = new Map<string, number | null>();
+  let afterEmployees = capped;
+  if (noEmployees) {
+    console.log("  Employee gate skipped (--no-employees).");
+  } else {
+    console.log(`Fetching employee counts for ${capped.length} setups...`);
+    for (const [sym, emp] of await fetchEmployeeCounts(capped.map((t) => t.sym), 10)) {
+      empMap.set(sym, emp ?? null);
     }
+    afterEmployees = capped.filter((t) => {
+      const emp = empMap.get(t.sym) ?? null;
+      if (emp !== null && emp > MIN_EMPLOYEES) return true;
+      console.log(`    dropped ${t.sym} (employees ${emp === null ? "unknown" : emp} ≤ ${MIN_EMPLOYEES})`);
+      return false;
+    });
+    console.log(`  After employee filter (> ${MIN_EMPLOYEES}): ${afterEmployees.length} setups.`);
+  }
+
+  // 3) Yahoo fundamentals for the few survivors only (score enrichment).
+  const fundamentalsMap = new Map<string, Fundamentals>();
+  if (!noYahoo && afterEmployees.length) {
+    console.log(`Fetching Yahoo fundamentals for ${afterEmployees.length} setups...`);
+    const fetched = await fetchFundamentalsBatch(afterEmployees.map((t) => t.sym), 8);
+    for (const [sym, f] of fetched) fundamentalsMap.set(sym, f);
+    let fcfFound = 0;
+    for (const [, f] of fundamentalsMap) if (f.freeCashFlow !== null) fcfFound++;
     console.log(`  FCF data: ${fcfFound}/${afterEmployees.length} found.`);
   }
 
-  // Screen all candidates (we keep partial matches for the table, but score them)
+  // 4) Final hits (already strict: market cap, price, employees, SMAs, VCP).
   const hits: HitRow[] = [];
-  let screened = 0;
-  for (const sym of afterEmployees) {
-    const s = symbols.get(sym);
+  for (const ts of afterEmployees) {
+    const s = symbolsMap.get(ts.sym);
     if (!s) continue;
-    screened++;
-    const fund = fundamentalsMap.get(sym) ?? null;
-    const emp = empMap.get(sym) ?? null;
-    const hit = screenSymbol(sym, s, today, fund, emp);
-    if (hit) {
-      hit.marketCap = marketCaps.get(sym) ?? null;
-      // Recount rule 1 (market cap in range)
-      if (hit.marketCap !== null && hit.marketCap >= MIN_MARKET_CAP && hit.marketCap <= MAX_MARKET_CAP) {
-        hit.rulesPassed++;
-      }
-      hits.push(hit);
+    const fund = fundamentalsMap.get(ts.sym) ?? null;
+    const emp = noEmployees ? null : (empMap.get(ts.sym) ?? null);
+    const hit = buildHitRow(ts, s, fund, emp);
+    if (hit.marketCap === null) hit.marketCap = marketCaps.get(ts.sym) ?? null;
+    // Rule 1 (market cap in range) — the pre-filter guarantees it; count it.
+    if (hit.marketCap !== null && hit.marketCap >= MIN_MARKET_CAP && hit.marketCap <= MAX_MARKET_CAP) {
+      hit.rulesPassed++;
     }
+    hits.push(hit);
   }
-
-  // Sort by score (rules passed + VCP quality)
   hits.sort((a, b) => b.score - a.score || b.rulesPassed - a.rulesPassed);
+  if (hits.length > MAX_DAILY_HITS) hits.length = MAX_DAILY_HITS;
 
-  // Write LATEST.csv
+  // Write LATEST.csv (hits only — the screener's small daily list).
   const latestRows = hits.map((h) => [
     h.symbol, h.name, h.industry, h.close,
     h.marketCap !== null ? h.marketCap : "",
@@ -775,9 +1026,17 @@ async function main() {
   ]);
   await Bun.write(`${OUT_DIR}/LATEST.csv`, toCsv(LATEST_COLUMNS, latestRows));
 
-  // Append to hits_log.csv (idempotent: drop today's rows first)
+  // Append to hits_log.csv (idempotent: drop today's rows first; prune legacy
+  // rows that were never VCP picks; keep a rolling MAX_LOG_DAYS window — the
+  // full history stays in the git history of this file).
   const logPath = `${OUT_DIR}/hits_log.csv`;
   const existingLog = readHitsLog(logPath).filter((r) => r.date !== today);
+  const cutoffMs = new Date(today + "T00:00:00Z").getTime() - MAX_LOG_DAYS * 86400000;
+  const prunedCount = existingLog.filter((r) => !r.vcp).length;
+  const expiredCount = existingLog.filter((r) => r.vcp && new Date(r.date + "T00:00:00Z").getTime() < cutoffMs).length;
+  const keptLog = existingLog.filter((r) => r.vcp && new Date(r.date + "T00:00:00Z").getTime() >= cutoffMs);
+  if (prunedCount > 0) console.log(`  Pruning ${prunedCount} legacy non-VCP rows from hits_log.csv (partial matches the old build logged).`);
+  if (expiredCount > 0) console.log(`  Dropping ${expiredCount} rows older than the ${MAX_LOG_DAYS}-day window (history stays in git).`);
   const newLogRows = hits.map((h) => [
     today, h.symbol, h.industry, h.close,
     h.marketCap !== null ? h.marketCap : "",
@@ -788,7 +1047,7 @@ async function main() {
     h.employees ?? "",
     h.rulesPassed, h.score,
   ]);
-  const allLog = existingLog.map((r) => [
+  const allLog = keptLog.map((r) => [
     r.date, r.symbol, r.industry, r.close,
     r.marketCap ?? "",
     r.vcp, r.contractions, r.volatilityRatio,
@@ -799,6 +1058,29 @@ async function main() {
     r.rulesPassed, r.score,
   ]);
   await Bun.write(logPath, toCsv(HITS_LOG_COLUMNS, [...allLog, ...newLogRows]));
+
+  // 5) Success check — forward returns for every logged pick (history only).
+  const fullLog = readHitsLog(logPath);
+  const { rows: successRows, summary: successSummary } = evaluateSuccess(fullLog, symbolsMap, today);
+  await Bun.write(
+    `${OUT_DIR}/success.csv`,
+    toCsv(SUCCESS_COLUMNS, successRows.map((r) => [
+      r.date, r.symbol, r.industry, r.entry, r.rulesPassed, r.score,
+      r.ret5 ?? "", r.ret10 ?? "", r.ret20 ?? "",
+      r.maxRunup10 ?? "", r.maxDrawdown10 ?? "",
+      r.win10 === null ? "" : r.win10,
+    ])),
+  );
+  await Bun.write(
+    `${OUT_DIR}/success_summary.csv`,
+    toCsv(SUCCESS_SUMMARY_COLUMNS, [[
+      today, successSummary.gradedPicks, successSummary.ungradedPicks,
+      successSummary.universeAvgRet10 ?? "", successSummary.universeWin10 ?? "",
+      successSummary.win5 ?? "", successSummary.win10 ?? "", successSummary.win20 ?? "",
+      successSummary.avgRet5 ?? "", successSummary.avgRet10 ?? "", successSummary.avgRet20 ?? "",
+      successSummary.avgMaxRunup10 ?? "", successSummary.avgMaxDrawdown10 ?? "",
+    ]]),
+  );
 
   // RSS feed — one item per day with that day's top results.
   const rssDays = await generateRssFromLog({
@@ -813,20 +1095,28 @@ async function main() {
 
   // Summary
   console.log("---");
-  console.log(`Screener-2 ${today}: screened ${screened} symbols, ${hits.length} results.`);
-  const vcpHits = hits.filter((h) => h.vcp);
-  console.log(`  VCP pattern matches: ${vcpHits.length}`);
-  const fullPass = hits.filter((h) => h.rulesPassed >= h.rulesTotal - 2);
-  console.log(`  Near-complete pass (≥ ${hits[0]?.rulesTotal - 2 ?? 0} / ${hits[0]?.rulesTotal ?? 0} rules): ${fullPass.length}`);
+  console.log(`Screener-2 ${today}: ${hits.length} VCP hits (max ${MAX_DAILY_HITS}/day).`);
+  if (successRows.length) {
+    const graded = successSummary.gradedPicks;
+    console.log(`  Success check: ${successRows.length} logged picks, ${graded} with a completed 10-day window.`);
+    console.log(`    pick win rates — 5d: ${successSummary.win5 ?? "?"}%  10d: ${successSummary.win10 ?? "?"}%  20d: ${successSummary.win20 ?? "?"}%`);
+    console.log(`    avg return     — 5d: ${fmtPct(successSummary.avgRet5)}  10d: ${fmtPct(successSummary.avgRet10)}  20d: ${fmtPct(successSummary.avgRet20)}`);
+    console.log(`    avg max run-up 10d: ${fmtPct(successSummary.avgMaxRunup10)}  avg max drawdown 10d: ${fmtPct(successSummary.avgMaxDrawdown10)}`);
+    console.log(`    universe baseline avg 10d return: ${fmtPct(successSummary.universeAvgRet10)} (win rate ${successSummary.universeWin10 ?? "?"}%)`);
+  }
   if (hits.length) {
-    console.log("  Top results:");
-    for (const h of hits.slice(0, 15)) {
+    console.log("  Today's hits:");
+    for (const h of hits) {
       const mcStr = h.marketCap !== null ? `$${(h.marketCap / 1e9).toFixed(1)}B` : "?";
       console.log(
-        `    ${h.symbol.padEnd(8)} ${h.rulesPassed}/${h.rulesTotal} rules  score ${h.score}  ${mcStr}  VCP:${h.vcp ? "✓" : "✗"}  PE↑:${h.peTrend === "up" ? "✓" : "✗"}  FCF↑:${h.fcfTrend === "up" ? "✓" : "✗"}  EPS↑:${h.epsTrend === "up" ? "✓" : "✗"}  ${h.industry}`,
+        `    ${h.symbol.padEnd(8)} ${h.rulesPassed}/${h.rulesTotal} rules  score ${h.score}  ${mcStr}  ${h.contractions}c  vol×${h.volatilityRatio}  PE↑:${h.peTrend === "up" ? "✓" : "✗"}  FCF↑:${h.fcfTrend === "up" ? "✓" : "✗"}  EPS↑:${h.epsTrend === "up" ? "✓" : "✗"}  ${h.industry}`,
       );
     }
   }
+}
+
+function fmtPct(x: number | null): string {
+  return x === null ? "n/a" : `${x >= 0 ? "+" : ""}${x.toFixed(2)}%`;
 }
 
 if (import.meta.main) {
