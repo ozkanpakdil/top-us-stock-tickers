@@ -1,3 +1,4 @@
 symbol,name,industry,close,marketCap,aboveSma12m,aboveSma200,aboveSma150,vcp,contractions,volatilityRatio,pe,peTrend,fcf,fcfTrend,eps,epsTrend,freeFloatPct,closelyHeldPct,employees,rulesPassed,rulesTotal,score
-ELV,Elevance Health Inc. Common Stock,Health Care,412.56,89471594282,true,true,true,true,2,0.32,,unknown,,unknown,,unknown,,,97100,7,12,12.04
-INVX,Innovex International Inc. Common Stock,Consumer Discretionary,29.33,2051217806,true,true,true,true,2,0.42,,unknown,,unknown,,unknown,,,2160,7,12,11.74
+ELV,Elevance Health Inc. Common Stock,Health Care,414.26,89840272075,true,true,true,true,2,0.32,,unknown,,unknown,,unknown,,,97100,7,12,12.04
+INVX,Innovex International Inc. Common Stock,Consumer Discretionary,29.17,2040028074,true,true,true,true,2,0.42,,unknown,,unknown,,unknown,,,2160,7,12,11.74
+ADM,Archer-Daniels-Midland Company Common Stock,Consumer Staples,88.09,42455819666,true,true,true,true,2,0.52,,unknown,,unknown,,unknown,,,41496,7,12,11.44

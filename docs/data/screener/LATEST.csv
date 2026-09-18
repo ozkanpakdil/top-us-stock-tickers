@@ -1,11 +1,51 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-VEEAW,Veea Inc. Warrant,Finance,0.07,15.32,188037,10.68,0.05,,true,true,true,36.69,16.05,45
-BBNX,Beta Bionics Inc. Common Stock,Health Care,22.18,8.78,7191423,7.07,17.61,14.95,true,true,false,22.93,16.05,423
-PNTG,The Pennant Group Inc. Common Stock ,Health Care,42.48,4.51,1135362,4.34,38.5,33.53,true,true,false,13.19,16.05,9700
-BRKRP,Bruker Corporation 6.375% Mandatory Convertible Preferred Stock Series A,Industrials,447.07,2.51,19039,3.89,428.14,364.68,true,true,false,10.28,16.05,11085
-BRKR,Bruker Corporation Common Stock,Industrials,60.67,2.66,4105864,2.43,57.86,47.81,true,true,false,7.52,16.05,11085
-NTRB,Nutriband Inc. Common Stock,Health Care,7.04,2.92,44746,2.2,4.05,4.02,true,true,false,7.33,16.05,13
-CUE,Cue Biopharma Inc. Common Stock,Health Care,34.17,2.69,277433,2.28,29.19,14.54,true,true,false,7.25,16.05,29
-NTWK,NetSol Technologies Inc. Common  Stock,Technology,4.26,2.4,37458,2.07,4.26,3.81,true,true,false,6.53,16.05,1569
-CTKB,Cytek Biosciences Inc. Common Stock,Industrials,4.93,2.6,1555263,1.89,4.57,4.54,true,true,false,6.38,16.05,682
-DK,Delek US Holdings Inc. Common Stock,Energy,79.16,2.08,1839218,1.7,63.29,46.25,true,true,false,5.48,16.05,1902
+MNOV,Medicinova Inc Common Stock,Health Care,3.45,36.9,7376752,31.55,1.53,1.47,true,true,false,100.01,15.06,6
+SDGR,Schrodinger Inc. Common Stock,Health Care,30.24,26.37,9011223,7.42,18.64,15.1,true,true,false,41.2,15.06,850
+CYPH,Cypherpunk Technologies Inc. Common Stock,Health Care,3.07,25.82,26527151,5.03,1.27,0.98,true,true,false,35.87,15.06,6
+NNVC,NanoViricides Inc. Common Stock,Health Care,1.4,16.67,1430514,4.58,1.33,1.24,true,true,false,25.82,15.06,7
+AGPU,Axe Compute Inc. Common Stock,Health Care,12.92,17.56,642782,2.41,9.03,5.92,true,true,false,22.38,15.06,14
+VNCE,Vince Holding Corp. Common Stock,Consumer Discretionary,9.82,13.92,749343,4.11,6.72,4.46,true,true,false,22.14,15.06,558
+SBCWW,SBC Medical Group Holdings Incorporated Warrants,Health Care,0.345,17.95,63537,1.77,0.27,0.25,true,true,false,21.49,15.06,863
+TEM,Tempus AI Inc. Class A Common Stock,Technology,80.36,14.85,16848417,3.01,59.87,55.53,true,true,false,20.87,15.06,3800
+NTRB,Nutriband Inc. Common Stock,Health Care,7.65,8.66,102635,4.67,4.14,4.04,true,true,false,18,15.06,13
+PBLS,Parabilis Medicines Inc. Common Stock,Health Care,40.88,10.85,1093218,2.96,35.08,,true,true,true,16.76,15.06,145
+TH,Target Hospitality Corp. Common Stock,Consumer Discretionary,20.76,10.66,2531228,2.22,18.29,13.72,true,true,false,15.1,15.06,902
+CUE,Cue Biopharma Inc. Common Stock,Health Care,37.84,10.74,194890,1.58,29.33,14.68,true,true,false,13.91,15.06,29
+CAI,Caris Life Sciences Inc. Common Stock,Health Care,30.92,9.61,7659671,2.1,22.1,20.78,true,true,false,13.81,15.06,1846
+MGNI,Magnite Inc. Common Stock,Technology,25.63,7.78,6837466,2.96,22.51,16.29,true,true,false,13.69,15.06,971
+TWST,Twist Bioscience Corporation Common Stock,Health Care,155.56,8.73,3370478,2.33,118.92,71.68,true,true,false,13.39,15.06,979
+BRKRP,Bruker Corporation 6.375% Mandatory Convertible Preferred Stock Series A,Industrials,464.27,3.85,22522,4.24,429,365.26,true,true,false,12.32,15.06,11085
+ECOR,electroCore Inc. Common Stock,Health Care,11.38,6.85,213792,2.67,8.85,7.42,true,true,false,12.19,15.06,83
+ILMN,Illumina Inc. Common Stock,Health Care,245.18,7.1,3676487,2.27,200.46,155.48,true,true,false,11.65,15.06,10080
+ETS,Elite Express Holding Inc. Class A Common Stock,Industrials,2.2,6.8,228497,2.34,1.05,0.7,true,true,false,11.49,15.06,29
+INTC,Intel Corporation Common Stock,Technology,108.8,7.67,148911483,1.77,104.96,80.03,true,true,false,11.2,15.06,85100
+HPE,Hewlett Packard Enterprise Company Common Stock,Technology,61.04,7.69,25789412,1.72,51.88,35.1,true,true,false,11.12,15.06,67000
+CTKB,Cytek Biosciences Inc. Common Stock,Industrials,5.21,5.68,2231818,2.69,4.6,4.54,true,true,false,11.06,15.06,682
+SEI,Solaris Energy Infrastructure Inc. Class A Common Stock,Consumer Discretionary,69.22,7.15,3303669,1.53,63.31,62.13,true,true,false,10.21,15.06,468
+NTRA,Natera Inc. Common Stock,Health Care,366.31,6.07,2560419,2.07,305.45,239.58,true,true,false,10.21,15.06,6140
+SWKS,Skyworks Solutions Inc. Common Stock,Technology,91.32,6.69,7349535,1.75,69.43,64.8,true,true,false,10.2,15.06,10000
+PGEN,Precigen Inc. Common Stock,Health Care,7.87,5.85,9346700,2.07,6.45,4.82,true,true,false,9.99,15.06,160
+ARE,Alexandria Real Estate Equities Inc. Common Stock,Real Estate,56.34,5.27,3356421,2.29,50.94,50.38,true,true,false,9.86,15.06,514
+SMTC,Semtech Corporation Common Stock,Technology,178.19,6.35,4490202,1.63,142.23,114.55,true,true,false,9.61,15.06,1920
+CRT,Cross Timbers Royalty Trust Common Stock,Energy,12.98,3.02,55950,3.11,10.23,9.83,true,true,false,9.24,15.06,1
+UEIC,Universal Electronics Inc. Common Stock,Consumer Staples,5.34,3.89,172455,2.61,4.77,4.24,true,true,false,9.11,15.06,3099
+NTWK,NetSol Technologies Inc. Common  Stock,Technology,4.44,4.23,44622,2.4,4.26,3.81,true,true,false,9.02,15.06,1569
+RMBI,Richmond Mutual Bancorporation Inc. Common Stock,Finance,16.16,2.28,174105,3.21,15.72,14.65,true,true,false,8.7,15.06,180
+AII,American Integrity Insurance Group Inc. Common Stock,Finance,26.77,2.33,390756,3.08,22.89,19.86,true,true,false,8.5,15.06,313
+QRVO,Qorvo Inc. Common Stock,Technology,119.51,4.86,1569915,1.76,96.98,89.31,true,true,false,8.38,15.06,5200
+EWTX,Edgewise Therapeutics Inc. Common Stock,Health Care,46.94,3.3,2407857,2.42,43.12,34.52,true,true,false,8.13,15.06,127
+ATRC,AtriCure Inc. Common Stock,Health Care,59.12,3.47,1539638,2.21,43,34.87,true,true,false,7.89,15.06,1350
+EBAY,eBay Inc. Common Stock,Real Estate,112.9,3.42,6291178,2.15,107.99,100.5,true,true,false,7.72,15.06,12300
+PRLB,Proto Labs Inc. Common stock,Industrials,86.42,3.82,334532,1.94,81.5,68.41,true,true,false,7.7,15.06,2280
+DELL,Dell Technologies Inc. Class C Common Stock ,Technology,588.4,4.46,9318497,1.61,467.44,277.2,true,true,false,7.69,15.06,97000
+BRKR,Bruker Corporation Common Stock,Industrials,63.05,3.92,3075213,1.81,57.99,47.9,true,true,false,7.54,15.06,11085
+ESQ,Esquire Financial Holdings Inc. Common Stock,Finance,123.66,2.1,318050,2.67,120.17,111.78,true,true,false,7.44,15.06,151
+XRX,Xerox Holdings Corporation Common Stock,Technology,3.62,4.02,3672578,1.7,3.09,2.47,true,true,false,7.42,15.06,23000
+NEOG,Neogen Corporation Common Stock,Health Care,12.83,2.23,3582314,2.54,11,9.89,true,true,false,7.32,15.06,2636
+PSX,Phillips 66 Common Stock,Energy,274.21,3.62,3574633,1.66,222.04,179.92,true,true,false,6.94,15.06,12600
+SGP,SpyGlass Pharma Inc. Common Stock,Health Care,29.33,2.55,235600,2.18,24.6,24.07,true,true,false,6.92,15.06,76
+DK,Delek US Holdings Inc. Common Stock,Energy,81.55,3.02,1988709,1.82,64.06,46.46,true,true,false,6.66,15.06,1902
+ADPT,Adaptive Biotechnologies Corporation Common Stock,Health Care,28.55,3.18,3279735,1.6,23.72,17.85,true,true,false,6.39,15.06,624
+GNK,Genco Shipping & Trading Limited Ordinary Shares New (Marshall Islands),Consumer Discretionary,28.1,2.48,661763,1.79,25.88,23.52,true,true,false,6.05,15.06,1056
+PRAA,PRA Group Inc. Common Stock,Finance,20.57,2.49,618220,1.76,19,17.17,true,true,false,6.01,15.06,2417
+BMRC,Bank of Marin Bancorp Common Stock,Finance,28.4,2.27,231591,1.71,27.75,26.49,true,true,false,5.69,15.06,311
