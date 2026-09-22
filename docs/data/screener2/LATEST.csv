@@ -1,3 +1,4 @@
 symbol,name,industry,close,marketCap,aboveSma12m,aboveSma200,aboveSma150,vcp,contractions,volatilityRatio,pe,peTrend,fcf,fcfTrend,eps,epsTrend,freeFloatPct,closelyHeldPct,employees,rulesPassed,rulesTotal,score
-LOGI,Logitech International S.A. Ordinary Shares,Technology,101.2,14490659198,true,true,true,true,2,0.23,,unknown,,unknown,,unknown,,,7300,7,12,12.31
-ADM,Archer-Daniels-Midland Company Common Stock,Consumer Staples,85.18,41053317280,true,true,true,true,2,0.52,,unknown,,unknown,,unknown,,,41496,7,12,11.44
+ARW,Arrow Electronics Inc. Common Stock,Technology,219.1,11153378179,true,true,true,true,3,0.19,,unknown,,unknown,,unknown,,,22230,7,12,14.43
+LOGI,Logitech International S.A. Ordinary Shares,Technology,105.12,15051957460,true,true,true,true,2,0.23,,unknown,,unknown,,unknown,,,7300,7,12,12.31
+ADM,Archer-Daniels-Midland Company Common Stock,Consumer Staples,83.38,40185790031,true,true,true,true,2,0.52,,unknown,,unknown,,unknown,,,41496,7,12,11.44
