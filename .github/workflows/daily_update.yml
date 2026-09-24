@@ -100,10 +100,10 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
 
-  post-mastodon:
-    needs: update-data
-    if: ${{ success() }}
-    uses: ./.github/workflows/post-mastodon.yml
-    secrets:
-      MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
-      MASTODON_URL: ${{ secrets.MASTODON_URL }}
+  # post-mastodon:
+  #   needs: update-data
+  #   if: ${{ success() }}
+  #   uses: ./.github/workflows/post-mastodon.yml
+  #   secrets:
+  #     MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+  #     MASTODON_URL: ${{ secrets.MASTODON_URL }}
