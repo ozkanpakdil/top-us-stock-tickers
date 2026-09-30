@@ -1,23 +1,22 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-SDEV,Stablecoin Development Corporation,Uncategorized,1.49,15.5,13799131,6.56,1.06,,true,true,true,28.62,16.04,4
-EEIQ,EpicQuest Education Group International Limited Common Stock,Real Estate,4.82,17.56,40902,2.87,2.95,2.77,true,true,false,23.29,16.04,45
-HQI,HireQuest Inc. Common Stock (DE),Consumer Discretionary,20.04,6.88,131333,6.3,15.57,12.56,true,true,false,19.48,16.04,88
-MXL,MaxLinear Inc. Common Stock,Technology,93.84,10,4404682,1.97,76.32,52.94,true,true,false,13.93,16.04,1115
-VIAV,Viavi Solutions Inc. Common Stock,Technology,40.68,9.27,8409290,2.18,38.88,37.23,true,true,false,13.63,16.04,4100
-QMCO,Quantum Corporation Common Stock,Technology,31.68,7.43,4241409,3.1,20.21,11.31,true,true,false,13.63,16.04,490
-NTWK,NetSol Technologies Inc. Common  Stock,Technology,4.9,3.16,89560,5.04,4.27,3.84,true,true,false,13.24,16.04,1569
-RENX,RenX Enterprises Corp. Common Stock,Finance,2.2,7.84,258911,2.64,1.93,1.36,true,true,false,13.12,16.04,38
-VNCE,Vince Holding Corp. Common Stock,Consumer Discretionary,11.5,3.23,678646,3.05,7.1,4.66,true,true,false,9.33,16.04,558
-CDNA,CareDx Inc. Common Stock,Health Care,63.68,3.76,2351823,2.77,45.57,27.4,true,true,false,9.31,16.04,765
-SMCIP,Super Micro Computer Inc. Depositary Shares representing a 1/20th Interest in a Share of 7% Series A Mandatory Convertible Preferred Stock,Uncategorized,72.2,4.21,1171743,2.41,60.56,,true,true,true,9.03,16.04,7000
-PRGO,Perrigo Company plc Ordinary Shares,Health Care,15.42,5.04,4279817,1.83,13.12,12.34,true,true,false,8.7,16.04,8100
-JILL,J. Jill Inc. Common Stock,Consumer Discretionary,24.63,2.41,233629,2.81,19.89,16,true,true,false,8.03,16.04,3140
-QCOM,QUALCOMM Incorporated Common Stock,Technology,201.97,3.97,17817811,1.82,174.77,169.35,true,true,false,7.61,16.04,52000
-DDOG,Datadog Inc. Class A Common Stock,Technology,268.13,4.36,5368486,1.56,242.3,179.13,true,true,false,7.47,16.04,8100
-MSFT,Microsoft Corporation Common Stock,Technology,516.17,3.66,38193268,1.82,472.8,430.35,true,true,false,7.29,16.04,223000
-ESP,Espey Mfg. & Electronics Corp. Common Stock,Technology,65.63,3.76,58272,1.58,62.94,59.85,true,true,false,6.93,16.04,144
-PRLB,Proto Labs Inc. Common stock,Industrials,96.25,3.53,259672,1.51,82.71,69.15,true,true,false,6.55,16.04,2280
-OPRT,Oportun Financial Corporation Common Stock,Finance,8.55,3.01,773277,1.7,7.3,5.8,true,true,false,6.42,16.04,2488
-P,Everpure Inc.,Uncategorized,126,3.38,6308424,1.51,97.66,,true,true,true,6.41,16.04,6400
-TEM,Tempus AI Inc. Class A Common Stock,Technology,85.01,3.37,8443092,1.5,62.85,56.33,true,true,false,6.37,16.04,3800
-SGHT,Sight Sciences Inc. Common Stock,Health Care,8.93,2.88,353469,1.73,7.54,5.79,true,true,false,6.34,16.04,186
+KOD,Kodiak Sciences Inc Common Stock,Health Care,89.92,177.96,38552007,28.27,38.94,34.17,true,true,false,234.5,15.91,141
+NTWK,NetSol Technologies Inc. Common  Stock,Technology,5.37,9.59,363692,14.97,4.28,3.84,true,true,false,39.54,15.91,1569
+LINK,Interlink Electronics Inc. Common Stock,Technology,5.93,6.85,228414,10.54,5.12,4.06,true,true,false,27.93,15.91,93
+SDEV,Stablecoin Development Corporation,Uncategorized,1.57,5.37,14831244,6.66,1.07,,true,true,true,18.69,15.91,4
+AMC,AMC Entertainment Holdings Inc. Class A Common Stock,Consumer Discretionary,3.29,11.9,72731809,2.96,2.49,1.79,true,true,false,17.82,15.91,33311
+XERS,Xeris Biopharma Holdings Inc. Common Stock,Health Care,9.83,8.02,4463405,2.77,8.43,7.08,true,true,false,13.57,15.91,435
+RENX,RenX Enterprises Corp. Common Stock,Finance,2.37,7.73,247289,2.49,1.94,1.37,true,true,false,12.71,15.91,38
+VSXY,Victorias Secret & Co. Common Stock ,Consumer Discretionary,88.29,6.49,2232530,1.77,82.67,,true,true,true,10.03,15.91,33000
+BDSX,Biodesix Inc. Common Stock,Health Care,30.42,4.54,204746,2.4,25.3,16.76,true,true,false,9.33,15.91,334
+CIX,CompX International Inc. Common Stock,Consumer Discretionary,38.91,2.94,51830,3.11,32.19,26.2,true,true,false,9.16,15.91,549
+SGHT,Sight Sciences Inc. Common Stock,Health Care,9.27,3.81,468542,2.24,7.62,5.81,true,true,false,8.28,15.91,186
+JRSH,Jerash Holdings (US) Inc. Common Stock,Consumer Discretionary,5.9,3.87,139065,1.74,5.26,3.87,true,true,false,7.35,15.91,6300
+LIND,Lindblad Expeditions Holdings Inc. Common Stock,Consumer Discretionary,29.64,4.18,921308,1.54,28.74,21.98,true,true,false,7.27,15.91,1550
+AMRX,Amneal Pharmaceuticals Inc. Class A Common Stock,Health Care,20.5,3.69,2989238,1.78,17.88,14.78,true,true,false,7.26,15.91,8700
+ECBK,ECB Bancorp Inc. Common Stock,Finance,21.23,2.56,13236,2.12,20.61,18.66,true,true,false,6.8,15.91,64
+RGEN,Repligen Corporation Common Stock,Health Care,194.09,2.32,1567374,2.12,167.51,142.27,true,true,false,6.56,15.91,2000
+CRCT,Cricut Inc. Class A Common Stock,Technology,6.33,3.09,942035,1.5,5.48,4.67,true,true,false,6.1,15.91,700
+VTRS,Viatris Inc. Common Stock,Health Care,18.27,2.47,12377618,1.75,16.68,15.24,true,true,false,5.97,15.91,30000
+DDS,Dillard's Inc. Common Stock,Consumer Discretionary,681.94,2.69,194450,1.62,608.63,602.98,true,true,false,5.93,15.91,29100
+WAT,Waters Corporation Common Stock,Industrials,442.94,2.17,981497,1.76,406.36,361.09,true,true,false,5.68,15.91,7900
+MCS,Marcus Corporation (The) Common Stock,Consumer Discretionary,28.7,2.17,286590,1.58,27.46,20.51,true,true,false,5.32,15.91,2349
