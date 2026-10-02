@@ -1,20 +1,32 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-SDEV,Stablecoin Development Corporation,Uncategorized,3.27,108.28,192555499,34.29,1.11,,true,true,true,176.86,16.69,4
-IOVA,Iovance Biotherapeutics Inc. Common Stock,Health Care,14.45,31.48,78168119,4.96,7.78,4.67,true,true,false,41.4,16.69,975
-NTWK,NetSol Technologies Inc. Common  Stock,Technology,5.56,3.54,613404,16.87,4.3,3.85,true,true,false,37.29,16.69,1569
-EEIQ,EpicQuest Education Group International Limited Common Stock,Real Estate,5.6,22.27,51973,3.81,3.05,2.8,true,true,false,29.9,16.69,45
-IDT,IDT Corporation Class B Common Stock,Telecommunications,75.56,8.63,800674,4.39,66.93,55.65,true,true,false,17.4,16.69,1925
-WRBY,Warby Parker Inc. Class A Common Stock,Health Care,27.47,11.39,5198226,2.24,25.81,25.09,true,true,false,15.87,16.69,4036
-BZFD,BuzzFeed Inc. Class A Common Stock,Consumer Discretionary,1.18,11.32,758108,1.83,1.17,1.04,true,true,false,14.97,16.69,507
-BE,Bloom Energy Corporation Class A Common Stock,Energy,291.25,10.8,23694972,1.98,244.47,212.46,true,true,false,14.75,16.69,2214
-MGNI,Magnite Inc. Common Stock,Technology,25.67,9.7,4136319,1.91,23.42,16.66,true,true,false,13.53,16.69,971
-AERT,Aeries Technology Inc. Class A Ordinary Share,Consumer Discretionary,7.825,8.3,26150,1.95,6.99,2.85,true,true,false,12.19,16.69,1692
-MNTK,Montauk Renewables Inc. Common Stock,Utilities,2.94,5,776149,2.57,2.05,1.65,true,true,false,10.14,16.69,189
-SG,Sweetgreen Inc. Class A Common Stock,Consumer Discretionary,8.74,6.07,7261698,1.66,6.99,6.94,true,true,false,9.4,16.69,6486
-LIND,Lindblad Expeditions Holdings Inc. Common Stock,Consumer Discretionary,31.27,5.5,1089555,1.8,28.84,22.03,true,true,false,9.11,16.69,1550
-CFFI,C&F Financial Corporation Common Stock,Finance,99.15,4.71,79844,2.07,89.15,78.62,true,true,false,8.84,16.69,575
-TWST,Twist Bioscience Corporation Common Stock,Health Care,186.13,3.64,3685348,2.42,131.18,76.18,true,true,false,8.48,16.69,979
-NNBR,NN Inc. Common Stock,Industrials,3.88,4.3,4723128,1.96,3.6,2.45,true,true,false,8.23,16.69,2300
-PPLI,People Incorporated Common Stock,Technology,40.74,2.77,1920672,2.27,40.34,,true,true,true,7.31,16.69,5156
-WEYS,Weyco Group Inc. Common Stock,Consumer Staples,48.47,2.82,33314,1.64,44.05,36.35,true,true,false,6.09,16.69,569
-VIAV,Viavi Solutions Inc. Common Stock,Technology,41.82,2.32,6107612,1.58,38.76,37.28,true,true,false,5.49,16.69,4100
+SOTK,Sono-Tek Corporation Common Stock,Technology,5.9,18.47,566505,11.23,5.08,4.66,true,true,false,40.94,15.98,89
+CBNK,Capital Bancorp Inc. Common Stock,Finance,39.31,10.27,750037,14.06,36.45,32.52,true,true,false,38.38,15.98,459
+PMVP,PMV Pharmaceuticals Inc. Common Stock,Health Care,1.67,16.78,3125286,7.6,1.32,1.29,true,true,false,31.99,15.98,54
+ROG,Rogers Corporation Common Stock,Industrials,152.99,10.73,1092467,5.79,133.23,123.84,true,true,false,22.31,15.98,3000
+INKT,MiNK Therapeutics Inc. Common Stock,Health Care,12.55,2.37,61228,6.06,11.56,11.46,true,true,false,14.49,15.98,15
+FORM,FormFactor Inc. FormFactor Inc. Common Stock,Technology,149.31,9.59,2290406,2.38,116.1,110.61,true,true,false,14.34,15.98,2153
+ICU,SeaStar Medical Holding Corporation Common Stock,Health Care,3.94,10.67,86753,1.69,3.5,3.21,true,true,false,14.05,15.98,18
+IDT,IDT Corporation Class B Common Stock,Telecommunications,79.97,5.84,783578,4.02,67.35,55.78,true,true,false,13.87,15.98,1925
+IBRX,ImmunityBio Inc. Common Stock,Health Care,9.44,6.91,27286820,3.45,8.13,7.38,true,true,false,13.81,15.98,691
+OPTXW,Syntec Optics Holdings Inc. Warrant,Technology,2,9.29,41587,1.53,1.45,1.38,true,true,false,12.35,15.98,164
+RGS,Regis Corporation Common Stock,Consumer Discretionary,29.7,4.39,18550,3.68,27.79,26.02,true,true,false,11.76,15.98,1611
+PGEN,Precigen Inc. Common Stock,Health Care,8.56,6.34,11685621,2.6,6.86,4.97,true,true,false,11.53,15.98,160
+ACMR,ACM Research Inc. Class A Common Stock,Technology,80.92,7.02,1822715,2.21,79.44,67.2,true,true,false,11.43,15.98,2513
+FOSL,Fossil Group Inc. Common Stock,Consumer Discretionary,6.57,6.66,1415023,2.16,5.26,4.53,true,true,false,10.97,15.98,4500
+KOD,Kodiak Sciences Inc Common Stock,Health Care,94.8,4.04,4921129,3.19,41.12,34.82,true,true,false,10.42,15.98,141
+ABSI,Absci Corporation Common Stock,Health Care,10.77,6.21,5432480,1.89,9.41,5.8,true,true,false,10,15.98,140
+SKYA,SkyAI Inc. Common Stock,Health Care,1.95,6.56,469141,1.55,1.34,,true,true,true,9.67,15.98,55
+PAYS,Paysign Inc. Common Stock,Technology,13.48,4.9,1191630,2.02,12.19,7.28,true,true,false,8.94,15.98,226
+HPE,Hewlett Packard Enterprise Company Common Stock,Technology,63.89,3.9,32754415,2.25,55.01,36.45,true,true,false,8.41,15.98,67000
+SDGR,Schrodinger Inc. Common Stock,Health Care,31.05,2.37,3894331,2.85,21.06,15.83,true,true,false,8.08,15.98,850
+TWST,Twist Bioscience Corporation Common Stock,Health Care,193.24,3.82,3255894,2.09,133.06,76.82,true,true,false,8,15.98,979
+PPLI,People Incorporated Common Stock,Technology,41.96,2.99,2188621,2.5,40.24,,true,true,true,8,15.98,5156
+NTCT,NetScout Systems Inc. Common Stock,Technology,40.18,3.03,1205869,2.48,39.41,35.03,true,true,false,7.99,15.98,2073
+AVPT,AvePoint Inc. Class A Common Stock,Technology,14.08,3.76,3113024,1.94,13.24,11.54,true,true,false,7.63,15.98,3443
+PDFS,PDF Solutions Inc. Common Stock,Technology,51.05,2.57,1069656,2.39,47.92,43.22,true,true,false,7.36,15.98,600
+SVCO,Silvaco Group Inc. Common Stock,Technology,8.76,3.67,599383,1.79,7.74,7.55,true,true,false,7.24,15.98,406
+GRAL,GRAIL Inc. Common Stock ,Health Care,140.12,2.6,1923797,2.26,82.77,72.71,true,true,false,7.12,15.98,910
+CTKB,Cytek Biosciences Inc. Common Stock,Industrials,5.96,3.47,1324222,1.53,4.82,4.6,true,true,false,6.53,15.98,682
+AMN,AMN Healthcare Services Inc,Consumer Discretionary,35.87,2.63,1042363,1.94,34.07,25.71,true,true,false,6.51,15.98,2664
+COHU,Cohu Inc. Common Stock,Industrials,68.14,3.29,1162266,1.51,55.05,44.07,true,true,false,6.3,15.98,2777
+IOVA,Iovance Biotherapeutics Inc. Common Stock,Health Care,14.82,2.56,29341696,1.84,7.99,4.73,true,true,false,6.24,15.98,975
