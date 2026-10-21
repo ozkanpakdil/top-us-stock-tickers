@@ -1,19 +1,26 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-MWYN,Marwynn Holdings Inc. Common stock,Consumer Discretionary,2.205,14.25,538778,3.89,1.19,0.93,true,true,false,22.02,18.59,2
-AVTR,Avantor Inc. Common Stock,Industrials,16.42,2.05,29356790,4.76,14.9,10.9,true,true,false,11.57,18.59,13500
-TALO,Talos Energy Inc. Common Stock,Energy,17.77,4.65,6224696,3.23,16.88,14.59,true,true,false,11.11,18.59,700
-HPK,HighPeak Energy Inc. Common Stock,Energy,10.55,6.03,1015089,2.34,8.26,6.68,true,true,false,10.7,18.59,50
-AR,Antero Resources Corporation Common Stock,Energy,38.65,6.06,5208486,1.75,36.94,36.5,true,true,false,9.56,18.59,632
-KGEI,Kolibri Global Energy Inc. Common stock,Energy,6.97,5.29,256519,2.01,6.29,5.16,true,true,false,9.31,18.59,8
-EOG,EOG Resources Inc. Common Stock,Energy,158.01,3.53,5299561,2.34,145.97,133.11,true,true,false,8.22,18.59,3400
-KMI,Kinder Morgan Inc. Common Stock,Utilities,34.2,4.2,16948538,1.83,31.72,31.64,true,true,false,7.87,18.59,11028
-RPRX,Royalty Pharma plc Class A Ordinary Shares ,Health Care,60.96,2.25,5786828,2.62,59.4,51.41,true,true,false,7.49,18.59,100
-CHRD,Chord Energy Corporation Common Stock,Energy,154.56,4.2,809173,1.54,143.48,127.01,true,true,false,7.28,18.59,676
-CBRL,Cracker Barrel Old Country Store Inc Common Stock,Consumer Discretionary,68.97,2.31,1914545,2.46,54.4,39.72,true,true,false,7.23,18.59,74500
-OXY,Occidental Petroleum Corporation Common Stock,Energy,62.38,2.82,11605008,1.73,59.41,54.68,true,true,false,6.27,18.59,10412
-CINF,Cincinnati Financial Corporation Common Stock,Finance,171.25,2.41,856716,1.92,168.23,166.65,true,true,false,6.25,18.59,5705
-RLI,RLI Corp. Common Stock (DE),Finance,61.07,2.67,975378,1.71,60.49,58.31,true,true,false,6.09,18.59,1193
-KO,Coca-Cola Company (The) Common Stock,Consumer Staples,93.9,2.07,23085572,1.97,88.5,80.55,true,true,false,6.01,18.59,65900
-RYZ,Ryerson Holding Corporation,Industrials,27.46,2.77,558013,1.6,25.74,25.69,true,true,false,5.97,18.59,4300
-SLDE,Slide Insurance Holdings Inc. Common Stock,Finance,27.07,2.04,1494845,1.67,23.94,19.64,true,true,false,5.37,18.59,627
-AFG,American Financial Group Inc. Common Stock,Finance,149.13,2.33,431837,1.51,142.6,135.21,true,true,false,5.35,18.59,8500
+EXYN,Exyn Technologies Inc. Common Stock,Uncategorized,2.72,38.78,23281580,24.51,2.55,,true,true,true,87.8,17.18,42
+IRON,Disc Medicine Inc. Common Stock,Health Care,78.93,38.86,8494665,14.72,71.34,70.54,true,true,false,68.3,17.18,165
+YHC,LQR House Inc. Common Stock,Consumer Staples,1.98,15.12,3608161,22.02,1.51,1.06,true,true,false,59.15,17.18,4
+CLF,Cleveland-Cliffs Inc. Common Stock,Basic Materials,14.1,16.34,88398616,6.13,12.04,11.44,true,true,false,28.61,17.18,25000
+ARQT,Arcutis Biotherapeutics Inc. Common Stock,Health Care,31.89,10.65,5795765,2.71,25.59,25.01,true,true,false,16.08,17.18,354
+RAMP,LiveRamp Holdings Inc. Common Stock,Technology,38.21,2.06,6610169,6.39,37.69,32.36,true,true,false,14.83,17.18,1300
+HPK,HighPeak Energy Inc. Common Stock,Energy,11.39,7.96,1124139,2.52,8.34,6.71,true,true,false,13.01,17.18,50
+NTWK,NetSol Technologies Inc. Common  Stock,Technology,6.66,7.25,229995,2.86,4.78,4.02,true,true,false,12.97,17.18,1370
+KMTS,Kestra Medical Technologies Ltd. Common Stock,Health Care,29.37,7.82,638812,2.41,26.4,23.73,true,true,false,12.64,17.18,443
+MWYN,Marwynn Holdings Inc. Common stock,Consumer Discretionary,2.36,7.03,258007,1.82,1.22,0.94,true,true,false,10.66,17.18,2
+XERS,Xeris Biopharma Holdings Inc. Common Stock,Health Care,10.95,6.21,4343592,2.11,8.95,7.31,true,true,false,10.44,17.18,435
+RGR,Sturm Ruger & Company Inc. Common Stock,Industrials,45.9,5.81,494960,1.9,40.16,39.14,true,true,false,9.61,17.18,1780
+SKYA,SkyAI Inc. Common Stock,Health Care,2.79,5.28,2603574,1.87,1.61,,true,true,true,9.03,17.18,30
+AMZN,Amazon.com Inc. Common Stock,Consumer Discretionary,262.45,4.98,56189017,1.98,255.95,242.41,true,true,false,8.93,17.18,1576000
+ANF,Abercrombie & Fitch Company Common Stock,Consumer Discretionary,162.01,5.71,1579081,1.5,134.7,103.59,true,true,false,8.72,17.18,43200
+PTEN,Patterson-UTI Energy Inc. Common Stock,Energy,12.05,4.78,8954743,1.56,11.82,10.25,true,true,false,7.91,17.18,7900
+LOGI,Logitech International S.A. Ordinary Shares,Technology,107.345,2.81,1487473,2.52,100.99,99.09,true,true,false,7.84,17.18,7300
+MTCH,Match Group Inc. Common Stock,Technology,44.73,4.14,4276973,1.71,41.22,35.72,true,true,false,7.56,17.18,2510
+KINS,Kingstone Companies Inc. Common Stock,Finance,19.41,3.85,123662,1.81,19.21,17.13,true,true,false,7.48,17.18,113
+DNOW,DNOW Inc. Common Stock,Consumer Discretionary,16.21,3.38,3739537,2.05,15.8,13.97,true,true,false,7.47,17.18,5100
+JVA,Coffee Holding Co. Inc. Common Stock,Consumer Staples,4.74,3.95,82657,1.75,3.89,3.86,true,true,false,7.44,17.18,92
+CXT,Crane NXT Co. Common Stock,Industrials,56.75,3.71,642406,1.63,49.59,47.18,true,true,false,6.96,17.18,4800
+WEST,Westrock Coffee Company Common Stock,Consumer Staples,8.72,3.32,483550,1.82,8.07,6.52,true,true,false,6.95,17.18,1393
+PEB,Pebblebrook Hotel Trust Common Shares of Beneficial Interest,Real Estate,20.1,3.13,2781756,1.79,18.47,15.38,true,true,false,6.71,17.18,52
+BOX,Box Inc. Class A Common Stock,Technology,40.46,2.28,4024433,1.94,34.56,28.01,true,true,false,6.16,17.18,2912
