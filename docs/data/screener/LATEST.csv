@@ -1,153 +1,62 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-BHVN,Biohaven Ltd. Common Shares ,Health Care,14.69,25.02,30510307,12.46,13.45,11.96,true,true,false,49.93,19.65,274
-YHC,LQR House Inc. Common Stock,Consumer Staples,2.5,39.66,928940,5.03,1.53,1.08,true,true,false,49.73,19.65,4
-ATNM,Actinium Pharmaceuticals Inc. (Delaware) Common Stock,Health Care,1.6,15.94,828838,5.34,1.15,1.15,true,true,false,26.62,19.65,27
-EGBN,Eagle Bancorp Inc. Common Stock,Finance,32.97,15.56,1536490,5.45,28.15,26.63,true,true,false,26.47,19.65,475
-DGICB,Donegal Group Inc. Class B Common Stock,Finance,24.1,13.84,7775,3.93,21.24,19.31,true,true,false,21.71,19.65,550
-HCSG,Healthcare Services Group Inc. Common Stock,Health Care,24.79,14.19,1337963,2.29,21.65,21.01,true,true,false,18.77,19.65,36000
-NTWK,NetSol Technologies Inc. Common  Stock,Technology,7.75,11.99,233479,2.57,4.96,4.06,true,true,false,17.12,19.65,1370
-KSS,Kohl's Corporation Common Stock,Consumer Discretionary,24.78,11.82,8971468,2.65,18.89,16.93,true,true,false,17.12,19.65,84000
-R,Ryder System Inc. Common Stock,Consumer Discretionary,265.53,10.49,620301,2.81,242.17,231.55,true,true,false,16.11,19.65,51600
-ALLE,Allegion plc Ordinary Shares,Consumer Discretionary,176.52,11.02,2097964,2.48,155.96,150.22,true,true,false,15.98,19.65,13300
-ROP,Roper Technologies Inc. Common Stock,Technology,436.23,9.73,1977052,3.09,386.74,366.92,true,true,false,15.9,19.65,19400
-LARK,Landmark Bancorp Inc. Common Stock,Finance,32.97,6.32,26783,4.29,31.8,28.75,true,true,false,14.9,19.65,273
-JMSB,John Marshall Bancorp Inc. Common Stock,Finance,23.51,2.48,600832,6.13,23.04,21.4,true,true,false,14.75,19.65,140
-AMN,AMN Healthcare Services Inc,Consumer Discretionary,46.82,8.86,1446946,2.66,35.7,26.75,true,true,false,14.18,19.65,2664
-CRAI,CRA International Inc. Common Stock,Consumer Discretionary,200.94,9.59,216922,2.27,171.1,167.34,true,true,false,14.12,19.65,968
-BBT,Beacon Financial Corporation Common stock,Finance,29.95,6.96,2907553,3.52,29.77,29.68,true,true,false,14.01,19.65,2050
-CSX,CSX Corporation Common Stock,Industrials,51.67,6.76,28625579,3.56,48.63,44.41,true,true,false,13.88,19.65,22200
-WEST,Westrock Coffee Company Common Stock,Consumer Staples,9.69,5.79,1102263,3.82,8.13,6.56,true,true,false,13.42,19.65,1393
-NDAQ,Nasdaq Inc. Common Stock,Finance,103.3,7.47,7147965,2.96,94.6,90.56,true,true,false,13.39,19.65,9630
-VSTM,Verastem Inc. Common Stock,Health Care,10.06,9.23,5947520,2.03,7.84,6.15,true,true,false,13.29,19.65,102
-MHK,Mohawk Industries Inc. Common Stock,Consumer Discretionary,128.7,9.03,1632694,1.95,126.42,115.97,true,true,false,12.94,19.65,40500
-TWFG,TWFG Inc. Class A Common Stock,Finance,28.67,8.64,227750,1.99,26.68,23.08,true,true,false,12.62,19.65,400
-RPD,Rapid7 Inc. Common Stock,Technology,14.73,9.03,2138517,1.62,12.34,9.53,true,true,false,12.26,19.65,2613
-CATY,Cathay General Bancorp Common Stock,Finance,64.24,5.95,1006099,2.82,61.4,56.41,true,true,false,11.6,19.65,1268
-FA,First Advantage Corporation Common Stock,Technology,21.22,7.93,2220900,1.7,20.1,15.86,true,true,false,11.34,19.65,9500
-CNOB,ConnectOne Bancorp Inc. Common Stock,Finance,32.82,6.28,688988,2.46,31.3,29.56,true,true,false,11.2,19.65,756
-TRI,Thomson Reuters Corporation Common Shares,Consumer Discretionary,123.26,6.94,2697765,2.09,103.02,98.06,true,true,false,11.12,19.65,27100
-FTDR,Frontdoor Inc. Common Stock,Consumer Discretionary,86.03,6.41,1099710,2.35,79.58,68.06,true,true,false,11.1,19.65,2034
-VLY,Valley National Bancorp Common Stock,Finance,13.81,6.07,13614020,2.44,13.43,13.26,true,true,false,10.94,19.65,3675
-FDBC,Fidelity D & D Bancorp Inc. Common Stock,Finance,62.97,6.78,17307,2.04,55.34,48.72,true,true,false,10.86,19.65,324
-DFIN,Donnelley Financial Solutions Inc. Common Stock ,Consumer Discretionary,55.99,6.06,437996,2.4,49.02,47.05,true,true,false,10.86,19.65,1750
-PKG,Packaging Corporation of America Common Stock,Consumer Discretionary,248.92,4.15,1470907,3.27,237,226.82,true,true,false,10.69,19.65,16800
-CURB,Curbline Properties Corp. Common Stock,Finance,28.86,7.25,2005171,1.72,28.62,27.7,true,true,false,10.68,19.65,39
-BIIB,Biogen Inc. Common Stock,Health Care,253.84,5.34,2237993,2.65,222.79,198.11,true,true,false,10.63,19.65,7500
-QLYS,Qualys Inc. Common Stock,Technology,208.2,5.85,1221636,2.36,183.63,131.39,true,true,false,10.56,19.65,2718
-AMAL,Amalgamated Financial Corp. Common Stock (DE),Finance,50.31,5.21,482417,2.67,47.98,42.67,true,true,false,10.55,19.65,450
-APPN,Appian Corporation Class A Common Stock,Technology,51.15,4.97,1844576,2.7,38.73,28.83,true,true,false,10.36,19.65,2149
-NWFL,Norwood Financial Corp. Common Stock,Finance,34.57,2.58,125312,3.82,34.08,31.23,true,true,false,10.23,19.65,281
-KHC,The Kraft Heinz Company Common Stock,Consumer Staples,25.09,6.77,19569147,1.72,24.13,23.7,true,true,false,10.2,19.65,35000
-ARHS,Arhaus Inc. Class A Common Stock,Consumer Discretionary,11.53,5.39,2884141,2.37,9.22,8.46,true,true,false,10.12,19.65,2800
-HOG,Harley-Davidson Inc. Common Stock,Consumer Discretionary,29.11,6.47,2672866,1.78,26.96,23.5,true,true,false,10.04,19.65,5500
-RCKY,Rocky Brands Inc. Common Stock,Consumer Discretionary,47.64,2.92,136108,3.55,45.16,40.02,true,true,false,10.02,19.65,2200
-CTSH,Cognizant Technology Solutions Corporation Class A Common Stock,Technology,73.72,6,9931863,1.95,61.35,61.09,true,true,false,9.89,19.65,351600
-ALRM,Alarm.com Holdings Inc. Common Stock,Technology,62.49,4.95,844619,2.46,55.94,49.49,true,true,false,9.88,19.65,2051
-AWK,American Water Works Company Inc. Common Stock,Utilities,143.23,6.29,2535735,1.67,135.04,131.84,true,true,false,9.62,19.65,7000
-NSP,Insperity Inc. Common Stock,Consumer Discretionary,53.48,6.58,460066,1.51,50.2,38.68,true,true,false,9.59,19.65,4200
-HURN,Huron Consulting Group Inc. Common Stock,Consumer Discretionary,193.35,5.47,422766,2.06,161.06,139.71,true,true,false,9.59,19.65,9248
-URI,United Rentals Inc. Common Stock,Consumer Discretionary,1111.02,3.93,1119872,2.81,1043.28,953.4,true,true,false,9.55,19.65,28500
-CZNC,Citizens & Northern Corp Common Stock,Finance,26.64,3.94,133561,2.76,25.64,23.18,true,true,false,9.46,19.65,460
-CENTA,Central Garden & Pet Company Class A Common Stock Nonvoting,Consumer Discretionary,38.81,5.38,461332,2,35.82,34.39,true,true,false,9.38,19.65,6000
-TRU,TransUnion Common Stock,Finance,83.46,5.74,3903658,1.81,74.76,74.44,true,true,false,9.36,19.65,13500
-LSBK,Lake Shore Bancorp Inc. Common Stock,Finance,18.71,2.92,59020,3.2,17.84,16.31,true,true,false,9.32,19.65,98
-KRC,Kilroy Realty Corporation Common Stock,Real Estate,35.96,4.44,2678073,2.42,35.13,34.44,true,true,false,9.29,19.65,241
-CVBF,CVB Financial Corporation Common Stock,Finance,23.05,3.64,2934294,2.81,22.27,20.89,true,true,false,9.27,19.65,1079
-EXPO,Exponent Inc. Common Stock,Consumer Discretionary,77.11,5.41,785064,1.9,68.96,66.76,true,true,false,9.22,19.65,1012
-CIVB,Civista Bancshares Inc. Common Stock,Finance,28.15,5.23,216287,1.98,27.17,25.36,true,true,false,9.2,19.65,548
-REPX,Riley Exploration Permian Inc. Common Stock,Energy,51.1,5.71,368783,1.73,42.23,35.1,true,true,false,9.18,19.65,122
-KIDS,OrthoPediatrics Corp. Common Stock,Health Care,24.71,3.65,476377,2.72,23,19.25,true,true,false,9.09,19.65,602
-TNET,TriNet Group Inc. Common Stock,Real Estate,74.62,5.05,487709,2,67.5,52.76,true,true,false,9.05,19.65,302955
-MCB,Metropolitan Bank Holding Corp. Common Stock,Finance,95.9,4.81,221336,2.11,89.88,89.22,true,true,false,9.02,19.65,328
-MD,Pediatrix Medical Group Inc. Common Stock,Health Care,29.55,5.16,1087751,1.9,26.61,23.46,true,true,false,8.95,19.65,4280
-DCOM,Dime Community Bancshares Inc. Common Stock,Finance,42.52,4.42,612440,2.27,40.11,36.74,true,true,false,8.95,19.65,902
-BVS,Bioventus Inc. Class A Common Stock,Health Care,15.04,5.62,593178,1.63,13.66,10.47,true,true,false,8.87,19.65,950
-AJG,Arthur J. Gallagher & Co. Common Stock,Finance,270.98,4.88,2139378,1.96,246.92,231.85,true,true,false,8.8,19.65,67456
-BLKB,Blackbaud Inc. Common Stock,Technology,56.48,5.22,624941,1.79,46.14,42.55,true,true,false,8.79,19.65,2800
-UCB,United Community Banks Inc. Common Stock,Finance,37.23,3.85,1760244,2.4,34.75,33.79,true,true,false,8.65,19.65,3141
-PCB,PCB Bancorp Common Stock,Finance,28.78,2.68,104520,2.98,27.82,25.12,true,true,false,8.64,19.65,274
-UNP,Union Pacific Corporation Common Stock,Industrials,298.09,3.55,4990053,2.53,287.09,265,true,true,false,8.62,19.65,28716
-QTWO,Q2 Holdings Inc. Common Stock,Technology,69.34,4.41,1030535,2.06,60.89,55.13,true,true,false,8.52,19.65,2549
-ADP,Automatic Data Processing Inc. Common Stock,Industrials,307.94,4.56,3271042,1.97,274.81,239.12,true,true,false,8.51,19.65,67000
-BCML,BayCom Corp Common Stock,Finance,31.9,2.47,144747,3.01,30.52,30.36,true,true,false,8.5,19.65,327
-KDP,Keurig Dr Pepper Inc. Common Stock,Consumer Staples,35.19,2.09,28532564,3.2,31.97,29.68,true,true,false,8.5,19.65,30600
-TYL,Tyler Technologies Inc. Common Stock,Technology,392.45,4.44,1107650,2.01,347.14,344.45,true,true,false,8.46,19.65,7879
-YSWY,Yesway Inc. Class A Common Stock,Uncategorized,24.505,5.35,384794,1.55,22.57,,true,true,true,8.45,19.65,3985
-RLI,RLI Corp. Common Stock (DE),Finance,67.01,4.87,1130807,1.75,60.5,58.42,true,true,false,8.38,19.65,1193
-TREX,Trex Company Inc. Common Stock,Basic Materials,51.07,4.59,2218918,1.89,45.25,42.58,true,true,false,8.36,19.65,1839
-CHD,Church & Dwight Company Inc. Common Stock,Consumer Discretionary,108.86,3.68,3143300,2.25,98.39,96.57,true,true,false,8.18,19.65,5550
-TNGX,Tango Therapeutics Inc.,Health Care,27.93,3.52,5964556,2.31,23.82,21.17,true,true,false,8.13,19.65,137
-EXLS,ExlService Holdings Inc. Common Stock,Real Estate,42.91,4.61,2955877,1.76,36.67,33.25,true,true,false,8.12,19.65,65000
-MAS,Masco Corporation Common Stock,Industrials,78.05,4.68,2765365,1.71,70.73,70.01,true,true,false,8.11,19.65,18000
-D,Dominion Energy Inc. Common Stock,Utilities,65.4,4.93,5263806,1.58,64.09,64.05,true,true,false,8.09,19.65,15200
-FNWD,Finward Bancorp Common Stock,Finance,43.5,2.89,21981,2.6,42.79,37.47,true,true,false,8.09,19.65,318
-FULT,Fulton Financial Corporation Common Stock,Finance,23.35,3.64,2917249,2.16,23.18,22.01,true,true,false,7.96,19.65,3400
-ICE,Intercontinental Exchange Inc. Common Stock,Finance,163.84,3.9,4735338,2.03,156.95,155.38,true,true,false,7.95,19.65,12725
-BOTJ,Bank of the James Financial Group Inc. Common Stock,Finance,28.885,3.87,66772,2,27.26,23.37,true,true,false,7.87,19.65,175
-ACIW,ACI Worldwide Inc. Common Stock,Technology,56.19,4.33,1020814,1.75,51.62,46.27,true,true,false,7.82,19.65,2930
-SSNC,SS&C Technologies Holdings Inc. Common Stock,Technology,89.54,2.81,2785729,2.5,81.35,74.96,true,true,false,7.81,19.65,28800
-QCRH,QCR Holdings Inc. Common Stock,Finance,103.04,3.59,216299,2.09,100.53,93.18,true,true,false,7.76,19.65,1039
-GCBC,Greene County Bancorp Inc. Common Stock,Finance,36.01,4.17,46486,1.78,34.72,27.79,true,true,false,7.72,19.65,227
-HYNE,Hoyne Bancorp Inc. Common Stock,Finance,17.55,2.33,20112,2.68,16.63,15.66,true,true,false,7.7,19.65,61
-TACT,TransAct Technologies Incorporated Common Stock,Technology,5.3,2.12,47245,2.79,4.92,4.25,true,true,false,7.7,19.65,103
-KNSL,Kinsale Capital Group Inc. Common Stock,Finance,390.64,3.7,322920,1.95,359.6,354.05,true,true,false,7.6,19.65,720
-MRSH,Marsh,Finance,199.27,4.57,3065571,1.51,181.2,175.97,true,true,false,7.59,19.65,95000
-FVCB,FVCBankcorp Inc. Common Stock,Finance,18.14,3.01,121813,2.25,18.06,16.34,true,true,false,7.51,19.65,134
-STBA,S&T Bancorp Inc. Common Stock,Finance,50.73,3.83,366117,1.81,49.56,45.53,true,true,false,7.44,19.65,1209
-FRBA,First Bank Common Stock,Finance,18.55,4.33,118613,1.55,17.89,16.83,true,true,false,7.43,19.65,338
-FCNCA,First Citizens BancShares Inc. Class A Common Stock,Finance,2196.76,2.47,119009,2.48,2133.63,2057.2,true,true,false,7.42,19.65,17876
-LW,Lamb Weston Holdings Inc. Common Stock ,Consumer Staples,55.18,3.9,3070664,1.74,49.74,45.8,true,true,false,7.37,19.65,10000
-AUB,Atlantic Union Bankshares Corporation Common Stock,Finance,40.1,3.67,1785943,1.83,39.47,38.68,true,true,false,7.33,19.65,3064
-PNFP,Pinnacle Financial Partners Inc. Common Stock,Finance,100.46,2.29,2124615,2.52,97.92,96.28,true,true,false,7.33,19.65,3566
-ZBH,Zimmer Biomet Holdings Inc. Common Stock,Health Care,98.81,4.16,2224207,1.55,95.16,91.4,true,true,false,7.27,19.65,17000
-HAS,Hasbro Inc. Common Stock,Consumer Discretionary,117.23,2.83,3431035,2.2,93.38,91.26,true,true,false,7.24,19.65,4520
-CDW,CDW Corporation Common Stock,Technology,164.62,4.01,1952436,1.61,144.33,132.08,true,true,false,7.22,19.65,14800
-BPRN,Princeton Bancorp Inc. Common Stock (PA),Finance,44.94,2.18,58139,2.51,43.21,37.85,true,true,false,7.2,19.65,237
-FOXA,Fox Corporation Class A Common Stock,Industrials,68.27,3.69,6702800,1.74,65.48,63.31,true,true,false,7.17,19.65,10550
-INTA,Intapp Inc. Common Stock,Technology,47.18,4.08,687493,1.51,39.65,30.69,true,true,false,7.09,19.65,1340
-ICFI,ICF International Inc. Common Stock,Consumer Discretionary,93.33,3.76,231292,1.66,87.02,79.04,true,true,false,7.08,19.65,8400
-NSC,Norfolk Southern Corporation Common Stock,Industrials,338.23,3.09,1431710,1.99,326.22,310.95,true,true,false,7.08,19.65,19300
-CXT,Crane NXT Co. Common Stock,Industrials,58.23,3.61,701815,1.68,49.9,47.32,true,true,false,6.98,19.65,4800
-MDLZ,Mondelez International Inc. Class A Common Stock,Consumer Staples,65.19,3.91,9146500,1.53,61.74,59.84,true,true,false,6.96,19.65,91000
-BHRB,Burke & Herbert Financial Services Corp. Common Stock,Finance,71.73,3.25,196421,1.78,70.56,66.78,true,true,false,6.82,19.65,1051
-HQY,HealthEquity Inc. Common Stock,Real Estate,100.97,3.16,1253881,1.81,95.23,88.13,true,true,false,6.77,19.65,2814
-SSB,SouthState Bank Corporation Common Stock,Finance,105.22,2.37,1215999,2.2,104.05,99.57,true,true,false,6.77,19.65,6431
-NIC,Nicolet Bankshares Inc. Common Stock,Finance,169.64,2.36,280953,2.19,168.26,153.62,true,true,false,6.74,19.65,1429
-NX,Quanex Building Products Corporation Common Stock,Industrials,20.65,3.56,496112,1.57,19.85,18.91,true,true,false,6.7,19.65,7071
-AVY,Avery Dennison Corporation Common Stock,Consumer Discretionary,184.66,3.14,984713,1.78,173.63,173.02,true,true,false,6.7,19.65,35000
-ACCO,Acco Brands Corporation Common Stock,Consumer Discretionary,4.68,3.31,843868,1.63,4.34,3.92,true,true,false,6.57,19.65,4700
-OMC,Omnicom Group Inc. Common Stock,Consumer Discretionary,82.56,2.56,4056438,2,80.5,78.08,true,true,false,6.56,19.65,120000
-THG,Hanover Insurance Group Inc,Finance,239.59,3.3,375617,1.61,224.82,196.38,true,true,false,6.53,19.65,4900
-ORRF,Orrstown Financial Services Inc. Common Stock,Finance,44.32,3.33,119343,1.59,41.93,38.65,true,true,false,6.51,19.65,652
-EBC,Eastern Bankshares Inc. Common Stock,Finance,22.11,2.79,3315504,1.84,21.76,20.76,true,true,false,6.48,19.65,2450
-PBYI,Puma Biotechnology Inc Common Stock,Health Care,11.26,3.3,395556,1.58,9.62,7.7,true,true,false,6.46,19.65,179
-KINS,Kingstone Companies Inc. Common Stock,Finance,20.19,3.22,109968,1.61,19.22,17.17,true,true,false,6.44,19.65,113
-MBWM,Mercantile Bank Corporation Common Stock,Finance,60.42,2.91,150879,1.74,59.78,54.6,true,true,false,6.4,19.65,786
-RMD,ResMed Inc. Common Stock,Health Care,253.06,2.79,1728830,1.8,229.17,227.15,true,true,false,6.38,19.65,11370
-ACNB,ACNB Corporation Common Stock,Finance,65.39,2.75,90079,1.77,63.96,55.55,true,true,false,6.29,19.65,537
-WTBA,West Bancorporation Common Stock,Finance,30.3,3.17,77151,1.53,29.01,25.65,true,true,false,6.23,19.65,189
-BANR,Banner Corporation Common Stock,Finance,70.1,3.01,326960,1.59,69.45,65.62,true,true,false,6.2,19.65,1943
-III,Information Services Group Inc. Common Stock,Consumer Discretionary,6.17,2.32,346438,1.93,5.37,4.78,true,true,false,6.18,19.65,1500
-MAC,Macerich Company (The) Common Stock,Real Estate,23.95,3.1,3544648,1.52,23.15,21.7,true,true,false,6.14,19.65,598
-SCI,Service Corporation International Common Stock,Consumer Discretionary,83.69,3.12,1046840,1.51,80.26,79.73,true,true,false,6.13,19.65,25187
-CVLT,Commvault Systems Inc. Common Stock,Technology,167.81,2.61,743094,1.7,144.72,117.24,true,true,false,6,19.65,3300
-USCB,USCB Financial Holdings Inc. Class A Common Stock,Finance,22.75,2.06,106938,1.96,22.58,20.13,true,true,false,5.99,19.65,205
-ZS,Zscaler Inc. Common Stock,Technology,237.76,2.78,3740774,1.57,196.05,169.34,true,true,false,5.92,19.65,8700
-MCBS,MetroCity Bankshares Inc. Common Stock,Finance,35.43,2.67,111978,1.55,35.1,32.06,true,true,false,5.77,19.65,317
-AX,Axos Financial Inc. Common Stock,Finance,92.53,2.47,473983,1.65,92.35,91.83,true,true,false,5.77,19.65,2191
-MSI,Motorola Solutions Inc. Common Stock,Technology,477.81,2.21,1222558,1.78,464.13,435.37,true,true,false,5.77,19.65,23000
-OVBC,Ohio Valley Banc Corp. Common Stock,Finance,47,2.06,40981,1.85,45.46,44.28,true,true,false,5.76,19.65,269
-INDB,Independent Bank Corp. Common Stock,Finance,83.43,2.62,515959,1.56,81.21,79.9,true,true,false,5.75,19.65,2294
-NOW,ServiceNow Inc. Common Stock,Technology,157,2.53,17406917,1.61,137.67,117.2,true,true,false,5.75,19.65,29187
-CZFS,Citizens Financial Services Inc. Common Stock,Finance,83.73,2.65,46089,1.54,80.84,69.24,true,true,false,5.73,19.65,405
-ELV,Elevance Health Inc. Common Stock,Health Care,445.28,2.57,1428187,1.56,407.59,370.34,true,true,false,5.69,19.65,97100
-VRTX,Vertex Pharmaceuticals Incorporated Common Stock,Health Care,535.17,2.03,1641615,1.81,522.87,476.51,true,true,false,5.66,19.65,6400
-FNB,F.N.B. Corporation Common Stock,Finance,18.18,2.13,6667932,1.75,17.93,17.78,true,true,false,5.63,19.65,4282
-TOWN,TowneBank Common Stock,Finance,36.74,2.57,631610,1.5,36.57,35.43,true,true,false,5.57,19.65,2932
-COLB,Columbia Banking System Inc. Common Stock,Finance,29.89,2.36,3372989,1.57,29.72,29.65,true,true,false,5.5,19.65,6005
-CON,Concentra Group Holdings Parent Inc. Common Stock,Health Care,39.97,2.25,1277216,1.55,35.7,27.42,true,true,false,5.36,19.65,9999
-MCO,Moody's Corporation Common Stock,Finance,491.05,2.08,1054316,1.64,477.38,469.08,true,true,false,5.35,19.65,16000
-PCOR,Procore Technologies Inc. Common Stock,Technology,62.29,2.27,3513765,1.53,56.43,54.78,true,true,false,5.32,19.65,4421
-CBNK,Capital Bancorp Inc. Common Stock,Finance,41.19,2.11,163383,1.59,37.47,33.09,true,true,false,5.29,19.65,459
-CCNE,CNB Financial Corporation Common Stock,Finance,35.24,2.03,170313,1.62,34.06,31.06,true,true,false,5.26,19.65,950
-CNNE,Cannae Holdings Inc. Common Stock,Consumer Discretionary,16.43,2.05,608282,1.57,15.56,14.2,true,true,false,5.18,19.65,6602
+BKYI,BIO-key International Inc. Common Stock,Technology,3.39,23.72,35319171,5.35,2.59,1.8,true,true,false,34.43,18.46,42
+RHI,Robert Half Inc. Common Stock,Consumer Discretionary,45.87,21.74,6899155,4.44,38.74,31.22,true,true,false,30.62,18.46,14500
+CNDT,Conduent Incorporated Common Stock ,Real Estate,1.79,20.13,2611429,3.14,1.62,1.57,true,true,false,26.42,18.46,46000
+YHC,LQR House Inc. Common Stock,Consumer Staples,3,20,318848,1.68,1.56,1.09,true,true,false,23.36,18.46,4
+FCNCA,First Citizens BancShares Inc. Class A Common Stock,Finance,2375.84,8.15,299100,5.62,2135.32,2058.8,true,true,false,19.38,18.46,17876
+CART,Maplebear Inc. Common Stock,Real Estate,56.44,9.21,16098287,5.04,48.1,42.88,true,true,false,19.29,18.46,3600
+HURA,TuHURA Biosciences Inc. Common Stock,Health Care,2.18,8.46,1014086,4.74,2.04,1.88,true,true,false,17.94,18.46,22
+CUBI,Customers Bancorp Inc Common Stock,Finance,84.54,7.38,1047778,4.59,77.4,75.57,true,true,false,16.56,18.46,869
+CPSS,Consumer Portfolio Services Inc. Common Stock,Finance,9.9,7.03,75342,3.82,9.28,9,true,true,false,14.66,18.46,994
+OSUR,OraSure Technologies Inc. Common Stock,Health Care,4.13,8.68,1158255,2.75,3.71,3.41,true,true,false,14.18,18.46,500
+JAKK,JAKKS Pacific Inc. Common Stock,Consumer Discretionary,30.52,3.32,455790,5.43,25.98,22.33,true,true,false,14.18,18.46,652
+SIGI,Selective Insurance Group Inc. Common Stock,Finance,96.61,5.31,1741044,4.35,88.82,86.57,true,true,false,14.02,18.46,2800
+OSPN,OneSpan Inc. Common Stock,Technology,20.19,5.1,1831210,4.23,17.3,13.72,true,true,false,13.56,18.46,509
+KFRC,Kforce Inc. Common Stock,Consumer Discretionary,58.5,9.02,358755,2.22,53.35,42.06,true,true,false,13.46,18.46,1600
+VG,Venture Global Inc. Class A common stock,Utilities,14,9.29,22624360,2.04,13.82,12.22,true,true,false,13.37,18.46,2000
+NE,Noble Corporation plc A Ordinary Shares,Energy,47.7,8.53,2003361,2.29,44.41,43.64,true,true,false,13.12,18.46,4500
+REXR,Rexford Industrial Realty Inc. Common Stock,Real Estate,38.71,6.7,7052689,3.15,37.33,36.49,true,true,false,12.99,18.46,256
+NTSK,Netskope Inc. Class A Common Stock,Technology,24.28,9.37,8809472,1.71,17.33,13.19,true,true,false,12.79,18.46,3281
+REI,Ring Energy Inc. Common Stock,Energy,1.43,8.33,6036485,2.23,1.41,1.33,true,true,false,12.78,18.46,111
+RNG,RingCentral Inc. Class A Common Stock,Technology,83.39,5,4625604,3.65,74.14,47.12,true,true,false,12.31,18.46,7378
+SAIL,SailPoint Inc. Common Stock,Technology,21.79,8.62,6398896,1.75,19.66,16.24,true,true,false,12.12,18.46,3229
+EGBN,Eagle Bancorp Inc. Common Stock,Finance,33.68,2.15,1396643,4.58,28.24,26.67,true,true,false,11.32,18.46,475
+UPLD,Upland Software Inc. Common Stock,Technology,3.95,7.92,93487,1.69,3.78,2.25,true,true,false,11.3,18.46,760
+REPX,Riley Exploration Permian Inc. Common Stock,Energy,54.18,6.03,555173,2.51,42.59,35.2,true,true,false,11.04,18.46,122
+WTI,W&T Offshore Inc. Common Stock,Energy,4.19,7.71,4536442,1.6,3.8,3.27,true,true,false,10.92,18.46,370
+ZS,Zscaler Inc. Common Stock,Technology,255.15,7.31,3991937,1.65,197.48,169.77,true,true,false,10.62,18.46,8700
+EFOR,Everforth Inc.,Uncategorized,43.59,6.32,849046,1.72,34.08,,true,true,true,9.75,18.46,2800
+RBRK,Rubrik Inc. Class A Common Stock,Technology,128.74,6.62,4036615,1.56,107.23,75.42,true,true,false,9.74,18.46,3797
+TALO,Talos Energy Inc. Common Stock,Energy,18.39,4.13,5898141,2.69,17.12,14.68,true,true,false,9.51,18.46,700
+FRBA,First Bank Common Stock,Finance,19.39,4.53,189209,2.47,17.9,16.84,true,true,false,9.47,18.46,338
+BCPC,Balchem Corporation Common Stock,Industrials,177,2.18,717826,3.6,170.91,168.77,true,true,false,9.38,18.46,1379
+TENB,Tenable Holdings Inc. Common Stock,Technology,44.59,6.17,5218723,1.59,36.62,27.59,true,true,false,9.35,18.46,1995
+KRC,Kilroy Realty Corporation Common Stock,Real Estate,37.27,3.64,3108953,2.7,35.15,34.46,true,true,false,9.05,18.46,241
+CZNC,Citizens & Northern Corp Common Stock,Finance,27.75,4.17,114823,2.34,25.67,23.2,true,true,false,8.84,18.46,460
+QLYS,Qualys Inc. Common Stock,Technology,216.7,4.08,1227886,2.31,184.25,131.82,true,true,false,8.71,18.46,2718
+NMIH,NMI Holdings Inc. Common Stock,Finance,42.55,2.55,1747549,2.87,42.47,39.98,true,true,false,8.3,18.46,225
+COLB,Columbia Banking System Inc. Common Stock,Finance,30.855,3.23,5566083,2.52,29.68,29.66,true,true,false,8.26,18.46,6005
+GRDX,GridAI Technologies Corp. Common Stock,Health Care,5.605,2.09,254607,3.01,3.84,3.57,true,true,false,8.11,18.46,2
+APA,APA Corporation Common Stock,Energy,51.9,4.98,7067925,1.54,44.74,36.61,true,true,false,8.06,18.46,1791
+R,Ryder System Inc. Common Stock,Consumer Discretionary,270.9,2.02,684799,2.97,242.31,231.75,true,true,false,7.97,18.46,51600
+FDBC,Fidelity D & D Bancorp Inc. Common Stock,Finance,64.51,2.45,23512,2.68,55.51,48.8,true,true,false,7.8,18.46,324
+FF,FutureFuel Corp.  Common shares,Industrials,5.71,3.44,584834,2.05,5.37,4.45,true,true,false,7.54,18.46,493
+DVN,Devon Energy Corporation Common Stock,Energy,51.39,4.49,13280523,1.52,48.6,45.25,true,true,false,7.53,18.46,2200
+MGYR,Magyar Bancorp Inc. Common Stock,Finance,19.9,3.54,3712,1.97,19.4,18.11,true,true,false,7.48,18.46,98
+LNG,Cheniere Energy Inc. Common Stock,Utilities,298.67,4.06,2305384,1.68,278.5,250.5,true,true,false,7.42,18.46,1717
+BSRR,Sierra Bancorp Common Stock,Finance,41.74,3.29,87105,2.03,39.96,37.65,true,true,false,7.36,18.46,452
+POWW,Outdoor Holding Company Common Stock,Industrials,2.46,3.36,876459,1.99,2.23,2.07,true,true,false,7.34,18.46,63
+ALRM,Alarm.com Holdings Inc. Common Stock,Technology,64.14,2.64,753309,2.15,56.11,49.56,true,true,false,6.94,18.46,2051
+KFY,Korn Ferry Common Stock,Consumer Discretionary,78.3,2.55,893719,2.12,77.49,70.15,true,true,false,6.79,18.46,8965
+ACT,Enact Holdings Inc. Common Stock,Finance,47.89,2.07,745867,2.36,47.67,43.77,true,true,false,6.79,18.46,419
+PAA,Plains All American Pipeline L.P. Common Units representing Limited Partner Interests,Energy,26.63,2.82,3713618,1.96,24.98,22.32,true,true,false,6.74,18.46,3900
+APPN,Appian Corporation Class A Common Stock,Technology,52.35,2.35,1488343,2.12,39.07,28.95,true,true,false,6.58,18.46,2149
+BOTJ,Bank of the James Financial Group Inc. Common Stock,Finance,29.73,2.93,59031,1.76,27.3,23.4,true,true,false,6.45,18.46,175
+SLDE,Slide Insurance Holdings Inc. Common Stock,Finance,28.55,2.88,1671994,1.76,24.52,19.84,true,true,false,6.41,18.46,627
+HCSG,Healthcare Services Group Inc. Common Stock,Health Care,25.3,2.06,1200503,2.03,21.73,21.03,true,true,false,6.12,18.46,36000
+OXY,Occidental Petroleum Corporation Common Stock,Energy,64.17,2.67,11663377,1.68,59.89,54.89,true,true,false,6.03,18.46,10412
+AMN,AMN Healthcare Services Inc,Consumer Discretionary,48.01,2.54,920674,1.66,35.97,26.86,true,true,false,5.87,18.46,2664
+CACI,CACI International Inc. Class A Common Stock,Technology,633.98,2.38,339815,1.74,622.41,572.4,true,true,false,5.87,18.46,27000
+KMI,Kinder Morgan Inc. Common Stock,Utilities,34.43,2.11,18956521,1.85,31.86,31.7,true,true,false,5.81,18.46,11028
+GSBC,Great Southern Bancorp Inc. Common Stock,Finance,80.93,2.53,107049,1.56,78.75,70.84,true,true,false,5.66,18.46,1075
+HFWA,Heritage Financial Corporation Common Stock,Finance,29.15,2.21,462481,1.72,28.3,27.38,true,true,false,5.66,18.46,760
