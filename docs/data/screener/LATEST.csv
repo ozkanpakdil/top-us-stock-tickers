@@ -1,1 +1,50 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
+SKIN,The Beauty Health Company Class A Common Stock,Health Care,15.71,50.62,434797,2.24,4.19,1.75,true,true,false,55.11,19.88,613
+FLGT,Fulgent Genetics Inc. Common Stock,Health Care,23.74,27.84,1097522,4.47,20.8,19.65,true,true,false,36.78,19.88,1315
+CLAR,Clarus Corporation Common Stock,Consumer Discretionary,5.02,18.4,1168364,7.53,3.72,3.3,true,true,false,33.45,19.88,390
+CYRX,CryoPort Inc. Common Stock,Health Care,19.1,18.93,2586158,3.68,16.97,13.18,true,true,false,26.28,19.88,692
+CGON,CG Oncology Inc. Common stock,Health Care,75.99,17.29,3661960,4.43,68.57,65.26,true,true,false,26.15,19.88,142
+ETON,Eton Pharmaceuticals Inc. Common Stock,Health Care,56.46,19.82,1270822,2.99,54.98,35.13,true,true,false,25.8,19.88,44
+EVC,Entravision Communications Corporation Common Stock,Industrials,9.005,19.59,2881399,2.78,7.35,6.47,true,true,false,25.15,19.88,1025
+ARDT,Ardent Health Inc. Common Stock,Health Care,17.29,9.36,3465796,7.55,11.41,10,true,true,false,24.45,19.88,25200
+CCSI,Consensus Cloud Solutions Inc. Common Stock,Technology,43.15,17.45,320549,3.47,36.39,31.57,true,true,false,24.39,19.88,520
+XERS,Xeris Biopharma Holdings Inc. Common Stock,Health Care,15.2,16.92,7897218,3.14,9.6,7.55,true,true,false,23.19,19.88,435
+EWTX,Edgewise Therapeutics Inc. Common Stock,Health Care,45.04,15.87,3715381,2.81,40.95,35.86,true,true,false,21.48,19.88,133
+ABNB,Airbnb Inc. Class A Common Stock,Consumer Discretionary,189.99,11.58,12749658,3.59,168.91,147.23,true,true,false,18.77,19.88,8200
+TPC,Tutor Perini Corporation Common Stock,Consumer Discretionary,89.79,11.08,1283290,3.35,84,81.25,true,true,false,17.78,19.88,7400
+PVLA,Palvella Therapeutics Inc. Common Stock,Health Care,175.92,12.58,502032,2.53,142.68,125.96,true,true,false,17.65,19.88,29
+COOK,Traeger Inc. Common Stock,Consumer Discretionary,66.95,12.18,146364,2.64,49.72,39.66,true,true,false,17.46,19.88,433
+ARHS,Arhaus Inc. Class A Common Stock,Consumer Discretionary,14.19,10.34,4932405,3.34,9.81,8.54,true,true,false,17.03,19.88,2800
+DTIL,Precision BioSciences Inc. Common Stock,Health Care,10.6,7.78,1229157,4.58,6.9,6.47,true,true,false,16.94,19.88,69
+BARK,BARK Inc. Class A Common Stock,Consumer Discretionary,9.26,12.52,61473,1.86,8.65,6.82,true,true,false,16.23,19.88,501
+KINS,Kingstone Companies Inc. Common Stock,Finance,20.46,8.25,258268,3.64,19.22,17.31,true,true,false,15.54,19.88,113
+OVID,Ovid Therapeutics Inc. Common Stock,Health Care,2.85,10.47,3897580,2.52,2.52,2.35,true,true,false,15.5,19.88,23
+ZVRA,Zevra Therapeutics Inc. Common Stock,Health Care,11.59,10.07,1534643,2.1,11.13,10.72,true,true,false,14.26,19.88,61
+VHI,Valhi Inc. Common Stock,Basic Materials,16.02,10.14,15656,1.94,15.83,14.8,true,true,false,14.01,19.88,2826
+LBRX,LB Pharmaceuticals Inc Common Stock,Health Care,42.01,10.26,480310,1.55,40.67,32.23,true,true,false,13.35,19.88,49
+ACHC,Acadia Healthcare Company Inc. Common Stock,Health Care,37,6.02,4534091,3.14,29.4,25.15,true,true,false,12.3,19.88,25000
+CLOV,Clover Health Investments Corp. Class A Common Stock,Health Care,4.82,7.47,7559266,2.18,4.54,3.5,true,true,false,11.84,19.88,724
+VCEL,Vericel Corporation Common Stock,Health Care,54.62,5.51,1616567,3.17,41.01,38.38,true,true,false,11.84,19.88,398
+U,Unity Software Inc. Common Stock,Technology,51.49,6.38,23628101,2.62,42.43,32.43,true,true,false,11.63,19.88,4412
+GRDN,Guardian Pharmacy Services Inc. Class A Common Stock,Consumer Staples,42.335,6.4,1085466,2.54,41.48,37.8,true,true,false,11.47,19.88,3600
+SOLV,Solventum Corporation Common Stock,Health Care,90.345,3.74,3168925,3.69,87.98,78.54,true,true,false,11.13,19.88,20584
+REPL,Replimune Group Inc. Common Stock,Health Care,21.62,7.94,2975062,1.56,13.99,9.54,true,true,false,11.05,19.88,465
+GNE,Genie Energy Ltd. Class B Common Stock Stock,Utilities,17.73,6.1,142672,2.36,16.23,14.69,true,true,false,10.82,19.88,139
+CNL,Collective Mining Ltd. Common Shares,Uncategorized,13.39,6.95,291892,1.9,12.78,,true,true,true,10.75,19.88,154
+SYRE,Spyre Therapeutics Inc. Common Stock,Health Care,103.86,7.14,1635370,1.53,89.56,71.01,true,true,false,10.2,19.88,130
+SG,Sweetgreen Inc. Class A Common Stock,Consumer Discretionary,12,3.18,12912089,3.25,8.83,7.38,true,true,false,9.68,19.88,6486
+ITT,ITT Inc. Common Stock ,Industrials,205.71,5.17,1487359,2.19,200.97,198.91,true,true,false,9.55,19.88,11600
+APLE,Apple Hospitality REIT Inc. Common Shares,Real Estate,18.88,3.71,5795535,2.75,16.65,14.55,true,true,false,9.21,19.88,64
+CLST,Catalyst Bancorp Inc. Common Stock,Finance,18.115,2.95,8407,3.06,17.51,16.59,true,true,false,9.06,19.88,83
+LFTO,Liftoff Mobile Inc. Common Stock,Technology,18.13,5.41,1181335,1.8,16.8,,true,true,true,9,19.88,649
+VTRS,Viatris Inc. Common Stock,Health Care,19.91,4.93,14534028,2.03,17.67,15.77,true,true,false,8.99,19.88,30000
+ELF,e.l.f. Beauty Inc. Common Stock,Consumer Discretionary,116.14,4.68,2278747,2.1,106.14,82.21,true,true,false,8.88,19.88,849
+SGHT,Sight Sciences Inc. Common Stock,Health Care,10.08,4.26,576407,2.14,8.69,6.17,true,true,false,8.54,19.88,186
+XMTR,Xometry Inc. Class A Common Stock,Real Estate,114.95,4.76,1101825,1.66,98.22,75.69,true,true,false,8.07,19.88,1174
+CHYM,Chime Financial Inc. Class A Common Stock,Finance,31.33,3.79,8530561,2.12,30.03,24.14,true,true,false,8.04,19.88,1519
+ARTNA,Artesian Resources Corporation Class A Common Stock,Utilities,34.39,3.76,46005,2.11,34.26,33.35,true,true,false,7.97,19.88,274
+AHR,American Healthcare REIT Inc. Common Stock,Real Estate,57.9,3.35,5959654,2.28,53.15,51.12,true,true,false,7.91,19.88,121
+AMPH,Amphastar Pharmaceuticals Inc. Common Stock,Health Care,28.49,3.06,826255,2.12,25.28,22.68,true,true,false,7.3,19.88,1976
+COTY,Coty Inc. Class A Common Stock,Consumer Discretionary,4.04,3.46,7952969,1.81,2.93,2.56,true,true,false,7.07,19.88,11335
+USPH,U.S. Physical Therapy Inc. Common Stock,Health Care,99.72,2.8,295069,2.04,84.13,77.31,true,true,false,6.87,19.88,8095
+BILL,BILL Holdings Inc. Common Stock,Technology,52.41,3.04,2211194,1.8,47.19,42.82,true,true,false,6.64,19.88,1683
