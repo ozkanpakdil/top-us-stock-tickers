@@ -1,45 +1,31 @@
 symbol,name,industry,close,dayChangePct,volume,volRatio,sma50,smaLong,at20DayHigh,trendUp,trendSkipped,score,vix,employees
-PXLW,Pixelworks Inc.  Common Stock,Technology,7.29,39.79,17886868,47.42,6.26,6.2,true,true,false,134.62,18.21,163
-ZIP,ZipRecruiter Inc. Class A Common Stock,Technology,6.57,52.79,6185432,9.36,4.1,3.34,true,true,false,71.52,18.21,800
-CTEV,Claritev Corporation Class A Common Stock,Real Estate,28.865,20.12,933120,4.83,27.2,25.92,true,true,false,29.79,18.21,3000
-EFOI,Energy Focus Inc. Common Stock,Consumer Discretionary,4.95,14.85,182065,6.76,3.1,2.88,true,true,false,28.36,18.21,12
-JRSH,Jerash Holdings (US) Inc. Common Stock,Consumer Discretionary,7.55,14.92,423244,4.3,5.88,4.25,true,true,false,23.52,18.21,6300
-SENS,Senseonics Holdings Inc. Common Stock,Health Care,10.03,2.35,4671627,7.11,9.16,7.42,true,true,false,16.58,18.21,130
-CETY,Clean Energy Technologies Inc. Common Stock,Consumer Discretionary,1,10.99,32949,2.74,0.97,0.86,true,true,false,16.47,18.21,25
-TLS,Telos Corporation Common Stock,Technology,7.67,6.97,3043192,4.17,4.63,4.59,true,true,false,15.32,18.21,525
-ZETA,Zeta Global Holdings Corp. Class A Common Stock,Technology,35.08,8.24,11458236,2.35,31.86,22.93,true,true,false,12.94,18.21,3300
-CKX,CKX Lands Inc. Common Stock,Energy,17.805,5.29,963603,3.67,10.96,10.8,true,true,false,12.63,18.21,2
-UG,United-Guardian Inc. Common Stock,Consumer Discretionary,9.16,3.5,53179,4.52,7.09,6.93,true,true,false,12.55,18.21,25
-MLAB,Mesa Laboratories Inc. Common Stock,Industrials,136.91,7.11,234185,2.56,128.58,104.87,true,true,false,12.23,18.21,717
-DGICB,Donegal Group Inc. Class B Common Stock,Finance,27.35,6.25,7144,2.91,21.55,19.76,true,true,false,12.07,18.21,550
-LILA,Liberty Latin America Ltd. Class A Common Stock,Telecommunications,10.04,8.07,565615,1.82,8.53,8.02,true,true,false,11.72,18.21,9000
-PRCH,Porch Group Inc. Common Stock,Technology,21.95,6.35,4079811,2.62,17.68,12.22,true,true,false,11.58,18.21,803
-EML,Eastern Company (The) Common Stock,Consumer Discretionary,29.48,8.18,12515,1.5,25.58,22.65,true,true,false,11.18,18.21,1246
-GRDN,Guardian Pharmacy Services Inc. Class A Common Stock,Consumer Staples,49.845,6.05,1184497,2.53,41.93,37.98,true,true,false,11.11,18.21,3600
-ORKA,Oruka Therapeutics Inc. Common Stock,Health Care,109.5,4.72,2611588,3.07,88.81,68.27,true,true,false,10.87,18.21,68
-AMG,Affiliated Managers Group Inc. Common Stock,Finance,401.37,4.74,778640,2.97,372.48,331.76,true,true,false,10.67,18.21,5600
-GDYN,Grid Dynamics Holdings Inc. Class A Common Stock,Technology,14.06,5.71,2637400,2.45,8.8,7.25,true,true,false,10.62,18.21,4559
-SBH,Sally Beauty Holdings Inc. (Name to be changed from Sally Holdings Inc.) Common Stock,Consumer Discretionary,20.51,5.29,2788790,2.39,16.83,15.17,true,true,false,10.07,18.21,26500
-ETON,Eton Pharmaceuticals Inc. Common Stock,Health Care,67.54,4.96,1176170,2.52,55.22,35.63,true,true,false,9.99,18.21,44
-LILAK,Liberty Latin America Ltd. Class C Common Stock,Telecommunications,9.97,6.75,2186911,1.58,8.49,8.06,true,true,false,9.91,18.21,9000
-TUSK,Mammoth Energy Services Inc. Common Stock,Energy,3.27,6.86,141169,1.51,2.95,2.79,true,true,false,9.88,18.21,115
-GTN,Gray Media Inc. Common Stock,Industrials,5.825,4.02,2465458,2.82,4.69,4.64,true,true,false,9.67,18.21,9582
-KINS,Kingstone Companies Inc. Common Stock,Finance,22.74,3.84,227993,2.88,19.32,17.37,true,true,false,9.59,18.21,113
-CLAR,Clarus Corporation Common Stock,Consumer Discretionary,5.29,3.12,516208,2.92,3.78,3.32,true,true,false,8.96,18.21,390
-PANL,Pangaea Logistics Solutions Ltd. Common Shares,Consumer Discretionary,8.54,5.17,646784,1.89,8.15,7.81,true,true,false,8.95,18.21,170
-MBX,MBX Biosciences Inc. Common Stock,Health Care,56.33,4.2,1124406,2.3,56.26,44.7,true,true,false,8.79,18.21,63
-VIA,Via Transportation Inc. Class A Common Stock,Technology,44.65,5,1192797,1.79,31.62,22.94,true,true,false,8.58,18.21,1040
-GCMG,GCM Grosvenor Inc. Class A Common Stock,Finance,13.92,3.49,918162,2.43,12.87,11.86,true,true,false,8.35,18.21,553
-IRON,Disc Medicine Inc. Common Stock,Health Care,84.64,4.16,1925577,2.06,71.34,70.83,true,true,false,8.28,18.21,173
-ATNI,ATN International Inc. Common Stock,Telecommunications,29.925,4.2,142165,1.86,28.01,27.17,true,true,false,7.91,18.21,2100
-RCEL,Avita Medical Inc. Common Stock,Health Care,17.65,3.1,858208,2.37,12.98,6.92,true,true,false,7.84,18.21,226
-SWBI,Smith & Wesson Brands Inc. Common Stock,Industrials,15.6,3.72,954140,1.95,13.9,13.89,true,true,false,7.62,18.21,1386
-PLMR,Palomar Holdings Inc. Common stock,Finance,161.08,2.74,555214,2.37,135.85,126.45,true,true,false,7.47,18.21,439
-CLDT,Chatham Lodging Trust (REIT) Common Shares of Beneficial Interest,Real Estate,16.295,2.55,781135,2.24,13.8,10.85,true,true,false,7.04,18.21,16
-GPN,Global Payments Inc. Common Stock,Real Estate,101.62,3.87,3527796,1.56,86.82,77.23,true,true,false,6.99,18.21,26000
-HUM,Humana Inc. Common Stock,Health Care,437.97,3.46,2108953,1.72,405.55,307.47,true,true,false,6.89,18.21,67060
-SEPN,Septerna Inc. Common Stock,Health Care,52.34,3.15,537692,1.71,39.98,32.42,true,true,false,6.57,18.21,134
-TPC,Tutor Perini Corporation Common Stock,Consumer Discretionary,97.39,2.85,696464,1.67,84.3,81.51,true,true,false,6.2,18.21,7400
-RMNI,Rimini Street Inc. (DE) Common Stock,Real Estate,5.53,2.22,582407,1.74,4.45,4.04,true,true,false,5.71,18.21,1990
-APLE,Apple Hospitality REIT Inc. Common Shares,Real Estate,20.175,2.57,3439297,1.52,16.81,14.63,true,true,false,5.61,18.21,64
-ZYME,Zymeworks Inc. Common Stock,Health Care,31.46,2.11,1687594,1.7,27.49,25.52,true,true,false,5.51,18.21,279
+UEIC,Universal Electronics Inc. Common Stock,Consumer Staples,6.62,22.82,200073,3.32,5.22,4.49,true,true,false,29.45,20.07,3099
+CARL,Carlsmed Inc. Common Stock,Health Care,17.3,17.61,384833,5.03,14.9,12.57,true,true,false,27.66,20.07,127
+TRMK,Trustmark Corporation Common Stock,Finance,47.84,5.37,4219415,10.2,45.67,44.62,true,true,false,25.78,20.07,2574
+ANGX,Angel Studios Inc. Class A Common Stock,Consumer Discretionary,4.37,16.84,3703930,2.43,4.26,3.63,true,true,false,21.7,20.07,311
+LAW,CS Disco Inc. Common Stock,Technology,6.5,14.04,655794,3.61,4.6,4.32,true,true,false,21.25,20.07,577
+MBGL,Mobility Global Inc. Common Stock,Consumer Discretionary,23.12,15.77,7288763,2.17,19.04,,true,true,true,20.12,20.07,3522
+PANL,Pangaea Logistics Solutions Ltd. Common Shares,Consumer Discretionary,9.46,10.77,1512761,4.07,8.18,7.83,true,true,false,18.92,20.07,170
+FOSL,Fossil Group Inc. Common Stock,Consumer Discretionary,8.74,11.05,2351878,3.19,6.42,4.94,true,true,false,17.43,20.07,4500
+ANET,Arista Networks Inc. Common Stock,Telecommunications,206.77,11.71,9788194,1.74,193.37,164.8,true,true,false,15.19,20.07,5115
+BLTE,Belite Bio Inc American Depositary Shares,Health Care,169.96,8.59,496545,3.24,161.9,160.4,true,true,false,15.06,20.07,41
+AXGN,Axogen Inc. Common Stock,Health Care,55.4,8.86,3055457,2.21,42.82,39.86,true,true,false,13.27,20.07,622
+CCEL,Cryo-Cell International Inc. Common Stock,Health Care,5.34,8.32,22944,2.4,4.41,3.74,true,true,false,13.11,20.07,76
+SONO,Sonos Inc. Common Stock,Consumer Staples,18.11,7.22,3703664,2.41,16.79,15.33,true,true,false,12.05,20.07,1404
+DCTH,Delcath Systems Inc. Common Stock,Health Care,21.38,6.37,1091856,2.71,15.74,12.52,true,true,false,11.78,20.07,156
+ANRO,Alto Neuroscience Inc. Common Stock,Health Care,30.55,6.71,1288571,2.41,26.91,24.1,true,true,false,11.53,20.07,68
+SGC,Superior Group of Companies Inc. Common Stock,Consumer Discretionary,14.29,6.96,65287,2.27,12.85,11.85,true,true,false,11.49,20.07,6520
+OBIO,Orchestra BioMed Holdings Inc. Ordinary Shares,Health Care,6.15,7.33,631083,1.87,5.79,4.62,true,true,false,11.08,20.07,86
+INGM,Ingram Micro Holding Corporation Common Stock,Technology,28.745,4.68,5771200,3.05,27.26,26.14,true,true,false,10.79,20.07,22200
+ARL,American Realty Investors Inc. Common Stock,Real Estate,23.2,6.72,8197,2,17,16.25,true,true,false,10.72,20.07,895
+MYPS,PLAYSTUDIOS Inc.  Class A Common Stock,Technology,4.81,3.22,557573,3.47,2.73,1.08,true,true,false,10.16,20.07,543
+EML,Eastern Company (The) Common Stock,Consumer Discretionary,30.81,4.51,17414,2.01,25.66,22.71,true,true,false,8.52,20.07,1246
+SKYH,Sky Harbour Group Corporation Class A Common Stock,Finance,11.065,4.78,282193,1.77,9.85,9.74,true,true,false,8.33,20.07,112
+AEYE,AudioEye Inc. Common Stock,Technology,14.3,4.61,340934,1.75,8.48,7.45,true,true,false,8.1,20.07,116
+TPC,Tutor Perini Corporation Common Stock,Consumer Discretionary,100.32,3.01,1081599,2.47,84.58,81.64,true,true,false,7.95,20.07,7400
+ATNM,Actinium Pharmaceuticals Inc. (Delaware) Common Stock,Health Care,1.6,3.56,348115,2.11,1.26,1.15,true,true,false,7.77,20.07,27
+FCAP,First Capital Inc. Common Stock,Finance,66,4.28,34391,1.59,62.75,58.11,true,true,false,7.45,20.07,216
+ATI,ATI Inc. Common Stock,Industrials,190.12,4.03,2104694,1.51,186.38,172.27,true,true,false,7.06,20.07,7600
+EVC,Entravision Communications Corporation Common Stock,Industrials,9.44,3.74,1751210,1.53,7.43,6.56,true,true,false,6.81,20.07,1025
+LFTO,Liftoff Mobile Inc. Common Stock,Technology,18.71,2.58,1239939,1.75,16.81,,true,true,true,6.08,20.07,652
+KINS,Kingstone Companies Inc. Common Stock,Finance,23.23,2.15,157826,1.92,19.4,17.4,true,true,false,5.99,20.07,113
