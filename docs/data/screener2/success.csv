@@ -1,10 +1,4 @@
 date,symbol,industry,entry,rulesPassed,score,ret5,ret10,ret20,maxRunup10,maxDrawdown10,win10
-2026-08-24,AGNCM,Real Estate,25.25,7,36.38,-0.63,0.1,0.55,0.1,-0.63,true
-2026-08-24,ELC,Utilities,19.68,4,30.87,-0.72,-1.33,-1.58,1.47,-1.33,false
-2026-08-24,HCXY,Finance,24.95,4,26.39,0.36,0.28,-0.04,0.92,-0.35,true
-2026-08-24,OGN,Health Care,13.75,7,26.25,0.04,0.22,-0.51,0.22,0,true
-2026-08-24,MFAN,Real Estate,25.21,7,24.25,-0.14,0.36,-0.02,0.56,-0.2,true
-2026-08-24,RAMP,Technology,37.58,7,21.26,0.48,0.45,0.21,0.59,0.13,true
 2026-08-25,AGNCM,Real Estate,25.27,7,36.38,-0.12,0.02,0.32,0.02,-0.71,true
 2026-08-25,HCXY,Finance,24.86,4,26.39,0.23,0.63,0.63,1.27,0.23,true
 2026-08-25,OGN,Health Care,13.75,7,26.25,0.15,0.18,-0.51,0.22,0,true
