@@ -1,8 +1,4 @@
 date,symbol,industry,entry,rulesPassed,score,ret5,ret10,ret20,maxRunup10,maxDrawdown10,win10
-2026-08-25,AGNCM,Real Estate,25.27,7,36.38,-0.12,0.02,0.32,0.02,-0.71,true
-2026-08-25,HCXY,Finance,24.86,4,26.39,0.23,0.63,0.63,1.27,0.23,true
-2026-08-25,OGN,Health Care,13.75,7,26.25,0.15,0.18,-0.51,0.22,0,true
-2026-08-25,RAMP,Technology,37.63,7,21.62,0.33,0.24,-0.05,0.45,0.24,true
 2026-08-26,AGNCM,Real Estate,25.27,7,36.38,-0.32,-0.36,0.39,0.02,-0.72,false
 2026-08-26,ONBPP,Finance,24.89,4,29.41,-0.16,0.44,-0.72,0.44,-0.36,true
 2026-08-26,OGN,Health Care,13.75,7,26.25,0.11,-0.04,-0.36,0.22,-0.04,false
